@@ -7,8 +7,14 @@ grape: 0.30          # Single-token, high verbosity in FDC
 cantaloupe: 0.30     # Single-token melon
 honeydew: 0.30       # Single-token melon
 almond: 0.30         # Single-token nut
+egg: 0.30            # Single-token, needs leniency for cooked forms
+egg_white: 0.30      # Single-token variant
+carrot: 0.30         # Prevent juice mis-matches
+corn: 0.30           # Single-token, "corn on the cob" variants
 olive: 0.35          # Processing-heavy (pickled, stuffed, etc.)
+cucumber: 0.35       # Prevent sea cucumber mis-match
 tomato: 0.35         # Processing-heavy (cherry, grape, etc.)
+salad: 0.40          # Push toward leafy bases
 
 # Default threshold for multi-token classes
 default: 0.45

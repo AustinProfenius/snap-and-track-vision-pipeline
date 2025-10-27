@@ -1,0 +1,17 @@
+{
+  "_comment": "Stage 5 proxy alignment rules for prepared foods that fail Stage 1b/1c/2",
+  "_usage": "Applied after Stages 1b/1c/2 fail, before Stage Z. Emits alignment_stage=stage5_proxy",
+
+  "pizza": "Pizza cheese regular crust",
+  "cheese pizza": "Pizza cheese regular crust",
+  "pizza slice": "Pizza cheese regular crust",
+  "bagel": "Bagels plain",
+  "bagels": "Bagels plain",
+  "meatballs": "Meatballs beef cooked",
+  "meatball": "Meatballs beef cooked",
+  "dumplings": "Dumpling meat/veg steamed",
+  "dumpling": "Dumpling meat/veg steamed",
+  "chicken salad": "Chicken salad mayonnaise-based",
+  "caesar salad": "Lettuce romaine raw",
+  "shredded cheese": "Cheese cheddar"
+}

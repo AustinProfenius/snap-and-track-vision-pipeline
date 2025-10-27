@@ -86,10 +86,13 @@ class FDCAlignmentWithConversion:
         self,
         cook_cfg_path: Optional[Path] = None,
         energy_bands_path: Optional[Path] = None,
-        # NEW: External config support for pipeline convergence
+        # NEW: External config support for pipeline convergence (Phase 3 & 7)
         class_thresholds: Optional[Dict[str, float]] = None,
         negative_vocab: Optional[Dict[str, List[str]]] = None,
-        feature_flags: Optional[Dict[str, bool]] = None
+        feature_flags: Optional[Dict[str, bool]] = None,
+        variants: Optional[Dict[str, List[str]]] = None,
+        proxy_rules: Optional[Dict[str, str]] = None,
+        fdc_db: Any = None  # Phase 7: FDC database instance for Stage 5 proxy search
     ):
         """
         Initialize alignment engine.
@@ -100,6 +103,9 @@ class FDCAlignmentWithConversion:
             class_thresholds: Per-class Jaccard thresholds (or None for defaults)
             negative_vocab: Per-class negative vocabulary (or None for defaults)
             feature_flags: Feature flags dict (or None for defaults)
+            variants: Food variant mappings for canonical query generation (Phase 7)
+            proxy_rules: Stage 5 proxy alignment rules for prepared foods (Phase 7)
+            fdc_db: FDC database instance for Stage 5 proxy search (Phase 7)
         """
         self.cook_cfg = load_cook_conversions(cook_cfg_path)
         self.energy_bands = load_energy_bands(energy_bands_path)
@@ -108,10 +114,13 @@ class FDCAlignmentWithConversion:
         self._external_class_thresholds = class_thresholds
         self._external_negative_vocab = negative_vocab
         self._external_feature_flags = feature_flags
+        self._external_variants = variants or {}
+        self._external_proxy_rules = proxy_rules or {}
+        self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
         # Track config source for telemetry
         self.config_source = (
-            "external" if any([class_thresholds, negative_vocab, feature_flags])
+            "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules])
             else "fallback"
         )
 
@@ -371,18 +380,37 @@ class FDCAlignmentWithConversion:
                 candidate_pool_branded=len(branded)
             )
 
-        # Stage 5: Proxy alignment (whitelisted classes only)
+        # Stage 5: Proxy alignment (Phase 7: external rules first, then whitelist fallback)
         if FLAGS.enable_proxy_alignment:
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Stage 4 failed, trying Stage 5 (proxy alignment)...")
 
+            # Phase 7: Try external proxy rules first (if configured)
+            match = None
+            if self._external_proxy_rules:
+                match = self._stage5_proxy_simple(core_class, predicted_name, self._fdc_db)
+                if match:
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        match_name = match.name if hasattr(match, 'name') else match.original.name
+                        print(f"[ALIGN] ✓ Matched via stage5_proxy (external rules): {match_name}")
+                    proxy_confidence = max(0.05, adjusted_confidence - 0.15)
+                    return self._build_result(
+                        match, "stage5_proxy", proxy_confidence, method, method_reason,
+                        stage1_blocked=stage1_blocked,
+                        candidate_pool_total=len(fdc_entries),
+                        candidate_pool_raw_foundation=len(raw_foundation),
+                        candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
+                        candidate_pool_branded=len(branded)
+                    )
+
+            # Fall back to hardcoded whitelist proxy alignment
             match = self._stage5_proxy_alignment(
                 core_class, method, predicted_kcal_100g, predicted_form, None
             )
             if match:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     match_name = match.name if hasattr(match, 'name') else match.original.name
-                    print(f"[ALIGN] ✓ Matched via stage5_proxy_alignment: {match_name}")
+                    print(f"[ALIGN] ✓ Matched via stage5_proxy_alignment (whitelist): {match_name}")
                 proxy_confidence = max(0.05, adjusted_confidence - 0.15)
                 return self._build_result(
                     match, "stage5_proxy_alignment", proxy_confidence, method, method_reason,
@@ -702,7 +730,7 @@ class FDCAlignmentWithConversion:
 
         Only handles specific cooked proteins that have reliable SR Legacy entries:
         - Bacon (cooked/fried)
-        - Eggs (scrambled, fried, boiled)
+        - Eggs (whole, scrambled, fried, boiled, omelet) [Phase 7: expanded]
         - Egg whites (boiled/cooked)
         - Sausage (cooked)
 
@@ -728,9 +756,11 @@ class FDCAlignmentWithConversion:
         # Whitelist of core classes with required tokens
         WHITELIST = {
             "bacon": {"bacon"},
+            "egg": {"egg"},  # Phase 7: Generic egg (will match "Egg whole cooked")
             "egg_scrambled": {"egg", "scrambled"},
             "egg_fried": {"egg", "fried"},
             "egg_boiled": {"egg", "boiled"},
+            "egg_omelet": {"egg", "omelet"},  # Phase 7: Omelet variant
             "egg_white": {"egg", "white"},
             "sausage": {"sausage"},
         }
@@ -1004,6 +1034,88 @@ class FDCAlignmentWithConversion:
         # Only accept if within 30%
         if best_match and (best_diff / predicted_kcal) < 0.30:
             return best_match
+
+        return None
+
+    def _stage5_proxy_simple(
+        self,
+        core_class: str,
+        predicted_name: str,
+        fdc_db: Any
+    ) -> Optional[Any]:
+        """
+        Stage 5 (Phase 7): Simple proxy alignment using external proxy rules.
+
+        Uses proxy_alignment_rules.json to map food names to FDC entries.
+        Applied after Stage 1b/1c/2 fail, before Stage Z.
+
+        Args:
+            core_class: Normalized food class
+            predicted_name: Original predicted food name
+            fdc_db: FDC database instance
+
+        Returns:
+            FdcEntry from proxy search, or None if no proxy match
+        """
+        # Phase 7: Use external proxy rules if provided
+        if not self._external_proxy_rules:
+            return None
+
+        # Normalize predicted name for matching
+        name_lower = predicted_name.lower().strip()
+
+        # Check if name matches any proxy rule (exact or contains)
+        proxy_target = None
+        proxy_key = None
+
+        # First try exact match
+        if name_lower in self._external_proxy_rules:
+            proxy_target = self._external_proxy_rules[name_lower]
+            proxy_key = name_lower
+        else:
+            # Try substring match (e.g., "cheese pizza" contains "pizza")
+            for key, target in self._external_proxy_rules.items():
+                if key in name_lower or name_lower in key:
+                    proxy_target = target
+                    proxy_key = key
+                    break
+
+        if not proxy_target:
+            return None
+
+        # Search FDC for proxy target
+        if fdc_db and hasattr(fdc_db, 'search'):
+            try:
+                results = fdc_db.search(proxy_target)
+                if results:
+                    # Prefer Foundation/SR entries
+                    for entry in results:
+                        if entry.source in ("foundation", "sr_legacy"):
+                            # Store proxy info in telemetry
+                            if not hasattr(self, 'stage5_proxy_uses'):
+                                self.stage5_proxy_uses = []
+                            self.stage5_proxy_uses.append({
+                                "proxy_key": proxy_key,
+                                "proxy_target": proxy_target,
+                                "fdc_id": entry.fdc_id,
+                                "fdc_name": entry.name
+                            })
+                            return entry
+                    # Fall back to any result
+                    entry = results[0]
+                    if not hasattr(self, 'stage5_proxy_uses'):
+                        self.stage5_proxy_uses = []
+                    self.stage5_proxy_uses.append({
+                        "proxy_key": proxy_key,
+                        "proxy_target": proxy_target,
+                        "fdc_id": entry.fdc_id,
+                        "fdc_name": entry.name
+                    })
+                    return entry
+            except Exception as e:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5] Proxy search failed: {e}")
+                return None
 
         return None
 

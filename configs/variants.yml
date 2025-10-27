@@ -1,0 +1,70 @@
+# Food variant mappings for canonical query generation
+#
+# Helps search_normalizer expand query variants to improve FDC matching
+# Plural-first ordering still applies in the normalizer
+
+egg:
+  - egg whole
+  - egg scrambled
+  - egg fried
+  - egg omelet
+
+egg_white:
+  - egg white
+  - egg white cooked
+  - egg white scrambled
+
+corn:
+  - corn
+  - corn kernels
+  - sweet corn
+  - corn sweet yellow raw
+  - corn on the cob
+
+carrot:
+  - carrot
+  - carrots
+
+cucumber:
+  - cucumber
+  - cucumbers
+
+olive:
+  - olive
+  - olives
+  - kalamata olive
+  - green olive
+
+salad:
+  - romaine lettuce
+  - mixed greens
+  - salad mix
+  - leafy greens
+
+pizza:
+  - pizza
+  - cheese pizza
+  - pizza slice
+
+bagel:
+  - bagel
+  - bagels
+
+meatball:
+  - meatball
+  - meatballs
+
+dumpling:
+  - dumpling
+  - dumplings
+
+chicken_salad:
+  - chicken salad
+
+caesar_salad:
+  - caesar salad
+  - romaine
+
+cheese:
+  - cheese
+  - shredded cheese

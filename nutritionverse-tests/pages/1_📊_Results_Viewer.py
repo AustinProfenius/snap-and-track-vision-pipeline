@@ -533,9 +533,9 @@ for idx, result in enumerate(results_list):
 
                 if db_foods:
                     for food in db_foods:
-                        pred_name = food.get("predicted_name", "unknown")
-                        matched_name = food.get("matched_name", "unknown")
-                        score = food.get("score", 0)
+                        pred_name = food.get("name", "unknown")
+                        matched_name = food.get("fdc_name", "unknown")
+                        score = food.get("match_score", 0)
                         conf = food.get("confidence", 0)
                         data_type = food.get("data_type", "unknown")
 
@@ -543,17 +543,21 @@ for idx, result in enumerate(results_list):
                         badge_class = "stage-foundation" if "foundation" in data_type else \
                                      "stage-legacy" if "legacy" in data_type else "stage-branded"
 
-                        nutrition = food.get("nutrition", {})
-                        mass = nutrition.get("mass_g", 0)
-                        cals = nutrition.get("calories", 0)
+                        telemetry = food.get("telemetry", {})
+                        mass = food.get("mass_g", 0)
+                        cals = food.get("calories", 0)
+                        raw_source = telemetry.get("raw_source", "N/A")
+                        raw_name = telemetry.get("raw_name", "N/A")
 
                         st.markdown(f"""
                         <div style='padding: 8px; margin: 4px 0; border-radius: 4px; background: #fffff;'>
-                            <strong>{pred_name}</strong><br>
-                            → {matched_name}<br>
+                            {pred_name}<br>
+                            → <strong>{matched_name}</strong><br>
                             <span class='{badge_class}'>{data_type}</span><br>
                             Score: {score:.1f} | Conf: {conf:.0%}<br>
-                            {mass:.0f}g | {cals:.0f} kcal
+                            {mass:.0f}g | {cals:.0f} kcal<br>
+                            Food Type: {raw_source:s} <br>
+                             Raw Name: {raw_name:s}
                         </div>
                         """, unsafe_allow_html=True)
                 else:

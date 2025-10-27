@@ -49,3 +49,27 @@ sweet_potato:
   - flour
   - starch
   - powder
+
+# Carrot safeguard: prevent matching juice/puree when form=raw
+carrot:
+  - juice
+  - puree
+  - baby-food
+  - canned
+
+# Pineapple safeguard: prefer fresh/raw over canned/syrup for raw forms
+pineapple:
+  - canned
+  - syrup
+
+# Blueberry safeguard: prevent matching muffins/baked goods
+blueberry:
+  - muffin
+
+# Strawberry safeguard: prevent matching toppings/syrups
+strawberry:
+  - topping
+
+# Salad safeguard: prefer leafy greens over dressings
+salad:
+  - dressing

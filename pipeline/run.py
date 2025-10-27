@@ -71,19 +71,24 @@ def run_once(
         >>> result = run_once(request, cfg, fdc, code_git_sha=get_code_git_sha())
         >>> print(result.foods[0].alignment_stage)
     """
-    # Phase 3 COMPLETE: Pass external configs to FDCAlignmentWithConversion
+    # Use adapter wrapper for compatibility with existing code
+    adapter = AlignmentEngineAdapter(enable_conversion=True)
+    # Pre-load fdc_db for injection into alignment engine
+    adapter.fdc_db = fdc_index.adapter
+
+    # Phase 3 & 7: Pass external configs to FDCAlignmentWithConversion
     # Create alignment engine with external configs
     alignment_engine = FDCAlignmentWithConversion(
         class_thresholds=cfg.thresholds,
         negative_vocab=cfg.neg_vocab,
-        feature_flags={**cfg.feature_flags, "stageZ_branded_fallback": allow_stage_z}
+        feature_flags={**cfg.feature_flags, "stageZ_branded_fallback": allow_stage_z},
+        variants=cfg.variants,
+        proxy_rules=cfg.proxy_rules,
+        fdc_db=adapter.fdc_db  # Phase 7: Inject FDC database for Stage 5 proxy
     )
 
-    # Use adapter wrapper for compatibility with existing code
-    adapter = AlignmentEngineAdapter(enable_conversion=True)
-    # Inject our configured engine and database
+    # Inject our configured engine
     adapter.alignment_engine = alignment_engine
-    adapter.fdc_db = fdc_index.adapter
 
     # Convert DetectedFood to dict format expected by adapter
     prediction = {

@@ -431,7 +431,12 @@ async def run_batch_predictions(dishes: list, model: str, include_micros: bool, 
 
 
 def save_batch_results(results: list, model: str, include_micros: bool, test_mode: str):
-    """Save batch results to JSON file with timestamp."""
+    """
+    Save batch results to JSON file with timestamp.
+
+    Phase 7: Also writes pipeline artifacts to runs/{timestamp}/ for consistency
+    with batch harness format (results.jsonl, telemetry.jsonl, summary.md).
+    """
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     results_dir = Path("results")
     results_dir.mkdir(exist_ok=True)
@@ -455,13 +460,92 @@ def save_batch_results(results: list, model: str, include_micros: bool, test_mod
         "results": results
     }
 
-    # Save to file with model name and image count
+    # Save to file with model name and image count (legacy format)
     model_name = model.replace('/', '_').replace('-', '_')
     filename = results_dir / f"{model_name}_{len(results)}images_{timestamp}.json"
     with open(filename, "w") as f:
         json.dump(summary, f, indent=2)
 
+    # Phase 7: Write pipeline artifacts to runs/{timestamp}/ (for consistency with batch harness)
+    _write_pipeline_artifacts(results, timestamp)
+
     return filename, summary
+
+
+def _write_pipeline_artifacts(results: list, timestamp: str):
+    """
+    Phase 7: Write pipeline artifacts in batch harness format.
+
+    Creates runs/{timestamp}/ with:
+    - results.jsonl: One line per image (pipeline AlignmentResult format)
+    - telemetry.jsonl: One line per food (telemetry events)
+    - summary.md: Human-readable summary
+
+    Args:
+        results: List of result dictionaries from run_single_dish_with_result
+        timestamp: Timestamp string (YYYYMMDD_HHMMSS)
+    """
+    run_dir = Path("runs") / timestamp
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    results_file = run_dir / "results.jsonl"
+    telemetry_file = run_dir / "telemetry.jsonl"
+    summary_file = run_dir / "summary.md"
+
+    # Extract pipeline results and write JSONL
+    with open(results_file, "w") as rf, open(telemetry_file, "w") as tf:
+        for result in results:
+            if result.get("error") is None and result.get("database_aligned"):
+                # Write result as JSONL (simplified format)
+                result_entry = {
+                    "image_id": result["dish_id"],
+                    "foods": result["database_aligned"]["foods"],
+                    "totals": result["database_aligned"]["totals"],
+                    "telemetry_summary": result["database_aligned"].get("telemetry_summary", {})
+                }
+                rf.write(json.dumps(result_entry) + "\n")
+
+                # Write telemetry events (one per food)
+                for idx, food in enumerate(result["database_aligned"]["foods"]):
+                    telemetry_event = {
+                        "image_id": result["dish_id"],
+                        "food_idx": idx,
+                        "query": food["name"],
+                        "alignment_stage": food.get("alignment_stage"),
+                        "fdc_id": food.get("fdc_id"),
+                        "fdc_name": food.get("fdc_name"),
+                        "match_score": food.get("match_score"),
+                        "conversion_applied": food.get("conversion_applied", False),
+                        "method": food.get("telemetry", {}).get("method"),
+                        "method_reason": food.get("telemetry", {}).get("method_reason"),
+                        "variant_chosen": food.get("telemetry", {}).get("variant_chosen")
+                    }
+                    tf.write(json.dumps(telemetry_event) + "\n")
+
+    # Write summary markdown
+    successful = [r for r in results if r.get("error") is None]
+    failed = [r for r in results if r.get("error") is not None]
+
+    # Collect stage distribution
+    stage_counts = {}
+    for result in successful:
+        if result.get("database_aligned"):
+            for food in result["database_aligned"]["foods"]:
+                stage = food.get("alignment_stage", "unknown")
+                stage_counts[stage] = stage_counts.get(stage, 0) + 1
+
+    with open(summary_file, "w") as f:
+        f.write(f"# Web App Batch Run - {timestamp}\n\n")
+        f.write(f"**Total Images**: {len(results)}\n")
+        f.write(f"**Successful**: {len(successful)}\n")
+        f.write(f"**Failed**: {len(failed)}\n\n")
+        f.write(f"## Alignment Stage Distribution\n\n")
+        for stage, count in sorted(stage_counts.items(), key=lambda x: -x[1]):
+            f.write(f"- **{stage}**: {count}\n")
+        f.write(f"\n**Artifacts**: results.jsonl, telemetry.jsonl\n")
+
+    print(f"[APP] Pipeline artifacts written to: {run_dir}/")
+
 
 
 def save_single_result(result_entry: dict, model: str, include_micros: bool):
