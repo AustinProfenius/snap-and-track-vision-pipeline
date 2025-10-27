@@ -1,0 +1,535 @@
+[{
+  "food_category_id": "",
+  "category_count": 10362
+}, {
+  "food_category_id": "Alcohol",
+  "category_count": 3487
+}, {
+  "food_category_id": "All Noodles",
+  "category_count": 4034
+}, {
+  "food_category_id": "Baby/Infant Foods/Beverages",
+  "category_count": 495
+}, {
+  "food_category_id": "Bacon, Sausages & Ribs",
+  "category_count": 6306
+}, {
+  "food_category_id": "Baking",
+  "category_count": 7710
+}, {
+  "food_category_id": "Baking Decorations & Dessert Toppings",
+  "category_count": 16234
+}, {
+  "food_category_id": "Biscuits/Cookies",
+  "category_count": 10146
+}, {
+  "food_category_id": "Bread",
+  "category_count": 48769
+}, {
+  "food_category_id": "Bread & Muffin Mixes",
+  "category_count": 4697
+}, {
+  "food_category_id": "Breakfast Drinks",
+  "category_count": 378
+}, {
+  "food_category_id": "Breakfast Sandwiches, Biscuits & Meals",
+  "category_count": 1102
+}, {
+  "food_category_id": "Butter & Spread",
+  "category_count": 8103
+}, {
+  "food_category_id": "Cake, Cookie & Cupcake Mixes",
+  "category_count": 13770
+}, {
+  "food_category_id": "Cakes, Cupcakes, Snack Cakes",
+  "category_count": 36030
+}, {
+  "food_category_id": "Candy",
+  "category_count": 84637
+}, {
+  "food_category_id": "Canned & Bottled Beans",
+  "category_count": 14428
+}, {
+  "food_category_id": "Canned Condensed Soup",
+  "category_count": 4140
+}, {
+  "food_category_id": "Canned Fruit",
+  "category_count": 14001
+}, {
+  "food_category_id": "Canned Meat",
+  "category_count": 3411
+}, {
+  "food_category_id": "Canned Seafood",
+  "category_count": 5375
+}, {
+  "food_category_id": "Canned Soup",
+  "category_count": 9955
+}, {
+  "food_category_id": "Canned Tuna",
+  "category_count": 4544
+}, {
+  "food_category_id": "Canned Vegetables",
+  "category_count": 19453
+}, {
+  "food_category_id": "Cereal",
+  "category_count": 35242
+}, {
+  "food_category_id": "Cheese",
+  "category_count": 77016
+}, {
+  "food_category_id": "Chewing Gum & Mints",
+  "category_count": 6035
+}, {
+  "food_category_id": "Chili & Stew",
+  "category_count": 4971
+}, {
+  "food_category_id": "Chips, Pretzels & Snacks",
+  "category_count": 48112
+}, {
+  "food_category_id": "Chocolate",
+  "category_count": 39396
+}, {
+  "food_category_id": "Coffee",
+  "category_count": 1539
+}, {
+  "food_category_id": "Confectionery Products",
+  "category_count": 2010
+}, {
+  "food_category_id": "Cooked & Prepared",
+  "category_count": 4929
+}, {
+  "food_category_id": "Cookies & Biscuits",
+  "category_count": 51145
+}, {
+  "food_category_id": "Crackers & Biscotti",
+  "category_count": 16421
+}, {
+  "food_category_id": "Cream",
+  "category_count": 7293
+}, {
+  "food_category_id": "Croissants, Sweet Rolls, Muffins & Other Pastries",
+  "category_count": 11127
+}, {
+  "food_category_id": "Crusts & Dough",
+  "category_count": 5898
+}, {
+  "food_category_id": "Dairy/Egg Based Products / Meals",
+  "category_count": 413
+}, {
+  "food_category_id": "Deli Salads",
+  "category_count": 5033
+}, {
+  "food_category_id": "Desserts/Dessert Sauces/Toppings",
+  "category_count": 1715
+}, {
+  "food_category_id": "Digestive & Fiber Supplements",
+  "category_count": 76
+}, {
+  "food_category_id": "Dips & Salsa",
+  "category_count": 28660
+}, {
+  "food_category_id": "Dough Based Products / Meals",
+  "category_count": 3297
+}, {
+  "food_category_id": "Drinks",
+  "category_count": 136
+}, {
+  "food_category_id": "Eggs & Egg Substitutes",
+  "category_count": 3474
+}, {
+  "food_category_id": "Energy, Protein & Muscle Recovery Drinks",
+  "category_count": 8879
+}, {
+  "food_category_id": "Entrees, Sides & Small Meals",
+  "category_count": 6119
+}, {
+  "food_category_id": "Fats Edible",
+  "category_count": 74
+}, {
+  "food_category_id": "Fatty Acid Supplements",
+  "category_count": 16
+}, {
+  "food_category_id": "Fish  Prepared/Processed",
+  "category_count": 348
+}, {
+  "food_category_id": "Fish  Unprepared/Unprocessed",
+  "category_count": 3101
+}, {
+  "food_category_id": "Fish & Seafood",
+  "category_count": 4841
+}, {
+  "food_category_id": "Flavored Rice Dishes",
+  "category_count": 3491
+}, {
+  "food_category_id": "Flavored Snack Crackers",
+  "category_count": 2948
+}, {
+  "food_category_id": "Flours & Corn Meal",
+  "category_count": 5764
+}, {
+  "food_category_id": "French Fries, Potatoes & Onion Rings",
+  "category_count": 4039
+}, {
+  "food_category_id": "Frozen Appetizers & Hors D'oeuvres",
+  "category_count": 20629
+}, {
+  "food_category_id": "Frozen Bacon, Sausages & Ribs",
+  "category_count": 1773
+}, {
+  "food_category_id": "Frozen Bread & Dough",
+  "category_count": 4686
+}, {
+  "food_category_id": "Frozen Breakfast Sandwiches, Biscuits & Meals",
+  "category_count": 4319
+}, {
+  "food_category_id": "Frozen Dinners & Entrees",
+  "category_count": 24727
+}, {
+  "food_category_id": "Frozen Fish & Seafood",
+  "category_count": 16297
+}, {
+  "food_category_id": "Frozen Pancakes, Waffles, French Toast & Crepes",
+  "category_count": 4243
+}, {
+  "food_category_id": "Frozen Patties and Burgers",
+  "category_count": 4975
+}, {
+  "food_category_id": "Frozen Poultry, Chicken & Turkey",
+  "category_count": 1744
+}, {
+  "food_category_id": "Frozen Prepared Sides",
+  "category_count": 3598
+}, {
+  "food_category_id": "Frozen Sausages, Hotdogs & Brats",
+  "category_count": 1054
+}, {
+  "food_category_id": "Frozen Vegetables",
+  "category_count": 19719
+}, {
+  "food_category_id": "Fruit  Prepared/Processed",
+  "category_count": 1432
+}, {
+  "food_category_id": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
+  "category_count": 38416
+}, {
+  "food_category_id": "Fruits, Vegetables & Produce",
+  "category_count": 11237
+}, {
+  "food_category_id": "Gelatin, Gels, Pectins & Desserts",
+  "category_count": 3612
+}, {
+  "food_category_id": "Grain Based Products / Meals",
+  "category_count": 627
+}, {
+  "food_category_id": "Grains/Flour",
+  "category_count": 847
+}, {
+  "food_category_id": "Granulated, Brown & Powdered Sugar",
+  "category_count": 7145
+}, {
+  "food_category_id": "Gravy Mix",
+  "category_count": 3432
+}, {
+  "food_category_id": "Green Supplements",
+  "category_count": 132
+}, {
+  "food_category_id": "Health Care",
+  "category_count": 295
+}, {
+  "food_category_id": "Herbs & Spices",
+  "category_count": 3802
+}, {
+  "food_category_id": "Herbs/Spices/Extracts",
+  "category_count": 1067
+}, {
+  "food_category_id": "Honey",
+  "category_count": 5107
+}, {
+  "food_category_id": "Ice Cream & Frozen Yogurt",
+  "category_count": 57195
+}, {
+  "food_category_id": "Iced & Bottle Tea",
+  "category_count": 7245
+}, {
+  "food_category_id": "Jam, Jelly & Fruit Spreads",
+  "category_count": 12679
+}, {
+  "food_category_id": "Ketchup, Mustard, BBQ & Cheese Sauce",
+  "category_count": 23368
+}, {
+  "food_category_id": "Liquid Water Enhancer",
+  "category_count": 1271
+}, {
+  "food_category_id": "Lunch Snacks & Combinations",
+  "category_count": 3678
+}, {
+  "food_category_id": "Meal Replacement Supplements",
+  "category_count": 741
+}, {
+  "food_category_id": "Meat/Poultry/Other Animals  Prepared/Processed",
+  "category_count": 4138
+}, {
+  "food_category_id": "Meat/Poultry/Other Animals  Unprepared/Unprocessed",
+  "category_count": 634
+}, {
+  "food_category_id": "Meat/Poultry/Other Animals Sausages  Prepared/Processed",
+  "category_count": 2030
+}, {
+  "food_category_id": "Meat/Poultry/Other Prepared/Processed",
+  "category_count": 9521
+}, {
+  "food_category_id": "Meat/Poultry/Other Unprepared/Unprocessed",
+  "category_count": 4592
+}, {
+  "food_category_id": "Mexican Dinner Mixes",
+  "category_count": 6866
+}, {
+  "food_category_id": "Milk",
+  "category_count": 21144
+}, {
+  "food_category_id": "Milk Additives",
+  "category_count": 8028
+}, {
+  "food_category_id": "Milk/Cream",
+  "category_count": 4
+}, {
+  "food_category_id": "Milk/Cream - Shelf Stable",
+  "category_count": 11
+}, {
+  "food_category_id": "Milk/Milk Substitutes",
+  "category_count": 86
+}, {
+  "food_category_id": "Miscellanious",
+  "category_count": 169
+}, {
+  "food_category_id": "Non Alcoholic Beverages - Not Ready to Drink",
+  "category_count": 685
+}, {
+  "food_category_id": "Non Alcoholic Beverages - Ready to Drink",
+  "category_count": 6203
+}, {
+  "food_category_id": "Nut & Seed Butters",
+  "category_count": 11508
+}, {
+  "food_category_id": "Nuts/Seeds  Prepared/Processed",
+  "category_count": 425
+}, {
+  "food_category_id": "Nuts/Seeds  Unprepared/Unprocessed",
+  "category_count": 12
+}, {
+  "food_category_id": "Oils & Cooking Fats",
+  "category_count": 314
+}, {
+  "food_category_id": "Oral Hygiene Products",
+  "category_count": 13
+}, {
+  "food_category_id": "Oriental, Mexican & Ethnic Sauces",
+  "category_count": 13701
+}, {
+  "food_category_id": "Other / Miscellaneous",
+  "category_count": 29
+}, {
+  "food_category_id": "Other Condiments",
+  "category_count": 2318
+}, {
+  "food_category_id": "Other Cooking Sauces",
+  "category_count": 5640
+}, {
+  "food_category_id": "Other Deli",
+  "category_count": 11152
+}, {
+  "food_category_id": "Other Drinks",
+  "category_count": 17679
+}, {
+  "food_category_id": "Other Frozen Desserts",
+  "category_count": 7754
+}, {
+  "food_category_id": "Other Frozen Meats",
+  "category_count": 697
+}, {
+  "food_category_id": "Other Grains & Seeds",
+  "category_count": 4833
+}, {
+  "food_category_id": "Other Meats",
+  "category_count": 10565
+}, {
+  "food_category_id": "Other Snacks",
+  "category_count": 29747
+}, {
+  "food_category_id": "Other Soups",
+  "category_count": 12788
+}, {
+  "food_category_id": "Pancakes, Waffles, French Toast & Crepes",
+  "category_count": 614
+}, {
+  "food_category_id": "Pasta Dinners",
+  "category_count": 6618
+}, {
+  "food_category_id": "Pasta by Shape & Type",
+  "category_count": 29614
+}, {
+  "food_category_id": "Pasta/Noodles",
+  "category_count": 711
+}, {
+  "food_category_id": "Pastry Shells & Fillings",
+  "category_count": 2092
+}, {
+  "food_category_id": "Pepperoni, Salami & Cold Cuts",
+  "category_count": 19661
+}, {
+  "food_category_id": "Pickles, Olives, Peppers & Relishes",
+  "category_count": 40431
+}, {
+  "food_category_id": "Pickles, Relishes and Vinegar",
+  "category_count": 7
+}, {
+  "food_category_id": "Pickles/Relishes/Chutneys/Olives",
+  "category_count": 239
+}, {
+  "food_category_id": "Pies/Pastries/Pizzas/Quiches - Savoury (Frozen)",
+  "category_count": 74
+}, {
+  "food_category_id": "Pizza",
+  "category_count": 16017
+}, {
+  "food_category_id": "Pizza Mixes & Other Dry Dinners",
+  "category_count": 2202
+}, {
+  "food_category_id": "Plant Based Milk",
+  "category_count": 7442
+}, {
+  "food_category_id": "Plant Based Water",
+  "category_count": 2786
+}, {
+  "food_category_id": "Popcorn, Peanuts, Seeds & Related Snacks",
+  "category_count": 87178
+}, {
+  "food_category_id": "Poultry, Chicken & Turkey",
+  "category_count": 3419
+}, {
+  "food_category_id": "Powdered Drinks",
+  "category_count": 16438
+}, {
+  "food_category_id": "Pre-Packaged Fruit & Vegetables",
+  "category_count": 25820
+}, {
+  "food_category_id": "Prepared Pasta & Pizza Sauces",
+  "category_count": 15606
+}, {
+  "food_category_id": "Prepared Soups",
+  "category_count": 7434
+}, {
+  "food_category_id": "Prepared Subs & Sandwiches",
+  "category_count": 3710
+}, {
+  "food_category_id": "Prepared Wraps and Burittos",
+  "category_count": 2258
+}, {
+  "food_category_id": "Prepared/Preserved Foods Variety Packs",
+  "category_count": 423
+}, {
+  "food_category_id": "Processed Cereal Products",
+  "category_count": 9799
+}, {
+  "food_category_id": "Puddings & Custards",
+  "category_count": 5028
+}, {
+  "food_category_id": "Ready-Made Combination Meals",
+  "category_count": 835
+}, {
+  "food_category_id": "Rice",
+  "category_count": 8496
+}, {
+  "food_category_id": "Salad Dressing & Mayonnaise",
+  "category_count": 25529
+}, {
+  "food_category_id": "Sandwiches/Filled Rolls/Wraps",
+  "category_count": 1840
+}, {
+  "food_category_id": "Sauces, Condiments & Dips",
+  "category_count": 4851
+}, {
+  "food_category_id": "Sausages, Hotdogs & Brats",
+  "category_count": 18090
+}, {
+  "food_category_id": "Savoury Bakery Products",
+  "category_count": 3362
+}, {
+  "food_category_id": "Seasoning Mixes, Salts, Marinades & Tenderizers",
+  "category_count": 19501
+}, {
+  "food_category_id": "Snack, Energy & Granola Bars",
+  "category_count": 44107
+}, {
+  "food_category_id": "Soda",
+  "category_count": 25594
+}, {
+  "food_category_id": "Soups - Prepared (Shelf Stable)",
+  "category_count": 43
+}, {
+  "food_category_id": "Specialty Formula Supplements",
+  "category_count": 939
+}, {
+  "food_category_id": "Sport Drinks",
+  "category_count": 2799
+}, {
+  "food_category_id": "Spreads",
+  "category_count": 66
+}, {
+  "food_category_id": "Stuffing",
+  "category_count": 1372
+}, {
+  "food_category_id": "Sugar And Flour",
+  "category_count": 104
+}, {
+  "food_category_id": "Supplements & Remedies",
+  "category_count": 75
+}, {
+  "food_category_id": "Sushi",
+  "category_count": 1476
+}, {
+  "food_category_id": "Sweet Bakery Products",
+  "category_count": 2763
+}, {
+  "food_category_id": "Sweet Spreads",
+  "category_count": 139
+}, {
+  "food_category_id": "Syrups & Molasses",
+  "category_count": 7520
+}, {
+  "food_category_id": "Tea Bags",
+  "category_count": 1942
+}, {
+  "food_category_id": "Tomatoes",
+  "category_count": 13425
+}, {
+  "food_category_id": "Vegetable & Cooking Oils",
+  "category_count": 15632
+}, {
+  "food_category_id": "Vegetable Based Products / Meals",
+  "category_count": 1890
+}, {
+  "food_category_id": "Vegetables",
+  "category_count": 9519
+}, {
+  "food_category_id": "Vegetables  Prepared/Processed",
+  "category_count": 4305
+}, {
+  "food_category_id": "Vegetarian Frozen Meats",
+  "category_count": 1279
+}, {
+  "food_category_id": "Vitamins",
+  "category_count": 41
+}, {
+  "food_category_id": "Water",
+  "category_count": 4281
+}, {
+  "food_category_id": "Weight Control",
+  "category_count": 426
+}, {
+  "food_category_id": "Wholesome Snacks",
+  "category_count": 25638
+}, {
+  "food_category_id": "Yogurt",
+  "category_count": 38125
+}]

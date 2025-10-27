@@ -1,0 +1,1587 @@
+{
+  "timestamp": "20251019_105900",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 21,
+  "successful": 21,
+  "failed": 0,
+  "average_accuracy": 60.92012957964934,
+  "results": [
+    {
+      "dish_id": 36,
+      "image_filename": "dish_36_IMG_6149_jpeg.rf.25304e133f27ede4db788e51b756a122.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_36_IMG_6149_jpeg.rf.25304e133f27ede4db788e51b756a122.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 32,
+            "calories": 85,
+            "fat_g": 1.1,
+            "carbs_g": 15.7,
+            "protein_g": 2.8
+          },
+          {
+            "name": "braised lamb shank (meat from bone-in piece)",
+            "mass_g": 90,
+            "calories": 232,
+            "fat_g": 14.8,
+            "carbs_g": 0,
+            "protein_g": 23
+          },
+          {
+            "name": "breaded fried chicken bites (3 pieces)",
+            "mass_g": 70,
+            "calories": 196,
+            "fat_g": 9.8,
+            "carbs_g": 8.4,
+            "protein_g": 16.8
+          }
+        ],
+        "totals": {
+          "mass_g": 192,
+          "calories": 513,
+          "fat_g": 25.7,
+          "carbs_g": 24.1,
+          "protein_g": 42.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4110
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 316.0,
+        "total_calories": 675.1500000000001,
+        "total_fat_g": 25.94120000000001,
+        "total_carbs_g": 21.712,
+        "total_protein_g": 86.9211,
+        "foods": [
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          }
+        ]
+      },
+      "accuracy": 74.76485030150118,
+      "error": null
+    },
+    {
+      "dish_id": 36,
+      "image_filename": "dish_36_IMG_6488_jpeg.rf.1b2337dab87b2c2e376d2b47738fbb06.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_36_IMG_6488_jpeg.rf.1b2337dab87b2c2e376d2b47738fbb06.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "braised chicken leg quarter (meat and skin)",
+            "mass_g": 120,
+            "calories": 258,
+            "fat_g": 13.2,
+            "carbs_g": 0,
+            "protein_g": 32.4
+          },
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 30,
+            "calories": 80,
+            "fat_g": 1.2,
+            "carbs_g": 15,
+            "protein_g": 3
+          },
+          {
+            "name": "hushpuppies (cornmeal fritters)",
+            "mass_g": 45,
+            "calories": 158,
+            "fat_g": 9,
+            "carbs_g": 18,
+            "protein_g": 2.3
+          }
+        ],
+        "totals": {
+          "mass_g": 195,
+          "calories": 496,
+          "fat_g": 23.4,
+          "carbs_g": 33,
+          "protein_g": 37.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3974
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 316.0,
+        "total_calories": 675.1500000000001,
+        "total_fat_g": 25.94120000000001,
+        "total_carbs_g": 21.712,
+        "total_protein_g": 86.9211,
+        "foods": [
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          }
+        ]
+      },
+      "accuracy": 63.352200239491005,
+      "error": null
+    },
+    {
+      "dish_id": 36,
+      "image_filename": "dish_36_IMG_6490_jpeg.rf.f01172709b66dfe1edfb825fdcd9e47a.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_36_IMG_6490_jpeg.rf.f01172709b66dfe1edfb825fdcd9e47a.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "braised lamb shank (meat only)",
+            "mass_g": 120,
+            "calories": 308,
+            "fat_g": 19.7,
+            "carbs_g": 0,
+            "protein_g": 30.7
+          },
+          {
+            "name": "fried chicken bites",
+            "mass_g": 60,
+            "calories": 156,
+            "fat_g": 9,
+            "carbs_g": 9.6,
+            "protein_g": 9.6
+          },
+          {
+            "name": "toasted white bread (1 slice)",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 1,
+            "carbs_g": 14,
+            "protein_g": 2.5
+          }
+        ],
+        "totals": {
+          "mass_g": 208,
+          "calories": 539,
+          "fat_g": 29.7,
+          "carbs_g": 23.6,
+          "protein_g": 42.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3140
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 316.0,
+        "total_calories": 675.1500000000001,
+        "total_fat_g": 25.94120000000001,
+        "total_carbs_g": 21.712,
+        "total_protein_g": 86.9211,
+        "foods": [
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          }
+        ]
+      },
+      "accuracy": 74.34232188785656,
+      "error": null
+    },
+    {
+      "dish_id": 36,
+      "image_filename": "dish_36_IMG_6499_jpeg.rf.fd644fa545c8c143df99a1174b50c727.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_36_IMG_6499_jpeg.rf.fd644fa545c8c143df99a1174b50c727.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 30,
+            "calories": 80,
+            "fat_g": 1.0,
+            "carbs_g": 15.0,
+            "protein_g": 2.7
+          },
+          {
+            "name": "deep-fried goat meat cubes",
+            "mass_g": 75,
+            "calories": 180,
+            "fat_g": 11.3,
+            "carbs_g": 1.5,
+            "protein_g": 19.5
+          },
+          {
+            "name": "braised goat shank meat",
+            "mass_g": 90,
+            "calories": 129,
+            "fat_g": 2.7,
+            "carbs_g": 0,
+            "protein_g": 24.3
+          }
+        ],
+        "totals": {
+          "mass_g": 195,
+          "calories": 389,
+          "fat_g": 15.0,
+          "carbs_g": 16.5,
+          "protein_g": 46.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3848
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 316.0,
+        "total_calories": 675.1500000000001,
+        "total_fat_g": 25.94120000000001,
+        "total_carbs_g": 21.712,
+        "total_protein_g": 86.9211,
+        "foods": [
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "crispy-pork-rib",
+            "mass_g": 25.0,
+            "calories": 56.0
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          }
+        ]
+      },
+      "accuracy": 61.32807938699192,
+      "error": null
+    },
+    {
+      "dish_id": 37,
+      "image_filename": "dish_37_IMG_6168_jpeg.rf.b432a0ccdca4e90a7cd5098e2aa5ef49.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_37_IMG_6168_jpeg.rf.b432a0ccdca4e90a7cd5098e2aa5ef49.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 30,
+            "calories": 80,
+            "fat_g": 1.0,
+            "carbs_g": 14.7,
+            "protein_g": 2.7
+          },
+          {
+            "name": "fresh cucumber wedge",
+            "mass_g": 45,
+            "calories": 7,
+            "fat_g": 0.1,
+            "carbs_g": 1.6,
+            "protein_g": 0.3
+          },
+          {
+            "name": "fried chicken wings (2 pieces, skin-on)",
+            "mass_g": 80,
+            "calories": 125,
+            "fat_g": 8.8,
+            "carbs_g": 0,
+            "protein_g": 10.4
+          },
+          {
+            "name": "braised lamb shank piece (bone-in)",
+            "mass_g": 150,
+            "calories": 216,
+            "fat_g": 13.5,
+            "carbs_g": 0,
+            "protein_g": 23.4
+          }
+        ],
+        "totals": {
+          "mass_g": 305,
+          "calories": 428,
+          "fat_g": 23.4,
+          "carbs_g": 16.3,
+          "protein_g": 36.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4360
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 397.0,
+        "total_calories": 911.37,
+        "total_fat_g": 43.037000000000006,
+        "total_carbs_g": 37.1272,
+        "total_protein_g": 93.6072,
+        "foods": [
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          }
+        ]
+      },
+      "accuracy": 52.275323826552885,
+      "error": null
+    },
+    {
+      "dish_id": 37,
+      "image_filename": "dish_37_IMG_6173_jpeg.rf.7506a23b5a54a03f50d4198d1dc20087.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_37_IMG_6173_jpeg.rf.7506a23b5a54a03f50d4198d1dc20087.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fried chicken wings, skin-on (2 pieces)",
+            "mass_g": 70,
+            "calories": 185,
+            "fat_g": 12.5,
+            "carbs_g": 0,
+            "protein_g": 16
+          },
+          {
+            "name": "braised turkey neck pieces",
+            "mass_g": 80,
+            "calories": 151,
+            "fat_g": 6.4,
+            "carbs_g": 0,
+            "protein_g": 21.6
+          },
+          {
+            "name": "toasted white bread (1 slice)",
+            "mass_g": 30,
+            "calories": 80,
+            "fat_g": 1,
+            "carbs_g": 14,
+            "protein_g": 3
+          },
+          {
+            "name": "fresh cucumber chunk",
+            "mass_g": 40,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.5,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 220,
+          "calories": 422,
+          "fat_g": 20,
+          "carbs_g": 15.5,
+          "protein_g": 40.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4732
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 397.0,
+        "total_calories": 911.37,
+        "total_fat_g": 43.037000000000006,
+        "total_carbs_g": 37.1272,
+        "total_protein_g": 93.6072,
+        "foods": [
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          }
+        ]
+      },
+      "accuracy": 46.726552369051134,
+      "error": null
+    },
+    {
+      "dish_id": 37,
+      "image_filename": "dish_37_IMG_6502_jpeg.rf.4884c19b63ba33f40fffb660d75427de.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_37_IMG_6502_jpeg.rf.4884c19b63ba33f40fffb660d75427de.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "braised lamb shank",
+            "mass_g": 220,
+            "calories": 300,
+            "fat_g": 20,
+            "carbs_g": 1,
+            "protein_g": 30
+          },
+          {
+            "name": "fried chicken wings (3 pieces)",
+            "mass_g": 120,
+            "calories": 240,
+            "fat_g": 16,
+            "carbs_g": 0,
+            "protein_g": 22
+          },
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 0.9,
+            "carbs_g": 14,
+            "protein_g": 2.6
+          },
+          {
+            "name": "fresh cucumber spear",
+            "mass_g": 40,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.5,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 408,
+          "calories": 621,
+          "fat_g": 37,
+          "carbs_g": 16.5,
+          "protein_g": 54.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3381
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 397.0,
+        "total_calories": 911.37,
+        "total_fat_g": 43.037000000000006,
+        "total_carbs_g": 37.1272,
+        "total_protein_g": 93.6072,
+        "foods": [
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          }
+        ]
+      },
+      "accuracy": 70.8864150028411,
+      "error": null
+    },
+    {
+      "dish_id": 37,
+      "image_filename": "dish_37_IMG_6516_jpeg.rf.5d832666f13da3a1ef3c5bead4a0d82d.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_37_IMG_6516_jpeg.rf.5d832666f13da3a1ef3c5bead4a0d82d.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 35,
+            "calories": 95,
+            "fat_g": 1.2,
+            "carbs_g": 17,
+            "protein_g": 3
+          },
+          {
+            "name": "cucumber spear",
+            "mass_g": 40,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.4,
+            "protein_g": 0.3
+          },
+          {
+            "name": "fried chicken wings (3 pieces)",
+            "mass_g": 90,
+            "calories": 230,
+            "fat_g": 15.6,
+            "carbs_g": 0,
+            "protein_g": 20.3
+          },
+          {
+            "name": "braised lamb shank (bone-in)",
+            "mass_g": 140,
+            "calories": 304,
+            "fat_g": 15.4,
+            "carbs_g": 0,
+            "protein_g": 39.2
+          }
+        ],
+        "totals": {
+          "mass_g": 305,
+          "calories": 635,
+          "fat_g": 32.3,
+          "carbs_g": 18.4,
+          "protein_g": 62.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3520
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 397.0,
+        "total_calories": 911.37,
+        "total_fat_g": 43.037000000000006,
+        "total_carbs_g": 37.1272,
+        "total_protein_g": 93.6072,
+        "foods": [
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          },
+          {
+            "name": "lamb-shank",
+            "mass_g": 201.0,
+            "calories": 391.95
+          }
+        ]
+      },
+      "accuracy": 67.64028585222955,
+      "error": null
+    },
+    {
+      "dish_id": 38,
+      "image_filename": "dish_38_IMG_6181_jpeg.rf.b856f0f038f3b60fc552fb9d1a212164.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_38_IMG_6181_jpeg.rf.b856f0f038f3b60fc552fb9d1a212164.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "white toast (1 slice)",
+            "mass_g": 28,
+            "calories": 74,
+            "fat_g": 0.9,
+            "carbs_g": 13.7,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam",
+            "mass_g": 20,
+            "calories": 55.6,
+            "fat_g": 0.0,
+            "carbs_g": 13.6,
+            "protein_g": 0.1
+          },
+          {
+            "name": "fresh cucumber chunk",
+            "mass_g": 50,
+            "calories": 7.5,
+            "fat_g": 0.1,
+            "carbs_g": 1.8,
+            "protein_g": 0.4
+          },
+          {
+            "name": "pan-fried pork breakfast sausage patty (piece)",
+            "mass_g": 35,
+            "calories": 113.4,
+            "fat_g": 9.8,
+            "carbs_g": 0.7,
+            "protein_g": 4.9
+          },
+          {
+            "name": "baby carrots (3 pieces)",
+            "mass_g": 36,
+            "calories": 14.8,
+            "fat_g": 0.1,
+            "carbs_g": 3.5,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 169,
+          "calories": 265.3,
+          "fat_g": 10.9,
+          "carbs_g": 33.3,
+          "protein_g": 8.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4752
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 132.0,
+        "total_calories": 171.72,
+        "total_fat_g": 3.764116666666667,
+        "total_carbs_g": 23.017033333333337,
+        "total_protein_g": 10.9616,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "veal-kebab-piece",
+            "mass_g": 23.0,
+            "calories": 53.13
+          }
+        ]
+      },
+      "accuracy": 31.605713431169605,
+      "error": null
+    },
+    {
+      "dish_id": 38,
+      "image_filename": "dish_38_IMG_6187_jpeg.rf.40c9eaa6e96eedc817c5cbf9689ae9ea.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_38_IMG_6187_jpeg.rf.40c9eaa6e96eedc817c5cbf9689ae9ea.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 0.9,
+            "carbs_g": 13.8,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam (spread on toast)",
+            "mass_g": 16,
+            "calories": 40,
+            "fat_g": 0.0,
+            "carbs_g": 10.4,
+            "protein_g": 0.0
+          },
+          {
+            "name": "raw cucumber spear",
+            "mass_g": 35,
+            "calories": 5,
+            "fat_g": 0.0,
+            "carbs_g": 1.3,
+            "protein_g": 0.2
+          },
+          {
+            "name": "grilled ground beef patty piece (80% lean)",
+            "mass_g": 35,
+            "calories": 89,
+            "fat_g": 6.0,
+            "carbs_g": 0,
+            "protein_g": 9.1
+          },
+          {
+            "name": "raw baby carrots (3)",
+            "mass_g": 36,
+            "calories": 15,
+            "fat_g": 0.1,
+            "carbs_g": 3.5,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 150,
+          "calories": 224,
+          "fat_g": 7.0,
+          "carbs_g": 29.0,
+          "protein_g": 12.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4681
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 132.0,
+        "total_calories": 171.72,
+        "total_fat_g": 3.764116666666667,
+        "total_carbs_g": 23.017033333333337,
+        "total_protein_g": 10.9616,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "veal-kebab-piece",
+            "mass_g": 23.0,
+            "calories": 53.13
+          }
+        ]
+      },
+      "accuracy": 66.71462538923973,
+      "error": null
+    },
+    {
+      "dish_id": 38,
+      "image_filename": "dish_38_IMG_6188_jpeg.rf.794d88ec98897c8bf8d45b11baafed72.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_38_IMG_6188_jpeg.rf.794d88ec98897c8bf8d45b11baafed72.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "white bread toast slice",
+            "mass_g": 28,
+            "calories": 74,
+            "fat_g": 0.9,
+            "carbs_g": 13.7,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam spread",
+            "mass_g": 25,
+            "calories": 63,
+            "fat_g": 0,
+            "carbs_g": 16.3,
+            "protein_g": 0.1
+          },
+          {
+            "name": "cucumber spear (raw)",
+            "mass_g": 50,
+            "calories": 8,
+            "fat_g": 0.1,
+            "carbs_g": 1.8,
+            "protein_g": 0.4
+          },
+          {
+            "name": "baby carrots (3)",
+            "mass_g": 30,
+            "calories": 12,
+            "fat_g": 0.1,
+            "carbs_g": 3,
+            "protein_g": 0.3
+          },
+          {
+            "name": "grilled beef kofta/kebab pieces (2)",
+            "mass_g": 50,
+            "calories": 125,
+            "fat_g": 7.5,
+            "carbs_g": 0,
+            "protein_g": 13
+          }
+        ],
+        "totals": {
+          "mass_g": 183,
+          "calories": 282,
+          "fat_g": 8.6,
+          "carbs_g": 34.8,
+          "protein_g": 16.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5183
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 132.0,
+        "total_calories": 171.72,
+        "total_fat_g": 3.764116666666667,
+        "total_carbs_g": 23.017033333333337,
+        "total_protein_g": 10.9616,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "veal-kebab-piece",
+            "mass_g": 23.0,
+            "calories": 53.13
+          }
+        ]
+      },
+      "accuracy": 33.755251185609254,
+      "error": null
+    },
+    {
+      "dish_id": 38,
+      "image_filename": "dish_38_IMG_6190_jpeg.rf.c53f3cff3c32b33a3d44b3a0e8e50aa8.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_38_IMG_6190_jpeg.rf.c53f3cff3c32b33a3d44b3a0e8e50aa8.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "white sandwich bread slice",
+            "mass_g": 25,
+            "calories": 67,
+            "fat_g": 1,
+            "carbs_g": 13,
+            "protein_g": 2
+          },
+          {
+            "name": "ketchup",
+            "mass_g": 15,
+            "calories": 17,
+            "fat_g": 0,
+            "carbs_g": 4.3,
+            "protein_g": 0.2
+          },
+          {
+            "name": "grilled beef patty piece",
+            "mass_g": 25,
+            "calories": 62.5,
+            "fat_g": 4,
+            "carbs_g": 0,
+            "protein_g": 6.5
+          },
+          {
+            "name": "raw baby carrots",
+            "mass_g": 36,
+            "calories": 14.8,
+            "fat_g": 0.1,
+            "carbs_g": 3.5,
+            "protein_g": 0.3
+          },
+          {
+            "name": "cucumber spear",
+            "mass_g": 40,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.4,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 141,
+          "calories": 167.3,
+          "fat_g": 5.2,
+          "carbs_g": 22.2,
+          "protein_g": 9.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3511
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 132.0,
+        "total_calories": 171.72,
+        "total_fat_g": 3.764116666666667,
+        "total_carbs_g": 23.017033333333337,
+        "total_protein_g": 10.9616,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "carrot",
+            "mass_g": 9.0,
+            "calories": 3.69
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "cucumber-piece",
+            "mass_g": 27.0,
+            "calories": 4.32
+          },
+          {
+            "name": "veal-kebab-piece",
+            "mass_g": 23.0,
+            "calories": 53.13
+          }
+        ]
+      },
+      "accuracy": 86.75063562764731,
+      "error": null
+    },
+    {
+      "dish_id": 39,
+      "image_filename": "dish_39_IMG_6208_jpeg.rf.4be73431f0d19044aab5da106593b0fc.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_39_IMG_6208_jpeg.rf.4be73431f0d19044aab5da106593b0fc.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "roasted chicken leg quarter (thigh and drumstick, with skin)",
+            "mass_g": 150,
+            "calories": 338,
+            "fat_g": 21,
+            "carbs_g": 0,
+            "protein_g": 40.5
+          }
+        ],
+        "totals": {
+          "mass_g": 150,
+          "calories": 338,
+          "fat_g": 21,
+          "carbs_g": 0,
+          "protein_g": 40.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2765
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 119.0,
+        "total_calories": 218.96,
+        "total_fat_g": 10.6981,
+        "total_carbs_g": 0.0,
+        "total_protein_g": 28.5957,
+        "foods": [
+          {
+            "name": "chicken-leg",
+            "mass_g": 119.0,
+            "calories": 218.96
+          }
+        ]
+      },
+      "accuracy": 45.41431533708507,
+      "error": null
+    },
+    {
+      "dish_id": 39,
+      "image_filename": "dish_39_IMG_6543_jpeg.rf.8a98fcf1b07916729dac351d303ca5e1.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_39_IMG_6543_jpeg.rf.8a98fcf1b07916729dac351d303ca5e1.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "roasted chicken drumette (skin-on)",
+            "mass_g": 50,
+            "calories": 130,
+            "fat_g": 9,
+            "carbs_g": 0,
+            "protein_g": 12
+          }
+        ],
+        "totals": {
+          "mass_g": 50,
+          "calories": 130,
+          "fat_g": 9,
+          "carbs_g": 0,
+          "protein_g": 12
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3203
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 119.0,
+        "total_calories": 218.96,
+        "total_fat_g": 10.6981,
+        "total_carbs_g": 0.0,
+        "total_protein_g": 28.5957,
+        "foods": [
+          {
+            "name": "chicken-leg",
+            "mass_g": 119.0,
+            "calories": 218.96
+          }
+        ]
+      },
+      "accuracy": 56.86995517767588,
+      "error": null
+    },
+    {
+      "dish_id": 39,
+      "image_filename": "dish_39_IMG_6546_jpeg.rf.97a295e2eb2ad4204b496fbf3e5ccf05.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_39_IMG_6546_jpeg.rf.97a295e2eb2ad4204b496fbf3e5ccf05.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "roasted chicken drumstick with skin",
+            "mass_g": 100,
+            "calories": 215,
+            "fat_g": 11.2,
+            "carbs_g": 0,
+            "protein_g": 27
+          }
+        ],
+        "totals": {
+          "mass_g": 100,
+          "calories": 215,
+          "fat_g": 11.2,
+          "carbs_g": 0,
+          "protein_g": 27
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2758
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 119.0,
+        "total_calories": 218.96,
+        "total_fat_g": 10.6981,
+        "total_carbs_g": 0.0,
+        "total_protein_g": 28.5957,
+        "foods": [
+          {
+            "name": "chicken-leg",
+            "mass_g": 119.0,
+            "calories": 218.96
+          }
+        ]
+      },
+      "accuracy": 92.9883417633108,
+      "error": null
+    },
+    {
+      "dish_id": 39,
+      "image_filename": "dish_39_IMG_6552_jpeg.rf.bef89b72a3a26455ab8b7777375dbbf3.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_39_IMG_6552_jpeg.rf.bef89b72a3a26455ab8b7777375dbbf3.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "rotisserie chicken leg quarter (drumstick and thigh, with skin)",
+            "mass_g": 160,
+            "calories": 366,
+            "fat_g": 25.6,
+            "carbs_g": 0,
+            "protein_g": 29.6
+          }
+        ],
+        "totals": {
+          "mass_g": 160,
+          "calories": 366,
+          "fat_g": 25.6,
+          "carbs_g": 0,
+          "protein_g": 29.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2321
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 119.0,
+        "total_calories": 218.96,
+        "total_fat_g": 10.6981,
+        "total_carbs_g": 0.0,
+        "total_protein_g": 28.5957,
+        "foods": [
+          {
+            "name": "chicken-leg",
+            "mass_g": 119.0,
+            "calories": 218.96
+          }
+        ]
+      },
+      "accuracy": 38.896376471336986,
+      "error": null
+    },
+    {
+      "dish_id": 40,
+      "image_filename": "dish_40_IMG_6225_jpeg.rf.f3c25ebd49dfe99599afb1c01b338c8f.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_40_IMG_6225_jpeg.rf.f3c25ebd49dfe99599afb1c01b338c8f.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "roasted chicken wing (whole, with skin)",
+            "mass_g": 45,
+            "calories": 108,
+            "fat_g": 7.2,
+            "carbs_g": 0,
+            "protein_g": 10.8
+          }
+        ],
+        "totals": {
+          "mass_g": 45,
+          "calories": 108,
+          "fat_g": 7.2,
+          "carbs_g": 0,
+          "protein_g": 10.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3084
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 43.0,
+        "total_calories": 133.3,
+        "total_fat_g": 8.6387,
+        "total_carbs_g": 4.8117,
+        "total_protein_g": 9.0902,
+        "foods": [
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          }
+        ]
+      },
+      "accuracy": 68.18113979013775,
+      "error": null
+    },
+    {
+      "dish_id": 40,
+      "image_filename": "dish_40_IMG_6562_jpeg.rf.e4f4c226b6e71da033bf59e8b82c3889.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_40_IMG_6562_jpeg.rf.e4f4c226b6e71da033bf59e8b82c3889.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fried chicken wing (skin-on, unbreaded)",
+            "mass_g": 40,
+            "calories": 104,
+            "fat_g": 7.2,
+            "carbs_g": 0,
+            "protein_g": 9.2
+          }
+        ],
+        "totals": {
+          "mass_g": 40,
+          "calories": 104,
+          "fat_g": 7.2,
+          "carbs_g": 0,
+          "protein_g": 9.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3277
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 43.0,
+        "total_calories": 133.3,
+        "total_fat_g": 8.6387,
+        "total_carbs_g": 4.8117,
+        "total_protein_g": 9.0902,
+        "foods": [
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          }
+        ]
+      },
+      "accuracy": 70.63614805497596,
+      "error": null
+    },
+    {
+      "dish_id": 40,
+      "image_filename": "dish_40_IMG_6569_jpeg.rf.36fc7605dcb426ddb276cc0d38ade0a2.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_40_IMG_6569_jpeg.rf.36fc7605dcb426ddb276cc0d38ade0a2.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "roasted chicken wing (plain, with skin)",
+            "mass_g": 45,
+            "calories": 99,
+            "fat_g": 6.6,
+            "carbs_g": 0,
+            "protein_g": 9
+          }
+        ],
+        "totals": {
+          "mass_g": 45,
+          "calories": 99,
+          "fat_g": 6.6,
+          "carbs_g": 0,
+          "protein_g": 9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2376
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 43.0,
+        "total_calories": 133.3,
+        "total_fat_g": 8.6387,
+        "total_carbs_g": 4.8117,
+        "total_protein_g": 9.0902,
+        "foods": [
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          }
+        ]
+      },
+      "accuracy": 69.0051022541071,
+      "error": null
+    },
+    {
+      "dish_id": 40,
+      "image_filename": "dish_40_IMG_6573_jpeg.rf.ce70395c59592bf82cbce49ee299986d.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_40_IMG_6573_jpeg.rf.ce70395c59592bf82cbce49ee299986d.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fried chicken wing (whole, unbreaded)",
+            "mass_g": 65,
+            "calories": 130,
+            "fat_g": 9,
+            "carbs_g": 0,
+            "protein_g": 11
+          }
+        ],
+        "totals": {
+          "mass_g": 65,
+          "calories": 130,
+          "fat_g": 9,
+          "carbs_g": 0,
+          "protein_g": 11
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2308
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 43.0,
+        "total_calories": 133.3,
+        "total_fat_g": 8.6387,
+        "total_carbs_g": 4.8117,
+        "total_protein_g": 9.0902,
+        "foods": [
+          {
+            "name": "chicken-wing",
+            "mass_g": 43.0,
+            "calories": 133.3
+          }
+        ]
+      },
+      "accuracy": 64.23396188216157,
+      "error": null
+    },
+    {
+      "dish_id": 45,
+      "image_filename": "dish_45_IMG_6310_jpeg.rf.25b8165d25a47f40f8029d5f773f9f90.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_45_IMG_6310_jpeg.rf.25b8165d25a47f40f8029d5f773f9f90.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broiled lobster tail",
+            "mass_g": 85,
+            "calories": 76,
+            "fat_g": 0.9,
+            "carbs_g": 0,
+            "protein_g": 16.2
+          },
+          {
+            "name": "rotisserie chicken leg quarter (meat and skin)",
+            "mass_g": 160,
+            "calories": 344,
+            "fat_g": 22.4,
+            "carbs_g": 0,
+            "protein_g": 28.8
+          },
+          {
+            "name": "French fries",
+            "mass_g": 40,
+            "calories": 125,
+            "fat_g": 6,
+            "carbs_g": 16.4,
+            "protein_g": 1.4
+          }
+        ],
+        "totals": {
+          "mass_g": 285,
+          "calories": 545,
+          "fat_g": 29.3,
+          "carbs_g": 16.4,
+          "protein_g": 46.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3267
+        }
+      },
+      "ground_truth": {
+        "total_mass_g": 223.0,
+        "total_calories": 356.1200000000001,
+        "total_fat_g": 14.366499999999998,
+        "total_carbs_g": 8.288,
+        "total_protein_g": 45.24170000000001,
+        "foods": [
+          {
+            "name": "chicken-leg",
+            "mass_g": 119.0,
+            "calories": 218.96
+          },
+          {
+            "name": "lobster",
+            "mass_g": 84.00000000000001,
+            "calories": 74.76
+          },
+          {
+            "name": "french-fry",
+            "mass_g": 5.0,
+            "calories": 15.6
+          },
+          {
+            "name": "french-fry",
+            "mass_g": 5.0,
+            "calories": 15.6
+          },
+          {
+            "name": "french-fry",
+            "mass_g": 5.0,
+            "calories": 15.6
+          },
+          {
+            "name": "french-fry",
+            "mass_g": 5.0,
+            "calories": 15.6
+          }
+        ]
+      },
+      "accuracy": 42.95512594166386,
+      "error": null
+    }
+  ]
+}

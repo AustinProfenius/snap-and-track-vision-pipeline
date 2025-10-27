@@ -1,0 +1,36 @@
+# Environment
+.env
+*.pyc
+__pycache__/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Data
+data/nvreal/
+
+# Results
+runs/logs/*
+runs/results/*
+!runs/logs/.gitkeep
+!runs/results/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+dist/
+build/
+*.egg
+
+# Cache
+.pytest_cache/
+.mypy_cache/

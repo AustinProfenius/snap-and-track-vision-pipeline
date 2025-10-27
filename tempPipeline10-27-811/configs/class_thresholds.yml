@@ -1,0 +1,26 @@
+# Stage-1b Class-Specific Matching Thresholds
+# Applied in align_convert.py lines 600-609
+
+# Default thresholds by category
+defaults:
+  fruit_vegetable: 0.50
+  standard: 0.55
+
+# Single-token classes with leniency scoring
+# These use presence + simplicity scoring instead of standard Jaccard
+# Score = 1.0 / (1.0 + num_tokens * 0.05)
+single_token_classes:
+  grape: 0.30        # High verbosity in FDC ("Grapes, red or green, Thompson seedless")
+  cantaloupe: 0.30   # Melon with modifiers
+  honeydew: 0.30     # Melon with modifiers
+  almond: 0.30       # High verbosity ("Almonds, raw, unblanched")
+
+# Processing-heavy classes (many FDC modifiers)
+processing_heavy:
+  olive: 0.35        # Often "pickled, canned, stuffed"
+  tomato: 0.35       # Often "cherry, grape, plum"
+
+# Future per-class overrides:
+# walnut: 0.30
+# peanut: 0.30
+# strawberry: 0.30

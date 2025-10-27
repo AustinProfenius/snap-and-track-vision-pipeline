@@ -1,0 +1,287 @@
+"""
+Adapter to make FDCAlignmentWithConversion compatible with web app interface.
+
+This adapter wraps the new Stage 5 alignment engine to work with the existing
+web app that expects the FDCAlignmentEngineV2 interface.
+"""
+
+from typing import Dict, Any, List, Optional
+from dotenv import load_dotenv
+import os
+
+from ..nutrition.alignment.align_convert import FDCAlignmentWithConversion
+from .fdc_database import FDCDatabase
+from .search_normalizer import normalize_query, generate_query_variants
+
+
+class AlignmentEngineAdapter:
+    """
+    Adapter for FDCAlignmentWithConversion that provides V2 interface.
+
+    This allows the web app to use the new Stage 5 alignment engine
+    without changing the web app code.
+    """
+
+    def __init__(self, enable_conversion: bool = True):
+        """
+        Initialize alignment engine adapter.
+
+        Args:
+            enable_conversion: Enable raw→cooked conversion (always True for new engine)
+        """
+        load_dotenv(override=True)
+
+        # Initialize new alignment engine
+        try:
+            self.alignment_engine = FDCAlignmentWithConversion()
+            self.fdc_db = FDCDatabase()
+            self.db_available = True
+            print("[ADAPTER] ✓ Initialized Stage 5 alignment engine (FDCAlignmentWithConversion)")
+        except Exception as e:
+            print(f"[ADAPTER] ❌ Failed to initialize: {e}")
+            self.alignment_engine = None
+            self.fdc_db = None
+            self.db_available = False
+
+    def align_prediction_batch(self, prediction: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Align all foods in a prediction (V2 interface).
+
+        Args:
+            prediction: Prediction dict with "foods" list
+
+        Returns:
+            Dict with alignments and totals compatible with web app
+        """
+        print(f"[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====")
+        print(f"[ADAPTER] DB Available: {self.db_available}")
+
+        if not self.db_available:
+            print("[ADAPTER] Database not available")
+            return {
+                "available": False,
+                "foods": [],
+                "totals": {"mass_g": 0, "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0}
+            }
+
+        foods = prediction.get("foods", [])
+        print(f"[ADAPTER] Processing {len(foods)} foods")
+
+        aligned_foods = []
+        totals = {"mass_g": 0, "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0}
+
+        # Telemetry tracking
+        telemetry = {
+            "total_items": len(foods),
+            "alignment_stages": {},
+            "conversion_applied_count": 0,
+            "stage5_proxy_count": 0,
+            "unknown_stages": 0,
+            "unknown_methods": 0
+        }
+
+        for food_idx, food in enumerate(foods):
+            name = food.get("name", "")
+            form = food.get("form", "")
+            mass_g = food.get("mass_g", 0)
+            predicted_kcal = food.get("calories_per_100g", 100)  # Default if missing
+            confidence = food.get("confidence", 0.85)
+
+            if not name:
+                print(f"[ADAPTER] Skipping food {food_idx}: missing name")
+                continue
+
+            print(f"[ADAPTER] [{food_idx+1}/{len(foods)}] Aligning: {name} ({form})")
+
+            # Generate query variants (singular, plural, FDC hints)
+            query_variants = generate_query_variants(name)
+            fdc_candidates = []
+            used_query = name.lower()
+            variants_tried = len(query_variants)
+
+            # SURGICAL FIX: Score variants by Foundation count, total count, AND raw bias
+            # Prefer variants with "raw" suffix for fruits/vegetables
+            best_variant = None
+            best_candidates = []
+            best_score = (-1, -1, -1)  # (foundation_count, total_count, raw_bias)
+
+            for variant in query_variants:
+                try:
+                    candidates = self.fdc_db.search_foods(variant, limit=50)
+                    if not candidates:
+                        continue
+
+                    # Count Foundation/SR Legacy entries (preferred over branded)
+                    foundation_count = sum(
+                        1 for c in candidates
+                        if str(c.get("source", c.get("data_type", ""))).lower()
+                        in {"foundation_food", "foundation", "sr_legacy_food", "sr_legacy"}
+                    )
+
+                    # Prefer variants ending with " raw" (common for fruits/vegetables)
+                    raw_bias = 1 if (" raw" in (" " + variant) or variant.endswith(" raw")) else 0
+
+                    score_tuple = (foundation_count, len(candidates), raw_bias)
+
+                    # Prefer variant with best score (Foundation count > total count > raw bias)
+                    if score_tuple > best_score:
+                        best_score = score_tuple
+                        best_variant = variant
+                        best_candidates = candidates
+
+                except Exception as e:
+                    print(f"[ADAPTER] Database search failed for variant '{variant}': {e}")
+                    continue
+
+            # Use best variant (or empty if all failed)
+            if best_variant:
+                used_query = best_variant
+                fdc_candidates = best_candidates
+                if best_variant != name.lower():
+                    foundation_ct, total_ct, raw_bias = best_score
+                    print(f"[ADAPTER]   Query variant matched: '{name}' → '{best_variant}' ({total_ct} candidates, {foundation_ct} Foundation/SR)")
+            else:
+                fdc_candidates = []
+
+            if not fdc_candidates:
+                print(f"[ADAPTER]   No FDC candidates found (tried {variants_tried} variants)")
+                aligned_foods.append({
+                    "name": name,
+                    "form": form,
+                    "mass_g": mass_g,
+                    "calories": 0,
+                    "protein_g": 0,
+                    "carbs_g": 0,
+                    "fat_g": 0,
+                    "fdc_id": None,
+                    "fdc_name": "NO_MATCH",
+                    "match_score": 0.0,
+                    "alignment_stage": "stage0_no_candidates",
+                    "conversion_applied": False
+                })
+                telemetry["alignment_stages"]["stage0_no_candidates"] = \
+                    telemetry["alignment_stages"].get("stage0_no_candidates", 0) + 1
+                continue
+
+            # Run alignment using new engine
+            try:
+                result = self.alignment_engine.align_food_item(
+                    predicted_name=name,
+                    predicted_form=form,
+                    predicted_kcal_100g=predicted_kcal,
+                    fdc_candidates=fdc_candidates,
+                    confidence=confidence
+                )
+
+                # Add search variant telemetry (NEW: variant_chosen, foundation_pool_count)
+                result.telemetry["variant_chosen"] = used_query
+                result.telemetry["search_variants_tried"] = variants_tried
+                result.telemetry["foundation_pool_count"] = sum(
+                    1 for c in (fdc_candidates or [])
+                    if str(c.get('source', c.get('data_type', ''))).lower()
+                    in {"foundation_food", "foundation", "sr_legacy_food", "sr_legacy"}
+                )
+
+                # Extract telemetry
+                stage = result.telemetry.get("alignment_stage", "unknown")
+                method = result.telemetry.get("method", "unknown")
+                conversion_applied = result.telemetry.get("conversion_applied", False)
+                proxy_used = result.telemetry.get("proxy_used", False)
+
+                # Track telemetry
+                telemetry["alignment_stages"][stage] = \
+                    telemetry["alignment_stages"].get(stage, 0) + 1
+
+                if conversion_applied:
+                    telemetry["conversion_applied_count"] += 1
+
+                if stage == "stage5_proxy_alignment":
+                    telemetry["stage5_proxy_count"] += 1
+
+                if stage == "unknown":
+                    telemetry["unknown_stages"] += 1
+
+                if method == "unknown":
+                    telemetry["unknown_methods"] += 1
+
+                # Calculate nutrition for this food item
+                if result.fdc_id:
+                    calories = (result.kcal_100g * mass_g) / 100
+                    protein_g = (result.protein_100g * mass_g) / 100
+                    carbs_g = (result.carbs_100g * mass_g) / 100
+                    fat_g = (result.fat_100g * mass_g) / 100
+
+                    # Add to totals
+                    totals["mass_g"] += mass_g
+                    totals["calories"] += calories
+                    totals["protein_g"] += protein_g
+                    totals["carbs_g"] += carbs_g
+                    totals["fat_g"] += fat_g
+
+                    print(f"[ADAPTER]   ✓ Matched: {result.name} (stage={stage}, conversion={conversion_applied})")
+                    if proxy_used:
+                        proxy_formula = result.telemetry.get("proxy_formula", "N/A")
+                        print(f"[ADAPTER]     Stage 5 Proxy: {proxy_formula}")
+                else:
+                    calories = 0
+                    protein_g = 0
+                    carbs_g = 0
+                    fat_g = 0
+                    print(f"[ADAPTER]   ✗ No match")
+
+                # Build aligned food entry
+                aligned_food = {
+                    "name": name,
+                    "form": form,
+                    "mass_g": mass_g,
+                    "calories": round(calories, 1),
+                    "protein_g": round(protein_g, 2),
+                    "carbs_g": round(carbs_g, 2),
+                    "fat_g": round(fat_g, 2),
+                    "fdc_id": result.fdc_id,
+                    "fdc_name": result.name,
+                    "match_score": result.confidence,
+                    "alignment_stage": stage,
+                    "conversion_applied": conversion_applied,
+                    "telemetry": result.telemetry  # Include full telemetry
+                }
+
+                aligned_foods.append(aligned_food)
+
+            except Exception as e:
+                print(f"[ADAPTER]   ❌ Alignment failed: {e}")
+                import traceback
+                traceback.print_exc()
+                aligned_foods.append({
+                    "name": name,
+                    "form": form,
+                    "mass_g": mass_g,
+                    "calories": 0,
+                    "protein_g": 0,
+                    "carbs_g": 0,
+                    "fat_g": 0,
+                    "fdc_id": None,
+                    "fdc_name": "ERROR",
+                    "match_score": 0.0,
+                    "alignment_stage": "error",
+                    "conversion_applied": False,
+                    "error": str(e)
+                })
+
+        # Calculate conversion rate
+        if telemetry["total_items"] > 0:
+            telemetry["conversion_rate"] = telemetry["conversion_applied_count"] / telemetry["total_items"]
+        else:
+            telemetry["conversion_rate"] = 0.0
+
+        print(f"[ADAPTER] ===== Batch alignment complete =====")
+        print(f"[ADAPTER] Conversion rate: {telemetry['conversion_rate']:.1%}")
+        print(f"[ADAPTER] Stage 5 proxy count: {telemetry['stage5_proxy_count']}")
+        print(f"[ADAPTER] Stage distribution: {telemetry['alignment_stages']}")
+
+        return {
+            "available": True,
+            "foods": aligned_foods,
+            "totals": totals,
+            "telemetry": telemetry  # NEW: Include telemetry
+        }

@@ -1,0 +1,415 @@
+[{
+  "column_names": "fdc_id",
+  "data_type": "bigint"
+}, {
+  "column_names": "name",
+  "data_type": "character varying"
+}, {
+  "column_names": "short_description",
+  "data_type": "character varying"
+}, {
+  "column_names": "data_type",
+  "data_type": "character varying"
+}, {
+  "column_names": "source",
+  "data_type": "character varying"
+}, {
+  "column_names": "brand",
+  "data_type": "character varying"
+}, {
+  "column_names": "serving_description",
+  "data_type": "character varying"
+}, {
+  "column_names": "serving_gram_weight",
+  "data_type": "numeric"
+}, {
+  "column_names": "food_category_id",
+  "data_type": "character varying"
+}, {
+  "column_names": "food_category_description",
+  "data_type": "character varying"
+}, {
+  "column_names": "wweia_category_code",
+  "data_type": "character varying"
+}, {
+  "column_names": "wweia_category_description",
+  "data_type": "character varying"
+}, {
+  "column_names": "added_sugars_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "added_sugars_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "alcohol_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "alcohol_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "ash_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "ash_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "water_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "water_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "biotin_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "biotin_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "niacin_b3_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "niacin_b3_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "pantothenic_acid_b5_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "pantothenic_acid_b5_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "riboflavin_b2_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "riboflavin_b2_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "thiamin_b1_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "thiamin_b1_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_b6_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_b6_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_b12_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_b12_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "folate_dfe_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "folate_dfe_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_a_rae_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_a_rae_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_c_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_c_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_d_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_d_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_e_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_e_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "vitamin_k_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "vitamin_k_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "caffeine_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "caffeine_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "calcium_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "calcium_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "copper_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "copper_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "iodine_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "iodine_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "iron_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "iron_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "magnesium_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "magnesium_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "manganese_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "manganese_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "phosphorus_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "phosphorus_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "potassium_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "potassium_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "selenium_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "selenium_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "sodium_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "sodium_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "zinc_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "zinc_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "calories_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "calories_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "carbohydrates_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "carbohydrates_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "fiber_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "fiber_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "protein_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "protein_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "total_fat_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "total_fat_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "cholesterol_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "cholesterol_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "monounsaturated_fat_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "monounsaturated_fat_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "polyunsaturated_fat_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "polyunsaturated_fat_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "saturated_fat_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "saturated_fat_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "dha_omega3_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "dha_omega3_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "epa_omega3_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "epa_omega3_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "sugar_alcohols_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "sugar_alcohols_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "total_sugars_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "total_sugars_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "choline_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "choline_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "lutein_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "lutein_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "lutein_zeaxanthin_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "lutein_zeaxanthin_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "lycopene_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "lycopene_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "zeaxanthin_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "zeaxanthin_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "histidine_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "histidine_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "lysine_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "lysine_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "methionine_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "methionine_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "tryptophan_value",
+  "data_type": "numeric"
+}, {
+  "column_names": "tryptophan_unit",
+  "data_type": "character varying"
+}, {
+  "column_names": "contains_milk",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_eggs",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_fish",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_shellfish",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_tree_nuts",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_peanuts",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_wheat",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_soy",
+  "data_type": "boolean"
+}, {
+  "column_names": "contains_sesame",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_gluten_free",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_organic",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_vegetarian",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_vegan",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_kosher",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_halal",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_non_gmo",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_sugar_free",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_low_sodium",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_whole_grain",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_grass_fed",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_free_range",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_wild_caught",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_raw",
+  "data_type": "boolean"
+}, {
+  "column_names": "is_fermented",
+  "data_type": "boolean"
+}]

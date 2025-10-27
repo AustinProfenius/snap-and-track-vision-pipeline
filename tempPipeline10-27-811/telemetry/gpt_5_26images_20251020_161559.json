@@ -1,0 +1,4086 @@
+{
+  "timestamp": "20251020_161559",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 26,
+  "successful": 26,
+  "failed": 0,
+  "average_accuracy": 73.25406851707164,
+  "results": [
+    {
+      "dish_id": "dish_1558550218",
+      "image_filename": "dish_1558550218.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558550218.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 160,
+            "calories": 83.2,
+            "fat_g": 0.27,
+            "carbs_g": 22.08,
+            "protein_g": 0.42
+          },
+          {
+            "name": "almond",
+            "mass_g": 15,
+            "calories": 86.85,
+            "fat_g": 7.5,
+            "carbs_g": 3.24,
+            "protein_g": 3.18
+          },
+          {
+            "name": "grape",
+            "mass_g": 40,
+            "calories": 27.6,
+            "fat_g": 0.06,
+            "carbs_g": 7.24,
+            "protein_g": 0.29
+          }
+        ],
+        "totals": {
+          "mass_g": 215,
+          "calories": 197.65,
+          "fat_g": 7.83,
+          "carbs_g": 32.56,
+          "protein_g": 3.89
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3047
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 136.39344262295083,
+              "calories": 83.2,
+              "protein_g": 0.17731147540983608,
+              "carbs_g": 20.186229508196725,
+              "fat_g": 0.20459016393442625
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "almond",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 14.374617256161141,
+              "calories": 86.85,
+              "protein_g": 3.0834128999155888,
+              "carbs_g": 2.87989706880286,
+              "fat_g": 7.343991956172727
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "grape",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 32.12327890222186,
+              "calories": 27.6,
+              "protein_g": 0.2937352622819167,
+              "carbs_g": 6.4878743933239456,
+              "fat_g": 0.05261793084183941
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 182.89133878133384,
+          "calories": 197.65,
+          "protein_g": 3.5544596376073416,
+          "carbs_g": 29.554000970323532,
+          "fat_g": 7.601200050948993
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558550218",
+        "image_filename": "dish_1558550218.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558550218.png",
+        "total_mass_g": 206.0,
+        "total_calories": 230.001999,
+        "total_fat_g": 11.258,
+        "total_carbs_g": 32.433998,
+        "total_protein_g": 5.648,
+        "foods": [
+          {
+            "name": "almonds",
+            "mass_g": 22.0,
+            "calories": 127.182
+          },
+          {
+            "name": "grapes",
+            "mass_g": 42.0,
+            "calories": 28.98
+          },
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          }
+        ]
+      },
+      "accuracy": 83.92021915824807,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558629517",
+      "image_filename": "dish_1558629517.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629517.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "almond",
+            "mass_g": 30,
+            "calories": 174,
+            "fat_g": 15.0,
+            "carbs_g": 6.5,
+            "protein_g": 6.4
+          },
+          {
+            "name": "tomato",
+            "mass_g": 50,
+            "calories": 9,
+            "fat_g": 0.1,
+            "carbs_g": 2.0,
+            "protein_g": 0.5
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 50,
+            "calories": 12.5,
+            "fat_g": 0.2,
+            "carbs_g": 2.5,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 130,
+          "calories": 195.5,
+          "fat_g": 15.3,
+          "carbs_g": 11.0,
+          "protein_g": 7.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4388
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "almond",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 28.798887767093127,
+              "calories": 174,
+              "protein_g": 6.177476621592544,
+              "carbs_g": 5.7697419685860405,
+              "fat_g": 14.71335176020788
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 67.0690811535882,
+              "calories": 9,
+              "protein_g": 0.27665995975855134,
+              "carbs_g": 1.836686787391013,
+              "fat_g": 0.20999329309188466
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 52.750851398741574,
+              "calories": 12.5,
+              "protein_g": 0.8654304680477543,
+              "carbs_g": 2.491475462413963,
+              "fat_g": 0.12528327207201123
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 148.61882031942292,
+          "calories": 195.5,
+          "protein_g": 7.31956704939885,
+          "carbs_g": 10.097904218391017,
+          "fat_g": 15.048628325371775
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558629517",
+        "image_filename": "dish_1558629517.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629517.png",
+        "total_mass_g": 167.0,
+        "total_calories": 263.218994,
+        "total_fat_g": 19.945,
+        "total_carbs_g": 16.404999,
+        "total_protein_g": 10.336,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 64.0,
+            "calories": 16.0
+          },
+          {
+            "name": "tomatoes",
+            "mass_g": 64.0,
+            "calories": 21.76
+          },
+          {
+            "name": "almonds",
+            "mass_g": 39.0,
+            "calories": 225.459
+          }
+        ]
+      },
+      "accuracy": 74.46252850450605,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558629715",
+      "image_filename": "dish_1558629715.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629715.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 170,
+            "calories": 88.4,
+            "fat_g": 0.3,
+            "carbs_g": 23.5,
+            "protein_g": 0.4
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 100,
+            "calories": 25,
+            "fat_g": 0.3,
+            "carbs_g": 5,
+            "protein_g": 1.9
+          },
+          {
+            "name": "spinach",
+            "mass_g": 25,
+            "calories": 5.8,
+            "fat_g": 0.1,
+            "carbs_g": 0.9,
+            "protein_g": 0.7
+          },
+          {
+            "name": "lettuce",
+            "mass_g": 20,
+            "calories": 3,
+            "fat_g": 0,
+            "carbs_g": 0.6,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 315,
+          "calories": 122.2,
+          "fat_g": 0.7,
+          "carbs_g": 30,
+          "protein_g": 3.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3866
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 144.91803278688528,
+              "calories": 88.4,
+              "protein_g": 0.18839344262295088,
+              "carbs_g": 21.447868852459024,
+              "fat_g": 0.21737704918032794
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 105.50170279748315,
+              "calories": 25,
+              "protein_g": 1.7308609360955085,
+              "carbs_g": 4.982950924827926,
+              "fat_g": 0.25056654414402246
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 24.69556331431491,
+              "calories": 5.8,
+              "protein_g": 0.7042927701609469,
+              "carbs_g": 0.5942493400323596,
+              "fat_g": 0.15281614578898067
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346390,
+            "matched_name": "Lettuce leaf red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 17.112055443059635,
+              "calories": 3,
+              "protein_g": 0.15111656161765963,
+              "carbs_g": 0.5579556797764025,
+              "fat_g": 0.018190114935972394
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 292.227354341743,
+          "calories": 122.2,
+          "protein_g": 2.7746637104970655,
+          "carbs_g": 27.58302479709571,
+          "fat_g": 0.6389498540493035
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558629715",
+        "image_filename": "dish_1558629715.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629715.png",
+        "total_mass_g": 247.0,
+        "total_calories": 100.539993,
+        "total_fat_g": 0.614,
+        "total_carbs_g": 25.174999,
+        "total_protein_g": 2.376,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 90.0,
+            "calories": 22.5
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 15.0,
+            "calories": 4.2
+          }
+        ]
+      },
+      "accuracy": 75.77294310908715,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630649",
+      "image_filename": "dish_1558630649.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630649.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grape",
+            "mass_g": 125,
+            "calories": 86.3,
+            "fat_g": 0.2,
+            "carbs_g": 22.6,
+            "protein_g": 0.9
+          },
+          {
+            "name": "apple",
+            "mass_g": 180,
+            "calories": 93.6,
+            "fat_g": 0.3,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 120,
+            "calories": 40.8,
+            "fat_g": 0.2,
+            "carbs_g": 9.8,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 425,
+          "calories": 220.7,
+          "fat_g": 0.7,
+          "carbs_g": 57.2,
+          "protein_g": 2.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2856
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "grape",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 100.44344091528068,
+              "calories": 86.3,
+              "protein_g": 0.9184548237293265,
+              "carbs_g": 20.286360874777408,
+              "fat_g": 0.16452635621922976
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 153.44262295081967,
+              "calories": 93.6,
+              "protein_g": 0.19947540983606557,
+              "carbs_g": 22.709508196721313,
+              "fat_g": 0.2301639344262295
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 75.0,
+              "calories": 40.8,
+              "protein_g": 0.984,
+              "carbs_g": 9.792,
+              "fat_g": 0.21599999999999997
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 328.88606386610036,
+          "calories": 220.7,
+          "protein_g": 2.101930233565392,
+          "carbs_g": 52.78786907149872,
+          "fat_g": 0.6106902906454592
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630649",
+        "image_filename": "dish_1558630649.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630649.png",
+        "total_mass_g": 355.0,
+        "total_calories": 190.009995,
+        "total_fat_g": 0.71,
+        "total_carbs_g": 49.419998,
+        "total_protein_g": 2.005,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 88.0,
+            "calories": 29.92
+          },
+          {
+            "name": "grapes",
+            "mass_g": 125.0,
+            "calories": 86.25
+          },
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          }
+        ]
+      },
+      "accuracy": 85.4556175510141,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630932",
+      "image_filename": "dish_1558630932.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630932.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 160,
+            "calories": 83,
+            "fat_g": 0.3,
+            "carbs_g": 22.1,
+            "protein_g": 0.4
+          },
+          {
+            "name": "almond",
+            "mass_g": 20,
+            "calories": 116,
+            "fat_g": 10.0,
+            "carbs_g": 4.4,
+            "protein_g": 4.2
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 110,
+            "calories": 28,
+            "fat_g": 0.3,
+            "carbs_g": 5.5,
+            "protein_g": 2.1
+          }
+        ],
+        "totals": {
+          "mass_g": 290,
+          "calories": 227,
+          "fat_g": 10.6,
+          "carbs_g": 32.0,
+          "protein_g": 6.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3359
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 136.0655737704918,
+              "calories": 83,
+              "protein_g": 0.17688524590163934,
+              "carbs_g": 20.13770491803279,
+              "fat_g": 0.2040983606557377
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "almond",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 19.19925851139542,
+              "calories": 116,
+              "protein_g": 4.118317747728363,
+              "carbs_g": 3.846494645724027,
+              "fat_g": 9.80890117347192
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 118.16190713318113,
+              "calories": 28,
+              "protein_g": 1.9385642484269696,
+              "carbs_g": 5.580905035807278,
+              "fat_g": 0.2806345294413052
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 273.42673941506837,
+          "calories": 227,
+          "protein_g": 6.233767242056972,
+          "carbs_g": 29.565104599564094,
+          "fat_g": 10.293634063568964
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630932",
+        "image_filename": "dish_1558630932.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630932.png",
+        "total_mass_g": 265.0,
+        "total_calories": 292.643982,
+        "total_fat_g": 17.381001,
+        "total_carbs_g": 32.048,
+        "total_protein_g": 9.644,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 89.0,
+            "calories": 22.25
+          },
+          {
+            "name": "almonds",
+            "mass_g": 34.0,
+            "calories": 196.554
+          }
+        ]
+      },
+      "accuracy": 79.68885910492389,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558631932",
+      "image_filename": "dish_1558631932.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558631932.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.3,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          },
+          {
+            "name": "tomato",
+            "mass_g": 120,
+            "calories": 22,
+            "fat_g": 0.2,
+            "carbs_g": 4.7,
+            "protein_g": 1.1
+          },
+          {
+            "name": "corn",
+            "mass_g": 40,
+            "calories": 34,
+            "fat_g": 0.5,
+            "carbs_g": 7.6,
+            "protein_g": 1.3
+          }
+        ],
+        "totals": {
+          "mass_g": 340,
+          "calories": 150,
+          "fat_g": 1.0,
+          "carbs_g": 37.1,
+          "protein_g": 2.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3934
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 154.0983606557377,
+              "calories": 94,
+              "protein_g": 0.200327868852459,
+              "carbs_g": 22.80655737704918,
+              "fat_g": 0.23114754098360654
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 163.94664281988224,
+              "calories": 22,
+              "protein_g": 0.6762799016320142,
+              "carbs_g": 4.489678813622476,
+              "fat_g": 0.5133169386690513
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 9.340659340659341,
+              "calories": 34,
+              "protein_g": 0.5791208791208792,
+              "carbs_g": 7.547252747252747,
+              "fat_g": 0.16252747252747252
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 327.3856628162793,
+          "calories": 150,
+          "protein_g": 1.4557286496053523,
+          "carbs_g": 34.843488937924405,
+          "fat_g": 0.9069919521801304
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558631932",
+        "image_filename": "dish_1558631932.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558631932.png",
+        "total_mass_g": 355.0,
+        "total_calories": 214.931992,
+        "total_fat_g": 3.174,
+        "total_carbs_g": 49.670998,
+        "total_protein_g": 4.735,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 154.0,
+            "calories": 80.08
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 112.0,
+            "calories": 118.832
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 89.0,
+            "calories": 16.02
+          }
+        ]
+      },
+      "accuracy": 66.60153289030877,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558632233",
+      "image_filename": "dish_1558632233.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558632233.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "lettuce",
+            "mass_g": 25,
+            "calories": 3.8,
+            "fat_g": 0.1,
+            "carbs_g": 0.7,
+            "protein_g": 0.4
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 150,
+            "calories": 51,
+            "fat_g": 0.3,
+            "carbs_g": 12.3,
+            "protein_g": 1.2
+          },
+          {
+            "name": "corn",
+            "mass_g": 15,
+            "calories": 14.4,
+            "fat_g": 0.2,
+            "carbs_g": 3.2,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 190,
+          "calories": 69.2,
+          "fat_g": 0.6,
+          "carbs_g": 16.2,
+          "protein_g": 2.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3750
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346390,
+            "matched_name": "Lettuce leaf red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 21.675270227875536,
+              "calories": 3.8,
+              "protein_g": 0.19141431138236886,
+              "carbs_g": 0.7067438610501098,
+              "fat_g": 0.023040812252231698
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 93.75,
+              "calories": 51,
+              "protein_g": 1.23,
+              "carbs_g": 12.239999999999998,
+              "fat_g": 0.26999999999999996
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 3.9560439560439558,
+              "calories": 14.4,
+              "protein_g": 0.24527472527472527,
+              "carbs_g": 3.196483516483516,
+              "fat_g": 0.06883516483516483
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 119.38131418391949,
+          "calories": 69.2,
+          "protein_g": 1.6666890366570941,
+          "carbs_g": 16.143227377533627,
+          "fat_g": 0.3618759770873965
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558632233",
+        "image_filename": "dish_1558632233.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558632233.png",
+        "total_mass_g": 193.0,
+        "total_calories": 122.604004,
+        "total_fat_g": 2.714,
+        "total_carbs_g": 23.712,
+        "total_protein_g": 4.486,
+        "foods": [
+          {
+            "name": "garden salad",
+            "mass_g": 26.0,
+            "calories": 16.796
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 68.0,
+            "calories": 72.148
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 99.0,
+            "calories": 33.66
+          }
+        ]
+      },
+      "accuracy": 58.42544104148945,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558639752",
+      "image_filename": "dish_1558639752.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558639752.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "tomato",
+            "mass_g": 120,
+            "calories": 21.6,
+            "fat_g": 0.2,
+            "carbs_g": 4.7,
+            "protein_g": 1.1
+          },
+          {
+            "name": "almond",
+            "mass_g": 35,
+            "calories": 202.7,
+            "fat_g": 17.5,
+            "carbs_g": 7.7,
+            "protein_g": 7.4
+          },
+          {
+            "name": "corn",
+            "mass_g": 60,
+            "calories": 51.6,
+            "fat_g": 0.7,
+            "carbs_g": 11.4,
+            "protein_g": 1.9
+          }
+        ],
+        "totals": {
+          "mass_g": 215,
+          "calories": 275.9,
+          "fat_g": 18.4,
+          "carbs_g": 23.8,
+          "protein_g": 10.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3495
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 160.9657947686117,
+              "calories": 21.6,
+              "protein_g": 0.6639839034205232,
+              "carbs_g": 4.408048289738431,
+              "fat_g": 0.5039839034205231
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "almond",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 33.549049140171135,
+              "calories": 202.7,
+              "protein_g": 7.196405236763268,
+              "carbs_g": 6.721417799036726,
+              "fat_g": 17.140209205713433
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 14.175824175824175,
+              "calories": 51.6,
+              "protein_g": 0.8789010989010989,
+              "carbs_g": 11.454065934065934,
+              "fat_g": 0.24665934065934064
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 208.690668084607,
+          "calories": 275.9,
+          "protein_g": 8.739290239084891,
+          "carbs_g": 22.58353202284109,
+          "fat_g": 17.890852449793297
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558639752",
+        "image_filename": "dish_1558639752.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558639752.png",
+        "total_mass_g": 220.0,
+        "total_calories": 254.130997,
+        "total_fat_g": 13.213,
+        "total_carbs_g": 32.438004,
+        "total_protein_g": 8.915,
+        "foods": [
+          {
+            "name": "corn on the cob",
+            "mass_g": 110.0,
+            "calories": 116.71
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 89.0,
+            "calories": 16.02
+          },
+          {
+            "name": "almonds",
+            "mass_g": 21.0,
+            "calories": 121.401
+          }
+        ]
+      },
+      "accuracy": 81.32356684568201,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558639876",
+      "image_filename": "dish_1558639876.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558639876.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 70,
+            "calories": 29,
+            "fat_g": 0.2,
+            "carbs_g": 6.7,
+            "protein_g": 0.6
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 90,
+            "calories": 23,
+            "fat_g": 0.3,
+            "carbs_g": 4.5,
+            "protein_g": 1.7
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 120,
+            "calories": 41,
+            "fat_g": 0.2,
+            "carbs_g": 9.8,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 280,
+          "calories": 93,
+          "fat_g": 0.7,
+          "carbs_g": 21.0,
+          "protein_g": 3.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4129
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 81.95725222768291,
+              "calories": 29,
+              "protein_g": 0.6597558804328475,
+              "carbs_g": 7.440653057994649,
+              "fat_g": 0.11269122181306403
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 97.0615665736845,
+              "calories": 23,
+              "protein_g": 1.592392061207868,
+              "carbs_g": 4.584314850841692,
+              "fat_g": 0.2305212206125007
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 75.36764705882352,
+              "calories": 41,
+              "protein_g": 0.9888235294117645,
+              "carbs_g": 9.839999999999998,
+              "fat_g": 0.21705882352941172
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 254.38646586019092,
+          "calories": 93,
+          "protein_g": 3.24097147105248,
+          "carbs_g": 21.86496790883634,
+          "fat_g": 0.5602712659549764
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558639876",
+        "image_filename": "dish_1558639876.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558639876.png",
+        "total_mass_g": 215.0,
+        "total_calories": 68.18,
+        "total_fat_g": 0.529,
+        "total_carbs_g": 15.370001,
+        "total_protein_g": 2.767,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 57.0,
+            "calories": 23.37
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 59.0,
+            "calories": 20.06
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 99.0,
+            "calories": 24.75
+          }
+        ]
+      },
+      "accuracy": 69.02922676103996,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640145",
+      "image_filename": "dish_1558640145.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640145.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 180,
+            "calories": 93.6,
+            "fat_g": 0.4,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          },
+          {
+            "name": "carrot",
+            "mass_g": 130,
+            "calories": 53.3,
+            "fat_g": 0.3,
+            "carbs_g": 12.5,
+            "protein_g": 1.2
+          },
+          {
+            "name": "corn",
+            "mass_g": 70,
+            "calories": 67.2,
+            "fat_g": 1.1,
+            "carbs_g": 14.7,
+            "protein_g": 2.4
+          }
+        ],
+        "totals": {
+          "mass_g": 380,
+          "calories": 214.1,
+          "fat_g": 1.8,
+          "carbs_g": 52.0,
+          "protein_g": 4.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3046
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 153.44262295081967,
+              "calories": 93.6,
+              "protein_g": 0.19947540983606557,
+              "carbs_g": 22.709508196721313,
+              "fat_g": 0.2301639344262295
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 150.6317773701896,
+              "calories": 53.3,
+              "protein_g": 1.2125858078300265,
+              "carbs_g": 13.675407172107402,
+              "fat_g": 0.20711869388401072
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 18.461538461538463,
+              "calories": 67.2,
+              "protein_g": 1.1446153846153848,
+              "carbs_g": 14.916923076923077,
+              "fat_g": 0.32123076923076926
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 322.53593878254776,
+          "calories": 214.09999999999997,
+          "protein_g": 2.5566766022814766,
+          "carbs_g": 51.30183844575179,
+          "fat_g": 0.7585133975410094
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640145",
+        "image_filename": "dish_1558640145.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640145.png",
+        "total_mass_g": 287.0,
+        "total_calories": 177.953003,
+        "total_fat_g": 2.18,
+        "total_carbs_g": 42.099998,
+        "total_protein_g": 3.493,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 98.0,
+            "calories": 40.18
+          },
+          {
+            "name": "apple",
+            "mass_g": 116.0,
+            "calories": 60.32
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 73.0,
+            "calories": 77.453
+          }
+        ]
+      },
+      "accuracy": 77.7917807380123,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640311",
+      "image_filename": "dish_1558640311.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640311.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grape",
+            "mass_g": 120,
+            "calories": 82.8,
+            "fat_g": 0.19,
+            "carbs_g": 21.72,
+            "protein_g": 0.86
+          },
+          {
+            "name": "cherry tomato",
+            "mass_g": 160,
+            "calories": 28.8,
+            "fat_g": 0.32,
+            "carbs_g": 6.24,
+            "protein_g": 1.44
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 90,
+            "calories": 30.6,
+            "fat_g": 0.17,
+            "carbs_g": 7.38,
+            "protein_g": 0.76
+          }
+        ],
+        "totals": {
+          "mass_g": 370,
+          "calories": 142.2,
+          "fat_g": 0.68,
+          "carbs_g": 35.34,
+          "protein_g": 3.06
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4010
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "grape",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 96.36983670666558,
+              "calories": 82.8,
+              "protein_g": 0.88120578684575,
+              "carbs_g": 19.463623179971833,
+              "fat_g": 0.15785379252551823
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cherry tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 214.62105969148223,
+              "calories": 28.8,
+              "protein_g": 0.8853118712273642,
+              "carbs_g": 5.877397719651242,
+              "fat_g": 0.6719785378940308
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 56.25,
+              "calories": 30.6,
+              "protein_g": 0.738,
+              "carbs_g": 7.343999999999999,
+              "fat_g": 0.16199999999999998
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 367.2408963981478,
+          "calories": 142.2,
+          "protein_g": 2.504517658073114,
+          "carbs_g": 32.685020899623076,
+          "fat_g": 0.9918323304195491
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640311",
+        "image_filename": "dish_1558640311.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640311.png",
+        "total_mass_g": 276.0,
+        "total_calories": 105.879997,
+        "total_fat_g": 0.552,
+        "total_carbs_g": 26.114,
+        "total_protein_g": 2.242,
+        "foods": [
+          {
+            "name": "grapes",
+            "mass_g": 92.0,
+            "calories": 63.48
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 58.0,
+            "calories": 19.72
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 126.0,
+            "calories": 22.68
+          }
+        ]
+      },
+      "accuracy": 67.32712913413965,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640373",
+      "image_filename": "dish_1558640373.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640373.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grape",
+            "mass_g": 110,
+            "calories": 76.0,
+            "fat_g": 0.2,
+            "carbs_g": 19.9,
+            "protein_g": 0.8
+          },
+          {
+            "name": "tomato",
+            "mass_g": 180,
+            "calories": 32.4,
+            "fat_g": 0.4,
+            "carbs_g": 7.0,
+            "protein_g": 1.6
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 100,
+            "calories": 34.0,
+            "fat_g": 0.2,
+            "carbs_g": 8.2,
+            "protein_g": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 390,
+          "calories": 142.4,
+          "fat_g": 0.8,
+          "carbs_g": 35.1,
+          "protein_g": 3.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3881
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "grape",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 88.45540567278483,
+              "calories": 76.0,
+              "protein_g": 0.8088362294719446,
+              "carbs_g": 17.86516137292101,
+              "fat_g": 0.14488995449202158
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 241.4486921529175,
+              "calories": 32.4,
+              "protein_g": 0.9959758551307846,
+              "carbs_g": 6.612072434607645,
+              "fat_g": 0.7559758551307846
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 62.5,
+              "calories": 34.0,
+              "protein_g": 0.8200000000000001,
+              "carbs_g": 8.16,
+              "fat_g": 0.18
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 392.4040978257023,
+          "calories": 142.4,
+          "protein_g": 2.624812084602729,
+          "carbs_g": 32.63723380752866,
+          "fat_g": 1.080865809622806
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640373",
+        "image_filename": "dish_1558640373.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640373.png",
+        "total_mass_g": 276.0,
+        "total_calories": 105.880005,
+        "total_fat_g": 0.552,
+        "total_carbs_g": 26.114,
+        "total_protein_g": 2.242,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 126.0,
+            "calories": 22.68
+          },
+          {
+            "name": "grapes",
+            "mass_g": 92.0,
+            "calories": 63.48
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 58.0,
+            "calories": 19.72
+          }
+        ]
+      },
+      "accuracy": 60.42717562555252,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640513",
+      "image_filename": "dish_1558640513.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640513.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 170,
+            "calories": 88.4,
+            "fat_g": 0.29,
+            "carbs_g": 23.8,
+            "protein_g": 0.44
+          },
+          {
+            "name": "carrot",
+            "mass_g": 60,
+            "calories": 24.6,
+            "fat_g": 0.14,
+            "carbs_g": 5.76,
+            "protein_g": 0.54
+          },
+          {
+            "name": "corn",
+            "mass_g": 25,
+            "calories": 21.5,
+            "fat_g": 0.3,
+            "carbs_g": 4.75,
+            "protein_g": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 255,
+          "calories": 134.5,
+          "fat_g": 0.73,
+          "carbs_g": 34.31,
+          "protein_g": 1.78
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2854
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 144.91803278688528,
+              "calories": 88.4,
+              "protein_g": 0.18839344262295088,
+              "carbs_g": 21.447868852459024,
+              "fat_g": 0.21737704918032794
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 69.52235878624137,
+              "calories": 24.6,
+              "protein_g": 0.5596549882292431,
+              "carbs_g": 6.311726387126495,
+              "fat_g": 0.09559324333108189
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 5.906593406593406,
+              "calories": 21.5,
+              "protein_g": 0.3662087912087912,
+              "carbs_g": 4.772527472527472,
+              "fat_g": 0.10277472527472525
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 220.34698497972005,
+          "calories": 134.5,
+          "protein_g": 1.1142572220609852,
+          "carbs_g": 32.532122712112994,
+          "fat_g": 0.4157450177861351
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640513",
+        "image_filename": "dish_1558640513.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640513.png",
+        "total_mass_g": 245.0,
+        "total_calories": 153.845993,
+        "total_fat_g": 1.722,
+        "total_carbs_g": 37.379997,
+        "total_protein_g": 2.513,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 35.0,
+            "calories": 14.35
+          },
+          {
+            "name": "apple",
+            "mass_g": 154.0,
+            "calories": 80.08
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 56.0,
+            "calories": 59.416
+          }
+        ]
+      },
+      "accuracy": 77.67095201742629,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640705",
+      "image_filename": "dish_1558640705.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640705.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 140,
+            "calories": 72.8,
+            "fat_g": 0.3,
+            "carbs_g": 19.3,
+            "protein_g": 0.4
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 150,
+            "calories": 51.0,
+            "fat_g": 0.3,
+            "carbs_g": 12.3,
+            "protein_g": 1.2
+          },
+          {
+            "name": "tomato",
+            "mass_g": 75,
+            "calories": 13.5,
+            "fat_g": 0.2,
+            "carbs_g": 2.9,
+            "protein_g": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 365,
+          "calories": 137.3,
+          "fat_g": 0.8,
+          "carbs_g": 34.5,
+          "protein_g": 2.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3112
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 119.34426229508198,
+              "calories": 72.8,
+              "protein_g": 0.15514754098360656,
+              "carbs_g": 17.662950819672133,
+              "fat_g": 0.17901639344262296
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 93.75,
+              "calories": 51.0,
+              "protein_g": 1.23,
+              "carbs_g": 12.239999999999998,
+              "fat_g": 0.26999999999999996
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 100.60362173038229,
+              "calories": 13.5,
+              "protein_g": 0.41498993963782693,
+              "carbs_g": 2.755030181086519,
+              "fat_g": 0.31498993963782695
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 313.6978840254643,
+          "calories": 137.3,
+          "protein_g": 1.8001374806214334,
+          "carbs_g": 32.65798100075865,
+          "fat_g": 0.7640063330804499
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640705",
+        "image_filename": "dish_1558640705.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640705.png",
+        "total_mass_g": 234.0,
+        "total_calories": 96.759995,
+        "total_fat_g": 0.468,
+        "total_carbs_g": 24.737,
+        "total_protein_g": 1.315,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 23.0,
+            "calories": 4.14
+          },
+          {
+            "name": "apple",
+            "mass_g": 116.0,
+            "calories": 60.32
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 95.0,
+            "calories": 32.3
+          }
+        ]
+      },
+      "accuracy": 43.36145991832716,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640849",
+      "image_filename": "dish_1558640849.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640849.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 120,
+            "calories": 30,
+            "fat_g": 0.36,
+            "carbs_g": 6,
+            "protein_g": 2.28
+          },
+          {
+            "name": "carrot",
+            "mass_g": 100,
+            "calories": 41,
+            "fat_g": 0.2,
+            "carbs_g": 9.6,
+            "protein_g": 0.9
+          },
+          {
+            "name": "apple",
+            "mass_g": 170,
+            "calories": 88.4,
+            "fat_g": 0.34,
+            "carbs_g": 23.46,
+            "protein_g": 0.51
+          }
+        ],
+        "totals": {
+          "mass_g": 390,
+          "calories": 159.4,
+          "fat_g": 0.9,
+          "carbs_g": 39.06,
+          "protein_g": 3.69
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2593
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 126.60204335697978,
+              "calories": 30,
+              "protein_g": 2.07703312331461,
+              "carbs_g": 5.979541109793511,
+              "fat_g": 0.30067985297282696
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 115.87059797706894,
+              "calories": 41,
+              "protein_g": 0.932758313715405,
+              "carbs_g": 10.519543978544156,
+              "fat_g": 0.1593220722184698
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 144.91803278688528,
+              "calories": 88.4,
+              "protein_g": 0.18839344262295088,
+              "carbs_g": 21.447868852459024,
+              "fat_g": 0.21737704918032794
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 387.390674120934,
+          "calories": 159.4,
+          "protein_g": 3.198184879652966,
+          "carbs_g": 37.94695394079669,
+          "fat_g": 0.6773789743716248
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640849",
+        "image_filename": "dish_1558640849.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640849.png",
+        "total_mass_g": 238.0,
+        "total_calories": 105.23999,
+        "total_fat_g": 0.534,
+        "total_carbs_g": 27.059999,
+        "total_protein_g": 1.74,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 154.0,
+            "calories": 80.08
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 58.0,
+            "calories": 14.5
+          },
+          {
+            "name": "carrot",
+            "mass_g": 26.0,
+            "calories": 10.66
+          }
+        ]
+      },
+      "accuracy": 31.943384551968293,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558640979",
+      "image_filename": "dish_1558640979.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640979.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 40,
+            "calories": 10,
+            "fat_g": 0.1,
+            "carbs_g": 2.0,
+            "protein_g": 0.8
+          },
+          {
+            "name": "carrot",
+            "mass_g": 45,
+            "calories": 18.5,
+            "fat_g": 0.1,
+            "carbs_g": 4.3,
+            "protein_g": 0.4
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 90,
+            "calories": 30.6,
+            "fat_g": 0.2,
+            "carbs_g": 7.4,
+            "protein_g": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 175,
+          "calories": 59.1,
+          "fat_g": 0.4,
+          "carbs_g": 13.7,
+          "protein_g": 1.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2471
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 42.20068111899326,
+              "calories": 10,
+              "protein_g": 0.6923443744382035,
+              "carbs_g": 1.9931803699311705,
+              "fat_g": 0.10022661765760899
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 52.28307469697013,
+              "calories": 18.5,
+              "protein_g": 0.4208787513106096,
+              "carbs_g": 4.7466235025138275,
+              "fat_g": 0.07188922770833393
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 56.25,
+              "calories": 30.6,
+              "protein_g": 0.738,
+              "carbs_g": 7.343999999999999,
+              "fat_g": 0.16199999999999998
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 150.73375581596338,
+          "calories": 59.1,
+          "protein_g": 1.8512231257488132,
+          "carbs_g": 14.083803872444998,
+          "fat_g": 0.3341158453659429
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558640979",
+        "image_filename": "dish_1558640979.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558640979.png",
+        "total_mass_g": 169.0,
+        "total_calories": 59.279999,
+        "total_fat_g": 0.359,
+        "total_carbs_g": 13.95,
+        "total_protein_g": 1.615,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 95.0,
+            "calories": 32.3
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 21.0,
+            "calories": 5.25
+          },
+          {
+            "name": "carrot",
+            "mass_g": 53.0,
+            "calories": 21.73
+          }
+        ]
+      },
+      "accuracy": 93.0572551533725,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558641108",
+      "image_filename": "dish_1558641108.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558641108.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 182,
+            "calories": 95,
+            "fat_g": 0.3,
+            "carbs_g": 25.1,
+            "protein_g": 0.5
+          },
+          {
+            "name": "carrot",
+            "mass_g": 60,
+            "calories": 25,
+            "fat_g": 0.1,
+            "carbs_g": 5.7,
+            "protein_g": 0.6
+          },
+          {
+            "name": "tomato",
+            "mass_g": 100,
+            "calories": 18,
+            "fat_g": 0.2,
+            "carbs_g": 3.9,
+            "protein_g": 0.9
+          }
+        ],
+        "totals": {
+          "mass_g": 342,
+          "calories": 138,
+          "fat_g": 0.6,
+          "carbs_g": 34.7,
+          "protein_g": 2.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2911
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 155.7377049180328,
+              "calories": 95,
+              "protein_g": 0.20245901639344263,
+              "carbs_g": 23.049180327868854,
+              "fat_g": 0.23360655737704916
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 70.65280364455423,
+              "calories": 25,
+              "protein_g": 0.5687550693386616,
+              "carbs_g": 6.414356084478144,
+              "fat_g": 0.09714760501126207
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 134.1381623071764,
+              "calories": 18,
+              "protein_g": 0.5533199195171027,
+              "carbs_g": 3.673373574782026,
+              "fat_g": 0.41998658618376933
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 360.5286708697634,
+          "calories": 138,
+          "protein_g": 1.324534005249207,
+          "carbs_g": 33.13690998712902,
+          "fat_g": 0.7507407485720805
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558641108",
+        "image_filename": "dish_1558641108.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558641108.png",
+        "total_mass_g": 243.0,
+        "total_calories": 96.62999,
+        "total_fat_g": 0.486,
+        "total_carbs_g": 24.771,
+        "total_protein_g": 1.485,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 69.0,
+            "calories": 12.42
+          },
+          {
+            "name": "apple",
+            "mass_g": 117.0,
+            "calories": 60.84
+          },
+          {
+            "name": "carrot",
+            "mass_g": 57.0,
+            "calories": 23.37
+          }
+        ]
+      },
+      "accuracy": 63.64527337118167,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558641442",
+      "image_filename": "dish_1558641442.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558641442.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 90,
+            "calories": 23,
+            "fat_g": 0.3,
+            "carbs_g": 4.5,
+            "protein_g": 1.7
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 120,
+            "calories": 41,
+            "fat_g": 0.2,
+            "carbs_g": 9.8,
+            "protein_g": 1.0
+          },
+          {
+            "name": "corn",
+            "mass_g": 30,
+            "calories": 26,
+            "fat_g": 0.4,
+            "carbs_g": 5.7,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 240,
+          "calories": 90,
+          "fat_g": 0.9,
+          "carbs_g": 20.0,
+          "protein_g": 3.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2336
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 97.0615665736845,
+              "calories": 23,
+              "protein_g": 1.592392061207868,
+              "carbs_g": 4.584314850841692,
+              "fat_g": 0.2305212206125007
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 75.36764705882352,
+              "calories": 41,
+              "protein_g": 0.9888235294117645,
+              "carbs_g": 9.839999999999998,
+              "fat_g": 0.21705882352941172
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "corn",
+            "fdc_id": 790276,
+            "matched_name": "Flour corn yellow fine meal enriched",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 7.142857142857142,
+              "calories": 26,
+              "protein_g": 0.44285714285714284,
+              "carbs_g": 5.7714285714285705,
+              "fat_g": 0.12428571428571428
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 179.57207077536518,
+          "calories": 90,
+          "protein_g": 3.0240727334767756,
+          "carbs_g": 20.19574342227026,
+          "fat_g": 0.5718657584276268
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558641442",
+        "image_filename": "dish_1558641442.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558641442.png",
+        "total_mass_g": 211.0,
+        "total_calories": 103.386002,
+        "total_fat_g": 1.751,
+        "total_carbs_g": 21.809999,
+        "total_protein_g": 3.946,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 97.0,
+            "calories": 24.25
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 58.0,
+            "calories": 19.72
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 56.0,
+            "calories": 59.416
+          }
+        ]
+      },
+      "accuracy": 82.0348852164812,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558724658",
+      "image_filename": "dish_1558724658.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558724658.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprout",
+            "mass_g": 120,
+            "calories": 52,
+            "fat_g": 0.4,
+            "carbs_g": 10.7,
+            "protein_g": 4.1
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 110,
+            "calories": 37,
+            "fat_g": 0.4,
+            "carbs_g": 7.3,
+            "protein_g": 3.1
+          },
+          {
+            "name": "honeydew melon",
+            "mass_g": 100,
+            "calories": 36,
+            "fat_g": 0.1,
+            "carbs_g": 9.1,
+            "protein_g": 0.5
+          },
+          {
+            "name": "carrot",
+            "mass_g": 2,
+            "calories": 1,
+            "fat_g": 0,
+            "carbs_g": 0.2,
+            "protein_g": 0
+          }
+        ],
+        "totals": {
+          "mass_g": 332,
+          "calories": 126,
+          "fat_g": 0.9,
+          "carbs_g": 27.3,
+          "protein_g": 7.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3291
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprout",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 104.1771010718221,
+              "calories": 52,
+              "protein_g": 4.15083241510568,
+              "carbs_g": 10.017253330662125,
+              "fat_g": 0.5886006210557948
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 152.13815789473685,
+              "calories": 37,
+              "protein_g": 2.9715625000000006,
+              "carbs_g": 7.2728125000000015,
+              "fat_g": 0.39312500000000006
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "honeydew melon",
+            "fdc_id": 2710816,
+            "matched_name": "Melons honeydew raw",
+            "data_type": "foundation_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 98.16780695846138,
+              "calories": 36,
+              "protein_g": 0.5215655583703053,
+              "carbs_g": 8.000676267114603,
+              "fat_g": 0.21233696645115196
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 2.826112145782169,
+              "calories": 1,
+              "protein_g": 0.022750202773546464,
+              "carbs_g": 0.25657424337912577,
+              "fat_g": 0.003885904200450483
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 357.3091780708025,
+          "calories": 126,
+          "protein_g": 7.666710676249532,
+          "carbs_g": 25.547316341155856,
+          "fat_g": 1.1979484917073973
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558724658",
+        "image_filename": "dish_1558724658.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558724658.png",
+        "total_mass_g": 364.0,
+        "total_calories": 138.360001,
+        "total_fat_g": 0.882,
+        "total_carbs_g": 30.880001,
+        "total_protein_g": 7.028,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 118.0,
+            "calories": 50.74
+          },
+          {
+            "name": "honeydew melons",
+            "mass_g": 152.0,
+            "calories": 54.72
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 94.0,
+            "calories": 32.9
+          }
+        ]
+      },
+      "accuracy": 91.81594728628674,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558724799",
+      "image_filename": "dish_1558724799.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558724799.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 180,
+            "calories": 93.6,
+            "fat_g": 0.4,
+            "carbs_g": 25.2,
+            "protein_g": 0.5
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 120,
+            "calories": 40.8,
+            "fat_g": 0.5,
+            "carbs_g": 7.9,
+            "protein_g": 3.4
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 100,
+            "calories": 25,
+            "fat_g": 0.3,
+            "carbs_g": 5,
+            "protein_g": 1.9
+          }
+        ],
+        "totals": {
+          "mass_g": 400,
+          "calories": 159.4,
+          "fat_g": 1.2,
+          "carbs_g": 38.1,
+          "protein_g": 5.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2979
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1105781,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 153.44262295081967,
+              "calories": 93.6,
+              "protein_g": 0.19947540983606557,
+              "carbs_g": 22.709508196721313,
+              "fat_g": 0.2301639344262295
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 167.76315789473685,
+              "calories": 40.8,
+              "protein_g": 3.2767500000000003,
+              "carbs_g": 8.019750000000002,
+              "fat_g": 0.43350000000000005
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 105.50170279748315,
+              "calories": 25,
+              "protein_g": 1.7308609360955085,
+              "carbs_g": 4.982950924827926,
+              "fat_g": 0.25056654414402246
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 426.7074836430397,
+          "calories": 159.39999999999998,
+          "protein_g": 5.207086345931574,
+          "carbs_g": 35.71220912154924,
+          "fat_g": 0.9142304785702521
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558724799",
+        "image_filename": "dish_1558724799.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558724799.png",
+        "total_mass_g": 352.0,
+        "total_calories": 142.669998,
+        "total_fat_g": 1.007,
+        "total_carbs_g": 34.330002,
+        "total_protein_g": 4.593,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 79.0,
+            "calories": 19.75
+          },
+          {
+            "name": "apple",
+            "mass_g": 161.0,
+            "calories": 83.72
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 112.0,
+            "calories": 39.2
+          }
+        ]
+      },
+      "accuracy": 83.64213429977997,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558725621",
+      "image_filename": "dish_1558725621.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558725621.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "almond",
+            "mass_g": 24,
+            "calories": 139.0,
+            "fat_g": 12.0,
+            "carbs_g": 5.18,
+            "protein_g": 5.09
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 110,
+            "calories": 27.5,
+            "fat_g": 0.31,
+            "carbs_g": 5.5,
+            "protein_g": 2.09
+          },
+          {
+            "name": "brussels sprout",
+            "mass_g": 100,
+            "calories": 43.0,
+            "fat_g": 0.3,
+            "carbs_g": 9.0,
+            "protein_g": 3.4
+          },
+          {
+            "name": "carrot",
+            "mass_g": 90,
+            "calories": 36.9,
+            "fat_g": 0.22,
+            "carbs_g": 8.64,
+            "protein_g": 0.84
+          }
+        ],
+        "totals": {
+          "mass_g": 324,
+          "calories": 246.4,
+          "fat_g": 12.83,
+          "carbs_g": 28.32,
+          "protein_g": 11.42
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3431
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "almond",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 23.00600804382727,
+              "calories": 139.0,
+              "protein_g": 4.934880749433124,
+              "carbs_g": 4.609161687548618,
+              "fat_g": 11.753769509591352
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 116.05187307723146,
+              "calories": 27.5,
+              "protein_g": 1.9039470297050594,
+              "carbs_g": 5.481246017310719,
+              "fat_g": 0.2756231985584247
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "brussels sprout",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 86.1464489632375,
+              "calories": 43.0,
+              "protein_g": 3.432419112491235,
+              "carbs_g": 8.283497946509065,
+              "fat_g": 0.48672743664229184
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 104.28353817936204,
+              "calories": 36.9,
+              "protein_g": 0.8394824823438645,
+              "carbs_g": 9.467589580689742,
+              "fat_g": 0.14338986499662282
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 329.48786826365824,
+          "calories": 246.4,
+          "protein_g": 11.110729373973284,
+          "carbs_g": 27.841495232058143,
+          "fat_g": 12.659510009788692
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558725621",
+        "image_filename": "dish_1558725621.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558725621.png",
+        "total_mass_g": 223.0,
+        "total_calories": 349.220032,
+        "total_fat_g": 25.268999,
+        "total_carbs_g": 23.760002,
+        "total_protein_g": 15.818001,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 94.0,
+            "calories": 40.42
+          },
+          {
+            "name": "almonds",
+            "mass_g": 50.0,
+            "calories": 289.05
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 79.0,
+            "calories": 19.75
+          }
+        ]
+      },
+      "accuracy": 65.80875024967352,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559060106",
+      "image_filename": "dish_1559060106.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559060106.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 16,
+            "calories": 86,
+            "fat_g": 6.6,
+            "carbs_g": 0,
+            "protein_g": 6
+          },
+          {
+            "name": "potato",
+            "mass_g": 140,
+            "calories": 122,
+            "fat_g": 0.1,
+            "carbs_g": 28.1,
+            "protein_g": 2.8
+          },
+          {
+            "name": "strawberry",
+            "mass_g": 110,
+            "calories": 35,
+            "fat_g": 0.3,
+            "carbs_g": 8.5,
+            "protein_g": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 266,
+          "calories": 243,
+          "fat_g": 7,
+          "carbs_g": 36.6,
+          "protein_g": 9.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3227
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "bacon",
+            "fdc_id": 749420,
+            "matched_name": "Pork cured bacon cooked restaurant",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 273.015873015873,
+              "calories": 86,
+              "protein_g": 7.034800000000001,
+              "carbs_g": 0.3612,
+              "fat_g": 6.2780000000000005
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2346402,
+            "matched_name": "Potatoes red without skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 161.46643284915461,
+              "calories": 122,
+              "protein_g": 3.3302451775138135,
+              "carbs_g": 26.270588624557455,
+              "fat_g": 0.39962942130165763
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "strawberry",
+            "fdc_id": 327699,
+            "matched_name": "Strawberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8,
+            "score": 2.0,
+            "nutrition": {
+              "mass_g": 112.90322580645163,
+              "calories": 35,
+              "protein_g": 0.7225806451612904,
+              "carbs_g": 8.614516129032259,
+              "fat_g": 0.24838709677419357
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 547.3855316714793,
+          "calories": 243,
+          "protein_g": 11.087625822675104,
+          "carbs_g": 35.24630475358971,
+          "fat_g": 6.926016518075851
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559060106",
+        "image_filename": "dish_1559060106.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559060106.png",
+        "total_mass_g": 195.0,
+        "total_calories": 206.369995,
+        "total_fat_g": 8.643,
+        "total_carbs_g": 23.68,
+        "total_protein_g": 8.907001,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 20.0,
+            "calories": 108.2
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 94.0,
+            "calories": 71.44
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 81.0,
+            "calories": 26.73
+          }
+        ]
+      },
+      "accuracy": 72.89785370436942,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559149719",
+      "image_filename": "dish_1559149719.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559149719.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 150,
+            "calories": 216,
+            "fat_g": 14.4,
+            "carbs_g": 1.2,
+            "protein_g": 18.9
+          },
+          {
+            "name": "bacon",
+            "mass_g": 24,
+            "calories": 129,
+            "fat_g": 9.9,
+            "carbs_g": 0.3,
+            "protein_g": 9
+          },
+          {
+            "name": "carrot",
+            "mass_g": 120,
+            "calories": 49,
+            "fat_g": 0.3,
+            "carbs_g": 11.5,
+            "protein_g": 1.1
+          }
+        ],
+        "totals": {
+          "mass_g": 294,
+          "calories": 394,
+          "fat_g": 24.6,
+          "carbs_g": 13,
+          "protein_g": 29
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2713
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 748236,
+            "matched_name": "Eggs Grade A Large egg yolk",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 380.41563930961604,
+              "calories": 216,
+              "protein_g": 10.476646706586825,
+              "carbs_g": 0.6596407185628742,
+              "fat_g": 18.6251497005988
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "bacon",
+            "fdc_id": 749420,
+            "matched_name": "Pork cured bacon cooked restaurant",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 409.5238095238095,
+              "calories": 129,
+              "protein_g": 10.5522,
+              "carbs_g": 0.5418,
+              "fat_g": 9.417
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 138.4794951433263,
+              "calories": 49,
+              "protein_g": 1.1147599359037768,
+              "carbs_g": 12.572137925577163,
+              "fat_g": 0.19040930582207366
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 928.4189439767518,
+          "calories": 394,
+          "protein_g": 22.143606642490603,
+          "carbs_g": 13.773578644140038,
+          "fat_g": 28.23255900642087
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559149719",
+        "image_filename": "dish_1559149719.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559149719.png",
+        "total_mass_g": 268.0,
+        "total_calories": 432.125,
+        "total_fat_g": 28.792999,
+        "total_carbs_g": 8.894,
+        "total_protein_g": 31.711,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 23.0,
+            "calories": 124.43
+          },
+          {
+            "name": "carrot",
+            "mass_g": 64.0,
+            "calories": 26.24
+          },
+          {
+            "name": "eggs",
+            "mass_g": 181.0,
+            "calories": 281.455
+          }
+        ]
+      },
+      "accuracy": 82.43964520520458,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559233144",
+      "image_filename": "dish_1559233144.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559233144.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 100,
+            "calories": 143,
+            "fat_g": 9.5,
+            "carbs_g": 1.1,
+            "protein_g": 12.6
+          },
+          {
+            "name": "bacon",
+            "mass_g": 30,
+            "calories": 162,
+            "fat_g": 12.6,
+            "carbs_g": 0.4,
+            "protein_g": 11.1
+          },
+          {
+            "name": "spinach",
+            "mass_g": 40,
+            "calories": 9,
+            "fat_g": 0.2,
+            "carbs_g": 1.4,
+            "protein_g": 1.2
+          },
+          {
+            "name": "carrot",
+            "mass_g": 10,
+            "calories": 4,
+            "fat_g": 0,
+            "carbs_g": 1,
+            "protein_g": 0.1
+          },
+          {
+            "name": "tomato",
+            "mass_g": 10,
+            "calories": 2,
+            "fat_g": 0,
+            "carbs_g": 0.4,
+            "protein_g": 0.1
+          }
+        ],
+        "totals": {
+          "mass_g": 190,
+          "calories": 320,
+          "fat_g": 22.3,
+          "carbs_g": 4.3,
+          "protein_g": 25.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3023
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 748236,
+            "matched_name": "Eggs Grade A Large egg yolk",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 251.84924269108842,
+              "calories": 143,
+              "protein_g": 6.935928143712575,
+              "carbs_g": 0.43670658682634733,
+              "fat_g": 12.33053892215569
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "bacon",
+            "fdc_id": 749420,
+            "matched_name": "Pork cured bacon cooked restaurant",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 514.2857142857143,
+              "calories": 162,
+              "protein_g": 13.251600000000002,
+              "carbs_g": 0.6804,
+              "fat_g": 11.826
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 38.320701694626585,
+              "calories": 9,
+              "protein_g": 1.0928680916290556,
+              "carbs_g": 0.9221110448777995,
+              "fat_g": 0.2371285020863493
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 11.304448583128677,
+              "calories": 4,
+              "protein_g": 0.09100081109418585,
+              "carbs_g": 1.026296973516503,
+              "fat_g": 0.015543616801801932
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 14.904240256352933,
+              "calories": 2,
+              "protein_g": 0.06147999105745584,
+              "carbs_g": 0.40815261942022507,
+              "fat_g": 0.04666517624264103
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 830.6643475109109,
+          "calories": 320,
+          "protein_g": 21.432877037493277,
+          "carbs_g": 3.473667224640875,
+          "fat_g": 24.455876217286484
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559233144",
+        "image_filename": "dish_1559233144.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559233144.png",
+        "total_mass_g": 198.0,
+        "total_calories": 398.063995,
+        "total_fat_g": 29.666,
+        "total_carbs_g": 3.722,
+        "total_protein_g": 27.729,
+        "foods": [
+          {
+            "name": "garden salad",
+            "mass_g": 39.0,
+            "calories": 25.194
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 124.0,
+            "calories": 183.52
+          },
+          {
+            "name": "bacon",
+            "mass_g": 35.0,
+            "calories": 189.35
+          }
+        ]
+      },
+      "accuracy": 85.30171492485847,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559238608",
+      "image_filename": "dish_1559238608.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559238608.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pear",
+            "mass_g": 178,
+            "calories": 101.46,
+            "fat_g": 0.25,
+            "carbs_g": 27.13,
+            "protein_g": 0.64
+          },
+          {
+            "name": "mandarin orange",
+            "mass_g": 74,
+            "calories": 39.22,
+            "fat_g": 0.23,
+            "carbs_g": 9.87,
+            "protein_g": 0.6
+          },
+          {
+            "name": "strawberry",
+            "mass_g": 70,
+            "calories": 22.4,
+            "fat_g": 0.21,
+            "carbs_g": 5.38,
+            "protein_g": 0.47
+          },
+          {
+            "name": "blueberry",
+            "mass_g": 10,
+            "calories": 5.7,
+            "fat_g": 0.03,
+            "carbs_g": 1.45,
+            "protein_g": 0.07
+          }
+        ],
+        "totals": {
+          "mass_g": 332,
+          "calories": 168.78,
+          "fat_g": 0.72,
+          "carbs_g": 43.83,
+          "protein_g": 1.78
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4262
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "pear",
+            "fdc_id": 746773,
+            "matched_name": "Pears raw bartlett",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 127.14285714285714,
+              "calories": 101.46,
+              "protein_g": 0.6764,
+              "carbs_g": 26.878,
+              "fat_g": 0.2848
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "mandarin orange",
+            "fdc_id": 746771,
+            "matched_name": "Oranges raw navels",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 50.57382333978079,
+              "calories": 39.22,
+              "protein_g": 0.7593659574468086,
+              "carbs_g": 9.846723404255318,
+              "fat_g": 0.12517021276595744
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "strawberry",
+            "fdc_id": 327699,
+            "matched_name": "Strawberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8,
+            "score": 2.0,
+            "nutrition": {
+              "mass_g": 72.25806451612902,
+              "calories": 22.4,
+              "protein_g": 0.4624516129032258,
+              "carbs_g": 5.513290322580644,
+              "fat_g": 0.15896774193548385
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "blueberry",
+            "fdc_id": 2263889,
+            "matched_name": "Blueberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.75,
+            "score": 1.5,
+            "nutrition": {
+              "mass_g": 8.92629231571513,
+              "calories": 5.7,
+              "protein_g": 0.06276076127179307,
+              "carbs_g": 1.3007214636613773,
+              "fat_g": 0.027341233363035445
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 258.9010373144821,
+          "calories": 168.78,
+          "protein_g": 1.9609783316218272,
+          "carbs_g": 43.538735190497334,
+          "fat_g": 0.5962791880644767
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559238608",
+        "image_filename": "dish_1559238608.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559238608.png",
+        "total_mass_g": 438.0,
+        "total_calories": 237.364014,
+        "total_fat_g": 0.656,
+        "total_carbs_g": 61.203999,
+        "total_protein_g": 2.714,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 109.0,
+            "calories": 62.13
+          },
+          {
+            "name": "orange",
+            "mass_g": 127.0,
+            "calories": 59.69
+          },
+          {
+            "name": "pears",
+            "mass_g": 202.0,
+            "calories": 115.544
+          }
+        ]
+      },
+      "accuracy": 74.86955689521345,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559239369",
+      "image_filename": "dish_1559239369.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559239369.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 45,
+            "calories": 10.35,
+            "fat_g": 0.18,
+            "carbs_g": 1.62,
+            "protein_g": 1.31
+          },
+          {
+            "name": "carrot",
+            "mass_g": 5,
+            "calories": 2.05,
+            "fat_g": 0.01,
+            "carbs_g": 0.48,
+            "protein_g": 0.05
+          },
+          {
+            "name": "tomato",
+            "mass_g": 15,
+            "calories": 2.7,
+            "fat_g": 0.03,
+            "carbs_g": 0.59,
+            "protein_g": 0.14
+          },
+          {
+            "name": "strawberry",
+            "mass_g": 60,
+            "calories": 19.2,
+            "fat_g": 0.18,
+            "carbs_g": 4.62,
+            "protein_g": 0.42
+          },
+          {
+            "name": "blueberry",
+            "mass_g": 11,
+            "calories": 6.27,
+            "fat_g": 0.03,
+            "carbs_g": 1.6,
+            "protein_g": 0.08
+          },
+          {
+            "name": "clementine",
+            "mass_g": 80,
+            "calories": 42.4,
+            "fat_g": 0.24,
+            "carbs_g": 10.64,
+            "protein_g": 0.64
+          }
+        ],
+        "totals": {
+          "mass_g": 216,
+          "calories": 82.97,
+          "fat_g": 0.67,
+          "carbs_g": 19.55,
+          "protein_g": 2.64
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5217
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 44.06880694882057,
+              "calories": 10.35,
+              "protein_g": 1.256798305373414,
+              "carbs_g": 1.0604277016094694,
+              "fat_g": 0.2726977773993017
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 5.793529898853446,
+              "calories": 2.05,
+              "protein_g": 0.04663791568577025,
+              "carbs_g": 0.5259771989272078,
+              "fat_g": 0.00796610361092349
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 20.12072434607646,
+              "calories": 2.7,
+              "protein_g": 0.0829979879275654,
+              "carbs_g": 0.5510060362173039,
+              "fat_g": 0.06299798792756539
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "strawberry",
+            "fdc_id": 327699,
+            "matched_name": "Strawberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8,
+            "score": 2.0,
+            "nutrition": {
+              "mass_g": 61.935483870967744,
+              "calories": 19.2,
+              "protein_g": 0.3963870967741936,
+              "carbs_g": 4.725677419354839,
+              "fat_g": 0.13625806451612904
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "blueberry",
+            "fdc_id": 2263889,
+            "matched_name": "Blueberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.75,
+            "score": 1.5,
+            "nutrition": {
+              "mass_g": 9.818921547286642,
+              "calories": 6.27,
+              "protein_g": 0.06903683739897237,
+              "carbs_g": 1.430793610027515,
+              "fat_g": 0.030075356699338987
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "clementine",
+            "fdc_id": 168195,
+            "matched_name": "Clementines raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 121.90914318573893,
+              "calories": 42.4,
+              "protein_g": 0.7668085106382979,
+              "carbs_g": 10.843574468085107,
+              "fat_g": 0.13531914893617022
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 263.6466097977438,
+          "calories": 82.97,
+          "protein_g": 2.6186666537982135,
+          "carbs_g": 19.13745643422144,
+          "fat_g": 0.6453144390894289
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559239369",
+        "image_filename": "dish_1559239369.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559239369.png",
+        "total_mass_g": 276.0,
+        "total_calories": 130.919998,
+        "total_fat_g": 0.612,
+        "total_carbs_g": 31.919998,
+        "total_protein_g": 3.068,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 108.0,
+            "calories": 61.56
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 40.0,
+            "calories": 9.2
+          },
+          {
+            "name": "orange",
+            "mass_g": 128.0,
+            "calories": 60.16
+          }
+        ]
+      },
+      "accuracy": 75.89094818571562,
+      "error": null
+    }
+  ]
+}

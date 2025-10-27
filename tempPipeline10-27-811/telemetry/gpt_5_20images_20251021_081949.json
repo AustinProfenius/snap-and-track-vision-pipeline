@@ -1,0 +1,1072 @@
+{
+  "timestamp": "20251021_081949",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 20,
+  "successful": 0,
+  "failed": 20,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1563205982",
+      "image_filename": "dish_1563205982.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563205982.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563205982",
+        "image_filename": "dish_1563205982.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563205982.png",
+        "total_mass_g": 469.0,
+        "total_calories": 316.239502,
+        "total_fat_g": 4.363,
+        "total_carbs_g": 54.792,
+        "total_protein_g": 16.148998,
+        "foods": [
+          {
+            "name": "egg whites",
+            "mass_g": 87.0,
+            "calories": 45.24
+          },
+          {
+            "name": "yam",
+            "mass_g": 29.5,
+            "calories": 36.6095
+          },
+          {
+            "name": "berries",
+            "mass_g": 171.0,
+            "calories": 97.47
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 35.0,
+            "calories": 56.0
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 29.5,
+            "calories": 22.42
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 117.0,
+            "calories": 58.5
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563207364",
+      "image_filename": "dish_1563207364.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563207364.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563207364",
+        "image_filename": "dish_1563207364.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563207364.png",
+        "total_mass_g": 271.0,
+        "total_calories": 309.269989,
+        "total_fat_g": 13.774,
+        "total_carbs_g": 30.657,
+        "total_protein_g": 15.01,
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "mass_g": 68.0,
+            "calories": 100.64
+          },
+          {
+            "name": "yam",
+            "mass_g": 50.0,
+            "calories": 62.05
+          },
+          {
+            "name": "grapes",
+            "mass_g": 30.0,
+            "calories": 20.7
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 67.0,
+            "calories": 34.84
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 6.0,
+            "calories": 53.04
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 50.0,
+            "calories": 38.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563295400",
+      "image_filename": "dish_1563295400.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563295400.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563295400",
+        "image_filename": "dish_1563295400.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563295400.png",
+        "total_mass_g": 269.0,
+        "total_calories": 402.984802,
+        "total_fat_g": 24.84903,
+        "total_carbs_g": 26.972351,
+        "total_protein_g": 18.609489,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 82.926834,
+            "calories": 29.0243919
+          },
+          {
+            "name": "yam",
+            "mass_g": 41.509434,
+            "calories": 51.513207594
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 41.509434,
+            "calories": 31.54716984
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 74.0,
+            "calories": 109.52
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 7.054303,
+            "calories": 62.36003852
+          },
+          {
+            "name": "bacon",
+            "mass_g": 22.0,
+            "calories": 119.02
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563389626",
+      "image_filename": "dish_1563389626.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563389626.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563389626",
+        "image_filename": "dish_1563389626.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563389626.png",
+        "total_mass_g": 360.0,
+        "total_calories": 498.620026,
+        "total_fat_g": 30.181793,
+        "total_carbs_g": 12.393457,
+        "total_protein_g": 45.326939,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.354898,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.05915,
+            "calories": 0.02366
+          },
+          {
+            "name": "grilled chicken",
+            "mass_g": 194.0,
+            "calories": 438.828
+          },
+          {
+            "name": "carrot",
+            "mass_g": 94.639557,
+            "calories": 38.80221837
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.946396,
+            "calories": 8.36614064
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 70.0,
+            "calories": 12.6
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563389786",
+      "image_filename": "dish_1563389786.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563389786.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563389786",
+        "image_filename": "dish_1563389786.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563389786.png",
+        "total_mass_g": 564.0,
+        "total_calories": 640.137939,
+        "total_fat_g": 37.556004,
+        "total_carbs_g": 30.394001,
+        "total_protein_g": 48.338997,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 70.0,
+            "calories": 12.6
+          },
+          {
+            "name": "carrot",
+            "mass_g": 119.0,
+            "calories": 48.79
+          },
+          {
+            "name": "grilled chicken",
+            "mass_g": 194.0,
+            "calories": 438.828
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 99.0,
+            "calories": 39.6
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 8.0,
+            "calories": 70.72
+          },
+          {
+            "name": "onions",
+            "mass_g": 74.0,
+            "calories": 29.6
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563393244",
+      "image_filename": "dish_1563393244.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563393244.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563393244",
+        "image_filename": "dish_1563393244.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563393244.png",
+        "total_mass_g": 280.0,
+        "total_calories": 57.550003,
+        "total_fat_g": 0.519667,
+        "total_carbs_g": 11.570667,
+        "total_protein_g": 3.229667,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 39.333336,
+            "calories": 13.7666676
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 75.0,
+            "calories": 7.5
+          },
+          {
+            "name": "onions",
+            "mass_g": 35.0,
+            "calories": 14.0
+          },
+          {
+            "name": "squash",
+            "mass_g": 39.333336,
+            "calories": 8.06333388
+          },
+          {
+            "name": "radishes",
+            "mass_g": 52.0,
+            "calories": 8.32
+          },
+          {
+            "name": "zucchini",
+            "mass_g": 39.333336,
+            "calories": 5.9000004
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563553756",
+      "image_filename": "dish_1563553756.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563553756.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563553756",
+        "image_filename": "dish_1563553756.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563553756.png",
+        "total_mass_g": 124.0,
+        "total_calories": 309.145813,
+        "total_fat_g": 21.251612,
+        "total_carbs_g": 14.047483,
+        "total_protein_g": 16.136,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 56.774193,
+            "calories": 15.89677404
+          },
+          {
+            "name": "granola",
+            "mass_g": 14.193548,
+            "calories": 66.610320764
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 5.677419,
+            "calories": 2.44129017
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 5.677419,
+            "calories": 26.428385445
+          },
+          {
+            "name": "bacon",
+            "mass_g": 36.0,
+            "calories": 194.76
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 5.677419,
+            "calories": 3.00903207
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563563378",
+      "image_filename": "dish_1563563378.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563563378.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563563378",
+        "image_filename": "dish_1563563378.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563563378.png",
+        "total_mass_g": 351.0,
+        "total_calories": 385.441956,
+        "total_fat_g": 22.842001,
+        "total_carbs_g": 17.222,
+        "total_protein_g": 29.950001,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 34.0,
+            "calories": 13.94
+          },
+          {
+            "name": "grilled chicken",
+            "mass_g": 121.0,
+            "calories": 273.702
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 42.0,
+            "calories": 16.8
+          },
+          {
+            "name": "onions",
+            "mass_g": 57.0,
+            "calories": 22.8
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 55.0,
+            "calories": 9.9
+          },
+          {
+            "name": "olives",
+            "mass_g": 42.0,
+            "calories": 48.3
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563811515",
+      "image_filename": "dish_1563811515.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563811515.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563811515",
+        "image_filename": "dish_1563811515.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563811515.png",
+        "total_mass_g": 491.0,
+        "total_calories": 298.119385,
+        "total_fat_g": 6.723951,
+        "total_carbs_g": 29.81105,
+        "total_protein_g": 27.34178,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 2.121951,
+            "calories": 18.75804684
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 217.0,
+            "calories": 112.84
+          },
+          {
+            "name": "sausage",
+            "mass_g": 14.0,
+            "calories": 48.244
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 84.878052,
+            "calories": 64.50731952
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 72.0,
+            "calories": 24.48
+          },
+          {
+            "name": "salsa",
+            "mass_g": 101.0,
+            "calories": 29.29
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563811662",
+      "image_filename": "dish_1563811662.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563811662.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563811662",
+        "image_filename": "dish_1563811662.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563811662.png",
+        "total_mass_g": 254.0,
+        "total_calories": 245.733765,
+        "total_fat_g": 15.434496,
+        "total_carbs_g": 12.357816,
+        "total_protein_g": 15.536933,
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "mass_g": 132.0,
+            "calories": 195.36
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 55.104553,
+            "calories": 23.69495779
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.551045,
+            "calories": 4.8712378
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.068881,
+            "calories": 0.0275524
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.275523,
+            "calories": 0.0
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 66.0,
+            "calories": 21.78
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563824406",
+      "image_filename": "dish_1563824406.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563824406.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563824406",
+        "image_filename": "dish_1563824406.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563824406.png",
+        "total_mass_g": 387.0,
+        "total_calories": 474.136047,
+        "total_fat_g": 28.472,
+        "total_carbs_g": 17.138,
+        "total_protein_g": 39.376999,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 53.0,
+            "calories": 9.54
+          },
+          {
+            "name": "carrot",
+            "mass_g": 49.0,
+            "calories": 20.09
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 43.0,
+            "calories": 17.2
+          },
+          {
+            "name": "olives",
+            "mass_g": 36.0,
+            "calories": 41.4
+          },
+          {
+            "name": "grilled chicken",
+            "mass_g": 163.0,
+            "calories": 368.706
+          },
+          {
+            "name": "onions",
+            "mass_g": 43.0,
+            "calories": 17.2
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563827132",
+      "image_filename": "dish_1563827132.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563827132.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563827132",
+        "image_filename": "dish_1563827132.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563827132.png",
+        "total_mass_g": 302.0,
+        "total_calories": 240.020004,
+        "total_fat_g": 8.043666,
+        "total_carbs_g": 32.756668,
+        "total_protein_g": 11.456667,
+        "foods": [
+          {
+            "name": "cheese pizza",
+            "mass_g": 55.0,
+            "calories": 146.245
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 28.333334,
+            "calories": 9.9166669
+          },
+          {
+            "name": "squash",
+            "mass_g": 28.333334,
+            "calories": 5.80833347
+          },
+          {
+            "name": "caesar salad",
+            "mass_g": 120.0,
+            "calories": 52.8
+          },
+          {
+            "name": "zucchini",
+            "mass_g": 28.333334,
+            "calories": 4.2500001
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 42.0,
+            "calories": 21.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563897492",
+      "image_filename": "dish_1563897492.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563897492.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563897492",
+        "image_filename": "dish_1563897492.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563897492.png",
+        "total_mass_g": 662.0,
+        "total_calories": 339.673645,
+        "total_fat_g": 3.469512,
+        "total_carbs_g": 34.759487,
+        "total_protein_g": 38.647804,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 88.0,
+            "calories": 29.92
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 54.0,
+            "calories": 18.9
+          },
+          {
+            "name": "salsa",
+            "mass_g": 84.0,
+            "calories": 24.36
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 345.0,
+            "calories": 179.4
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.219512,
+            "calories": 19.62048608
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 88.780487,
+            "calories": 67.47317012
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1563984296",
+      "image_filename": "dish_1563984296.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563984296.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563984296",
+        "image_filename": "dish_1563984296.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563984296.png",
+        "total_mass_g": 871.0,
+        "total_calories": 436.337067,
+        "total_fat_g": 3.53839,
+        "total_carbs_g": 44.607613,
+        "total_protein_g": 51.177761,
+        "foods": [
+          {
+            "name": "egg whites",
+            "mass_g": 472.0,
+            "calories": 245.44
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.02439,
+            "calories": 17.8956076
+          },
+          {
+            "name": "salsa",
+            "mass_g": 118.0,
+            "calories": 34.22
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 136.0,
+            "calories": 46.24
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 80.975609,
+            "calories": 61.54146284
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 62.0,
+            "calories": 31.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1564590254",
+      "image_filename": "dish_1564590254.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564590254.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564590254",
+        "image_filename": "dish_1564590254.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564590254.png",
+        "total_mass_g": 432.0,
+        "total_calories": 248.535843,
+        "total_fat_g": 3.610219,
+        "total_carbs_g": 54.172783,
+        "total_protein_g": 3.239488,
+        "foods": [
+          {
+            "name": "pineapple",
+            "mass_g": 56.0,
+            "calories": 28.0
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 84.0,
+            "calories": 25.2
+          },
+          {
+            "name": "berries",
+            "mass_g": 93.0,
+            "calories": 53.01
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 78.0,
+            "calories": 26.52
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 118.048782,
+            "calories": 89.71707432
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.951219,
+            "calories": 26.08877596
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1564601569",
+      "image_filename": "dish_1564601569.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564601569.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564601569",
+        "image_filename": "dish_1564601569.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564601569.png",
+        "total_mass_g": 291.0,
+        "total_calories": 208.098145,
+        "total_fat_g": 7.830707,
+        "total_carbs_g": 31.273438,
+        "total_protein_g": 6.68656,
+        "foods": [
+          {
+            "name": "turnips",
+            "mass_g": 73.0,
+            "calories": 15.841
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 90.0,
+            "calories": 126.9
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 125.953262,
+            "calories": 54.15990266
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.629766,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.157442,
+            "calories": 0.0629768
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.259533,
+            "calories": 11.13427172
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1564675240",
+      "image_filename": "dish_1564675240.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564675240.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564675240",
+        "image_filename": "dish_1564675240.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564675240.png",
+        "total_mass_g": 886.0,
+        "total_calories": 502.878784,
+        "total_fat_g": 5.376829,
+        "total_carbs_g": 51.516174,
+        "total_protein_g": 55.499733,
+        "foods": [
+          {
+            "name": "watermelon",
+            "mass_g": 77.0,
+            "calories": 23.1
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 3.926829,
+            "calories": 34.71316836
+          },
+          {
+            "name": "grapes",
+            "mass_g": 46.0,
+            "calories": 31.74
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 519.0,
+            "calories": 269.88
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 157.073181,
+            "calories": 119.37561756
+          },
+          {
+            "name": "salsa",
+            "mass_g": 83.0,
+            "calories": 24.07
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1565023157",
+      "image_filename": "dish_1565023157.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565023157.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1565023157",
+        "image_filename": "dish_1565023157.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565023157.png",
+        "total_mass_g": 260.0,
+        "total_calories": 379.034851,
+        "total_fat_g": 27.309677,
+        "total_carbs_g": 8.572904,
+        "total_protein_g": 23.824001,
+        "foods": [
+          {
+            "name": "raspberries",
+            "mass_g": 2.064516,
+            "calories": 1.09419348
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 2.064516,
+            "calories": 9.61032198
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 20.645161,
+            "calories": 5.78064508
+          },
+          {
+            "name": "granola",
+            "mass_g": 5.16129,
+            "calories": 24.22193397
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 2.064516,
+            "calories": 0.88774188
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 228.0,
+            "calories": 337.44
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1565033265",
+      "image_filename": "dish_1565033265.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565033265.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1565033265",
+        "image_filename": "dish_1565033265.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565033265.png",
+        "total_mass_g": 625.0,
+        "total_calories": 1324.084961,
+        "total_fat_g": 106.343002,
+        "total_carbs_g": 19.202002,
+        "total_protein_g": 76.664001,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 127.0,
+            "calories": 146.05
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 55.0,
+            "calories": 15.4
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 92.0,
+            "calories": 32.2
+          },
+          {
+            "name": "chicken",
+            "mass_g": 233.0,
+            "calories": 384.45
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 71.0,
+            "calories": 330.505
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 47.0,
+            "calories": 415.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1565035858",
+      "image_filename": "dish_1565035858.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565035858.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1565035858",
+        "image_filename": "dish_1565035858.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565035858.png",
+        "total_mass_g": 531.0,
+        "total_calories": 375.227997,
+        "total_fat_g": 6.709,
+        "total_carbs_g": 23.677,
+        "total_protein_g": 55.419998,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 65.0,
+            "calories": 11.7
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 164.0,
+            "calories": 270.928
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 117.0,
+            "calories": 35.1
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 36.0,
+            "calories": 14.4
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 110.0,
+            "calories": 27.5
+          },
+          {
+            "name": "onions",
+            "mass_g": 39.0,
+            "calories": 15.6
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    }
+  ]
+}

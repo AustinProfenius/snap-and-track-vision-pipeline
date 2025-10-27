@@ -1,0 +1,32 @@
+# Feature Flags for FDC Alignment Engine
+# Controls which stages and behaviors are enabled
+
+# Core alignment flags
+prefer_raw_foundation_convert: true
+  # When true: Block Stage 1 (cooked exact) if raw Foundation exists
+  # This prioritizes Stage 2 (raw + conversion) over Stage 1
+  # Increases Stage 2 usage from ~30% to target ≥60%
+
+enable_proxy_alignment: true
+  # When true: Enable Stage 5 (proxy alignment)
+  # Handles classes without Foundation entries (e.g., mixed salad greens)
+  # Uses vetted proxies from proxy_alignment_rules.json
+
+stageZ_branded_fallback: true
+  # When true: Enable Stage-Z (energy-only last resort)
+  # Only for whitelisted categories (meats, grains, eggs)
+  # NEVER for fruits/nuts/vegetables (hard blocked)
+
+# Conversion behavior
+vision_mass_only: true
+  # When true: Trust vision model mass estimates
+  # When false: Apply additional heuristics/corrections
+
+strict_cooked_exact_gate: true
+  # When true: Apply strict sodium/macro gates for Stage 1/3
+  # Prevents branded entries with implausible sodium/sugar
+
+# Debug flags
+ALIGN_VERBOSE: false
+  # Set via environment variable: export ALIGN_VERBOSE=1
+  # Enables detailed logging for all stage decisions

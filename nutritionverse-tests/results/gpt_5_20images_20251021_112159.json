@@ -1,0 +1,4897 @@
+{
+  "timestamp": "20251021_112159",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 20,
+  "successful": 20,
+  "failed": 0,
+  "average_accuracy": 62.51074802883071,
+  "results": [
+    {
+      "dish_id": "dish_1565033265",
+      "image_filename": "dish_1565033265.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565033265.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 100,
+            "calories": 165,
+            "fat_g": 3.6,
+            "carbs_g": 0,
+            "protein_g": 31.0,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.7
+          },
+          {
+            "name": "kidney beans",
+            "mass_g": 150,
+            "calories": 191,
+            "fat_g": 0.8,
+            "carbs_g": 34.2,
+            "protein_g": 13.1,
+            "form": "cooked",
+            "kcal_per_100g_est": 127,
+            "confidence": 0.8
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 100,
+            "calories": 34,
+            "fat_g": 0.4,
+            "carbs_g": 7.0,
+            "protein_g": 2.8,
+            "form": "raw",
+            "kcal_per_100g_est": 34,
+            "confidence": 0.9,
+            "_atwater_deviation_pct": 25.882352941176485
+          },
+          {
+            "name": "lettuce",
+            "mass_g": 60,
+            "calories": 9,
+            "fat_g": 0.1,
+            "carbs_g": 1.7,
+            "protein_g": 0.8,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.8,
+            "_atwater_deviation_pct": 21.111111111111114
+          },
+          {
+            "name": "salad dressing",
+            "mass_g": 30,
+            "calories": 129,
+            "fat_g": 14.0,
+            "carbs_g": 1.0,
+            "protein_g": 0.0,
+            "kcal_per_100g_est": 430,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 440,
+          "calories": 528,
+          "protein_g": 47.7,
+          "carbs_g": 43.900000000000006,
+          "fat_g": 18.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6727
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.6,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 77.03081232492998,
+              "calories": 165,
+              "protein_g": 10.705357142857146,
+              "carbs_g": 11.49761904761905,
+              "fat_g": 8.439880952380953
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "kidney beans",
+            "fdc_id": 540706,
+            "matched_name": "KIDNEY BEANS",
+            "data_type": "branded",
+            "confidence": 0.20000000000000007,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 146.92307692307693,
+              "calories": 191,
+              "protein_g": 14.6879,
+              "carbs_g": 23.5121,
+              "fat_g": 0.7258
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": false,
+              "atwater_deviation_pct": 0.1987532965715656
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 106.25,
+              "calories": 34,
+              "protein_g": 2.7306250000000003,
+              "carbs_g": 6.683125000000001,
+              "fat_g": 0.36125
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346388,
+            "matched_name": "Lettuce iceberg raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 52.60266286368896,
+              "calories": 9,
+              "protein_g": 0.39057477176289057,
+              "carbs_g": 1.7720785065519538,
+              "fat_g": 0.03882076519340246
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "salad dressing",
+            "fdc_id": 169056,
+            "matched_name": "Salad dressing coleslaw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 31.930693069306926,
+              "calories": 129,
+              "protein_g": 0.2714108910891089,
+              "carbs_g": 7.152475247524752,
+              "fat_g": 11.025668316831682
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 414.73724518100283,
+          "calories": 528,
+          "protein_g": 28.78586780570914,
+          "carbs_g": 50.61739780169576,
+          "fat_g": 20.59142003440604
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565033265",
+        "image_filename": "dish_1565033265.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565033265.png",
+        "total_mass_g": 625.0,
+        "total_calories": 1324.084961,
+        "total_fat_g": 106.343002,
+        "total_carbs_g": 19.202002,
+        "total_protein_g": 76.664001,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 127.0,
+            "calories": 146.05
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 55.0,
+            "calories": 15.4
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 92.0,
+            "calories": 32.2
+          },
+          {
+            "name": "chicken",
+            "mass_g": 233.0,
+            "calories": 384.45
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 71.0,
+            "calories": 330.505
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 47.0,
+            "calories": 415.48
+          }
+        ]
+      },
+      "accuracy": 32.32936675242752,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565035858",
+      "image_filename": "dish_1565035858.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565035858.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 140,
+            "calories": 231,
+            "fat_g": 5.04,
+            "carbs_g": 0,
+            "protein_g": 43.4,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.86
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 90,
+            "calories": 20.7,
+            "fat_g": 0.18,
+            "carbs_g": 3.33,
+            "protein_g": 1.44,
+            "form": "cooked",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.8
+          },
+          {
+            "name": "grape tomatoes",
+            "mass_g": 90,
+            "calories": 16.2,
+            "fat_g": 0.18,
+            "carbs_g": 3.24,
+            "protein_g": 0.72,
+            "form": "raw",
+            "count": 9,
+            "kcal_per_100g_est": 18,
+            "confidence": 0.78
+          },
+          {
+            "name": "green bell pepper",
+            "mass_g": 50,
+            "calories": 10,
+            "fat_g": 0.05,
+            "carbs_g": 2.05,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 20,
+            "confidence": 0.75
+          },
+          {
+            "name": "red onion",
+            "mass_g": 20,
+            "calories": 8,
+            "fat_g": 0.02,
+            "carbs_g": 1.86,
+            "protein_g": 0.22,
+            "form": "raw",
+            "kcal_per_100g_est": 40,
+            "confidence": 0.72
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 120,
+            "calories": 36,
+            "fat_g": 0.12,
+            "carbs_g": 8.16,
+            "protein_g": 0.72,
+            "form": "raw",
+            "kcal_per_100g_est": 30,
+            "confidence": 0.83
+          }
+        ],
+        "totals": {
+          "mass_g": 510,
+          "calories": 321.9,
+          "protein_g": 46.9,
+          "carbs_g": 18.64,
+          "fat_g": 5.59
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 8307
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.76,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 107.84313725490198,
+              "calories": 231,
+              "protein_g": 14.987500000000002,
+              "carbs_g": 16.096666666666668,
+              "fat_g": 11.815833333333336
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 169391,
+            "matched_name": "Cauliflower green cooked with salt",
+            "data_type": "sr_legacy",
+            "confidence": 0.7000000000000001,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 104.33467741935483,
+              "calories": 20.7,
+              "protein_g": 1.9664999999999997,
+              "carbs_g": 4.062374999999999,
+              "fat_g": 0.20053125
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "steamed",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": false,
+              "atwater_deviation_pct": 0.20139755428001008
+            }
+          },
+          {
+            "predicted_name": "grape tomatoes",
+            "fdc_id": 333281,
+            "matched_name": "Tomatoes canned red ripe diced",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 76.63197729422895,
+              "calories": 16.2,
+              "protein_g": 0.6437086092715232,
+              "carbs_g": 2.5441816461684015,
+              "fat_g": 0.38315988647114474
+            },
+            "provenance": {
+              "energy_source": "corrected_inconsistent_energy",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio",
+              "db_kcal": 18.0,
+              "atwater_kcal": 21.14,
+              "difference_pct": 17.44444444444445
+            }
+          },
+          {
+            "predicted_name": "red onion",
+            "fdc_id": 790577,
+            "matched_name": "Onions red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 18.181818181818183,
+              "calories": 8,
+              "protein_g": 0.17090909090909087,
+              "carbs_g": 1.8054545454545454,
+              "fat_g": 0.01818181818181818
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "watermelon",
+            "fdc_id": 167765,
+            "matched_name": "Watermelon raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 120.0,
+              "calories": 36,
+              "protein_g": 0.732,
+              "carbs_g": 9.06,
+              "fat_g": 0.18
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 426.9916101503039,
+          "calories": 311.9,
+          "protein_g": 18.500617700180616,
+          "carbs_g": 33.56867785828961,
+          "fat_g": 12.597706287986297
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565035858",
+        "image_filename": "dish_1565035858.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565035858.png",
+        "total_mass_g": 531.0,
+        "total_calories": 375.227997,
+        "total_fat_g": 6.709,
+        "total_carbs_g": 23.677,
+        "total_protein_g": 55.419998,
+        "foods": [
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 65.0,
+            "calories": 11.7
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 164.0,
+            "calories": 270.928
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 117.0,
+            "calories": 35.1
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 36.0,
+            "calories": 14.4
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 110.0,
+            "calories": 27.5
+          },
+          {
+            "name": "onions",
+            "mass_g": 39.0,
+            "calories": 15.6
+          }
+        ]
+      },
+      "accuracy": 85.70132665716355,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565107171",
+      "image_filename": "dish_1565107171.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565107171.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 80,
+            "calories": 121.12,
+            "fat_g": 7.6,
+            "carbs_g": 0.9,
+            "protein_g": 10.1,
+            "form": "cooked",
+            "kcal_per_100g_est": 151.4,
+            "confidence": 0.7,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          },
+          {
+            "name": "egg white",
+            "mass_g": 132,
+            "calories": 69,
+            "fat_g": 0.3,
+            "carbs_g": 0.9,
+            "protein_g": 14.4,
+            "form": "cooked",
+            "kcal_per_100g_est": 52,
+            "confidence": 0.7
+          },
+          {
+            "name": "grapes",
+            "mass_g": 80,
+            "calories": 55,
+            "fat_g": 0.2,
+            "carbs_g": 14.5,
+            "protein_g": 0.6,
+            "form": "raw",
+            "count": 16,
+            "kcal_per_100g_est": 69,
+            "confidence": 0.9
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 100,
+            "calories": 30,
+            "fat_g": 0.2,
+            "carbs_g": 7.6,
+            "protein_g": 0.6,
+            "form": "raw",
+            "count": 7,
+            "kcal_per_100g_est": 30,
+            "confidence": 0.9,
+            "_atwater_deviation_pct": 15.333333333333316
+          },
+          {
+            "name": "plantain",
+            "mass_g": 60,
+            "calories": 141,
+            "fat_g": 4.3,
+            "carbs_g": 24.8,
+            "protein_g": 0.8,
+            "form": "fried",
+            "count": 12,
+            "kcal_per_100g_est": 235,
+            "confidence": 0.55
+          }
+        ],
+        "totals": {
+          "mass_g": 452,
+          "calories": 416.12,
+          "protein_g": 26.5,
+          "carbs_g": 48.7,
+          "fat_g": 12.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7649
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 2677671,
+            "matched_name": "EGG",
+            "data_type": "branded",
+            "confidence": 0.09999999999999992,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 76.17610062893083,
+              "calories": 121.12,
+              "protein_g": 8.65360503144654,
+              "carbs_g": 1.7291974842767297,
+              "fat_g": 8.65360503144654
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.014289359530492532
+            }
+          },
+          {
+            "predicted_name": "egg white",
+            "fdc_id": 747997,
+            "matched_name": "Eggs Grade A Large egg white",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 125.45454545454547,
+              "calories": 69,
+              "protein_g": 13.423636363636366,
+              "carbs_g": 2.9607272727272735,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "grapes",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 64.0137804210943,
+              "calories": 55,
+              "protein_g": 0.5853420081704862,
+              "carbs_g": 12.928735204087571,
+              "fat_g": 0.10485457232975245
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "watermelon",
+            "fdc_id": 167765,
+            "matched_name": "Watermelon raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 100.0,
+              "calories": 30,
+              "protein_g": 0.61,
+              "carbs_g": 7.550000000000001,
+              "fat_g": 0.15
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "plantain",
+            "fdc_id": 380415,
+            "matched_name": "PLANTAIN CHIPS",
+            "data_type": "branded",
+            "confidence": 0.05,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 82.89241622574957,
+              "calories": 141,
+              "protein_g": 0.0,
+              "carbs_g": 16.57931216931217,
+              "fat_g": 6.6322222222222225
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "fried",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.11898324485405846
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 448.53684273032013,
+          "calories": 416.12,
+          "protein_g": 23.272583403253392,
+          "carbs_g": 41.747972130403745,
+          "fat_g": 15.540681825998515
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565107171",
+        "image_filename": "dish_1565107171.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565107171.png",
+        "total_mass_g": 724.0,
+        "total_calories": 501.884644,
+        "total_fat_g": 13.378048,
+        "total_carbs_g": 44.091949,
+        "total_protein_g": 46.59222,
+        "foods": [
+          {
+            "name": "sweet potato",
+            "mass_g": 115.121956,
+            "calories": 87.49268656
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 86.0,
+            "calories": 127.28
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.878049,
+            "calories": 25.44195316
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 358.0,
+            "calories": 186.16
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 93.0,
+            "calories": 27.9
+          },
+          {
+            "name": "grapes",
+            "mass_g": 69.0,
+            "calories": 47.61
+          }
+        ]
+      },
+      "accuracy": 77.19040225952146,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565118067",
+      "image_filename": "dish_1565118067.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565118067.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pizza crust",
+            "mass_g": 70,
+            "calories": 189,
+            "fat_g": 2.8,
+            "carbs_g": 36.4,
+            "protein_g": 6.3,
+            "form": "baked",
+            "kcal_per_100g_est": 270,
+            "confidence": 0.7
+          },
+          {
+            "name": "mozzarella cheese",
+            "mass_g": 30,
+            "calories": 85.5,
+            "fat_g": 5.7,
+            "carbs_g": 0.9,
+            "protein_g": 7.5,
+            "form": "cooked",
+            "kcal_per_100g_est": 285,
+            "confidence": 0.7
+          },
+          {
+            "name": "tomato sauce",
+            "mass_g": 10,
+            "calories": 4,
+            "fat_g": 0.1,
+            "carbs_g": 0.7,
+            "protein_g": 0.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 40,
+            "confidence": 0.65
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 150,
+            "calories": 248,
+            "fat_g": 6,
+            "carbs_g": 0,
+            "protein_g": 46.5,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.75
+          },
+          {
+            "name": "carrot",
+            "mass_g": 90,
+            "calories": 36.9,
+            "fat_g": 0.2,
+            "carbs_g": 9,
+            "protein_g": 0.8,
+            "form": "raw",
+            "kcal_per_100g_est": 41,
+            "confidence": 0.85
+          },
+          {
+            "name": "red bell pepper",
+            "mass_g": 50,
+            "calories": 15.5,
+            "fat_g": 0.2,
+            "carbs_g": 3,
+            "protein_g": 0.5,
+            "form": "raw",
+            "kcal_per_100g_est": 31,
+            "confidence": 0.7
+          },
+          {
+            "name": "green bell pepper",
+            "mass_g": 60,
+            "calories": 14.4,
+            "fat_g": 0.1,
+            "carbs_g": 2.8,
+            "protein_g": 0.5,
+            "form": "raw",
+            "kcal_per_100g_est": 24,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 460,
+          "calories": 593.3,
+          "protein_g": 62.3,
+          "carbs_g": 52.8,
+          "fat_g": 15.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 9223
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "pizza crust",
+            "fdc_id": 560943,
+            "matched_name": "PIZZA CRUST",
+            "data_type": "branded",
+            "confidence": 0.09999999999999992,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 94.61827284105131,
+              "calories": 189,
+              "protein_g": 5.6780425531914895,
+              "carbs_g": 38.79727659574468,
+              "fat_g": 0.9490212765957445
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "baked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.013717539470278825
+            }
+          },
+          {
+            "predicted_name": "mozzarella cheese",
+            "fdc_id": 517779,
+            "matched_name": "MOZZARELLA CHEESE",
+            "data_type": "branded",
+            "confidence": 0.09999999999999992,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 25.137447446564547,
+              "calories": 85.5,
+              "protein_g": 3.266611295681063,
+              "carbs_g": 9.299900332225914,
+              "fat_g": 3.519418604651163
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.04343605920892993
+            }
+          },
+          {
+            "predicted_name": "tomato sauce",
+            "fdc_id": 383748,
+            "matched_name": "TOMATO SAUCE",
+            "data_type": "branded",
+            "confidence": 0.15000000000000002,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 12.307692307692308,
+              "calories": 4,
+              "protein_g": 0.12307692307692308,
+              "carbs_g": 0.8615384615384616,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.015625
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.65,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 115.77964519140991,
+              "calories": 248,
+              "protein_g": 16.090476190476192,
+              "carbs_g": 17.281269841269843,
+              "fat_g": 12.685396825396827
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 104.28353817936204,
+              "calories": 36.9,
+              "protein_g": 0.8394824823438645,
+              "carbs_g": 9.467589580689742,
+              "fat_g": 0.14338986499662282
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 352.1265959660801,
+          "calories": 563.4,
+          "protein_g": 25.99768944476953,
+          "carbs_g": 75.70757481146865,
+          "fat_g": 17.29722657164036
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565118067",
+        "image_filename": "dish_1565118067.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565118067.png",
+        "total_mass_g": 522.0,
+        "total_calories": 623.429932,
+        "total_fat_g": 12.966,
+        "total_carbs_g": 41.417,
+        "total_protein_g": 82.112991,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 69.0,
+            "calories": 28.29
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 133.0,
+            "calories": 219.716
+          },
+          {
+            "name": "tuna",
+            "mass_g": 102.0,
+            "calories": 132.6
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 73.0,
+            "calories": 13.14
+          },
+          {
+            "name": "cheese pizza",
+            "mass_g": 76.0,
+            "calories": 202.084
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 69.0,
+            "calories": 27.6
+          }
+        ]
+      },
+      "accuracy": 83.04368525707447,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565194781",
+      "image_filename": "dish_1565194781.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565194781.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg white",
+            "mass_g": 280,
+            "calories": 137.2,
+            "fat_g": 0.6,
+            "carbs_g": 2.0,
+            "protein_g": 30.8,
+            "form": "cooked",
+            "kcal_per_100g_est": 49,
+            "confidence": 0.8
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 200,
+            "calories": 180.0,
+            "fat_g": 0.2,
+            "carbs_g": 41.4,
+            "protein_g": 3.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 90,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 480,
+          "calories": 317.2,
+          "protein_g": 34.0,
+          "carbs_g": 43.4,
+          "fat_g": 0.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5451
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg white",
+            "fdc_id": 747997,
+            "matched_name": "Eggs Grade A Large egg white",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 249.4545454545454,
+              "calories": 137.2,
+              "protein_g": 26.691636363636363,
+              "carbs_g": 5.887127272727272,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sweet potato",
+            "fdc_id": 2346404,
+            "matched_name": "Sweet potatoes orange flesh without skin raw (roasted_oven)",
+            "data_type": "foundation",
+            "confidence": 0.6,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 200.0,
+              "calories": 180.0,
+              "protein_g": 3.5865909090909094,
+              "carbs_g": 39.38159090909091,
+              "fat_g": 0.8522727272727273
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2346404,
+              "raw_source": "foundation",
+              "raw_name": "Sweet potatoes orange flesh without skin raw",
+              "conversion_steps": [
+                "shrinkage_12.00%",
+                "energy_clamp_0\u219290"
+              ],
+              "atwater_deviation_pct": 0.002544336004253279,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 449.4545454545454,
+          "calories": 317.2,
+          "protein_g": 30.27822727272727,
+          "carbs_g": 45.26871818181818,
+          "fat_g": 0.8522727272727273
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565194781",
+        "image_filename": "dish_1565194781.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565194781.png",
+        "total_mass_g": 568.0,
+        "total_calories": 351.405518,
+        "total_fat_g": 4.66172,
+        "total_carbs_g": 31.547619,
+        "total_protein_g": 39.603123,
+        "foods": [
+          {
+            "name": "sweet potato",
+            "mass_g": 128.780487,
+            "calories": 97.87317012
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.214418,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.035736,
+            "calories": 0.0142944
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 3.791293,
+            "calories": 33.51503012
+          },
+          {
+            "name": "carrot",
+            "mass_g": 57.178066,
+            "calories": 23.44300706
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 378.0,
+            "calories": 196.56
+          }
+        ]
+      },
+      "accuracy": 68.04323556685783,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565382803",
+      "image_filename": "dish_1565382803.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565382803.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pizza crust",
+            "mass_g": 55.0,
+            "calories": 148.5,
+            "fat_g": 1.9,
+            "carbs_g": 28.6,
+            "protein_g": 5.0,
+            "form": "cooked",
+            "kcal_per_100g_est": 270,
+            "confidence": 0.68
+          },
+          {
+            "name": "mozzarella cheese",
+            "mass_g": 33.0,
+            "calories": 92.4,
+            "fat_g": 5.6,
+            "carbs_g": 1.0,
+            "protein_g": 9.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 280,
+            "confidence": 0.68
+          },
+          {
+            "name": "tomato sauce",
+            "mass_g": 11.0,
+            "calories": 5.5,
+            "fat_g": 0.1,
+            "carbs_g": 0.9,
+            "protein_g": 0.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 50,
+            "confidence": 0.55
+          },
+          {
+            "name": "pepperoni",
+            "mass_g": 10.5,
+            "calories": 51.9,
+            "fat_g": 4.6,
+            "carbs_g": 0.2,
+            "protein_g": 2.0,
+            "form": "cooked",
+            "count": 3,
+            "kcal_per_100g_est": 494,
+            "confidence": 0.7
+          },
+          {
+            "name": "carrots",
+            "mass_g": 35.0,
+            "calories": 12.3,
+            "fat_g": 0.1,
+            "carbs_g": 2.9,
+            "protein_g": 0.3,
+            "form": "cooked",
+            "count": 5,
+            "kcal_per_100g_est": 35,
+            "confidence": 0.7
+          },
+          {
+            "name": "potato",
+            "mass_g": 50.0,
+            "calories": 43.5,
+            "fat_g": 0.1,
+            "carbs_g": 10.1,
+            "protein_g": 1.0,
+            "form": "cooked",
+            "count": 4,
+            "kcal_per_100g_est": 87,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 194.5,
+          "calories": 354.1,
+          "protein_g": 17.7,
+          "carbs_g": 43.7,
+          "fat_g": 12.399999999999999
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7454
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "pizza crust",
+            "fdc_id": 560943,
+            "matched_name": "PIZZA CRUST",
+            "data_type": "branded",
+            "confidence": 0.08000000000000002,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 74.34292866082603,
+              "calories": 148.5,
+              "protein_g": 4.4613191489361705,
+              "carbs_g": 30.483574468085106,
+              "fat_g": 0.7456595744680851
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.013717539470278825
+            }
+          },
+          {
+            "predicted_name": "mozzarella cheese",
+            "fdc_id": 517779,
+            "matched_name": "MOZZARELLA CHEESE",
+            "data_type": "branded",
+            "confidence": 0.08000000000000002,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 27.1660835562873,
+              "calories": 92.4,
+              "protein_g": 3.5302325581395344,
+              "carbs_g": 10.050418604651163,
+              "fat_g": 3.8034418604651163
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.04343605920892993
+            }
+          },
+          {
+            "predicted_name": "tomato sauce",
+            "fdc_id": 321360,
+            "matched_name": "Tomatoes grape raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 20.37037037037037,
+              "calories": 5.5,
+              "protein_g": 0.16906997540800356,
+              "carbs_g": 1.122419703405619,
+              "fat_g": 0.12832923466726281
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "pepperoni",
+            "fdc_id": 174575,
+            "matched_name": "Pepperoni beef and pork sliced",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 10.297619047619047,
+              "calories": 51.9,
+              "protein_g": 1.9822916666666666,
+              "carbs_g": 0.12151190476190475,
+              "fat_g": 4.765738095238095
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrots",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw (steamed)",
+            "data_type": "foundation",
+            "confidence": 0.6,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 30.574348773880068,
+              "calories": 12.3,
+              "protein_g": 0.2563786537809735,
+              "carbs_g": 2.8914097938898435,
+              "fat_g": 0.04379138496258864
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "steamed",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2258587,
+              "raw_source": "foundation",
+              "raw_name": "Carrots baby raw",
+              "conversion_steps": [
+                "shrinkage_4.00%",
+                "energy_clamp_0\u219235",
+                "atwater_soft_35\u219240"
+              ],
+              "atwater_deviation_pct": 0.05277332895127343,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2261422,
+            "matched_name": "Flour potato (boiled)",
+            "data_type": "foundation",
+            "confidence": 0.5,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 17.359199568577637,
+              "calories": 43.5,
+              "protein_g": 1.2802409681826008,
+              "carbs_g": 12.615750943192246,
+              "fat_g": 0.1501255140871628
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2261422,
+              "raw_source": "foundation",
+              "raw_name": "Flour potato",
+              "conversion_steps": [
+                "hydration_\u00d71.10",
+                "energy_clamp_0\u219270",
+                "atwater_soft_70\u2192251"
+              ],
+              "atwater_deviation_pct": 0.23597214927081706,
+              "energy_clamped": true,
+              "atwater_ok": false
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 180.11054997756048,
+          "calories": 354.1,
+          "protein_g": 11.67953297111395,
+          "carbs_g": 57.285085417985876,
+          "fat_g": 9.637085663888312
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565382803",
+        "image_filename": "dish_1565382803.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565382803.png",
+        "total_mass_g": 177.0,
+        "total_calories": 359.408569,
+        "total_fat_g": 15.261753,
+        "total_carbs_g": 43.129684,
+        "total_protein_g": 13.366736,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.136784,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.022797,
+            "calories": 0.0091188
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.364757,
+            "calories": 3.22445188
+          },
+          {
+            "name": "carrot",
+            "mass_g": 36.475662,
+            "calories": 14.95502142
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 38.0,
+            "calories": 53.58
+          },
+          {
+            "name": "pepperoni pizza",
+            "mass_g": 102.0,
+            "calories": 287.64
+          }
+        ]
+      },
+      "accuracy": 87.22884582387529,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565383128",
+      "image_filename": "dish_1565383128.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565383128.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 100,
+            "calories": 165,
+            "fat_g": 3.6,
+            "carbs_g": 0,
+            "protein_g": 31,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.85
+          },
+          {
+            "name": "spinach",
+            "mass_g": 50,
+            "calories": 12,
+            "fat_g": 0.2,
+            "carbs_g": 1.5,
+            "protein_g": 1.2,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.75
+          },
+          {
+            "name": "cucumber",
+            "mass_g": 80,
+            "calories": 12.8,
+            "fat_g": 0.1,
+            "carbs_g": 2.8,
+            "protein_g": 0.4,
+            "form": "raw",
+            "count": 4,
+            "kcal_per_100g_est": 16,
+            "confidence": 0.8
+          },
+          {
+            "name": "olives",
+            "mass_g": 42,
+            "calories": 48.7,
+            "fat_g": 4.6,
+            "carbs_g": 2.6,
+            "protein_g": 0.3,
+            "form": "canned",
+            "count": 12,
+            "kcal_per_100g_est": 116,
+            "confidence": 0.78
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 12,
+            "calories": 51.7,
+            "fat_g": 3.4,
+            "carbs_g": 0.4,
+            "protein_g": 4.3,
+            "form": "raw",
+            "kcal_per_100g_est": 431,
+            "confidence": 0.8
+          },
+          {
+            "name": "balsamic vinaigrette",
+            "mass_g": 25,
+            "calories": 75,
+            "fat_g": 7,
+            "carbs_g": 3,
+            "protein_g": 0,
+            "kcal_per_100g_est": 300,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 309,
+          "calories": 365.20000000000005,
+          "protein_g": 37.2,
+          "carbs_g": 10.3,
+          "fat_g": 18.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7985
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.75,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 77.03081232492998,
+              "calories": 165,
+              "protein_g": 10.705357142857146,
+              "carbs_g": 11.49761904761905,
+              "fat_g": 8.439880952380953
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 51.09426892616879,
+              "calories": 12,
+              "protein_g": 1.4571574555054077,
+              "carbs_g": 1.2294813931703994,
+              "fat_g": 0.31617133611513243
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cucumber",
+            "fdc_id": 2346406,
+            "matched_name": "Cucumber with peel raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 80.46518937608047,
+              "calories": 12.8,
+              "protein_g": 0.5029074336005029,
+              "carbs_g": 2.375734716328776,
+              "fat_g": 0.14282571114254283
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 37.46153846153846,
+              "calories": 48.7,
+              "protein_g": 0.4308076923076922,
+              "carbs_g": 1.857858173076923,
+              "fat_g": 4.832538461538461
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "parmesan cheese",
+            "fdc_id": 325036,
+            "matched_name": "Cheese parmesan grated",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 12.280285035629454,
+              "calories": 51.7,
+              "protein_g": 3.6349643705463186,
+              "carbs_g": 1.5227553444180524,
+              "fat_g": 3.4384798099762475
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 258.3320941243472,
+          "calories": 290.2,
+          "protein_g": 16.731194094817067,
+          "carbs_g": 18.4834486746132,
+          "fat_g": 17.169896271153338
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565383128",
+        "image_filename": "dish_1565383128.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565383128.png",
+        "total_mass_g": 456.0,
+        "total_calories": 600.278931,
+        "total_fat_g": 39.396999,
+        "total_carbs_g": 14.009,
+        "total_protein_g": 50.022999,
+        "foods": [
+          {
+            "name": "parmesan cheese",
+            "mass_g": 27.0,
+            "calories": 116.289
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 101.0,
+            "calories": 10.1
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 26.0,
+            "calories": 121.03
+          },
+          {
+            "name": "olives",
+            "mass_g": 129.0,
+            "calories": 148.35
+          },
+          {
+            "name": "chicken",
+            "mass_g": 116.0,
+            "calories": 191.4
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 57.0,
+            "calories": 13.11
+          }
+        ]
+      },
+      "accuracy": 64.89293902322699,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565640894",
+      "image_filename": "dish_1565640894.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565640894.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 45,
+            "calories": 13.5,
+            "fat_g": 0.2,
+            "carbs_g": 1.6,
+            "protein_g": 1.3,
+            "form": "raw",
+            "kcal_per_100g_est": 30,
+            "confidence": 0.7
+          },
+          {
+            "name": "cucumber",
+            "mass_g": 90,
+            "calories": 14.4,
+            "fat_g": 0.1,
+            "carbs_g": 3.0,
+            "protein_g": 0.5,
+            "form": "raw",
+            "kcal_per_100g_est": 16,
+            "confidence": 0.95
+          },
+          {
+            "name": "green bell pepper",
+            "mass_g": 35,
+            "calories": 8.4,
+            "fat_g": 0.1,
+            "carbs_g": 1.6,
+            "protein_g": 0.3,
+            "form": "raw",
+            "kcal_per_100g_est": 24,
+            "confidence": 0.7
+          },
+          {
+            "name": "olives",
+            "mass_g": 72,
+            "calories": 115.2,
+            "fat_g": 11.0,
+            "carbs_g": 2.0,
+            "protein_g": 0.7,
+            "form": "canned",
+            "count": 18,
+            "kcal_per_100g_est": 160,
+            "confidence": 0.9
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 10,
+            "calories": 43.1,
+            "fat_g": 2.9,
+            "carbs_g": 0.4,
+            "protein_g": 3.8,
+            "form": "raw",
+            "kcal_per_100g_est": 431,
+            "confidence": 0.85
+          },
+          {
+            "name": "croutons",
+            "mass_g": 7,
+            "calories": 28.7,
+            "fat_g": 0.8,
+            "carbs_g": 5.0,
+            "protein_g": 0.7,
+            "form": "baked",
+            "count": 5,
+            "kcal_per_100g_est": 410,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 259,
+          "calories": 223.3,
+          "protein_g": 7.3,
+          "carbs_g": 13.6,
+          "fat_g": 15.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 8133
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 57.48105254193988,
+              "calories": 13.5,
+              "protein_g": 1.6393021374435834,
+              "carbs_g": 1.3831665673166993,
+              "fat_g": 0.355692753129524
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cucumber",
+            "fdc_id": 2346406,
+            "matched_name": "Cucumber with peel raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 90.52333804809052,
+              "calories": 14.4,
+              "protein_g": 0.5657708628005658,
+              "carbs_g": 2.672701555869873,
+              "fat_g": 0.16067892503536066
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.6699999999999999,
+            "score": 0.7,
+            "nutrition": {
+              "mass_g": 88.61538461538461,
+              "calories": 115.2,
+              "protein_g": 1.019076923076923,
+              "carbs_g": 4.394769230769231,
+              "fat_g": 11.431384615384616
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "parmesan cheese",
+            "fdc_id": 325036,
+            "matched_name": "Cheese parmesan grated",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 10.237529691211401,
+              "calories": 43.1,
+              "protein_g": 3.030308788598575,
+              "carbs_g": 1.2694536817102138,
+              "fat_g": 2.866508313539193
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "croutons",
+            "fdc_id": 172751,
+            "matched_name": "Croutons plain",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 7.051597051597051,
+              "calories": 28.7,
+              "protein_g": 0.8391400491400491,
+              "carbs_g": 5.182923832923833,
+              "fat_g": 0.4654054054054054
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 253.90890194822344,
+          "calories": 214.89999999999998,
+          "protein_g": 7.093598761059696,
+          "carbs_g": 14.90301486858985,
+          "fat_g": 15.279670012494098
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565640894",
+        "image_filename": "dish_1565640894.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565640894.png",
+        "total_mass_g": 422.0,
+        "total_calories": 464.892029,
+        "total_fat_g": 18.178001,
+        "total_carbs_g": 20.476002,
+        "total_protein_g": 55.195004,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 54.0,
+            "calories": 15.12
+          },
+          {
+            "name": "chicken",
+            "mass_g": 137.0,
+            "calories": 226.05
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 95.0,
+            "calories": 9.5
+          },
+          {
+            "name": "olives",
+            "mass_g": 77.0,
+            "calories": 88.55
+          },
+          {
+            "name": "black beans",
+            "mass_g": 43.0,
+            "calories": 56.76
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 16.0,
+            "calories": 68.912
+          }
+        ]
+      },
+      "accuracy": 54.423911252296534,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565711358",
+      "image_filename": "dish_1565711358.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565711358.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg white",
+            "mass_g": 160,
+            "calories": 83.2,
+            "fat_g": 0.3,
+            "carbs_g": 1.1,
+            "protein_g": 17.4,
+            "form": "cooked",
+            "kcal_per_100g_est": 52,
+            "confidence": 0.8
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 120,
+            "calories": 43.2,
+            "fat_g": 0.2,
+            "carbs_g": 10.0,
+            "protein_g": 1.0,
+            "form": "raw",
+            "kcal_per_100g_est": 36,
+            "confidence": 0.85
+          },
+          {
+            "name": "grapes",
+            "mass_g": 40,
+            "calories": 29.2,
+            "fat_g": 0.1,
+            "carbs_g": 6.8,
+            "protein_g": 0.3,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 73,
+            "confidence": 0.9
+          },
+          {
+            "name": "potato",
+            "mass_g": 80,
+            "calories": 69.6,
+            "fat_g": 0.1,
+            "carbs_g": 16.1,
+            "protein_g": 1.5,
+            "form": "cooked",
+            "kcal_per_100g_est": 87,
+            "confidence": 0.6
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 70,
+            "calories": 60.2,
+            "fat_g": 0.1,
+            "carbs_g": 14.1,
+            "protein_g": 1.1,
+            "form": "cooked",
+            "kcal_per_100g_est": 86,
+            "confidence": 0.65
+          }
+        ],
+        "totals": {
+          "mass_g": 470,
+          "calories": 285.4,
+          "protein_g": 21.299999999999997,
+          "carbs_g": 48.1,
+          "fat_g": 0.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7458
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg white",
+            "fdc_id": 747997,
+            "matched_name": "Eggs Grade A Large egg white",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 151.27272727272728,
+              "calories": 83.2,
+              "protein_g": 16.18618181818182,
+              "carbs_g": 3.570036363636364,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 127.05882352941178,
+              "calories": 43.2,
+              "protein_g": 1.0418823529411767,
+              "carbs_g": 10.368000000000002,
+              "fat_g": 0.2287058823529412
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "grapes",
+            "fdc_id": 2263891,
+            "matched_name": "Grapes green seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 36.45311218445275,
+              "calories": 29.2,
+              "protein_g": 0.32764057231386134,
+              "carbs_g": 6.781664084571221,
+              "fat_g": 0.08475348582885266
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2261422,
+            "matched_name": "Flour potato (boiled)",
+            "data_type": "foundation",
+            "confidence": 0.5,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 27.774719309724222,
+              "calories": 69.6,
+              "protein_g": 2.048385549092161,
+              "carbs_g": 20.185201509107596,
+              "fat_g": 0.24020082253946048
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2261422,
+              "raw_source": "foundation",
+              "raw_name": "Flour potato",
+              "conversion_steps": [
+                "hydration_\u00d71.10",
+                "energy_clamp_0\u219270",
+                "atwater_soft_70\u2192251"
+              ],
+              "atwater_deviation_pct": 0.23597214927081706,
+              "energy_clamped": true,
+              "atwater_ok": false
+            }
+          },
+          {
+            "predicted_name": "sweet potato",
+            "fdc_id": 2346404,
+            "matched_name": "Sweet potatoes orange flesh without skin raw (roasted_oven)",
+            "data_type": "foundation",
+            "confidence": 0.55,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 66.88888888888889,
+              "calories": 60.2,
+              "protein_g": 1.1995154040404041,
+              "carbs_g": 13.170954292929293,
+              "fat_g": 0.2850378787878788
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2346404,
+              "raw_source": "foundation",
+              "raw_name": "Sweet potatoes orange flesh without skin raw",
+              "conversion_steps": [
+                "shrinkage_12.00%",
+                "energy_clamp_0\u219290"
+              ],
+              "atwater_deviation_pct": 0.002544336004253279,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 409.44827118520493,
+          "calories": 285.4,
+          "protein_g": 20.80360569656942,
+          "carbs_g": 54.07585625024448,
+          "fat_g": 0.8386980695091332
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565711358",
+        "image_filename": "dish_1565711358.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565711358.png",
+        "total_mass_g": 658.0,
+        "total_calories": 490.052887,
+        "total_fat_g": 11.036756,
+        "total_carbs_g": 52.238358,
+        "total_protein_g": 40.309227,
+        "foods": [
+          {
+            "name": "yam",
+            "mass_g": 82.547165,
+            "calories": 102.441031765
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 93.0,
+            "calories": 31.62
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 82.547165,
+            "calories": 62.7358454
+          },
+          {
+            "name": "grapes",
+            "mass_g": 17.0,
+            "calories": 11.73
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 9.905661,
+            "calories": 87.56604324
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 373.0,
+            "calories": 193.96
+          }
+        ]
+      },
+      "accuracy": 56.367024452452895,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565711527",
+      "image_filename": "dish_1565711527.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565711527.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 120,
+            "calories": 177.6,
+            "fat_g": 12.72,
+            "carbs_g": 1.32,
+            "protein_g": 15.12,
+            "form": "cooked",
+            "kcal_per_100g_est": 148,
+            "confidence": 0.85
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 96,
+            "calories": 38.4,
+            "fat_g": 0.48,
+            "carbs_g": 6.82,
+            "protein_g": 2.5,
+            "form": "cooked",
+            "count": 8,
+            "kcal_per_100g_est": 40,
+            "confidence": 0.8
+          },
+          {
+            "name": "potato",
+            "mass_g": 110,
+            "calories": 93.50000000000001,
+            "fat_g": 11,
+            "carbs_g": 30.8,
+            "protein_g": 2.75,
+            "form": "fried",
+            "kcal_per_100g_est": 85,
+            "confidence": 0.8,
+            "_rails_applied": [
+              "energy_clamp"
+            ],
+            "_atwater_deviation_pct": 149.41176470588232
+          }
+        ],
+        "totals": {
+          "mass_g": 326,
+          "calories": 309.5,
+          "protein_g": 20.369999999999997,
+          "carbs_g": 38.94,
+          "fat_g": 24.200000000000003
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5866
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 485999,
+            "matched_name": "EGG NOG",
+            "data_type": "branded",
+            "confidence": 0.2499999999999999,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 126.49572649572649,
+              "calories": 177.6,
+              "protein_g": 6.3298461538461535,
+              "carbs_g": 26.564102564102562,
+              "fat_g": 5.692307692307692
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.028481275429710105
+            }
+          },
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw (cooked)",
+            "data_type": "foundation",
+            "confidence": 0.6000000000000001,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 92.22012752314508,
+              "calories": 38.4,
+              "protein_g": 3.6744187610321926,
+              "carbs_g": 8.867518582115538,
+              "fat_g": 0.5210437205057696
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": true,
+              "raw_fdc_id": 2685575,
+              "raw_source": "foundation",
+              "raw_name": "Brussels sprouts raw",
+              "conversion_steps": [
+                "atwater_soft_0\u219242"
+              ],
+              "atwater_deviation_pct": 0.3,
+              "energy_clamped": false,
+              "atwater_ok": false
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2261422,
+            "matched_name": "Flour potato (boiled)",
+            "data_type": "foundation",
+            "confidence": 0.7000000000000001,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 37.31230252096574,
+              "calories": 93.50000000000001,
+              "protein_g": 2.751782310921223,
+              "carbs_g": 27.11661409628679,
+              "fat_g": 0.3226835762563155
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2261422,
+              "raw_source": "foundation",
+              "raw_name": "Flour potato",
+              "conversion_steps": [
+                "hydration_\u00d71.10",
+                "energy_clamp_0\u219270",
+                "atwater_soft_70\u2192251"
+              ],
+              "atwater_deviation_pct": 0.23597214927081706,
+              "energy_clamped": true,
+              "atwater_ok": false
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 256.0281565398373,
+          "calories": 309.5,
+          "protein_g": 12.75604722579957,
+          "carbs_g": 62.54823524250489,
+          "fat_g": 6.536034989069776
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565711527",
+        "image_filename": "dish_1565711527.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565711527.png",
+        "total_mass_g": 302.0,
+        "total_calories": 484.807251,
+        "total_fat_g": 32.015488,
+        "total_carbs_g": 33.92815,
+        "total_protein_g": 18.478689,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.467405,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.116851,
+            "calories": 0.0467404
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 93.480934,
+            "calories": 40.19680162
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 134.0,
+            "calories": 198.32
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.934809,
+            "calories": 8.26371156
+          },
+          {
+            "name": "hash browns",
+            "mass_g": 73.0,
+            "calories": 237.98
+          }
+        ]
+      },
+      "accuracy": 81.29483094057281,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565725156",
+      "image_filename": "dish_1565725156.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565725156.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 120,
+            "calories": 198,
+            "fat_g": 4.32,
+            "carbs_g": 0,
+            "protein_g": 37.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.85
+          },
+          {
+            "name": "red onion",
+            "mass_g": 30,
+            "calories": 12.9,
+            "fat_g": 0.03,
+            "carbs_g": 2.79,
+            "protein_g": 0.33,
+            "form": "raw",
+            "kcal_per_100g_est": 43,
+            "confidence": 0.85
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 60,
+            "calories": 12.6,
+            "fat_g": 0.12,
+            "carbs_g": 2.34,
+            "protein_g": 0.54,
+            "form": "raw",
+            "count": 6,
+            "kcal_per_100g_est": 21,
+            "confidence": 0.78
+          },
+          {
+            "name": "green bell pepper",
+            "mass_g": 40,
+            "calories": 9.6,
+            "fat_g": 0.08,
+            "carbs_g": 1.84,
+            "protein_g": 0.36,
+            "form": "raw",
+            "kcal_per_100g_est": 24,
+            "confidence": 0.7
+          },
+          {
+            "name": "carrot",
+            "mass_g": 10,
+            "calories": 4.4,
+            "fat_g": 0.02,
+            "carbs_g": 0.96,
+            "protein_g": 0.09,
+            "form": "raw",
+            "kcal_per_100g_est": 44,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 260,
+          "calories": 237.5,
+          "protein_g": 38.52,
+          "carbs_g": 7.93,
+          "fat_g": 4.57
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7070
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.75,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 92.43697478991596,
+              "calories": 198,
+              "protein_g": 12.846428571428572,
+              "carbs_g": 13.797142857142857,
+              "fat_g": 10.127857142857142
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "red onion",
+            "fdc_id": 790577,
+            "matched_name": "Onions red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 29.31818181818182,
+              "calories": 12.9,
+              "protein_g": 0.27559090909090905,
+              "carbs_g": 2.9112954545454546,
+              "fat_g": 0.02931818181818182
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cherry tomatoes",
+            "fdc_id": 333281,
+            "matched_name": "Tomatoes canned red ripe diced",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 59.602649006622514,
+              "calories": 12.6,
+              "protein_g": 0.500662251655629,
+              "carbs_g": 1.9788079470198674,
+              "fat_g": 0.29801324503311255
+            },
+            "provenance": {
+              "energy_source": "corrected_inconsistent_energy",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio",
+              "db_kcal": 18.0,
+              "atwater_kcal": 21.14,
+              "difference_pct": 17.44444444444445
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258586,
+            "matched_name": "Carrots mature raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 10.526063969761491,
+              "calories": 4.4,
+              "protein_g": 0.09908184014736492,
+              "carbs_g": 1.080774144159231,
+              "fat_g": 0.03690438027798379
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 191.88386958448177,
+          "calories": 227.9,
+          "protein_g": 13.721763572322475,
+          "carbs_g": 19.76802040286741,
+          "fat_g": 10.49209294998642
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565725156",
+        "image_filename": "dish_1565725156.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565725156.png",
+        "total_mass_g": 500.0,
+        "total_calories": 452.669983,
+        "total_fat_g": 11.922,
+        "total_carbs_g": 24.225,
+        "total_protein_g": 61.735004,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 66.0,
+            "calories": 27.06
+          },
+          {
+            "name": "bell peppers",
+            "mass_g": 80.0,
+            "calories": 32.0
+          },
+          {
+            "name": "chicken",
+            "mass_g": 187.0,
+            "calories": 308.55
+          },
+          {
+            "name": "onions",
+            "mass_g": 56.0,
+            "calories": 22.4
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 67.0,
+            "calories": 12.06
+          },
+          {
+            "name": "olives",
+            "mass_g": 44.0,
+            "calories": 50.6
+          }
+        ]
+      },
+      "accuracy": 47.585894187519514,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565727875",
+      "image_filename": "dish_1565727875.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565727875.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 90,
+            "calories": 148.5,
+            "fat_g": 3.24,
+            "carbs_g": 0,
+            "protein_g": 27.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.82
+          },
+          {
+            "name": "black beans",
+            "mass_g": 100,
+            "calories": 135,
+            "fat_g": 0.5,
+            "carbs_g": 23.7,
+            "protein_g": 8.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 135,
+            "confidence": 0.86
+          },
+          {
+            "name": "grapes",
+            "mass_g": 100,
+            "calories": 69,
+            "fat_g": 0.16,
+            "carbs_g": 18.1,
+            "protein_g": 0.72,
+            "form": "raw",
+            "count": 20,
+            "kcal_per_100g_est": 69,
+            "confidence": 0.85
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 80,
+            "calories": 27.2,
+            "fat_g": 0.32,
+            "carbs_g": 5.28,
+            "protein_g": 2.24,
+            "form": "raw",
+            "count": 6,
+            "kcal_per_100g_est": 34,
+            "confidence": 0.88,
+            "_atwater_deviation_pct": 21.1764705882353
+          },
+          {
+            "name": "spinach",
+            "mass_g": 30,
+            "calories": 6.9,
+            "fat_g": 0.12,
+            "carbs_g": 1.08,
+            "protein_g": 0.87,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.6,
+            "_atwater_deviation_pct": 28.69565217391305
+          },
+          {
+            "name": "lettuce",
+            "mass_g": 50,
+            "calories": 7.5,
+            "fat_g": 0.1,
+            "carbs_g": 1.45,
+            "protein_g": 0.7,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.6,
+            "_atwater_deviation_pct": 26.666666666666668
+          }
+        ],
+        "totals": {
+          "mass_g": 450,
+          "calories": 394.1,
+          "protein_g": 41.33,
+          "carbs_g": 49.61,
+          "fat_g": 4.44
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6076
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.72,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 69.32773109243698,
+              "calories": 148.5,
+              "protein_g": 9.63482142857143,
+              "carbs_g": 10.347857142857142,
+              "fat_g": 7.595892857142857
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "black beans",
+            "fdc_id": 371017,
+            "matched_name": "BLACK BEANS",
+            "data_type": "branded",
+            "confidence": 0.2599999999999999,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 103.41657729431593,
+              "calories": 135,
+              "protein_g": 8.276635514018691,
+              "carbs_g": 23.782710280373834,
+              "fat_g": 0.5172897196261682
+            },
+            "provenance": {
+              "alignment_stage": "stage4_branded_energy",
+              "method": "cooked",
+              "method_reason": "no_profile",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.015854932118104934
+            }
+          },
+          {
+            "predicted_name": "grapes",
+            "fdc_id": 2263890,
+            "matched_name": "Grapes red seedless raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 80.30819725555466,
+              "calories": 69,
+              "protein_g": 0.7343381557047918,
+              "carbs_g": 16.219685983309862,
+              "fat_g": 0.13154482710459853
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 85.0,
+              "calories": 27.2,
+              "protein_g": 2.1845000000000003,
+              "carbs_g": 5.346500000000001,
+              "fat_g": 0.28900000000000003
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 29.37920463254705,
+              "calories": 6.9,
+              "protein_g": 0.8378655369156094,
+              "carbs_g": 0.7069518010729796,
+              "fat_g": 0.18179851826620116
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346388,
+            "matched_name": "Lettuce iceberg raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 43.83555238640747,
+              "calories": 7.5,
+              "protein_g": 0.32547897646907553,
+              "carbs_g": 1.4767320887932949,
+              "fat_g": 0.03235063766116872
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 411.26726266126207,
+          "calories": 394.09999999999997,
+          "protein_g": 21.993639611679594,
+          "carbs_g": 57.88043729640712,
+          "fat_g": 8.747876559800993
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565727875",
+        "image_filename": "dish_1565727875.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565727875.png",
+        "total_mass_g": 365.0,
+        "total_calories": 485.674011,
+        "total_fat_g": 22.055,
+        "total_carbs_g": 27.248001,
+        "total_protein_g": 46.559998,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 109.0,
+            "calories": 125.35
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 9.0,
+            "calories": 2.52
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 68.0,
+            "calories": 23.8
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 22.0,
+            "calories": 94.754
+          },
+          {
+            "name": "black beans",
+            "mass_g": 60.0,
+            "calories": 79.2
+          },
+          {
+            "name": "chicken",
+            "mass_g": 97.0,
+            "calories": 160.05
+          }
+        ]
+      },
+      "accuracy": 56.93751317508706,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565799663",
+      "image_filename": "dish_1565799663.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565799663.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg white",
+            "mass_g": 120,
+            "calories": 62,
+            "fat_g": 0.2,
+            "carbs_g": 0.8,
+            "protein_g": 13.1,
+            "form": "cooked",
+            "kcal_per_100g_est": 52,
+            "confidence": 0.78
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 150,
+            "calories": 135,
+            "fat_g": 0.2,
+            "carbs_g": 31.5,
+            "protein_g": 2.4,
+            "form": "roasted",
+            "kcal_per_100g_est": 90,
+            "confidence": 0.72
+          },
+          {
+            "name": "salsa",
+            "mass_g": 40,
+            "calories": 14,
+            "fat_g": 0.1,
+            "carbs_g": 2.8,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 35,
+            "confidence": 0.6
+          },
+          {
+            "name": "blueberry",
+            "mass_g": 40,
+            "calories": 22.8,
+            "fat_g": 0.1,
+            "carbs_g": 5.2,
+            "protein_g": 0.3,
+            "form": "raw",
+            "count": 50,
+            "kcal_per_100g_est": 57,
+            "confidence": 0.85
+          },
+          {
+            "name": "strawberry",
+            "mass_g": 70,
+            "calories": 22.4,
+            "fat_g": 0.2,
+            "carbs_g": 4.7,
+            "protein_g": 0.5,
+            "form": "raw",
+            "kcal_per_100g_est": 32,
+            "confidence": 0.75
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 90,
+            "calories": 27,
+            "fat_g": 0.2,
+            "carbs_g": 5.8,
+            "protein_g": 0.5,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 30,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 510,
+          "calories": 283.2,
+          "protein_g": 17.2,
+          "carbs_g": 50.8,
+          "fat_g": 1.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 9592
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg white",
+            "fdc_id": 747997,
+            "matched_name": "Eggs Grade A Large egg white",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 112.72727272727272,
+              "calories": 62,
+              "protein_g": 12.061818181818182,
+              "carbs_g": 2.6603636363636367,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sweet potato",
+            "fdc_id": 2346404,
+            "matched_name": "Sweet potatoes orange flesh without skin raw (roasted_oven)",
+            "data_type": "foundation",
+            "confidence": 0.62,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 150.0,
+              "calories": 135,
+              "protein_g": 2.6899431818181823,
+              "carbs_g": 29.536193181818184,
+              "fat_g": 0.6392045454545454
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2346404,
+              "raw_source": "foundation",
+              "raw_name": "Sweet potatoes orange flesh without skin raw",
+              "conversion_steps": [
+                "shrinkage_12.00%",
+                "energy_clamp_0\u219290"
+              ],
+              "atwater_deviation_pct": 0.002544336004253279,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          },
+          {
+            "predicted_name": "salsa",
+            "fdc_id": 324038,
+            "matched_name": "Sauce salsa ready-to-serve",
+            "data_type": "foundation_food",
+            "confidence": 0.6699999999999999,
+            "score": 0.7,
+            "nutrition": {
+              "mass_g": 48.27586206896552,
+              "calories": 14,
+              "protein_g": 0.6951994590939825,
+              "carbs_g": 3.2538201487491554,
+              "fat_g": 0.09168356997971604
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "blueberry",
+            "fdc_id": 2263889,
+            "matched_name": "Blueberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.85,
+            "score": 2.5,
+            "nutrition": {
+              "mass_g": 35.70516926286052,
+              "calories": 22.8,
+              "protein_g": 0.2510430450871723,
+              "carbs_g": 5.202885854645509,
+              "fat_g": 0.10936493345214178
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "strawberry",
+            "fdc_id": 327699,
+            "matched_name": "Strawberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.9,
+            "score": 3.0,
+            "nutrition": {
+              "mass_g": 72.25806451612902,
+              "calories": 22.4,
+              "protein_g": 0.4624516129032258,
+              "carbs_g": 5.513290322580644,
+              "fat_g": 0.15896774193548385
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "watermelon",
+            "fdc_id": 167765,
+            "matched_name": "Watermelon raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 90.0,
+              "calories": 27,
+              "protein_g": 0.549,
+              "carbs_g": 6.795000000000001,
+              "fat_g": 0.135
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 508.9663685752278,
+          "calories": 283.2,
+          "protein_g": 16.709455480720745,
+          "carbs_g": 52.96155314415713,
+          "fat_g": 1.134220790821887
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565799663",
+        "image_filename": "dish_1565799663.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565799663.png",
+        "total_mass_g": 591.0,
+        "total_calories": 314.811707,
+        "total_fat_g": 2.991439,
+        "total_carbs_g": 34.065559,
+        "total_protein_g": 34.432976,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 63.0,
+            "calories": 35.91
+          },
+          {
+            "name": "salsa",
+            "mass_g": 71.0,
+            "calories": 20.59
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 61.0,
+            "calories": 18.3
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 318.0,
+            "calories": 165.36
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.902439,
+            "calories": 16.81756076
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 76.097565,
+            "calories": 57.8341494
+          }
+        ]
+      },
+      "accuracy": 62.101914461758625,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565809120",
+      "image_filename": "dish_1565809120.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565809120.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "tuna",
+            "mass_g": 140,
+            "calories": 162.4,
+            "fat_g": 1.1,
+            "carbs_g": 0,
+            "protein_g": 35.7,
+            "form": "canned",
+            "kcal_per_100g_est": 116,
+            "confidence": 0.8
+          },
+          {
+            "name": "carrot",
+            "mass_g": 45,
+            "calories": 18.5,
+            "fat_g": 0.1,
+            "carbs_g": 4.3,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 41,
+            "confidence": 0.9
+          },
+          {
+            "name": "onion",
+            "mass_g": 20,
+            "calories": 8,
+            "fat_g": 0,
+            "carbs_g": 1.9,
+            "protein_g": 0.2,
+            "form": "raw",
+            "kcal_per_100g_est": 40,
+            "confidence": 0.75
+          },
+          {
+            "name": "celery",
+            "mass_g": 20,
+            "calories": 2.8,
+            "fat_g": 0,
+            "carbs_g": 0.6,
+            "protein_g": 0.1,
+            "form": "raw",
+            "kcal_per_100g_est": 14,
+            "confidence": 0.6
+          },
+          {
+            "name": "tomato",
+            "mass_g": 40,
+            "calories": 7.2,
+            "fat_g": 0.1,
+            "carbs_g": 1.6,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 18,
+            "confidence": 0.55,
+            "_atwater_deviation_pct": 23.611111111111114
+          }
+        ],
+        "totals": {
+          "mass_g": 265,
+          "calories": 198.9,
+          "protein_g": 36.800000000000004,
+          "carbs_g": 8.4,
+          "fat_g": 1.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5712
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "tuna",
+            "fdc_id": 2684445,
+            "matched_name": "Fish catfish farm raised raw",
+            "data_type": "foundation_food",
+            "confidence": 0.85,
+            "score": 2.5,
+            "nutrition": {
+              "mass_g": 123.36001069525217,
+              "calories": 162.4,
+              "protein_g": 20.315913441379692,
+              "carbs_g": 0.0,
+              "fat_g": 9.015149581609029
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 52.28307469697013,
+              "calories": 18.5,
+              "protein_g": 0.4208787513106096,
+              "carbs_g": 4.7466235025138275,
+              "fat_g": 0.07188922770833393
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "onion",
+            "fdc_id": 790577,
+            "matched_name": "Onions red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 18.181818181818183,
+              "calories": 8,
+              "protein_g": 0.17090909090909087,
+              "carbs_g": 1.8054545454545454,
+              "fat_g": 0.01818181818181818
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.6699999999999999,
+            "score": 0.7,
+            "nutrition": {
+              "mass_g": 16.76917825037581,
+              "calories": 2.8,
+              "protein_g": 0.08253789534834974,
+              "carbs_g": 0.5561497966737138,
+              "fat_g": 0.02724991465686069
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "tomato",
+            "fdc_id": 333281,
+            "matched_name": "Tomatoes canned red ripe diced",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 34.058656575212865,
+              "calories": 7.2,
+              "protein_g": 0.28609271523178803,
+              "carbs_g": 1.1307473982970673,
+              "fat_g": 0.17029328287606432
+            },
+            "provenance": {
+              "energy_source": "corrected_inconsistent_energy",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio",
+              "db_kcal": 18.0,
+              "atwater_kcal": 21.14,
+              "difference_pct": 17.44444444444445
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 244.65273839962916,
+          "calories": 198.9,
+          "protein_g": 21.27633189417953,
+          "carbs_g": 8.238975242939155,
+          "fat_g": 9.302763825032105
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565809120",
+        "image_filename": "dish_1565809120.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565809120.png",
+        "total_mass_g": 502.0,
+        "total_calories": 365.630005,
+        "total_fat_g": 1.734,
+        "total_carbs_g": 22.898001,
+        "total_protein_g": 63.227997,
+        "foods": [
+          {
+            "name": "bell peppers",
+            "mass_g": 98.0,
+            "calories": 39.2
+          },
+          {
+            "name": "onions",
+            "mass_g": 56.0,
+            "calories": 22.4
+          },
+          {
+            "name": "cherry tomatoes",
+            "mass_g": 74.0,
+            "calories": 13.32
+          },
+          {
+            "name": "tuna",
+            "mass_g": 205.0,
+            "calories": 266.5
+          },
+          {
+            "name": "lemon juice",
+            "mass_g": 17.0,
+            "calories": 2.89
+          },
+          {
+            "name": "carrot",
+            "mass_g": 52.0,
+            "calories": 21.32
+          }
+        ]
+      },
+      "accuracy": 55.40915100341409,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565811139",
+      "image_filename": "dish_1565811139.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565811139.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 60,
+            "calories": 13.9,
+            "fat_g": 0.2,
+            "carbs_g": 1.2,
+            "protein_g": 1.7,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.9
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 90,
+            "calories": 30.6,
+            "fat_g": 0.4,
+            "carbs_g": 4.4,
+            "protein_g": 2.5,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 34,
+            "confidence": 0.85
+          },
+          {
+            "name": "carrot",
+            "mass_g": 45,
+            "calories": 18.5,
+            "fat_g": 0.1,
+            "carbs_g": 4.0,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 41,
+            "confidence": 0.85
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 90,
+            "calories": 148.5,
+            "fat_g": 3.2,
+            "carbs_g": 0,
+            "protein_g": 27.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.7
+          },
+          {
+            "name": "feta cheese",
+            "mass_g": 28,
+            "calories": 74.2,
+            "fat_g": 6.0,
+            "carbs_g": 1.1,
+            "protein_g": 4.0,
+            "form": "raw",
+            "kcal_per_100g_est": 265,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 313,
+          "calories": 285.7,
+          "protein_g": 36.5,
+          "carbs_g": 10.700000000000001,
+          "fat_g": 9.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7583
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 59.18419483947884,
+              "calories": 13.9,
+              "protein_g": 1.6878740526270972,
+              "carbs_g": 1.4241492804223794,
+              "fat_g": 0.3662317976666951
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 95.625,
+              "calories": 30.6,
+              "protein_g": 2.4575625000000003,
+              "carbs_g": 6.0148125000000014,
+              "fat_g": 0.32512500000000005
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 52.28307469697013,
+              "calories": 18.5,
+              "protein_g": 0.4208787513106096,
+              "carbs_g": 4.7466235025138275,
+              "fat_g": 0.07188922770833393
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.6,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 69.32773109243698,
+              "calories": 148.5,
+              "protein_g": 9.63482142857143,
+              "carbs_g": 10.347857142857142,
+              "fat_g": 7.595892857142857
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "feta cheese",
+            "fdc_id": 2259796,
+            "matched_name": "Cheese feta whole milk crumbled",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 27.191040881839907,
+              "calories": 74.2,
+              "protein_g": 5.358755954911245,
+              "carbs_g": 1.5181301945148855,
+              "fat_g": 5.188050600255053
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 303.61104151072584,
+          "calories": 285.7,
+          "protein_g": 19.559892687420383,
+          "carbs_g": 24.05157262030824,
+          "fat_g": 13.54718948277294
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565811139",
+        "image_filename": "dish_1565811139.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565811139.png",
+        "total_mass_g": 416.0,
+        "total_calories": 902.200012,
+        "total_fat_g": 62.632004,
+        "total_carbs_g": 9.06,
+        "total_protein_g": 74.731003,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 47.0,
+            "calories": 19.27
+          },
+          {
+            "name": "goat cheese",
+            "mass_g": 47.0,
+            "calories": 124.08
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 45.0,
+            "calories": 397.8
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 52.0,
+            "calories": 18.2
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 20.0,
+            "calories": 4.6
+          },
+          {
+            "name": "chicken",
+            "mass_g": 205.0,
+            "calories": 338.25
+          }
+        ]
+      },
+      "accuracy": 50.69086692361965,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1565987201",
+      "image_filename": "dish_1565987201.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565987201.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 60,
+            "calories": 15,
+            "fat_g": 0.2,
+            "carbs_g": 1.6,
+            "protein_g": 1.7,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.85
+          },
+          {
+            "name": "cucumber",
+            "mass_g": 80,
+            "calories": 12,
+            "fat_g": 0.1,
+            "carbs_g": 2.2,
+            "protein_g": 0.6,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.8
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 75,
+            "calories": 124,
+            "fat_g": 3.6,
+            "carbs_g": 0,
+            "protein_g": 23.0,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.7
+          },
+          {
+            "name": "olives",
+            "mass_g": 28,
+            "calories": 35,
+            "fat_g": 3.4,
+            "carbs_g": 1.0,
+            "protein_g": 0.2,
+            "form": "canned",
+            "count": 7,
+            "kcal_per_100g_est": 125,
+            "confidence": 0.7
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 12,
+            "calories": 54,
+            "fat_g": 3.8,
+            "carbs_g": 0.4,
+            "protein_g": 4.6,
+            "form": "raw",
+            "kcal_per_100g_est": 450,
+            "confidence": 0.75
+          },
+          {
+            "name": "salad dressing",
+            "mass_g": 30,
+            "calories": 150,
+            "fat_g": 16.0,
+            "carbs_g": 1.5,
+            "protein_g": 0.5,
+            "kcal_per_100g_est": 500,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 285,
+          "calories": 390,
+          "protein_g": 30.599999999999998,
+          "carbs_g": 6.7,
+          "fat_g": 27.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7335
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 63.867836157710975,
+              "calories": 15,
+              "protein_g": 1.8214468193817595,
+              "carbs_g": 1.5368517414629992,
+              "fat_g": 0.3952141701439155
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cucumber",
+            "fdc_id": 2346406,
+            "matched_name": "Cucumber with peel raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 75.43611504007544,
+              "calories": 12,
+              "protein_g": 0.47147571900047147,
+              "carbs_g": 2.227251296558227,
+              "fat_g": 0.13389910419613388
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.6,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 57.889822595704956,
+              "calories": 124,
+              "protein_g": 8.045238095238096,
+              "carbs_g": 8.640634920634922,
+              "fat_g": 6.342698412698414
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 26.923076923076923,
+              "calories": 35,
+              "protein_g": 0.30961538461538457,
+              "carbs_g": 1.3352163461538462,
+              "fat_g": 3.473076923076923
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "parmesan cheese",
+            "fdc_id": 325036,
+            "matched_name": "Cheese parmesan grated",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 12.826603325415679,
+              "calories": 54,
+              "protein_g": 3.796674584323041,
+              "carbs_g": 1.5904988123515442,
+              "fat_g": 3.5914489311163904
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "salad dressing",
+            "fdc_id": 173592,
+            "matched_name": "Salad dressing ranch dressing regular",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 34.883720930232556,
+              "calories": 150,
+              "protein_g": 0.4604651162790697,
+              "carbs_g": 2.0581395348837206,
+              "fat_g": 15.537209302325579
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 271.82717497221654,
+          "calories": 390,
+          "protein_g": 14.90491571883782,
+          "carbs_g": 17.38859265204526,
+          "fat_g": 29.473546843557358
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1565987201",
+        "image_filename": "dish_1565987201.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565987201.png",
+        "total_mass_g": 522.0,
+        "total_calories": 560.658997,
+        "total_fat_g": 27.593,
+        "total_carbs_g": 16.017,
+        "total_protein_g": 63.875999,
+        "foods": [
+          {
+            "name": "cucumbers",
+            "mass_g": 75.0,
+            "calories": 7.5
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 64.0,
+            "calories": 14.72
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 29.0,
+            "calories": 124.903
+          },
+          {
+            "name": "caesar dressing",
+            "mass_g": 96.0,
+            "calories": 42.336
+          },
+          {
+            "name": "chicken",
+            "mass_g": 149.0,
+            "calories": 245.85
+          },
+          {
+            "name": "olives",
+            "mass_g": 109.0,
+            "calories": 125.35
+          }
+        ]
+      },
+      "accuracy": 62.42157751642851,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1566332268",
+      "image_filename": "dish_1566332268.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566332268.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 60,
+            "calories": 14,
+            "fat_g": 0.3,
+            "carbs_g": 1.2,
+            "protein_g": 1.5,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.9
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 120,
+            "calories": 198,
+            "fat_g": 4.3,
+            "carbs_g": 0,
+            "protein_g": 39.6,
+            "form": "cooked",
+            "kcal_per_100g_est": 165,
+            "confidence": 0.85
+          },
+          {
+            "name": "avocado",
+            "mass_g": 50,
+            "calories": 80,
+            "fat_g": 7.3,
+            "carbs_g": 3.0,
+            "protein_g": 1.0,
+            "form": "raw",
+            "kcal_per_100g_est": 160,
+            "confidence": 0.8
+          },
+          {
+            "name": "olives",
+            "mass_g": 30,
+            "calories": 43.5,
+            "fat_g": 4.2,
+            "carbs_g": 0.9,
+            "protein_g": 0.3,
+            "form": "canned",
+            "count": 10,
+            "kcal_per_100g_est": 145,
+            "confidence": 0.6
+          },
+          {
+            "name": "ranch dressing",
+            "mass_g": 35,
+            "calories": 150.5,
+            "fat_g": 15.8,
+            "carbs_g": 1.4,
+            "protein_g": 0.5,
+            "kcal_per_100g_est": 430,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 295,
+          "calories": 486.0,
+          "protein_g": 42.9,
+          "carbs_g": 6.5,
+          "fat_g": 31.900000000000002
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 8017
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 59.609980413863575,
+              "calories": 14,
+              "protein_g": 1.7000170314229752,
+              "carbs_g": 1.4343949586987992,
+              "fat_g": 0.3688665588009878
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 171514,
+            "matched_name": "Chicken breast tenders breaded cooked microwaved",
+            "data_type": "sr_legacy",
+            "confidence": 0.75,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 92.43697478991596,
+              "calories": 198,
+              "protein_g": 12.846428571428572,
+              "carbs_g": 13.797142857142857,
+              "fat_g": 10.127857142857142
+            },
+            "provenance": {
+              "alignment_stage": "stage1_cooked_exact",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0013908205841444432
+            }
+          },
+          {
+            "predicted_name": "avocado",
+            "fdc_id": 2710824,
+            "matched_name": "Avocado Hass peeled raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 35.82078859466091,
+              "calories": 80,
+              "protein_g": 0.649251793278229,
+              "carbs_g": 2.981543338676601,
+              "fat_g": 7.2752021635756305
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 33.46153846153846,
+              "calories": 43.5,
+              "protein_g": 0.38480769230769224,
+              "carbs_g": 1.659483173076923,
+              "fat_g": 4.316538461538461
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "ranch dressing",
+            "fdc_id": 173592,
+            "matched_name": "Salad dressing ranch dressing regular",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 35.0,
+              "calories": 150.5,
+              "protein_g": 0.46199999999999997,
+              "carbs_g": 2.065,
+              "fat_g": 15.588999999999999
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 256.32928225997887,
+          "calories": 486.0,
+          "protein_g": 16.04250508843747,
+          "carbs_g": 21.93756432759518,
+          "fat_g": 37.677464326772224
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1566332268",
+        "image_filename": "dish_1566332268.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566332268.png",
+        "total_mass_g": 595.0,
+        "total_calories": 567.580994,
+        "total_fat_g": 31.404999,
+        "total_carbs_g": 22.379,
+        "total_protein_g": 54.752998,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 112.0,
+            "calories": 128.8
+          },
+          {
+            "name": "chicken",
+            "mass_g": 150.0,
+            "calories": 247.5
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 65.0,
+            "calories": 14.95
+          },
+          {
+            "name": "avocado",
+            "mass_g": 79.0,
+            "calories": 126.4
+          },
+          {
+            "name": "caesar dressing",
+            "mass_g": 91.0,
+            "calories": 40.131
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 98.0,
+            "calories": 9.8
+          }
+        ]
+      },
+      "accuracy": 68.20543066096431,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1566402160",
+      "image_filename": "dish_1566402160.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566402160.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg white",
+            "mass_g": 200,
+            "calories": 104,
+            "fat_g": 0.4,
+            "carbs_g": 1.4,
+            "protein_g": 21.8,
+            "form": "cooked",
+            "kcal_per_100g_est": 52,
+            "confidence": 0.8
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 180,
+            "calories": 162,
+            "fat_g": 0.3,
+            "carbs_g": 37.3,
+            "protein_g": 3.6,
+            "form": "cooked",
+            "kcal_per_100g_est": 90,
+            "confidence": 0.78
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 120,
+            "calories": 40.8,
+            "fat_g": 0.2,
+            "carbs_g": 9.1,
+            "protein_g": 0.7,
+            "form": "raw",
+            "kcal_per_100g_est": 34,
+            "confidence": 0.85
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 80,
+            "calories": 30.4,
+            "fat_g": 0.2,
+            "carbs_g": 6.6,
+            "protein_g": 0.6,
+            "form": "raw",
+            "kcal_per_100g_est": 38,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 580,
+          "calories": 337.2,
+          "protein_g": 26.7,
+          "carbs_g": 54.4,
+          "fat_g": 1.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6332
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg white",
+            "fdc_id": 747997,
+            "matched_name": "Eggs Grade A Large egg white",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 189.0909090909091,
+              "calories": 104,
+              "protein_g": 20.232727272727274,
+              "carbs_g": 4.462545454545455,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sweet potato",
+            "fdc_id": 2346404,
+            "matched_name": "Sweet potatoes orange flesh without skin raw (roasted_oven)",
+            "data_type": "foundation",
+            "confidence": 0.68,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 180.0,
+              "calories": 162,
+              "protein_g": 3.2279318181818186,
+              "carbs_g": 35.44343181818182,
+              "fat_g": 0.7670454545454546
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2346404,
+              "raw_source": "foundation",
+              "raw_name": "Sweet potatoes orange flesh without skin raw",
+              "conversion_steps": [
+                "shrinkage_12.00%",
+                "energy_clamp_0\u219290"
+              ],
+              "atwater_deviation_pct": 0.002544336004253279,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          },
+          {
+            "predicted_name": "watermelon",
+            "fdc_id": 167765,
+            "matched_name": "Watermelon raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 136.0,
+              "calories": 40.8,
+              "protein_g": 0.8296,
+              "carbs_g": 10.268000000000002,
+              "fat_g": 0.20400000000000001
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 89.41176470588235,
+              "calories": 30.4,
+              "protein_g": 0.7331764705882353,
+              "carbs_g": 7.295999999999999,
+              "fat_g": 0.16094117647058823
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 594.5026737967914,
+          "calories": 337.2,
+          "protein_g": 25.02343556149733,
+          "carbs_g": 57.46997727272728,
+          "fat_g": 1.1319866310160427
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1566402160",
+        "image_filename": "dish_1566402160.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566402160.png",
+        "total_mass_g": 697.0,
+        "total_calories": 458.716125,
+        "total_fat_g": 8.670679,
+        "total_carbs_g": 41.691624,
+        "total_protein_g": 47.006603,
+        "foods": [
+          {
+            "name": "egg whites",
+            "mass_g": 446.0,
+            "calories": 231.92
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 80.0,
+            "calories": 24.0
+          },
+          {
+            "name": "yam",
+            "mass_g": 61.79245,
+            "calories": 76.68443045
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 40.0,
+            "calories": 13.6
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 61.79245,
+            "calories": 46.962262
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 7.415094,
+            "calories": 65.54943096
+          }
+        ]
+      },
+      "accuracy": 59.14568184338136,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1566413469",
+      "image_filename": "dish_1566413469.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566413469.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 60,
+            "calories": 13.8,
+            "fat_g": 0.2,
+            "carbs_g": 1.8,
+            "protein_g": 1.3,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.9
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 80,
+            "calories": 27.2,
+            "fat_g": 0.3,
+            "carbs_g": 3.5,
+            "protein_g": 2.3,
+            "form": "raw",
+            "count": 7,
+            "kcal_per_100g_est": 34,
+            "confidence": 0.85
+          },
+          {
+            "name": "cucumber",
+            "mass_g": 60,
+            "calories": 9.0,
+            "fat_g": 0.1,
+            "carbs_g": 1.6,
+            "protein_g": 0.4,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 15,
+            "confidence": 0.6
+          },
+          {
+            "name": "olives",
+            "mass_g": 28,
+            "calories": 40.6,
+            "fat_g": 4.2,
+            "carbs_g": 1.1,
+            "protein_g": 0.3,
+            "form": "canned",
+            "count": 8,
+            "kcal_per_100g_est": 145,
+            "confidence": 0.85
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 15,
+            "calories": 64.7,
+            "fat_g": 4.4,
+            "carbs_g": 0.6,
+            "protein_g": 5.7,
+            "form": "raw",
+            "kcal_per_100g_est": 431,
+            "confidence": 0.9
+          }
+        ],
+        "totals": {
+          "mass_g": 243,
+          "calories": 155.3,
+          "protein_g": 10.0,
+          "carbs_g": 8.6,
+          "fat_g": 9.200000000000001
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7471
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 58.7584092650941,
+              "calories": 13.8,
+              "protein_g": 1.6757310738312188,
+              "carbs_g": 1.4139036021459592,
+              "fat_g": 0.36359703653240233
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 85.0,
+              "calories": 27.2,
+              "protein_g": 2.1845000000000003,
+              "carbs_g": 5.346500000000001,
+              "fat_g": 0.28900000000000003
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cucumber",
+            "fdc_id": 2346406,
+            "matched_name": "Cucumber with peel raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 56.57708628005658,
+              "calories": 9.0,
+              "protein_g": 0.3536067892503536,
+              "carbs_g": 1.6704384724186705,
+              "fat_g": 0.10042432814710042
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 31.230769230769234,
+              "calories": 40.6,
+              "protein_g": 0.35915384615384616,
+              "carbs_g": 1.5488509615384618,
+              "fat_g": 4.028769230769231
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "parmesan cheese",
+            "fdc_id": 325036,
+            "matched_name": "Cheese parmesan grated",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 15.368171021377671,
+              "calories": 64.7,
+              "protein_g": 4.548978622327791,
+              "carbs_g": 1.9056532066508314,
+              "fat_g": 4.303087885985748
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 246.93443579729754,
+          "calories": 155.3,
+          "protein_g": 9.12197033156321,
+          "carbs_g": 11.885346242753922,
+          "fat_g": 9.084878481434483
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1566413469",
+        "image_filename": "dish_1566413469.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566413469.png",
+        "total_mass_g": 379.0,
+        "total_calories": 459.663025,
+        "total_fat_g": 25.563999,
+        "total_carbs_g": 17.134001,
+        "total_protein_g": 44.223003,
+        "foods": [
+          {
+            "name": "chicken",
+            "mass_g": 103.0,
+            "calories": 169.95
+          },
+          {
+            "name": "avocado",
+            "mass_g": 49.0,
+            "calories": 78.4
+          },
+          {
+            "name": "olives",
+            "mass_g": 80.0,
+            "calories": 92.0
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 19.0,
+            "calories": 81.833
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 61.0,
+            "calories": 14.03
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 67.0,
+            "calories": 23.45
+          }
+        ]
+      },
+      "accuracy": 41.33901734042979,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1566501126",
+      "image_filename": "dish_1566501126.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566501126.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 45,
+            "calories": 13.5,
+            "fat_g": 0.18,
+            "carbs_g": 1.62,
+            "protein_g": 1.31,
+            "form": "raw",
+            "kcal_per_100g_est": 30,
+            "confidence": 0.9
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 90,
+            "calories": 140.4,
+            "fat_g": 3.24,
+            "carbs_g": 0,
+            "protein_g": 27.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 156,
+            "confidence": 0.85
+          },
+          {
+            "name": "avocado",
+            "mass_g": 45,
+            "calories": 73.89,
+            "fat_g": 6.62,
+            "carbs_g": 3.83,
+            "protein_g": 0.9,
+            "form": "raw",
+            "kcal_per_100g_est": 164.2,
+            "confidence": 0.8,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          },
+          {
+            "name": "carrots",
+            "mass_g": 14,
+            "calories": 6.16,
+            "fat_g": 0.03,
+            "carbs_g": 1.34,
+            "protein_g": 0.13,
+            "form": "raw",
+            "kcal_per_100g_est": 44,
+            "confidence": 0.8
+          },
+          {
+            "name": "olives",
+            "mass_g": 25,
+            "calories": 31.25,
+            "fat_g": 2.68,
+            "carbs_g": 1.58,
+            "protein_g": 0.2,
+            "form": "canned",
+            "count": 8,
+            "kcal_per_100g_est": 125,
+            "confidence": 0.78
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 10,
+            "calories": 43.1,
+            "fat_g": 2.9,
+            "carbs_g": 0.41,
+            "protein_g": 3.8,
+            "form": "raw",
+            "kcal_per_100g_est": 431,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 229,
+          "calories": 308.3,
+          "protein_g": 34.24,
+          "carbs_g": 8.780000000000001,
+          "fat_g": 15.65
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7611
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 57.48105254193988,
+              "calories": 13.5,
+              "protein_g": 1.6393021374435834,
+              "carbs_g": 1.3831665673166993,
+              "fat_g": 0.355692753129524
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 2646170,
+            "matched_name": "Chicken breast boneless skinless raw (roasted_oven)",
+            "data_type": "foundation",
+            "confidence": 0.75,
+            "score": 0.85,
+            "nutrition": {
+              "mass_g": 96.82758620689656,
+              "calories": 140.4,
+              "protein_g": 28.123954627949185,
+              "carbs_g": 0.0,
+              "fat_g": 2.291526751361162
+            },
+            "provenance": {
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "conversion_applied": true,
+              "raw_fdc_id": 2646170,
+              "raw_source": "foundation",
+              "raw_name": "Chicken breast boneless skinless raw",
+              "conversion_steps": [
+                "shrinkage_24.00%",
+                "macro_retention",
+                "energy_clamp_0\u2192145"
+              ],
+              "atwater_deviation_pct": 0.05469099180958747,
+              "energy_clamped": true,
+              "atwater_ok": true
+            }
+          },
+          {
+            "predicted_name": "avocado",
+            "fdc_id": 2710824,
+            "matched_name": "Avocado Hass peeled raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 33.08497586574368,
+              "calories": 73.89,
+              "protein_g": 0.5996651875666043,
+              "carbs_g": 2.7538279661851752,
+              "fat_g": 6.719558598332541
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrots",
+            "fdc_id": 2258586,
+            "matched_name": "Carrots mature raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 14.736489557666085,
+              "calories": 6.16,
+              "protein_g": 0.13871457620631086,
+              "carbs_g": 1.513083801822923,
+              "fat_g": 0.0516661323891773
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 24.03846153846154,
+              "calories": 31.25,
+              "protein_g": 0.27644230769230765,
+              "carbs_g": 1.192157451923077,
+              "fat_g": 3.1009615384615388
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "parmesan cheese",
+            "fdc_id": 325036,
+            "matched_name": "Cheese parmesan grated",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 10.237529691211401,
+              "calories": 43.1,
+              "protein_g": 3.030308788598575,
+              "carbs_g": 1.2694536817102138,
+              "fat_g": 2.866508313539193
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 236.40609540191915,
+          "calories": 308.30000000000007,
+          "protein_g": 33.80838762545657,
+          "carbs_g": 8.111689468958089,
+          "fat_g": 15.385914087213136
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1566501126",
+        "image_filename": "dish_1566501126.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1566501126.png",
+        "total_mass_g": 369.0,
+        "total_calories": 564.917969,
+        "total_fat_g": 33.761002,
+        "total_carbs_g": 17.909,
+        "total_protein_g": 50.878998,
+        "foods": [
+          {
+            "name": "spinach (raw)",
+            "mass_g": 25.0,
+            "calories": 5.75
+          },
+          {
+            "name": "carrot",
+            "mass_g": 38.0,
+            "calories": 15.58
+          },
+          {
+            "name": "parmesan cheese",
+            "mass_g": 34.0,
+            "calories": 146.438
+          },
+          {
+            "name": "olives",
+            "mass_g": 97.0,
+            "calories": 111.55
+          },
+          {
+            "name": "chicken",
+            "mass_g": 112.0,
+            "calories": 184.8
+          },
+          {
+            "name": "avocado",
+            "mass_g": 63.0,
+            "calories": 100.8
+          }
+        ]
+      },
+      "accuracy": 55.86234547854197,
+      "error": null
+    }
+  ]
+}

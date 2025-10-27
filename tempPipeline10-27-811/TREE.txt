@@ -1,0 +1,121 @@
+[ 21M]  .
+|-- [7.0K]  DELIVERY_SUMMARY.txt
+|-- [9.0K]  INVENTORY.md
+|-- [ 10K]  MANIFEST.md
+|-- [5.5K]  QUICKSTART.md
+|-- [ 11K]  README.md
+|-- [7.1K]  STAGE1B_FIXES_COMPLETE.md
+|-- [9.4K]  SURGICAL_FIXES_COMPLETE.md
+|-- [   0]  TREE.txt
+|-- [125K]  alignment
+|   |-- [  59]  __init__.py
+|   |-- [ 15K]  __pycache__
+|   |   |-- [ 275]  __init__.cpython-313.pyc
+|   |   `-- [ 14K]  cook_convert.cpython-313.pyc
+|   |-- [ 67K]  align_convert.py
+|   |-- [ 11K]  alignment_adapter.py
+|   |-- [ 16K]  cook_convert.py
+|   |-- [8.7K]  search_normalizer.py
+|   `-- [6.7K]  stage_z_guards.py
+|-- [2.9K]  configs
+|   |-- [ 853]  class_thresholds.yml
+|   |-- [1.2K]  feature_flags.yml
+|   |-- [ 658]  negative_vocabulary.yml
+|   `-- [  64]  nvreal
+|-- [7.3K]  data
+|   `-- [7.2K]  fdc_database.py
+|-- [ 22K]  entrypoints
+|   |-- [ 17K]  run_459_batch_evaluation.py
+|   `-- [4.9K]  test_surgical_fixes.py
+|-- [ 25K]  ground_truth
+|   `-- [ 25K]  eval_aggregator.py
+|-- [ 426]  requirements.txt
+|-- [ 20M]  telemetry
+|   |-- [107K]  batch_100_phase1
+|   |   |-- [ 646]  batch_459_log_20251026_141948.txt
+|   |   `-- [106K]  batch_459_results_20251026_141948.json
+|   |-- [ 42K]  batch_results_gpt-5_20251019_105900.json
+|   |-- [165K]  gpt_5_100images_20251020_120750.json
+|   |-- [816K]  gpt_5_100images_20251026_194228.json
+|   |-- [ 13K]  gpt_5_10images_20251020_203105.json
+|   |-- [ 13K]  gpt_5_10images_20251020_203320.json
+|   |-- [ 17K]  gpt_5_10images_20251020_203558.json
+|   |-- [ 15K]  gpt_5_10images_20251020_203847.json
+|   |-- [ 53K]  gpt_5_10images_20251020_204556.json
+|   |-- [ 61K]  gpt_5_10images_20251020_213409.json
+|   |-- [ 63K]  gpt_5_10images_20251020_220408.json
+|   |-- [ 72K]  gpt_5_10images_20251020_220808.json
+|   |-- [ 63K]  gpt_5_10images_20251022_162224.json
+|   |-- [ 69K]  gpt_5_10images_20251023_164340.json
+|   |-- [ 95K]  gpt_5_10images_20251023_173722.json
+|   |-- [ 17K]  gpt_5_10images_20251024_084418.json
+|   |-- [ 46K]  gpt_5_10images_20251026_181556.json
+|   |-- [ 67K]  gpt_5_10images_20251026_192517.json
+|   |-- [ 70K]  gpt_5_10images_20251026_192714.json
+|   |-- [ 20K]  gpt_5_11images_20251020_125156.json
+|   |-- [ 81K]  gpt_5_19images_20251020_221734.json
+|   |-- [126K]  gpt_5_20images_20251020_205754.json
+|   |-- [ 41K]  gpt_5_20images_20251021_081949.json
+|   |-- [122K]  gpt_5_20images_20251021_101039.json
+|   |-- [147K]  gpt_5_20images_20251021_112159.json
+|   |-- [156K]  gpt_5_20images_20251021_121450.json
+|   |-- [156K]  gpt_5_20images_20251021_131741.json
+|   |-- [142K]  gpt_5_20images_20251022_155346.json
+|   |-- [ 49K]  gpt_5_21images_20251019_113325.json
+|   |-- [120K]  gpt_5_26images_20251020_161559.json
+|   |-- [ 11K]  gpt_5_2images_20251024_101900.json
+|   |-- [1.7M]  gpt_5_302images_20251025_153955.json
+|   |-- [223K]  gpt_5_30images_20251022_211802.json
+|   |-- [221K]  gpt_5_30images_20251023_134220.json
+|   |-- [ 13K]  gpt_5_3images_20251024_113730.json
+|   |-- [ 16K]  gpt_5_3images_20251024_114654.json
+|   |-- [ 19K]  gpt_5_3images_20251026_173609.json
+|   |-- [315K]  gpt_5_40images_20251021_144452.json
+|   |-- [301K]  gpt_5_40images_20251021_191423.json
+|   |-- [2.2M]  gpt_5_413images_20251025_172523.json
+|   |-- [2.3M]  gpt_5_421images_20251025_211116.json
+|   |-- [2.3M]  gpt_5_421images_20251026_113942.json
+|   |-- [2.5M]  gpt_5_459images_20251026_092433.json
+|   |-- [ 21K]  gpt_5_4images_20251024_114818.json
+|   |-- [241K]  gpt_5_50images_20251020_135110.json
+|   |-- [270K]  gpt_5_50images_20251024_121004.json
+|   |-- [276K]  gpt_5_50images_20251025_100656.json
+|   |-- [357K]  gpt_5_50images_20251026_150143.json
+|   |-- [423K]  gpt_5_50images_20251026_204653.json
+|   |-- [381K]  gpt_5_50images_20251026_213437.json
+|   `-- [3.2M]  gpt_5_630images_20251025_133246.json
+`-- [321K]  vision
+    |-- [  44]  __init__.py
+    |-- [165K]  __pycache__
+    |   |-- [ 240]  __init__.cpython-313.pyc
+    |   |-- [7.2K]  advanced_prompts.cpython-313.pyc
+    |   |-- [2.6K]  advanced_schema.cpython-313.pyc
+    |   |-- [ 11K]  calibration.cpython-313.pyc
+    |   |-- [ 15K]  evaluator.cpython-313.pyc
+    |   |-- [ 11K]  food_nutrients_loader.cpython-313.pyc
+    |   |-- [6.9K]  image_preprocessing.cpython-313.pyc
+    |   |-- [ 12K]  loader.cpython-313.pyc
+    |   |-- [8.7K]  nutritionverse_loader.cpython-313.pyc
+    |   |-- [ 25K]  nutritionverse_prompts.cpython-313.pyc
+    |   |-- [ 13K]  prediction_rails.cpython-313.pyc
+    |   |-- [ 11K]  prompts.cpython-313.pyc
+    |   |-- [ 19K]  runner.cpython-313.pyc
+    |   |-- [ 12K]  schema.cpython-313.pyc
+    |   `-- [ 10K]  store.cpython-313.pyc
+    |-- [9.4K]  advanced_prompts.py
+    |-- [6.7K]  advanced_schema.py
+    |-- [9.9K]  calibration.py
+    |-- [ 12K]  evaluator.py
+    |-- [7.3K]  food_nutrients_loader.py
+    |-- [5.8K]  image_preprocessing.py
+    |-- [8.6K]  loader.py
+    |-- [6.4K]  nutritionverse_loader.py
+    |-- [ 24K]  nutritionverse_prompts.py
+    |-- [ 11K]  openai_.py
+    |-- [ 13K]  prediction_rails.py
+    |-- [9.1K]  prompts.py
+    |-- [ 16K]  runner.py
+    |-- [9.1K]  schema.py
+    `-- [7.1K]  store.py
+
+  21M used in 12 directories, 107 files

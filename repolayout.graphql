@@ -1,0 +1,27 @@
+nutritionverse-tests/
+  data/
+    nvreal/                # you place the dataset here (images + annotations)
+  configs/
+    schema_map.yaml        # how we map dataset → uniform JSON schema
+    apis.yaml              # which APIs are enabled + keys via env var names
+    tasks.yaml             # which fields to evaluate (calories, macros, etc.)
+  runs/
+    logs/                  # per-run logs
+    results/               # JSONL/Parquet of predictions + scores
+  src/
+    adapters/              # each API backend lives here
+      openai_.py
+      gemini_.py
+      claude_.py
+      ollama_llava.py
+    core/
+      loader.py            # dataset iterator & index slicing
+      schema.py            # schema discovery + mapping utilities
+      prompts.py           # prompt templates
+      evaluator.py         # metrics
+      runner.py            # main loop, resume, rate limiting
+      store.py             # write JSONL/Parquet; checkpointing
+    ui/
+      app.py               # Streamlit/Gradio mini UI
+  .env.example             # API keys as env vars
+  README.md

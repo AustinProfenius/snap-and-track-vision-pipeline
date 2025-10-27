@@ -1,0 +1,191 @@
+================================================================================
+COMPLETE PIPELINE DELIVERY - tempPipeline10-27-811
+================================================================================
+
+Created: 2025-10-27 08:20
+Location: /Users/austinprofenius/snapandtrack-model-testing/tempPipeline10-27-811
+
+================================================================================
+WHAT'S INCLUDED
+================================================================================
+
+1. DOCUMENTATION (6 files, 50 KB)
+   ✓ README.md           - Complete pipeline guide (11 KB)
+   ✓ QUICKSTART.md       - 5-minute setup guide (5 KB)
+   ✓ INVENTORY.md        - Detailed file inventory (9 KB)
+   ✓ MANIFEST.md         - Complete file listing (12 KB)
+   ✓ SURGICAL_FIXES_COMPLETE.md - A-E2 fixes (9 KB)
+   ✓ STAGE1B_FIXES_COMPLETE.md - Final fixes (7 KB)
+
+2. ENTRYPOINTS (2 files, 25 KB)
+   ✓ run_459_batch_evaluation.py - Full batch test
+   ✓ test_surgical_fixes.py - Single-item validation
+
+3. ALIGNMENT ENGINE (9 files, 500 KB)
+   ✓ align_convert.py - Main engine with all stages (1650 lines)
+     - Stage 1b: Raw Foundation direct (lines 497-658)
+     - Stage 1c: Cooked SR direct (lines 619-672)
+     - Stage 2: Canonical base selection (lines 619-720)
+     - Hard negative filter (lines 605-609)
+     - Single-token leniency (lines 617-628)
+   ✓ alignment_adapter.py - Web app interface
+   ✓ search_normalizer.py - Query variants
+   ✓ stage_z_guards.py - Stage-Z logic
+   ✓ conversions/ - Raw→cooked conversion logic
+
+4. CONFIGURATION (6 files, 2 MB)
+   ✓ negative_vocabulary.yml - Hard filter negatives
+   ✓ class_thresholds.yml - Stage-1b thresholds
+   ✓ feature_flags.yml - Engine behavior flags
+   ✓ cook_conversions.v2.json - 250+ method profiles
+   ✓ energy_bands.json - Plausibility ranges
+   ✓ proxy_alignment_rules.json - Stage 5 proxies
+
+5. DATA LOADERS (1 file, 15 KB)
+   ✓ fdc_database.py - PostgreSQL FDC search
+
+6. TELEMETRY/RESULTS (52 files, 45 MB)
+   ✓ 50-image baseline (before fixes)
+   ✓ 10-image tests
+   ✓ 459-image full evaluation
+   ✓ All with complete telemetry
+
+7. VISION ADAPTERS (15+ files, 100 KB)
+   ✓ openai_.py - GPT-4V/GPT-5 integration
+   ✓ core/prompts.py - System prompts
+   ✓ core/types.py - Type definitions
+
+8. ENVIRONMENT (3 files)
+   ✓ requirements.txt - Python dependencies
+   ✓ .env.template - Environment variables template
+   ✓ README.md setup instructions
+
+TOTAL: 90+ files, ~48 MB
+
+================================================================================
+KEY FIXES APPLIED (2025-10-27)
+================================================================================
+
+MORNING SESSION (A-E2):
+✓ Variant search enhancement (Foundation-count scoring)
+✓ Stage-1b class negatives (apple/grape/potato/sweet_potato)
+✓ Melon synonyms (honeydew, cantaloupe)
+✓ Canonical base selection (excludes leaves/flour/starch)
+✓ Stage-1c cooked SR direct (bacon/eggs/sausage)
+✓ Stage-Z meat exception (allows meats, blocks produce)
+✓ Fruit/melon variant ordering
+
+EVENING SESSION (Stage-1b Critical):
+✓ Hard filter negatives BEFORE scoring
+✓ Add almond negatives (oil/butter/flour)
+✓ Single-token core class leniency (grape scores 0.95, was 0.20)
+✓ Class-specific thresholds (grape/almond/melon: 0.30)
+✓ Prefer plural variants (grapes before grape)
+✓ Corn & tomato variants
+
+================================================================================
+EXPECTED IMPACT
+================================================================================
+
+BEFORE (50-image baseline 20251026_204653):
+❌ Grapes: 30/30 stage0_no_candidates (100% failure)
+❌ Almonds: 27/27 stage0_no_candidates (100% failure)
+❌ Cantaloupe: 12/12 stage0_no_candidates (100% failure)
+❌ Apple: 26/26 "Strudel apple" matches (100% negative leak)
+
+AFTER (expected):
+✅ Grapes: 30/30 stage1b_raw_foundation_direct (score ~0.95)
+✅ Almonds: 27/27 stage1b_raw_foundation_direct (score ~0.95)
+✅ Cantaloupe: 12/12 stage1b_raw_foundation_direct (score ~0.90)
+✅ Apple: 0/26 strudel/pie/juice matches (0% negative leak)
+
+OVERALL: ~70 items shift from stage0 → stage1b (major improvement)
+
+================================================================================
+HOW TO USE
+================================================================================
+
+1. SETUP (2 min):
+   $ cp .env.template .env
+   $ nano .env  # Add NEON_CONNECTION_URL and OPENAI_API_KEY
+   $ pip install -r requirements.txt
+
+2. QUICK TEST (1 min):
+   $ cd entrypoints
+   $ python test_surgical_fixes.py
+
+3. BATCH TEST (30 min):
+   $ python run_459_batch_evaluation.py
+
+4. WEB APP:
+   from alignment.alignment_adapter import AlignmentEngineAdapter
+   adapter = AlignmentEngineAdapter()
+   result = adapter.align_prediction_batch(prediction)
+
+================================================================================
+VALIDATION CHECKLIST
+================================================================================
+
+Before deploying:
+□ Re-run 50-image test
+□ Verify grapes/almonds/melons: 100% stage1b
+□ Verify apple: 0% negative leaks
+□ Check Stage-Z produce count == 0
+□ Run 459-image full evaluation
+□ Compare accuracy vs baseline
+□ Test web app integration
+
+================================================================================
+MISSING / TODO
+================================================================================
+
+HIGH PRIORITY:
+□ ground_truth.csv - Evaluation data
+□ eval_aggregator.py - Accuracy metrics
+□ run_50_image_test.py - Quick validation script
+
+MEDIUM PRIORITY:
+□ FDC index builder documentation
+□ Web app routes/integration examples
+□ Unit tests for alignment stages
+
+LOW PRIORITY:
+□ Performance benchmarks
+□ API documentation (OpenAPI/Swagger)
+□ Monitoring/telemetry dashboards
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+tempPipeline10-27-811/
+├── Documentation (6 MD files)
+├── entrypoints/ (2 runners)
+├── alignment/ (9 core files + conversions/)
+├── data/ (FDC loader)
+├── configs/ (6 config files + data/)
+├── telemetry/results/ (52 JSON files)
+├── vision/ (15+ files)
+├── ground_truth/ (empty - TO BE ADDED)
+├── requirements.txt
+└── .env.template
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+Created By: Claude (Anthropic)
+Session: 2025-10-27 Surgical Fixes Implementation
+Status: 85% Complete (core functionality ready)
+
+Questions:
+1. See README.md for complete guide
+2. See QUICKSTART.md for 5-minute setup
+3. See INVENTORY.md for file details
+4. See STAGE1B_FIXES_COMPLETE.md for change history
+
+This pipeline is self-contained and can run independently of the main repo.
+
+================================================================================
+END OF SUMMARY
+================================================================================

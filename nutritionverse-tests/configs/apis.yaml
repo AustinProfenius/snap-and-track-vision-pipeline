@@ -1,0 +1,102 @@
+apis:
+  openai:
+    enabled: true
+    env_key: OPENAI_API_KEY
+    models:
+      gpt-5:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.003
+        cost_per_1k_output: 0.012
+      gpt-5-mini:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.0008
+      gpt-5-turbo:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.003
+        cost_per_1k_output: 0.012
+      gpt-5-turbo-mini:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.0008
+      gpt-5-vision:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.006
+        cost_per_1k_output: 0.024
+      gpt-5-vision-mini:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.0004
+        cost_per_1k_output: 0.0016
+      gpt-5-vision-turbo:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.006
+        cost_per_1k_output: 0.024
+      gpt-5-vision-turbo-mini:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.0004
+        cost_per_1k_output: 0.0016
+    default_model: gpt-5
+
+  claude:
+    enabled: true
+    env_key: ANTHROPIC_API_KEY
+    models:
+      claude-3-7-sonnet-20250219:
+        temperature: 0.0
+        max_tokens: 4096
+        supports_json_mode: false
+        cost_per_1k_input: 0.003
+        cost_per_1k_output: 0.015
+      claude-3-5-sonnet-20241022:
+        temperature: 0.0
+        max_tokens: 4096
+        supports_json_mode: false
+        cost_per_1k_input: 0.003
+        cost_per_1k_output: 0.015
+    default_model: claude-3-5-sonnet-20241022
+
+  gemini:
+    enabled: true
+    env_key: GOOGLE_API_KEY
+    models:
+      gemini-1.5-flash:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.000075
+        cost_per_1k_output: 0.0003
+      gemini-1.5-pro:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: true
+        cost_per_1k_input: 0.00125
+        cost_per_1k_output: 0.005
+    default_model: gemini-1.5-flash
+
+  ollama:
+    enabled: true
+    env_key: OLLAMA_BASE_URL
+    models:
+      llava:
+        temperature: 0.0
+        max_tokens: 2048
+        supports_json_mode: false
+        cost_per_1k_input: 0.0
+        cost_per_1k_output: 0.0
+    default_model: llava

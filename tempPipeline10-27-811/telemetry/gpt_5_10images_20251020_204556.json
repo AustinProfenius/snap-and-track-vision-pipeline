@@ -1,0 +1,1782 @@
+{
+  "timestamp": "20251020_204556",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 10,
+  "successful": 10,
+  "failed": 0,
+  "average_accuracy": 60.51971070646562,
+  "results": [
+    {
+      "dish_id": "dish_1556575273",
+      "image_filename": "dish_1556575273.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 65,
+            "calories": 28,
+            "fat_g": 0.3,
+            "carbs_g": 4.6,
+            "protein_g": 1.6,
+            "form": "cooked",
+            "count": 6,
+            "kcal_per_100g_est": 43,
+            "confidence": 0.78
+          },
+          {
+            "name": "celery",
+            "mass_g": 40,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.0,
+            "protein_g": 0.3,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.85
+          },
+          {
+            "name": "olives",
+            "mass_g": 70,
+            "calories": 96,
+            "fat_g": 9.1,
+            "carbs_g": 2.8,
+            "protein_g": 0.7,
+            "form": "canned",
+            "count": 14,
+            "kcal_per_100g_est": 137,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 175,
+          "calories": 130,
+          "protein_g": 2.6,
+          "carbs_g": 8.399999999999999,
+          "fat_g": 9.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7736
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.69,
+            "score": 0.9,
+            "nutrition": {
+              "mass_g": 56.095362115596515,
+              "calories": 28,
+              "protein_g": 2.2350636081338275,
+              "carbs_g": 5.393905639587299,
+              "fat_g": 0.3169387959531203
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 35.933953393662456,
+              "calories": 6,
+              "protein_g": 0.17686691860360662,
+              "carbs_g": 1.1917495643008154,
+              "fat_g": 0.05839267426470149
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 2307.6923076923076,
+              "calories": 96,
+              "protein_g": 0.8492307692307692,
+              "carbs_g": 3.6623076923076923,
+              "fat_g": 9.526153846153846
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 2399.7216232015667,
+          "calories": 130,
+          "protein_g": 3.2611612959682033,
+          "carbs_g": 10.247962896195807,
+          "fat_g": 9.901485316371668
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575273",
+        "image_filename": "dish_1556575273.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": 78.14931258906925,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575327",
+      "image_filename": "dish_1556575327.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 90,
+            "calories": 40,
+            "fat_g": 0.45,
+            "carbs_g": 6.4,
+            "protein_g": 2.6,
+            "form": "cooked",
+            "count": 6,
+            "kcal_per_100g_est": 44,
+            "confidence": 0.78
+          },
+          {
+            "name": "olives",
+            "mass_g": 50,
+            "calories": 62,
+            "fat_g": 5.5,
+            "carbs_g": 3.1,
+            "protein_g": 0.4,
+            "form": "canned",
+            "count": 14,
+            "kcal_per_100g_est": 124,
+            "confidence": 0.8
+          },
+          {
+            "name": "celery",
+            "mass_g": 40,
+            "calories": 7,
+            "fat_g": 0.1,
+            "carbs_g": 1.2,
+            "protein_g": 0.3,
+            "form": "raw",
+            "kcal_per_100g_est": 16,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 180,
+          "calories": 109,
+          "protein_g": 3.3000000000000003,
+          "carbs_g": 10.700000000000001,
+          "fat_g": 6.05
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7480
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 80.13623159370931,
+              "calories": 40,
+              "protein_g": 3.1929480116197535,
+              "carbs_g": 7.705579485124712,
+              "fat_g": 0.4527697085044575
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 1490.3846153846152,
+              "calories": 62,
+              "protein_g": 0.5484615384615384,
+              "carbs_g": 2.3652403846153844,
+              "fat_g": 6.1523076923076925
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 41.922945625939526,
+              "calories": 7,
+              "protein_g": 0.20634473837087436,
+              "carbs_g": 1.3903744916842844,
+              "fat_g": 0.06812478664215174
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 1612.443792604264,
+          "calories": 109,
+          "protein_g": 3.9477542884521664,
+          "carbs_g": 11.461194361424381,
+          "fat_g": 6.673202187454302
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575327",
+        "image_filename": "dish_1556575327.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": 89.6272995124232,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575386",
+      "image_filename": "dish_1556575386.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 108,
+            "calories": 46,
+            "fat_g": 0.6,
+            "carbs_g": 6.5,
+            "protein_g": 3.7,
+            "form": "cooked",
+            "count": 6,
+            "kcal_per_100g_est": 43,
+            "confidence": 0.74
+          },
+          {
+            "name": "olives",
+            "mass_g": 64,
+            "calories": 92,
+            "fat_g": 9.0,
+            "carbs_g": 1.9,
+            "protein_g": 1.0,
+            "form": "canned",
+            "count": 16,
+            "kcal_per_100g_est": 144,
+            "confidence": 0.8
+          },
+          {
+            "name": "celery",
+            "mass_g": 35,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.1,
+            "protein_g": 0.2,
+            "form": "raw",
+            "kcal_per_100g_est": 16,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 207,
+          "calories": 144,
+          "protein_g": 4.9,
+          "carbs_g": 9.5,
+          "fat_g": 9.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6648
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.69,
+            "score": 0.9,
+            "nutrition": {
+              "mass_g": 92.1566663327657,
+              "calories": 46,
+              "protein_g": 3.6718902133627163,
+              "carbs_g": 8.861416407893419,
+              "fat_g": 0.520685164780126
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 2211.5384615384614,
+              "calories": 92,
+              "protein_g": 0.8138461538461538,
+              "carbs_g": 3.5097115384615383,
+              "fat_g": 9.129230769230768
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 35.933953393662456,
+              "calories": 6,
+              "protein_g": 0.17686691860360662,
+              "carbs_g": 1.1917495643008154,
+              "fat_g": 0.05839267426470149
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 2339.6290812648895,
+          "calories": 144,
+          "protein_g": 4.662603285812477,
+          "carbs_g": 13.562877510655772,
+          "fat_g": 9.708308608275596
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575386",
+        "image_filename": "dish_1556575386.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": 60.41770407102099,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575446",
+      "image_filename": "dish_1556575446.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 110,
+            "calories": 57.2,
+            "fat_g": 0.33,
+            "carbs_g": 9.9,
+            "protein_g": 3.74,
+            "form": "cooked",
+            "count": 6,
+            "kcal_per_100g_est": 52,
+            "confidence": 0.75
+          },
+          {
+            "name": "olives",
+            "mass_g": 72,
+            "calories": 83.52,
+            "fat_g": 7.85,
+            "carbs_g": 4.32,
+            "protein_g": 0.58,
+            "form": "canned",
+            "count": 16,
+            "kcal_per_100g_est": 116,
+            "confidence": 0.8
+          },
+          {
+            "name": "celery",
+            "mass_g": 50,
+            "calories": 8.0,
+            "fat_g": 0.1,
+            "carbs_g": 1.5,
+            "protein_g": 0.35,
+            "form": "raw",
+            "kcal_per_100g_est": 16,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 232,
+          "calories": 148.72,
+          "protein_g": 4.67,
+          "carbs_g": 15.72,
+          "fat_g": 8.28
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7168
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 114.59481117900432,
+              "calories": 57.2,
+              "protein_g": 4.565915656616248,
+              "carbs_g": 11.01897866372834,
+              "fat_g": 0.6474606831613744
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 2007.6923076923076,
+              "calories": 83.52,
+              "protein_g": 0.7388307692307692,
+              "carbs_g": 3.1862076923076925,
+              "fat_g": 8.287753846153846
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 47.911937858216604,
+              "calories": 8.0,
+              "protein_g": 0.23582255813814212,
+              "carbs_g": 1.5889994190677537,
+              "fat_g": 0.07785689901960198
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 2170.199056729529,
+          "calories": 148.72,
+          "protein_g": 5.540568983985159,
+          "carbs_g": 15.794185775103788,
+          "fat_g": 9.013071428334824
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575446",
+        "image_filename": "dish_1556575446.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": 54.44076159399589,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575499",
+      "image_filename": "dish_1556575499.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 80,
+            "calories": 29.4,
+            "fat_g": 0.24,
+            "carbs_g": 4.8,
+            "protein_g": 2.0,
+            "form": "cooked",
+            "kcal_per_100g_est": 36.7,
+            "confidence": 0.85
+          },
+          {
+            "name": "olives",
+            "mass_g": 64,
+            "calories": 81.3,
+            "fat_g": 7.04,
+            "carbs_g": 3.84,
+            "protein_g": 0.64,
+            "form": "canned",
+            "count": 16,
+            "kcal_per_100g_est": 127,
+            "confidence": 0.82
+          },
+          {
+            "name": "celery",
+            "mass_g": 35,
+            "calories": 5.8,
+            "fat_g": 0.07,
+            "carbs_g": 1.05,
+            "protein_g": 0.25,
+            "form": "raw",
+            "kcal_per_100g_est": 16.6,
+            "confidence": 0.92
+          },
+          {
+            "name": "garlic",
+            "mass_g": 3,
+            "calories": 4.4,
+            "fat_g": 0.01,
+            "carbs_g": 0.9,
+            "protein_g": 0.18,
+            "form": "raw",
+            "kcal_per_100g_est": 146.7,
+            "confidence": 0.55
+          }
+        ],
+        "totals": {
+          "mass_g": 182,
+          "calories": 120.89999999999999,
+          "protein_g": 3.07,
+          "carbs_g": 10.59,
+          "fat_g": 7.36
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7897
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 58.90013022137634,
+              "calories": 29.4,
+              "protein_g": 2.3468167885405187,
+              "carbs_g": 5.663600921566663,
+              "fat_g": 0.33278573575077625
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 1954.326923076923,
+              "calories": 81.3,
+              "protein_g": 0.7191923076923077,
+              "carbs_g": 3.101516826923077,
+              "fat_g": 8.067461538461538
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 34.73615494720704,
+              "calories": 5.8,
+              "protein_g": 0.17097135465015306,
+              "carbs_g": 1.1520245788241217,
+              "fat_g": 0.05644625178921145
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "garlic",
+            "fdc_id": 1104647,
+            "matched_name": "Garlic raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 3.076923076923077,
+              "calories": 4.4,
+              "protein_g": 0.2036923076923077,
+              "carbs_g": 0.8676923076923078,
+              "fat_g": 0.011692307692307693
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 2051.0401313224293,
+          "calories": 120.89999999999999,
+          "protein_g": 3.440672758575287,
+          "carbs_g": 10.784834635006169,
+          "fat_g": 8.468385833693834
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575499",
+        "image_filename": "dish_1556575499.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": 89.79456078657682,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575558",
+      "image_filename": "dish_1556575558.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575558.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 105,
+            "calories": 46.73,
+            "fat_g": 0.53,
+            "carbs_g": 7.35,
+            "protein_g": 3.15,
+            "form": "cooked",
+            "count": 7,
+            "kcal_per_100g_est": 44.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "olives",
+            "mass_g": 48,
+            "calories": 65.28,
+            "fat_g": 5.76,
+            "carbs_g": 2.88,
+            "protein_g": 0.48,
+            "form": "canned",
+            "count": 16,
+            "kcal_per_100g_est": 136,
+            "confidence": 0.6
+          },
+          {
+            "name": "celery",
+            "mass_g": 30,
+            "calories": 4.98,
+            "fat_g": 0.06,
+            "carbs_g": 0.9,
+            "protein_g": 0.21,
+            "form": "raw",
+            "kcal_per_100g_est": 16.6,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 183,
+          "calories": 116.99,
+          "protein_g": 3.84,
+          "carbs_g": 11.129999999999999,
+          "fat_g": 6.35
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6596
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 93.6191525593509,
+              "calories": 46.73,
+              "protein_g": 3.730161514574777,
+              "carbs_g": 9.002043233496945,
+              "fat_g": 0.5289482119603325
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 1569.230769230769,
+              "calories": 65.28,
+              "protein_g": 0.577476923076923,
+              "carbs_g": 2.4903692307692307,
+              "fat_g": 6.477784615384614
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 29.825181316739837,
+              "calories": 4.98,
+              "protein_g": 0.14679954244099347,
+              "carbs_g": 0.9891521383696766,
+              "fat_g": 0.04846591963970223
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 1692.6751031068598,
+          "calories": 116.99,
+          "protein_g": 4.454437980092693,
+          "carbs_g": 12.481564602635853,
+          "fat_g": 7.055198746984649
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575558",
+        "image_filename": "dish_1556575558.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575558.png",
+        "total_mass_g": 151.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": 83.82235268757421,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1557853429",
+      "image_filename": "dish_1557853429.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557853429.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 130,
+            "calories": 195,
+            "fat_g": 13.8,
+            "carbs_g": 1.4,
+            "protein_g": 16.3,
+            "form": "cooked",
+            "kcal_per_100g_est": 150,
+            "confidence": 0.88
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 120,
+            "calories": 103,
+            "fat_g": 0.1,
+            "carbs_g": 24.1,
+            "protein_g": 1.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 86,
+            "confidence": 0.78
+          },
+          {
+            "name": "sausage",
+            "mass_g": 60,
+            "calories": 192,
+            "fat_g": 16.8,
+            "carbs_g": 0.9,
+            "protein_g": 7.8,
+            "form": "cooked",
+            "count": 6,
+            "kcal_per_100g_est": 320,
+            "confidence": 0.64
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 60,
+            "calories": 19,
+            "fat_g": 0.2,
+            "carbs_g": 4.6,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 32,
+            "confidence": 0.92
+          },
+          {
+            "name": "blueberries",
+            "mass_g": 3,
+            "calories": 2,
+            "fat_g": 0.0,
+            "carbs_g": 0.4,
+            "protein_g": 0.0,
+            "form": "raw",
+            "count": 2,
+            "kcal_per_100g_est": 57,
+            "confidence": 0.7,
+            "_atwater_deviation_pct": 19.999999999999996
+          },
+          {
+            "name": "cheddar cheese",
+            "mass_g": 10,
+            "calories": 40,
+            "fat_g": 3.3,
+            "carbs_g": 0.1,
+            "protein_g": 2.5,
+            "form": "cooked",
+            "kcal_per_100g_est": 403,
+            "confidence": 0.67
+          }
+        ],
+        "totals": {
+          "mass_g": 383,
+          "calories": 551,
+          "protein_g": 28.900000000000002,
+          "carbs_g": 31.5,
+          "fat_g": 34.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7682
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 748236,
+            "matched_name": "Eggs Grade A Large egg yolk",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 343.4307854878478,
+              "calories": 195,
+              "protein_g": 9.458083832335328,
+              "carbs_g": 0.5955089820359281,
+              "fat_g": 16.81437125748503
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sweet potato",
+            "fdc_id": 2346404,
+            "matched_name": "Sweet potatoes orange flesh without skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.95,
+            "score": 4.4,
+            "nutrition": {
+              "mass_g": 130.3813972328764,
+              "calories": 103,
+              "protein_g": 2.057548829732023,
+              "carbs_g": 22.59235813111559,
+              "fat_g": 0.4889302396232865
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sausage",
+            "fdc_id": 325658,
+            "matched_name": "Sausage Italian pork mild cooked pan-fried",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 68.85372885975357,
+              "calories": 192,
+              "protein_g": 10.85217391304348,
+              "carbs_g": 1.2819875776397518,
+              "fat_g": 15.622360248447206
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "strawberries",
+            "fdc_id": 327699,
+            "matched_name": "Strawberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.92,
+            "score": 3.2,
+            "nutrition": {
+              "mass_g": 61.29032258064516,
+              "calories": 19,
+              "protein_g": 0.39225806451612905,
+              "carbs_g": 4.676451612903226,
+              "fat_g": 0.13483870967741937
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "blueberries",
+            "fdc_id": 2263889,
+            "matched_name": "Blueberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 3.132032391478993,
+              "calories": 2,
+              "protein_g": 0.022021319744488798,
+              "carbs_g": 0.4563934960215359,
+              "fat_g": 0.009593415215100156
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cheddar cheese",
+            "fdc_id": 2647443,
+            "matched_name": "Cheese cotija solid",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 11.383039271485487,
+              "calories": 40,
+              "protein_g": 2.713227091633466,
+              "carbs_g": 0.31010813887307914,
+              "fat_g": 3.1007398975526463
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 618.4713058240874,
+          "calories": 551,
+          "protein_g": 25.495313051004914,
+          "carbs_g": 29.912807938589108,
+          "fat_g": 36.17083376800069
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1557853429",
+        "image_filename": "dish_1557853429.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557853429.png",
+        "total_mass_g": 276.0,
+        "total_calories": 330.152985,
+        "total_fat_g": 13.586999,
+        "total_carbs_g": 33.413998,
+        "total_protein_g": 17.637001,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 57.0,
+            "calories": 18.81
+          },
+          {
+            "name": "eggs",
+            "mass_g": 126.0,
+            "calories": 195.93
+          },
+          {
+            "name": "yam",
+            "mass_g": 93.0,
+            "calories": 115.413
+          }
+        ]
+      },
+      "accuracy": 34.60803078523716,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1557861837",
+      "image_filename": "dish_1557861837.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557861837.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "romaine lettuce",
+            "mass_g": 30,
+            "calories": 6,
+            "fat_g": 0.09,
+            "carbs_g": 0.99,
+            "protein_g": 0.36,
+            "form": "raw",
+            "kcal_per_100g_est": 21,
+            "confidence": 0.8
+          },
+          {
+            "name": "croutons",
+            "mass_g": 7,
+            "calories": 28,
+            "fat_g": 0.72,
+            "carbs_g": 5.13,
+            "protein_g": 0.87,
+            "form": "dried",
+            "count": 5,
+            "kcal_per_100g_est": 407,
+            "confidence": 0.75
+          },
+          {
+            "name": "eggplant",
+            "mass_g": 80,
+            "calories": 56,
+            "fat_g": 3.6,
+            "carbs_g": 4.8,
+            "protein_g": 0.96,
+            "form": "cooked",
+            "kcal_per_100g_est": 70,
+            "confidence": 0.7
+          },
+          {
+            "name": "salmon",
+            "mass_g": 60,
+            "calories": 112.67999999999999,
+            "fat_g": 7.2,
+            "carbs_g": 0,
+            "protein_g": 13.2,
+            "form": "cooked",
+            "kcal_per_100g_est": 187.79999999999998,
+            "confidence": 0.6,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          }
+        ],
+        "totals": {
+          "mass_g": 177,
+          "calories": 202.68,
+          "protein_g": 15.389999999999999,
+          "carbs_g": 10.92,
+          "fat_g": 11.61
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 8649
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "romaine lettuce",
+            "fdc_id": 2346389,
+            "matched_name": "Lettuce romaine green raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 28.885454729271075,
+              "calories": 6,
+              "protein_g": 0.28218200725024917,
+              "carbs_g": 1.1714785020003178,
+              "fat_g": 0.020595329221970278
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "croutons",
+            "fdc_id": 172751,
+            "matched_name": "Croutons plain",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 48.447935771879436,
+              "calories": 28,
+              "protein_g": 0.8186732186732187,
+              "carbs_g": 5.056511056511057,
+              "fat_g": 0.4540540540540541
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "eggplant",
+            "fdc_id": 2685577,
+            "matched_name": "Eggplant raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 264.2905686022805,
+              "calories": 56,
+              "protein_g": 2.251491353922827,
+              "carbs_g": 14.26984067054293,
+              "fat_g": 0.3171486823227365
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "salmon",
+            "fdc_id": 2684441,
+            "matched_name": "Fish salmon Atlantic farm raised raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 56.54775645722384,
+              "calories": 112.67999999999999,
+              "protein_g": 11.489825539030397,
+              "carbs_g": 0.0,
+              "fat_g": 7.4134108715420455
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 398.17171556065483,
+          "calories": 202.68,
+          "protein_g": 14.842172118876693,
+          "carbs_g": 20.497830229054305,
+          "fat_g": 8.205208937140807
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1557861837",
+        "image_filename": "dish_1557861837.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557861837.png",
+        "total_mass_g": 123.0,
+        "total_calories": 61.883999,
+        "total_fat_g": 5.827,
+        "total_carbs_g": 4.46,
+        "total_protein_g": 8.698,
+        "foods": [
+          {
+            "name": "eggplant",
+            "mass_g": 53.0,
+            "calories": 13.144
+          },
+          {
+            "name": "caesar salad",
+            "mass_g": 31.0,
+            "calories": 13.64
+          },
+          {
+            "name": "fish",
+            "mass_g": 39.0,
+            "calories": 35.1
+          }
+        ]
+      },
+      "accuracy": -18.488722544558215,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1557862783",
+      "image_filename": "dish_1557862783.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557862783.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "beef",
+            "mass_g": 110,
+            "calories": 275,
+            "fat_g": 18.7,
+            "carbs_g": 0,
+            "protein_g": 28.6,
+            "form": "cooked",
+            "kcal_per_100g_est": 250,
+            "confidence": 0.78
+          },
+          {
+            "name": "chicken breast",
+            "mass_g": 90,
+            "calories": 144,
+            "fat_g": 3.2,
+            "carbs_g": 0,
+            "protein_g": 27.9,
+            "form": "cooked",
+            "kcal_per_100g_est": 160,
+            "confidence": 0.8
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 140,
+            "calories": 35,
+            "fat_g": 0.4,
+            "carbs_g": 5.7,
+            "protein_g": 2.5,
+            "form": "cooked",
+            "kcal_per_100g_est": 25,
+            "confidence": 0.85
+          }
+        ],
+        "totals": {
+          "mass_g": 340,
+          "calories": 454,
+          "protein_g": 59.0,
+          "carbs_g": 5.7,
+          "fat_g": 22.3
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5031
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "beef",
+            "fdc_id": 2646174,
+            "matched_name": "Beef chuck roast boneless choice raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 117.6218990590248,
+              "calories": 275,
+              "protein_g": 21.642429426860563,
+              "carbs_g": 0.0,
+              "fat_g": 20.936698032506417
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 2727569,
+            "matched_name": "Chicken breast meat and skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.95,
+            "score": 4.4,
+            "nutrition": {
+              "mass_g": 111.95927170493756,
+              "calories": 144,
+              "protein_g": 23.96633757897405,
+              "carbs_g": 0.0,
+              "fat_g": 5.348294409344867
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cauliflower",
+            "fdc_id": 2685573,
+            "matched_name": "Cauliflower raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 147.7023839164764,
+              "calories": 35,
+              "protein_g": 2.423205310533712,
+              "carbs_g": 6.976131294759097,
+              "fat_g": 0.35079316180163145
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 377.2835546804388,
+          "calories": 454,
+          "protein_g": 48.03197231636832,
+          "carbs_g": 6.976131294759097,
+          "fat_g": 26.635785603652916
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1557862783",
+        "image_filename": "dish_1557862783.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557862783.png",
+        "total_mass_g": 258.0,
+        "total_calories": 442.97998,
+        "total_fat_g": 24.919001,
+        "total_carbs_g": 3.85,
+        "total_protein_g": 50.416,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 77.0,
+            "calories": 19.25
+          },
+          {
+            "name": "steak",
+            "mass_g": 118.0,
+            "calories": 319.78
+          },
+          {
+            "name": "chicken",
+            "mass_g": 63.0,
+            "calories": 103.95
+          }
+        ]
+      },
+      "accuracy": 78.02820152343978,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1557863170",
+      "image_filename": "dish_1557863170.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557863170.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 40,
+            "calories": 9,
+            "fat_g": 0.1,
+            "carbs_g": 0.8,
+            "protein_g": 1.2,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.9
+          },
+          {
+            "name": "cucumber",
+            "mass_g": 60,
+            "calories": 9,
+            "fat_g": 0.1,
+            "carbs_g": 1.5,
+            "protein_g": 0.4,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.85
+          },
+          {
+            "name": "avocado",
+            "mass_g": 75,
+            "calories": 128,
+            "fat_g": 11.0,
+            "carbs_g": 6.4,
+            "protein_g": 1.5,
+            "form": "raw",
+            "kcal_per_100g_est": 170,
+            "confidence": 0.78
+          },
+          {
+            "name": "olives",
+            "mass_g": 42,
+            "calories": 55,
+            "fat_g": 4.8,
+            "carbs_g": 1.5,
+            "protein_g": 0.4,
+            "form": "canned",
+            "count": 12,
+            "kcal_per_100g_est": 130,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 217,
+          "calories": 201,
+          "protein_g": 3.5,
+          "carbs_g": 10.200000000000001,
+          "fat_g": 16.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6727
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 38.320701694626585,
+              "calories": 9,
+              "protein_g": 1.0928680916290556,
+              "carbs_g": 0.9221110448777995,
+              "fat_g": 0.2371285020863493
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cucumber",
+            "fdc_id": 2346406,
+            "matched_name": "Cucumber with peel raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 56.57708628005658,
+              "calories": 9,
+              "protein_g": 0.3536067892503536,
+              "carbs_g": 1.6704384724186705,
+              "fat_g": 0.10042432814710042
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "avocado",
+            "fdc_id": 2710824,
+            "matched_name": "Avocado Hass peeled raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 57.31326175145745,
+              "calories": 128,
+              "protein_g": 1.0388028692451663,
+              "carbs_g": 4.770469341882561,
+              "fat_g": 11.640323461721009
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 332791,
+            "matched_name": "Olives green Manzanilla stuffed with pimiento",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 1322.1153846153845,
+              "calories": 55,
+              "protein_g": 0.4865384615384615,
+              "carbs_g": 2.0981971153846155,
+              "fat_g": 5.457692307692307
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 1474.326434341525,
+          "calories": 201,
+          "protein_g": 2.9718162116630373,
+          "carbs_g": 9.461215974563647,
+          "fat_g": 17.435568599646764
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1557863170",
+        "image_filename": "dish_1557863170.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557863170.png",
+        "total_mass_g": 142.0,
+        "total_calories": 129.820007,
+        "total_fat_g": 11.426001,
+        "total_carbs_g": 8.233999,
+        "total_protein_g": 2.266,
+        "foods": [
+          {
+            "name": "avocado",
+            "mass_g": 47.0,
+            "calories": 75.2
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 24.0,
+            "calories": 5.52
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 31.0,
+            "calories": 3.1
+          },
+          {
+            "name": "olives",
+            "mass_g": 40.0,
+            "calories": 46.0
+          }
+        ]
+      },
+      "accuracy": 54.79760605987703,
+      "error": null
+    }
+  ]
+}

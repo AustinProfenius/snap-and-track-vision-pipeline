@@ -1,0 +1,472 @@
+{
+  "timestamp": "20251024_084418",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 10,
+  "successful": 0,
+  "failed": 10,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1563813308",
+      "image_filename": "dish_1563813308.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563813308.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563813308",
+        "image_filename": "dish_1563813308.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563813308.png",
+        "total_mass_g": 76.0,
+        "total_calories": 224.982895,
+        "total_fat_g": 16.446194,
+        "total_carbs_g": 3.901661,
+        "total_protein_g": 15.332276,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.186962,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.04674,
+            "calories": 0.018696
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 37.392376,
+            "calories": 16.07872168
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.373924,
+            "calories": 3.30548816
+          },
+          {
+            "name": "bacon",
+            "mass_g": 38.0,
+            "calories": 205.58
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1564159588",
+      "image_filename": "dish_1564159588.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564159588.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564159588",
+        "image_filename": "dish_1564159588.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564159588.png",
+        "total_mass_g": 113.0,
+        "total_calories": 477.151001,
+        "total_fat_g": 37.142998,
+        "total_carbs_g": 3.405,
+        "total_protein_g": 30.713001,
+        "foods": [
+          {
+            "name": "turkey bacon",
+            "mass_g": 15.0,
+            "calories": 56.955
+          },
+          {
+            "name": "sausage",
+            "mass_g": 56.0,
+            "calories": 192.976
+          },
+          {
+            "name": "bacon",
+            "mass_g": 42.0,
+            "calories": 227.22
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1559846099",
+      "image_filename": "dish_1559846099.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559846099.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'whole' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1559846099",
+        "image_filename": "dish_1559846099.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559846099.png",
+        "total_mass_g": 114.0,
+        "total_calories": 206.938995,
+        "total_fat_g": 14.642001,
+        "total_carbs_g": 15.712999,
+        "total_protein_g": 7.688,
+        "foods": [
+          {
+            "name": "mandarin oranges",
+            "mass_g": 53.0,
+            "calories": 28.09
+          },
+          {
+            "name": "almonds",
+            "mass_g": 29.0,
+            "calories": 167.649
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 32.0,
+            "calories": 11.2
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'whole' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1567785165",
+      "image_filename": "dish_1567785165.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1567785165.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'salad' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1567785165",
+        "image_filename": "dish_1567785165.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1567785165.png",
+        "total_mass_g": 116.0,
+        "total_calories": 273.112488,
+        "total_fat_g": 19.671967,
+        "total_carbs_g": 11.47429,
+        "total_protein_g": 12.889,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 38.064514,
+            "calories": 10.65806392
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 3.806452,
+            "calories": 1.63677436
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 3.806452,
+            "calories": 2.01741956
+          },
+          {
+            "name": "sausage",
+            "mass_g": 57.0,
+            "calories": 196.422
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 3.806452,
+            "calories": 17.71903406
+          },
+          {
+            "name": "granola",
+            "mass_g": 9.516129,
+            "calories": 44.659193397
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'salad' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1563553756",
+      "image_filename": "dish_1563553756.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563553756.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563553756",
+        "image_filename": "dish_1563553756.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563553756.png",
+        "total_mass_g": 124.0,
+        "total_calories": 309.145813,
+        "total_fat_g": 21.251612,
+        "total_carbs_g": 14.047483,
+        "total_protein_g": 16.136,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 56.774193,
+            "calories": 15.89677404
+          },
+          {
+            "name": "granola",
+            "mass_g": 14.193548,
+            "calories": 66.610320764
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 5.677419,
+            "calories": 2.44129017
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 5.677419,
+            "calories": 26.428385445
+          },
+          {
+            "name": "bacon",
+            "mass_g": 36.0,
+            "calories": 194.76
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 5.677419,
+            "calories": 3.00903207
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1559850338",
+      "image_filename": "dish_1559850338.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559850338.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'whole, unpeeled' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1559850338",
+        "image_filename": "dish_1559850338.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559850338.png",
+        "total_mass_g": 130.0,
+        "total_calories": 307.117004,
+        "total_fat_g": 23.438,
+        "total_carbs_g": 19.129,
+        "total_protein_g": 11.725,
+        "foods": [
+          {
+            "name": "almonds",
+            "mass_g": 47.0,
+            "calories": 271.707
+          },
+          {
+            "name": "orange",
+            "mass_g": 53.0,
+            "calories": 24.91
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 30.0,
+            "calories": 10.5
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'whole, unpeeled' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1563464651",
+      "image_filename": "dish_1563464651.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563464651.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'halved, toasted' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1563464651",
+        "image_filename": "dish_1563464651.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563464651.png",
+        "total_mass_g": 130.0,
+        "total_calories": 312.0,
+        "total_fat_g": 9.2,
+        "total_carbs_g": 46.645,
+        "total_protein_g": 10.868001,
+        "foods": [
+          {
+            "name": "cream cheese",
+            "mass_g": 23.0,
+            "calories": 80.5
+          },
+          {
+            "name": "cucumbers",
+            "mass_g": 15.0,
+            "calories": 1.5
+          },
+          {
+            "name": "bagels",
+            "mass_g": 92.0,
+            "calories": 230.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'halved, toasted' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1564159636",
+      "image_filename": "dish_1564159636.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564159636.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564159636",
+        "image_filename": "dish_1564159636.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564159636.png",
+        "total_mass_g": 134.0,
+        "total_calories": 487.873688,
+        "total_fat_g": 37.411686,
+        "total_carbs_g": 5.267181,
+        "total_protein_g": 31.4161,
+        "foods": [
+          {
+            "name": "sausage",
+            "mass_g": 56.0,
+            "calories": 192.976
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.206642,
+            "calories": 1.82671528
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.02583,
+            "calories": 0.010332
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.103321,
+            "calories": 0.0
+          },
+          {
+            "name": "turkey bacon",
+            "mass_g": 15.0,
+            "calories": 56.955
+          },
+          {
+            "name": "bacon",
+            "mass_g": 42.0,
+            "calories": 227.22
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 20.664207,
+            "calories": 8.88560901
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1565369971",
+      "image_filename": "dish_1565369971.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565369971.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1565369971",
+        "image_filename": "dish_1565369971.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1565369971.png",
+        "total_mass_g": 134.0,
+        "total_calories": 221.604736,
+        "total_fat_g": 15.695424,
+        "total_carbs_g": 7.46375,
+        "total_protein_g": 13.27765,
+        "foods": [
+          {
+            "name": "green beans",
+            "mass_g": 100.425003,
+            "calories": 31.13175093
+          },
+          {
+            "name": "bacon",
+            "mass_g": 31.0,
+            "calories": 167.71
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.575,
+            "calories": 22.763
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'cooked strips' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    },
+    {
+      "dish_id": "dish_1564170836",
+      "image_filename": "dish_1564170836.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564170836.png",
+      "prediction": {
+        "error": "Food 0 invalid form: 'pieces' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1564170836",
+        "image_filename": "dish_1564170836.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564170836.png",
+        "total_mass_g": 135.0,
+        "total_calories": 240.164917,
+        "total_fat_g": 12.184845,
+        "total_carbs_g": 5.314849,
+        "total_protein_g": 25.070414,
+        "foods": [
+          {
+            "name": "salmon",
+            "mass_g": 101.370377,
+            "calories": 180.43927106
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 3.852074,
+            "calories": 34.05233416
+          },
+          {
+            "name": "arugula",
+            "mass_g": 4.054815,
+            "calories": 1.01370375
+          },
+          {
+            "name": "brown rice",
+            "mass_g": 20.274076,
+            "calories": 22.50422436
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.253426,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 5.068519,
+            "calories": 2.0274076
+          },
+          {
+            "name": "thyme",
+            "mass_g": 0.126713,
+            "calories": 0.12798013
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Food 0 invalid form: 'pieces' (must be one of ['raw', 'boiled', 'steamed', 'pan_seared', 'grilled', 'roasted', 'fried', 'baked', 'breaded', 'poached', 'stewed', 'simmered', 'cooked'])"
+    }
+  ]
+}

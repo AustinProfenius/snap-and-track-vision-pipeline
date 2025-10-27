@@ -1,0 +1,124 @@
+{
+  "$schema": "energy-bands.v1",
+  "description": "Method-aware kcal/100g bounds for energy clamping",
+
+  "rice_white.boiled": {"min": 110, "max": 150},
+  "rice_white.steamed": {"min": 115, "max": 155},
+  "rice_white.fried": {"min": 150, "max": 220},
+  "rice_brown.boiled": {"min": 120, "max": 160},
+  "rice_brown.steamed": {"min": 125, "max": 165},
+
+  "pasta_wheat.boiled": {"min": 140, "max": 180},
+  "pasta_wheat.al_dente": {"min": 150, "max": 190},
+  "pasta_wheat.fried": {"min": 180, "max": 240},
+
+  "couscous.steamed": {"min": 110, "max": 150},
+  "couscous.boiled": {"min": 105, "max": 145},
+
+  "quinoa.boiled": {"min": 110, "max": 150},
+  "quinoa.steamed": {"min": 115, "max": 155},
+
+  "potato_russet.boiled": {"min": 70, "max": 95},
+  "potato_russet.roasted_oven": {"min": 85, "max": 115},
+  "potato_russet.mashed": {"min": 65, "max": 90},
+  "potato_russet.hash_browns": {"min": 180, "max": 300},
+  "potato_russet.fries": {"min": 190, "max": 320},
+
+  "sweet_potato.boiled": {"min": 75, "max": 100},
+  "sweet_potato.roasted_oven": {"min": 90, "max": 125},
+
+  "beef_steak.grilled": {"min": 180, "max": 300},
+  "beef_steak.pan_seared": {"min": 185, "max": 310},
+  "beef_steak.roasted_oven": {"min": 190, "max": 315},
+
+  "beef_ground_85.pan_seared": {"min": 200, "max": 320},
+  "beef_ground_85.grilled": {"min": 195, "max": 310},
+
+  "pork_chop.grilled": {"min": 160, "max": 260},
+  "pork_chop.pan_seared": {"min": 165, "max": 265},
+  "pork_chop.roasted_oven": {"min": 170, "max": 270},
+
+  "chicken_breast.grilled": {"min": 140, "max": 200},
+  "chicken_breast.roasted_oven": {"min": 145, "max": 205},
+  "chicken_breast.poached": {"min": 130, "max": 180},
+  "chicken_breast.pan_seared": {"min": 150, "max": 210},
+
+  "chicken_thigh.roasted_oven": {"min": 170, "max": 250},
+  "chicken_thigh.grilled": {"min": 165, "max": 245},
+
+  "turkey_breast.roasted_oven": {"min": 130, "max": 190},
+  "turkey_breast.grilled": {"min": 135, "max": 195},
+
+  "salmon_fillet.grilled": {"min": 140, "max": 220},
+  "salmon_fillet.pan_seared": {"min": 145, "max": 225},
+  "salmon_fillet.roasted_oven": {"min": 150, "max": 230},
+  "salmon_fillet.poached": {"min": 135, "max": 200},
+
+  "white_fish_cod.pan_seared": {"min": 90, "max": 140},
+  "white_fish_cod.roasted_oven": {"min": 85, "max": 135},
+  "white_fish_cod.steamed": {"min": 80, "max": 120},
+
+  "tuna_steak.grilled": {"min": 110, "max": 160},
+  "tuna_steak.pan_seared": {"min": 115, "max": 165},
+
+  "shrimp.boiled": {"min": 85, "max": 115},
+  "shrimp.pan_seared": {"min": 90, "max": 125},
+  "shrimp.grilled": {"min": 90, "max": 120},
+
+  "egg_whole.scrambled": {"min": 140, "max": 200},
+  "egg_whole.fried": {"min": 150, "max": 220},
+  "egg_whole.boiled": {"min": 135, "max": 165},
+
+  "beans_black.boiled": {"min": 110, "max": 150},
+  "beans_kidney.boiled": {"min": 110, "max": 150},
+  "chickpeas.boiled": {"min": 130, "max": 170},
+  "lentils_brown.boiled": {"min": 105, "max": 145},
+
+  "broccoli.steamed": {"min": 30, "max": 45},
+  "broccoli.boiled": {"min": 28, "max": 42},
+  "broccoli.roasted_oven": {"min": 35, "max": 55},
+
+  "carrot.steamed": {"min": 35, "max": 50},
+  "carrot.boiled": {"min": 30, "max": 45},
+  "carrot.roasted_oven": {"min": 38, "max": 58},
+
+  "spinach.steamed": {"min": 20, "max": 30},
+  "spinach.boiled": {"min": 18, "max": 28},
+  "spinach.pan_seared": {"min": 25, "max": 40},
+
+  "mushrooms_white.pan_seared": {"min": 30, "max": 55},
+  "mushrooms_white.roasted_oven": {"min": 32, "max": 58},
+
+  "onion.pan_seared": {"min": 35, "max": 70},
+  "onion.roasted_oven": {"min": 38, "max": 75},
+
+  "comment_stage_z": "===== STAGE Z ADDITIONS =====",
+
+  "comment_raw_veg": "Raw vegetables (common catalog gaps)",
+  "bell_pepper.raw": {"min": 20, "max": 35},
+  "onion.raw": {"min": 35, "max": 50},
+  "garlic.raw": {"min": 140, "max": 160},
+  "cucumber.raw": {"min": 12, "max": 20},
+  "celery.raw": {"min": 12, "max": 20},
+  "lettuce.raw": {"min": 10, "max": 18},
+  "tomato.raw": {"min": 15, "max": 25},
+  "zucchini.raw": {"min": 15, "max": 22},
+
+  "comment_herbs": "Fresh herbs and aromatics",
+  "herbs_fresh.raw": {"min": 20, "max": 50},
+  "cilantro.raw": {"min": 20, "max": 30},
+  "parsley.raw": {"min": 30, "max": 45},
+  "basil.raw": {"min": 20, "max": 30},
+
+  "comment_generic_fallbacks": "Generic category fallbacks (used when class-specific band missing)",
+  "veg_raw.raw": {"min": 15, "max": 45},
+  "fruit_raw.raw": {"min": 40, "max": 80},
+  "starch_generic.cooked": {"min": 110, "max": 170},
+  "meat_lean.cooked": {"min": 120, "max": 190},
+  "meat_red.cooked": {"min": 170, "max": 280},
+  "cheese.raw": {"min": 250, "max": 420},
+
+  "comment_fried_starches": "Fried starchy items",
+  "potato_generic.fried": {"min": 190, "max": 320},
+  "potato_generic.hash_browns": {"min": 180, "max": 300}
+}

@@ -1,0 +1,31 @@
+tasks:
+  dish_totals:
+    description: "Estimate overall calories and macros for the entire dish"
+    prompt_template: dish_totals
+    evaluate_fields:
+      - totals.calories_kcal
+      - totals.macros_g.protein
+      - totals.macros_g.carbs
+      - totals.macros_g.fat
+    require_itemized: false
+
+  itemized:
+    description: "List individual food items with mass and nutrition estimates"
+    prompt_template: itemized
+    evaluate_fields:
+      - totals.calories_kcal
+      - totals.macros_g.protein
+      - totals.macros_g.carbs
+      - totals.macros_g.fat
+      - foods[*].calories_kcal
+      - foods[*].macros_g.protein
+      - foods[*].macros_g.carbs
+      - foods[*].macros_g.fat
+    require_itemized: true
+
+  names_only:
+    description: "Identify food items by name only (classification proxy)"
+    prompt_template: names_only
+    evaluate_fields:
+      - foods[*].name
+    require_itemized: true

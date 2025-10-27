@@ -1,0 +1,20 @@
+================================================================================
+459-IMAGE BATCH EVALUATION - Phase 1 Validation
+Timestamp: 20251026_141948
+================================================================================
+
+Batch size: 100 items
+Images: ~32
+
+VALIDATION RESULTS:
+----------------------------------------
+1. No unknowns: ✅ PASS
+2. Eligible conversion ≥50%: ✅ PASS (64.4%)
+3. Branded fallback ≤5%: ✅ PASS (0.0%)
+4. Stage 5 whitelist: ❌ FAIL
+
+STAGE DISTRIBUTION:
+----------------------------------------
+  stage0_no_candidates: 53 (53.0%)
+  stage2_raw_convert: 45 (45.0%)
+  stage5_proxy_alignment: 2 (2.0%)

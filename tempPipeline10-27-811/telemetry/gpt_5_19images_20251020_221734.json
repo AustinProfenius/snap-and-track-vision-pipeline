@@ -1,0 +1,2598 @@
+{
+  "timestamp": "20251020_221734",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 19,
+  "successful": 10,
+  "failed": 9,
+  "average_accuracy": 55.304466945619495,
+  "results": [
+    {
+      "dish_id": "dish_1558468731",
+      "image_filename": "dish_1558468731.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558468731.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "mass_g": 80,
+            "calories": 125.12,
+            "fat_g": 2.88,
+            "carbs_g": 0,
+            "protein_g": 24.8,
+            "form": "cooked",
+            "kcal_per_100g_est": 156.4,
+            "confidence": 0.65
+          },
+          {
+            "name": "avocado",
+            "mass_g": 70,
+            "calories": 109.375,
+            "fat_g": 10.29,
+            "carbs_g": 1.26,
+            "protein_g": 1.4,
+            "form": "raw",
+            "kcal_per_100g_est": 156.25,
+            "confidence": 0.95,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          },
+          {
+            "name": "spinach",
+            "mass_g": 25,
+            "calories": 5.2,
+            "fat_g": 0.1,
+            "carbs_g": 0.35,
+            "protein_g": 0.73,
+            "form": "raw",
+            "kcal_per_100g_est": 20.8,
+            "confidence": 0.6
+          },
+          {
+            "name": "arugula",
+            "mass_g": 15,
+            "calories": 3.77,
+            "fat_g": 0.11,
+            "carbs_g": 0.32,
+            "protein_g": 0.39,
+            "form": "raw",
+            "kcal_per_100g_est": 25.1,
+            "confidence": 0.7
+          },
+          {
+            "name": "lettuce",
+            "mass_g": 25,
+            "calories": 3.45,
+            "fat_g": 0.05,
+            "carbs_g": 0.4,
+            "protein_g": 0.35,
+            "form": "raw",
+            "kcal_per_100g_est": 13.8,
+            "confidence": 0.6
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 70,
+            "calories": 21.56,
+            "fat_g": 0.28,
+            "carbs_g": 2.8,
+            "protein_g": 1.96,
+            "form": "raw",
+            "kcal_per_100g_est": 30.8,
+            "confidence": 0.9
+          },
+          {
+            "name": "mushrooms",
+            "mass_g": 60,
+            "calories": 14.58,
+            "fat_g": 0.18,
+            "carbs_g": 1.38,
+            "protein_g": 1.86,
+            "form": "raw",
+            "count": 6,
+            "kcal_per_100g_est": 24.3,
+            "confidence": 0.9
+          },
+          {
+            "name": "carrot",
+            "mass_g": 15,
+            "calories": 5.771999999999999,
+            "fat_g": 0.03,
+            "carbs_g": 1.02,
+            "protein_g": 0.14,
+            "form": "raw",
+            "kcal_per_100g_est": 38.48,
+            "confidence": 0.7,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 35,
+            "calories": 12.57,
+            "fat_g": 0.11,
+            "carbs_g": 1.72,
+            "protein_g": 1.19,
+            "form": "cooked",
+            "kcal_per_100g_est": 35.9,
+            "confidence": 0.55
+          }
+        ],
+        "totals": {
+          "mass_g": 395,
+          "calories": 301.397,
+          "protein_g": 32.82,
+          "carbs_g": 9.25,
+          "fat_g": 14.03
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 13160
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "chicken breast",
+            "fdc_id": 2727569,
+            "matched_name": "Chicken breast meat and skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.95,
+            "score": 4.4,
+            "nutrition": {
+              "mass_g": 97.28016719251241,
+              "calories": 125.12,
+              "protein_g": 20.824084429730785,
+              "carbs_g": 0.0,
+              "fat_g": 4.647073586786318
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "avocado",
+            "fdc_id": 2710824,
+            "matched_name": "Avocado Hass peeled raw",
+            "data_type": "foundation_food",
+            "confidence": 0.77,
+            "score": 1.7,
+            "nutrition": {
+              "mass_g": 48.973734406762965,
+              "calories": 109.375,
+              "protein_g": 0.8876489361225788,
+              "carbs_g": 4.076328783346915,
+              "fat_g": 9.946565458013557
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 22.14084986800647,
+              "calories": 5.2,
+              "protein_g": 0.6314348973856766,
+              "carbs_g": 0.5327752703738396,
+              "fat_g": 0.13700757898322405
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "arugula",
+            "fdc_id": 2710822,
+            "matched_name": "Arugula baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 14.262259111578535,
+              "calories": 3.77,
+              "protein_g": 0.2351561282317069,
+              "carbs_g": 0.7656408558868705,
+              "fat_g": 0.046352342112630236
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346390,
+            "matched_name": "Lettuce leaf red raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 19.67886375951858,
+              "calories": 3.45,
+              "protein_g": 0.17378404586030857,
+              "carbs_g": 0.6416490317428629,
+              "fat_g": 0.020918632176368253
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 67.375,
+              "calories": 21.56,
+              "protein_g": 1.7315375000000002,
+              "carbs_g": 4.2378875,
+              "fat_g": 0.229075
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "mushrooms",
+            "fdc_id": 1999629,
+            "matched_name": "Mushrooms white button",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 52.477756341962056,
+              "calories": 14.58,
+              "protein_g": 1.5169220248207553,
+              "carbs_g": 2.140777592214,
+              "fat_g": 0.19458752051599532
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 16.31231930545468,
+              "calories": 5.771999999999999,
+              "protein_g": 0.13131417040891016,
+              "carbs_g": 1.4809465327843139,
+              "fat_g": 0.022429439045000183
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 25.18281077832315,
+              "calories": 12.57,
+              "protein_g": 1.0033839126515076,
+              "carbs_g": 2.421478353200441,
+              "fat_g": 0.14228288089752578
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 363.68376076411886,
+          "calories": 301.39699999999993,
+          "protein_g": 27.13526604521223,
+          "carbs_g": 16.297483919549244,
+          "fat_g": 15.386292438530619
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558468731",
+        "image_filename": "dish_1558468731.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558468731.png",
+        "total_mass_g": 440.0,
+        "total_calories": 320.325012,
+        "total_fat_g": 11.752,
+        "total_carbs_g": 17.750999,
+        "total_protein_g": 38.461998,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 44.0,
+            "calories": 12.32
+          },
+          {
+            "name": "avocado",
+            "mass_g": 47.0,
+            "calories": 75.2
+          },
+          {
+            "name": "chicken",
+            "mass_g": 103.0,
+            "calories": 169.95
+          },
+          {
+            "name": "mushroom",
+            "mass_g": 55.0,
+            "calories": 12.1
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 80.0,
+            "calories": 28.0
+          },
+          {
+            "name": "squash",
+            "mass_g": 111.0,
+            "calories": 22.755
+          }
+        ]
+      },
+      "accuracy": 80.38410282452247,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559240089",
+      "image_filename": "dish_1559240089.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559240089.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 120,
+            "calories": 49.2,
+            "fat_g": 0.3,
+            "carbs_g": 10.5,
+            "protein_g": 1.1,
+            "form": "raw",
+            "kcal_per_100g_est": 41,
+            "confidence": 0.6
+          },
+          {
+            "name": "orange",
+            "mass_g": 141.0,
+            "calories": 66.27,
+            "fat_g": 0.1,
+            "carbs_g": 12.5,
+            "protein_g": 0.9,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 47,
+            "confidence": 0.85,
+            "_rails_applied": [
+              "count_mass_correction"
+            ],
+            "_atwater_deviation_pct": 17.760676022332873
+          },
+          {
+            "name": "guava",
+            "mass_g": 130,
+            "calories": 88.4,
+            "fat_g": 1.0,
+            "carbs_g": 16.95,
+            "protein_g": 2.9,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 68,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 391.0,
+          "calories": 203.87,
+          "protein_g": 4.9,
+          "carbs_g": 39.95,
+          "fat_g": 1.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6650
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 139.04471757248274,
+              "calories": 49.2,
+              "protein_g": 1.1193099764584862,
+              "carbs_g": 12.62345277425299,
+              "fat_g": 0.19118648666216378
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "orange",
+            "fdc_id": 746771,
+            "matched_name": "Oranges raw navels",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 141.0,
+              "calories": 66.27,
+              "protein_g": 1.2831,
+              "carbs_g": 16.637999999999998,
+              "fat_g": 0.2115
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "guava",
+            "fdc_id": 173044,
+            "matched_name": "Guavas common raw",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 130.0,
+              "calories": 88.4,
+              "protein_g": 3.315,
+              "carbs_g": 18.616,
+              "fat_g": 1.2349999999999999
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 410.04471757248274,
+          "calories": 203.87,
+          "protein_g": 5.717409976458486,
+          "carbs_g": 47.87745277425299,
+          "fat_g": 1.6376864866621637
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559240089",
+        "image_filename": "dish_1559240089.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559240089.png",
+        "total_mass_g": 385.0,
+        "total_calories": 202.821503,
+        "total_fat_g": 0.969884,
+        "total_carbs_g": 51.542568,
+        "total_protein_g": 2.443778,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.19963,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.033272,
+            "calories": 0.0133088
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.532348,
+            "calories": 4.70595632
+          },
+          {
+            "name": "carrot",
+            "mass_g": 53.234749,
+            "calories": 21.82624709
+          },
+          {
+            "name": "orange",
+            "mass_g": 128.0,
+            "calories": 60.16
+          },
+          {
+            "name": "pears",
+            "mass_g": 203.0,
+            "calories": 116.116
+          }
+        ]
+      },
+      "accuracy": 66.11539639242355,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559241099",
+      "image_filename": "dish_1559241099.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559241099.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "orange",
+            "mass_g": 133.5,
+            "calories": 62.745,
+            "fat_g": 0.1,
+            "carbs_g": 10.1,
+            "protein_g": 0.86,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 47,
+            "confidence": 0.9,
+            "_rails_applied": [
+              "count_mass_correction"
+            ],
+            "_atwater_deviation_pct": 28.695513586739985
+          },
+          {
+            "name": "pear",
+            "mass_g": 180,
+            "calories": 102.6,
+            "fat_g": 0.18,
+            "carbs_g": 24.5,
+            "protein_g": 0.72,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 57,
+            "confidence": 0.7
+          },
+          {
+            "name": "carrot",
+            "mass_g": 93.8,
+            "calories": 38.458,
+            "fat_g": 0.14,
+            "carbs_g": 6.2,
+            "protein_g": 0.63,
+            "form": "raw",
+            "count": 13,
+            "kcal_per_100g_est": 41,
+            "confidence": 0.8,
+            "_rails_applied": [
+              "count_mass_correction"
+            ],
+            "_atwater_deviation_pct": 25.685163034999213
+          }
+        ],
+        "totals": {
+          "mass_g": 407.3,
+          "calories": 203.803,
+          "protein_g": 2.21,
+          "carbs_g": 40.8,
+          "fat_g": 0.42000000000000004
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6018
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "orange",
+            "fdc_id": 746771,
+            "matched_name": "Oranges raw navels",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 133.5,
+              "calories": 62.745,
+              "protein_g": 1.21485,
+              "carbs_g": 15.752999999999998,
+              "fat_g": 0.20024999999999998
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "pear",
+            "fdc_id": 746773,
+            "matched_name": "Pears raw bartlett",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 179.99999999999997,
+              "calories": 102.6,
+              "protein_g": 0.6839999999999999,
+              "carbs_g": 27.18,
+              "fat_g": 0.288
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 108.68662090249066,
+              "calories": 38.458,
+              "protein_g": 0.8749272982650499,
+              "carbs_g": 9.86733225187442,
+              "fat_g": 0.14944410374092468
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 422.18662090249063,
+          "calories": 203.803,
+          "protein_g": 2.77377729826505,
+          "carbs_g": 52.80033225187442,
+          "fat_g": 0.6376941037409246
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559241099",
+        "image_filename": "dish_1559241099.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559241099.png",
+        "total_mass_g": 382.0,
+        "total_calories": 201.346771,
+        "total_fat_g": 0.93439,
+        "total_carbs_g": 51.246647,
+        "total_protein_g": 2.417124,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.18854,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.031423,
+            "calories": 0.0125692
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.502773,
+            "calories": 4.44451332
+          },
+          {
+            "name": "carrot",
+            "mass_g": 50.277264,
+            "calories": 20.61367824
+          },
+          {
+            "name": "orange",
+            "mass_g": 128.0,
+            "calories": 60.16
+          },
+          {
+            "name": "pears",
+            "mass_g": 203.0,
+            "calories": 116.116
+          }
+        ]
+      },
+      "accuracy": 81.63042257222463,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559243974",
+      "image_filename": "dish_1559243974.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559243974.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 175,
+            "calories": 91,
+            "fat_g": 0.4,
+            "carbs_g": 24.2,
+            "protein_g": 0.5,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 52,
+            "confidence": 0.95
+          },
+          {
+            "name": "almonds",
+            "mass_g": 34,
+            "calories": 199,
+            "fat_g": 17.0,
+            "carbs_g": 7.5,
+            "protein_g": 7.1,
+            "form": "raw",
+            "count": 28,
+            "kcal_per_100g_est": 585,
+            "confidence": 0.9
+          },
+          {
+            "name": "carrot",
+            "mass_g": 80,
+            "calories": 28,
+            "fat_g": 0.2,
+            "carbs_g": 6.6,
+            "protein_g": 0.6,
+            "form": "cooked",
+            "kcal_per_100g_est": 35,
+            "confidence": 0.75
+          }
+        ],
+        "totals": {
+          "mass_g": 289,
+          "calories": 318,
+          "protein_g": 8.2,
+          "carbs_g": 38.3,
+          "fat_g": 17.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6005
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "apple",
+            "fdc_id": 1750341,
+            "matched_name": "Apples gala with skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 160.39312177891833,
+              "calories": 91,
+              "protein_g": 0.21300206572240354,
+              "carbs_g": 23.68701661743244,
+              "fat_g": 0.2405896826683775
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "almonds",
+            "fdc_id": 2346393,
+            "matched_name": "Nuts almonds whole raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 32.93665899799731,
+              "calories": 199,
+              "protein_g": 7.065045101706415,
+              "carbs_g": 6.598727883612771,
+              "fat_g": 16.82733908207683
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 79.13114008190074,
+              "calories": 28,
+              "protein_g": 0.637005677659301,
+              "carbs_g": 7.184078814615522,
+              "fat_g": 0.10880531761261353
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 272.4609208588164,
+          "calories": 318,
+          "protein_g": 7.915052845088121,
+          "carbs_g": 37.46982331566073,
+          "fat_g": 17.17673408235782
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559243974",
+        "image_filename": "dish_1559243974.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559243974.png",
+        "total_mass_g": 306.0,
+        "total_calories": 431.21994,
+        "total_fat_g": 25.580051,
+        "total_carbs_g": 47.433929,
+        "total_protein_g": 12.482895,
+        "foods": [
+          {
+            "name": "almonds",
+            "mass_g": 50.0,
+            "calories": 289.05
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.522489,
+            "calories": 4.61880276
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.032656,
+            "calories": 0.0130624
+          },
+          {
+            "name": "pears",
+            "mass_g": 203.0,
+            "calories": 116.116
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.195933,
+            "calories": 0.0
+          },
+          {
+            "name": "carrot",
+            "mass_g": 52.24892,
+            "calories": 21.4220572
+          }
+        ]
+      },
+      "accuracy": 76.68522242526385,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559245697",
+      "image_filename": "dish_1559245697.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559245697.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spinach",
+            "mass_g": 40,
+            "calories": 9.2,
+            "fat_g": 0.16,
+            "carbs_g": 0.56,
+            "protein_g": 1.16,
+            "form": "raw",
+            "kcal_per_100g_est": 23,
+            "confidence": 0.85
+          },
+          {
+            "name": "carrot",
+            "mass_g": 70,
+            "calories": 24.5,
+            "fat_g": 0.13,
+            "carbs_g": 5.75,
+            "protein_g": 0.53,
+            "form": "cooked",
+            "kcal_per_100g_est": 35,
+            "confidence": 0.78
+          },
+          {
+            "name": "carrot",
+            "mass_g": 8,
+            "calories": 3.28,
+            "fat_g": 0.02,
+            "carbs_g": 0.77,
+            "protein_g": 0.07,
+            "form": "raw",
+            "kcal_per_100g_est": 41,
+            "confidence": 0.65
+          },
+          {
+            "name": "pear",
+            "mass_g": 180,
+            "calories": 108,
+            "fat_g": 0.25,
+            "carbs_g": 27.41,
+            "protein_g": 0.65,
+            "form": "raw",
+            "count": 1,
+            "kcal_per_100g_est": 60,
+            "confidence": 0.9
+          }
+        ],
+        "totals": {
+          "mass_g": 298,
+          "calories": 144.98000000000002,
+          "protein_g": 2.41,
+          "carbs_g": 34.49,
+          "fat_g": 0.56
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7246
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "spinach",
+            "fdc_id": 1750352,
+            "matched_name": "Spinach baby",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 39.17227284339606,
+              "calories": 9.2,
+              "protein_g": 1.1171540492208123,
+              "carbs_g": 0.9426024014306393,
+              "fat_g": 0.24239802435493482
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 69.23974757166314,
+              "calories": 24.5,
+              "protein_g": 0.5573799679518884,
+              "carbs_g": 6.2860689627885815,
+              "fat_g": 0.09520465291103683
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 9.269647838165515,
+              "calories": 3.28,
+              "protein_g": 0.0746206650972324,
+              "carbs_g": 0.8415635182835326,
+              "fat_g": 0.012745765777477585
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "pear",
+            "fdc_id": 746773,
+            "matched_name": "Pears raw bartlett",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 189.4736842105263,
+              "calories": 108,
+              "protein_g": 0.72,
+              "carbs_g": 28.610526315789475,
+              "fat_g": 0.30315789473684207
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 307.155352463751,
+          "calories": 144.98000000000002,
+          "protein_g": 2.4691546822699326,
+          "carbs_g": 36.68076119829223,
+          "fat_g": 0.6535063377802913
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559245697",
+        "image_filename": "dish_1559245697.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559245697.png",
+        "total_mass_g": 289.0,
+        "total_calories": 163.716354,
+        "total_fat_g": 2.007221,
+        "total_carbs_g": 36.953289,
+        "total_protein_g": 3.405009,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.192237,
+            "calories": 0.0
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.512631,
+            "calories": 4.53165804
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.032039,
+            "calories": 0.0128156
+          },
+          {
+            "name": "pears",
+            "mass_g": 202.0,
+            "calories": 115.544
+          },
+          {
+            "name": "garden salad",
+            "mass_g": 35.0,
+            "calories": 22.61
+          },
+          {
+            "name": "carrot",
+            "mass_g": 51.263092,
+            "calories": 21.01786772
+          }
+        ]
+      },
+      "accuracy": 75.4905619864266,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559841163",
+      "image_filename": "dish_1559841163.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559841163.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg",
+            "mass_g": 130,
+            "calories": 208,
+            "fat_g": 15,
+            "carbs_g": 1,
+            "protein_g": 17,
+            "form": "cooked",
+            "kcal_per_100g_est": 160,
+            "confidence": 0.8
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 120,
+            "calories": 48,
+            "fat_g": 0.5,
+            "carbs_g": 8,
+            "protein_g": 3,
+            "form": "cooked",
+            "kcal_per_100g_est": 40,
+            "confidence": 0.9
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 60,
+            "calories": 26,
+            "fat_g": 0.3,
+            "carbs_g": 5.7,
+            "protein_g": 0.7,
+            "form": "raw",
+            "count": 12,
+            "kcal_per_100g_est": 43,
+            "confidence": 0.95
+          },
+          {
+            "name": "potato",
+            "mass_g": 180,
+            "calories": 162,
+            "fat_g": 0.2,
+            "carbs_g": 36,
+            "protein_g": 3.4,
+            "form": "cooked",
+            "kcal_per_100g_est": 90,
+            "confidence": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 490,
+          "calories": 444,
+          "protein_g": 24.099999999999998,
+          "carbs_g": 50.7,
+          "fat_g": 16.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7802
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "egg",
+            "fdc_id": 748967,
+            "matched_name": "Eggs Grade A Large egg whole",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 140.54054054054055,
+              "calories": 208,
+              "protein_g": 17.42702702702703,
+              "carbs_g": 1.3492450701198218,
+              "fat_g": 13.997893718768472
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 150.0,
+              "calories": 48,
+              "protein_g": 3.8550000000000004,
+              "carbs_g": 9.435000000000002,
+              "fat_g": 0.51
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "blackberries",
+            "fdc_id": 2727581,
+            "matched_name": "Blackberries raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 425.8664744807705,
+              "calories": 26,
+              "protein_g": 6.5,
+              "carbs_g": 0.0,
+              "fat_g": 0.0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2346401,
+            "matched_name": "Potatoes russet without skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 194.19710286692464,
+              "calories": 162,
+              "protein_g": 4.4156537249881325,
+              "carbs_g": 34.51134974178978,
+              "fat_g": 0.6991095703209287
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 910.6041178882357,
+          "calories": 444,
+          "protein_g": 32.19768075201516,
+          "carbs_g": 45.2955948119096,
+          "fat_g": 15.2070032890894
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559841163",
+        "image_filename": "dish_1559841163.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559841163.png",
+        "total_mass_g": 335.0,
+        "total_calories": 357.043518,
+        "total_fat_g": 18.222002,
+        "total_carbs_g": 27.539,
+        "total_protein_g": 21.153002,
+        "foods": [
+          {
+            "name": "blackberries",
+            "mass_g": 53.0,
+            "calories": 22.79
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 119.0,
+            "calories": 176.12
+          },
+          {
+            "name": "yam",
+            "mass_g": 33.5,
+            "calories": 41.5735
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 33.5,
+            "calories": 25.46
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 46.0,
+            "calories": 73.6
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 50.0,
+            "calories": 17.5
+          }
+        ]
+      },
+      "accuracy": 63.829665722152654,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1561406817",
+      "image_filename": "dish_1561406817.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561406817.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "white rice",
+            "mass_g": 200,
+            "calories": 260,
+            "fat_g": 0.56,
+            "carbs_g": 56.34,
+            "protein_g": 4.76,
+            "form": "cooked",
+            "kcal_per_100g_est": 130,
+            "confidence": 0.9
+          },
+          {
+            "name": "couscous",
+            "mass_g": 150,
+            "calories": 168,
+            "fat_g": 0.24,
+            "carbs_g": 34.83,
+            "protein_g": 5.7,
+            "form": "cooked",
+            "kcal_per_100g_est": 112,
+            "confidence": 0.7
+          },
+          {
+            "name": "carrot",
+            "mass_g": 90,
+            "calories": 31.5,
+            "fat_g": 0.18,
+            "carbs_g": 7.38,
+            "protein_g": 0.68,
+            "form": "cooked",
+            "kcal_per_100g_est": 35,
+            "confidence": 0.88
+          },
+          {
+            "name": "cashews",
+            "mass_g": 12,
+            "calories": 66.36,
+            "fat_g": 5.28,
+            "carbs_g": 3.62,
+            "protein_g": 2.18,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 553,
+            "confidence": 0.85
+          },
+          {
+            "name": "raisins",
+            "mass_g": 2.5,
+            "calories": 7.75,
+            "fat_g": 0.01,
+            "carbs_g": 1.98,
+            "protein_g": 0.08,
+            "form": "dried",
+            "count": 5,
+            "kcal_per_100g_est": 310,
+            "confidence": 0.75
+          }
+        ],
+        "totals": {
+          "mass_g": 454.5,
+          "calories": 533.61,
+          "protein_g": 13.4,
+          "carbs_g": 104.15,
+          "fat_g": 6.2700000000000005
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7415
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "white rice",
+            "fdc_id": 2512381,
+            "matched_name": "Rice white long grain unenriched raw",
+            "data_type": "foundation_food",
+            "confidence": 0.79,
+            "score": 1.9,
+            "nutrition": {
+              "mass_g": 72.54306407394036,
+              "calories": 260,
+              "protein_g": 5.106233737100587,
+              "carbs_g": 58.26165613583186,
+              "fat_g": 0.7493698518838038
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "couscous",
+            "fdc_id": 169700,
+            "matched_name": "Couscous cooked",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 150.0,
+              "calories": 168,
+              "protein_g": 5.6850000000000005,
+              "carbs_g": 34.83,
+              "fat_g": 0.23999999999999996
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "carrot",
+            "fdc_id": 2258587,
+            "matched_name": "Carrots baby raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 89.02253259213833,
+              "calories": 31.5,
+              "protein_g": 0.7166313873667136,
+              "carbs_g": 8.082088666442463,
+              "fat_g": 0.12240598231419023
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "raisins",
+            "fdc_id": 333008,
+            "matched_name": "Cookies oatmeal soft with raisins",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 1.802325581395349,
+              "calories": 7.75,
+              "protein_g": 0.1043546511627907,
+              "carbs_g": 1.254418604651163,
+              "fat_g": 0.25773255813953494
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 313.36792224747404,
+          "calories": 467.25,
+          "protein_g": 11.612219775630091,
+          "carbs_g": 102.42816340692549,
+          "fat_g": 1.3695083923375289
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1561406817",
+        "image_filename": "dish_1561406817.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561406817.png",
+        "total_mass_g": 243.0,
+        "total_calories": 273.385437,
+        "total_fat_g": 0.959091,
+        "total_carbs_g": 57.742405,
+        "total_protein_g": 6.795967,
+        "foods": [
+          {
+            "name": "carrot",
+            "mass_g": 34.504005,
+            "calories": 14.14664205
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.34504,
+            "calories": 3.0501536
+          },
+          {
+            "name": "couscous",
+            "mass_g": 79.0,
+            "calories": 88.48
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.12939,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.021565,
+            "calories": 0.008626
+          },
+          {
+            "name": "white rice",
+            "mass_g": 129.0,
+            "calories": 167.7
+          }
+        ]
+      },
+      "accuracy": -82.70256451217375,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1561737293",
+      "image_filename": "dish_1561737293.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561737293.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 70,
+            "calories": 28.0,
+            "fat_g": 0.3,
+            "carbs_g": 5.0,
+            "protein_g": 1.9,
+            "form": "cooked",
+            "count": 2,
+            "kcal_per_100g_est": 40,
+            "confidence": 0.85,
+            "_rails_applied": [
+              "energy_clamp"
+            ]
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 120,
+            "calories": 66,
+            "fat_g": 0.1,
+            "carbs_g": 15.6,
+            "protein_g": 0.6,
+            "form": "raw",
+            "count": 6,
+            "kcal_per_100g_est": 55,
+            "confidence": 0.9
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 100,
+            "calories": 37,
+            "fat_g": 0.2,
+            "carbs_g": 8.0,
+            "protein_g": 0.8,
+            "form": "raw",
+            "count": 8,
+            "kcal_per_100g_est": 37,
+            "confidence": 0.9
+          },
+          {
+            "name": "sausage",
+            "mass_g": 56,
+            "calories": 167,
+            "fat_g": 15.1,
+            "carbs_g": 1.1,
+            "protein_g": 6.7,
+            "form": "cooked",
+            "count": 7,
+            "kcal_per_100g_est": 298,
+            "confidence": 0.8
+          },
+          {
+            "name": "potato",
+            "mass_g": 90,
+            "calories": 85.5,
+            "fat_g": 9.0,
+            "carbs_g": 25.2,
+            "protein_g": 2.1,
+            "form": "cooked",
+            "kcal_per_100g_est": 95,
+            "confidence": 0.7,
+            "_rails_applied": [
+              "energy_clamp"
+            ],
+            "_atwater_deviation_pct": 122.45614035087718
+          },
+          {
+            "name": "cottage cheese",
+            "mass_g": 60,
+            "calories": 55,
+            "fat_g": 2.1,
+            "carbs_g": 2.0,
+            "protein_g": 6.9,
+            "form": "raw",
+            "kcal_per_100g_est": 92,
+            "confidence": 0.7
+          }
+        ],
+        "totals": {
+          "mass_g": 496,
+          "calories": 438.5,
+          "protein_g": 19.0,
+          "carbs_g": 56.9,
+          "fat_g": 26.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 7440
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "broccoli",
+            "fdc_id": 321900,
+            "matched_name": "Broccoli raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 87.5,
+              "calories": 28.0,
+              "protein_g": 2.2487500000000002,
+              "carbs_g": 5.503750000000001,
+              "fat_g": 0.29750000000000004
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "pineapple",
+            "fdc_id": 2346398,
+            "matched_name": "Pineapple raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 113.32008976324686,
+              "calories": 66,
+              "protein_g": 0.5222922937188047,
+              "carbs_g": 15.96850044898793,
+              "fat_g": 0.2394453496697406
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cantaloupe",
+            "fdc_id": 327198,
+            "matched_name": "Melons cantaloupe raw",
+            "data_type": "foundation_food",
+            "confidence": 0.8200000000000001,
+            "score": 2.2,
+            "nutrition": {
+              "mass_g": 108.8235294117647,
+              "calories": 37,
+              "protein_g": 0.8923529411764706,
+              "carbs_g": 8.879999999999999,
+              "fat_g": 0.19588235294117645
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sausage",
+            "fdc_id": 325658,
+            "matched_name": "Sausage Italian pork mild cooked pan-fried",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 51.86335403726709,
+              "calories": 167,
+              "protein_g": 9.43913043478261,
+              "carbs_g": 1.1150621118012425,
+              "fat_g": 13.588198757763978
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2346401,
+            "matched_name": "Potatoes russet without skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 102.492915401988,
+              "calories": 85.5,
+              "protein_g": 2.330483910410403,
+              "carbs_g": 18.214323474833492,
+              "fat_g": 0.36897449544715677
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "cottage cheese",
+            "fdc_id": 328841,
+            "matched_name": "Cheese cottage lowfat 2 milkfat",
+            "data_type": "foundation_food",
+            "confidence": 0.8899999999999999,
+            "score": 2.9,
+            "nutrition": {
+              "mass_g": 65.47619047619048,
+              "calories": 55,
+              "protein_g": 7.2023809523809526,
+              "carbs_g": 2.8220238095238095,
+              "fat_g": 1.505952380952381
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 529.4760790904571,
+          "calories": 438.5,
+          "protein_g": 22.63539053246924,
+          "carbs_g": 52.50365984514647,
+          "fat_g": 16.195953336774433
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1561737293",
+        "image_filename": "dish_1561737293.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561737293.png",
+        "total_mass_g": 636.0,
+        "total_calories": 801.822021,
+        "total_fat_g": 46.077,
+        "total_carbs_g": 55.828995,
+        "total_protein_g": 41.927002,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 72.0,
+            "calories": 25.2
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 116.0,
+            "calories": 39.44
+          },
+          {
+            "name": "sausage",
+            "mass_g": 117.0,
+            "calories": 403.182
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 126.0,
+            "calories": 63.0
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 145.0,
+            "calories": 75.4
+          },
+          {
+            "name": "hash browns",
+            "mass_g": 60.0,
+            "calories": 195.6
+          }
+        ]
+      },
+      "accuracy": 66.84747363666332,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562168673",
+      "image_filename": "dish_1562168673.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562168673.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "honeydew melon",
+            "mass_g": 80,
+            "calories": 31,
+            "fat_g": 0.1,
+            "carbs_g": 7.3,
+            "protein_g": 0.4,
+            "form": "raw",
+            "count": 4,
+            "kcal_per_100g_est": 39,
+            "confidence": 0.65
+          },
+          {
+            "name": "lettuce",
+            "mass_g": 25,
+            "calories": 4,
+            "fat_g": 0.1,
+            "carbs_g": 0.6,
+            "protein_g": 0.3,
+            "form": "raw",
+            "kcal_per_100g_est": 15,
+            "confidence": 0.8
+          }
+        ],
+        "totals": {
+          "mass_g": 105,
+          "calories": 35,
+          "protein_g": 0.7,
+          "carbs_g": 7.8999999999999995,
+          "fat_g": 0.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5528
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "honeydew melon",
+            "fdc_id": 2710816,
+            "matched_name": "Melons honeydew raw",
+            "data_type": "foundation_food",
+            "confidence": 0.84,
+            "score": 2.4,
+            "nutrition": {
+              "mass_g": 84.53338932534174,
+              "calories": 31,
+              "protein_g": 0.4491258974855407,
+              "carbs_g": 6.889471230015353,
+              "fat_g": 0.18284572111071418
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "lettuce",
+            "fdc_id": 2346388,
+            "matched_name": "Lettuce iceberg raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 23.37896127275065,
+              "calories": 4,
+              "protein_g": 0.1735887874501736,
+              "carbs_g": 0.7875904473564239,
+              "fat_g": 0.017253673419289982
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 107.91235059809239,
+          "calories": 35,
+          "protein_g": 0.6227146849357144,
+          "carbs_g": 7.677061677371777,
+          "fat_g": 0.20009939453000417
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562168673",
+        "image_filename": "dish_1562168673.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562168673.png",
+        "total_mass_g": 73.0,
+        "total_calories": 56.354836,
+        "total_fat_g": 2.270678,
+        "total_carbs_g": 8.614903,
+        "total_protein_g": 1.229,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 20.645161,
+            "calories": 5.78064508
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 2.064516,
+            "calories": 0.88774188
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 2.064516,
+            "calories": 1.09419348
+          },
+          {
+            "name": "honeydew melons",
+            "mass_g": 41.0,
+            "calories": 14.76
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 2.064516,
+            "calories": 9.61032198
+          },
+          {
+            "name": "granola",
+            "mass_g": 5.16129,
+            "calories": 24.22193397
+          }
+        ]
+      },
+      "accuracy": 55.14744541697229,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602657",
+      "image_filename": "dish_1562602657.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602657.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potato",
+            "mass_g": 120,
+            "calories": 114.0,
+            "fat_g": 6.0,
+            "carbs_g": 26.4,
+            "protein_g": 2.4,
+            "form": "cooked",
+            "kcal_per_100g_est": 95,
+            "confidence": 0.7,
+            "_rails_applied": [
+              "energy_clamp"
+            ],
+            "_atwater_deviation_pct": 48.42105263157894
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 90,
+            "calories": 41,
+            "fat_g": 0.5,
+            "carbs_g": 6.3,
+            "protein_g": 2.7,
+            "form": "cooked",
+            "kcal_per_100g_est": 45,
+            "confidence": 0.64
+          },
+          {
+            "name": "sausage",
+            "mass_g": 75,
+            "calories": 229,
+            "fat_g": 20.3,
+            "carbs_g": 2.3,
+            "protein_g": 9.0,
+            "form": "cooked",
+            "count": 5,
+            "kcal_per_100g_est": 305,
+            "confidence": 0.76
+          }
+        ],
+        "totals": {
+          "mass_g": 285,
+          "calories": 384.0,
+          "protein_g": 14.1,
+          "carbs_g": 35.0,
+          "fat_g": 26.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 6002
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "potato",
+            "fdc_id": 2346401,
+            "matched_name": "Potatoes russet without skin raw",
+            "data_type": "foundation_food",
+            "confidence": 0.87,
+            "score": 2.7,
+            "nutrition": {
+              "mass_g": 136.65722053598398,
+              "calories": 114.0,
+              "protein_g": 3.107311880547204,
+              "carbs_g": 24.285764633111324,
+              "fat_g": 0.4919659939295424
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.74,
+            "score": 1.4,
+            "nutrition": {
+              "mass_g": 82.13963738355204,
+              "calories": 41,
+              "protein_g": 3.2727717119102477,
+              "carbs_g": 7.898218972252831,
+              "fat_g": 0.464088951217069
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "sausage",
+            "fdc_id": 325658,
+            "matched_name": "Sausage Italian pork mild cooked pan-fried",
+            "data_type": "foundation_food",
+            "confidence": 0.72,
+            "score": 1.2,
+            "nutrition": {
+              "mass_g": 71.11801242236024,
+              "calories": 229,
+              "protein_g": 12.943478260869565,
+              "carbs_g": 1.5290372670807453,
+              "fat_g": 18.632919254658383
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 289.9148703418963,
+          "calories": 384.0,
+          "protein_g": 19.323561853327018,
+          "carbs_g": 33.7130208724449,
+          "fat_g": 19.588974199804994
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562602657",
+        "image_filename": "dish_1562602657.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602657.png",
+        "total_mass_g": 236.0,
+        "total_calories": 610.365173,
+        "total_fat_g": 44.069649,
+        "total_carbs_g": 31.015892,
+        "total_protein_g": 24.324261,
+        "foods": [
+          {
+            "name": "pepper",
+            "mass_g": 0.079951,
+            "calories": 0.0319804
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.319803,
+            "calories": 0.0
+          },
+          {
+            "name": "hash browns",
+            "mass_g": 65.0,
+            "calories": 211.9
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 63.96064,
+            "calories": 27.5030752
+          },
+          {
+            "name": "sausage",
+            "mass_g": 106.0,
+            "calories": 365.276
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.639606,
+            "calories": 5.65411704
+          }
+        ]
+      },
+      "accuracy": 69.61694299171936,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602888",
+      "image_filename": "dish_1562602888.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602888.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562602888",
+        "image_filename": "dish_1562602888.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602888.png",
+        "total_mass_g": 343.0,
+        "total_calories": 209.382294,
+        "total_fat_g": 5.792155,
+        "total_carbs_g": 21.429251,
+        "total_protein_g": 18.706215,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 68.0,
+            "calories": 22.44
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 70.0,
+            "calories": 21.0
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 85.0,
+            "calories": 44.2
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 51.686775,
+            "calories": 30.49519725
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 12.967206,
+            "calories": 63.02062116
+          },
+          {
+            "name": "milk",
+            "mass_g": 55.346016,
+            "calories": 28.22646816
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562603842",
+      "image_filename": "dish_1562603842.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603842.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562603842",
+        "image_filename": "dish_1562603842.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603842.png",
+        "total_mass_g": 237.0,
+        "total_calories": 594.2453,
+        "total_fat_g": 38.460644,
+        "total_carbs_g": 60.725197,
+        "total_protein_g": 6.708,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 58.709675,
+            "calories": 16.438709
+          },
+          {
+            "name": "hash browns",
+            "mass_g": 146.0,
+            "calories": 475.96
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 5.870967,
+            "calories": 3.11161251
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 5.870967,
+            "calories": 2.52451581
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 5.870967,
+            "calories": 27.329351385
+          },
+          {
+            "name": "granola",
+            "mass_g": 14.677419,
+            "calories": 68.881127367
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562605384",
+      "image_filename": "dish_1562605384.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605384.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562605384",
+        "image_filename": "dish_1562605384.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605384.png",
+        "total_mass_g": 262.0,
+        "total_calories": 306.192841,
+        "total_fat_g": 18.418285,
+        "total_carbs_g": 18.374268,
+        "total_protein_g": 16.960743,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 47.232475,
+            "calories": 20.30996425
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.106471,
+            "calories": 18.62120364
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.059041,
+            "calories": 0.0236164
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 65.365852,
+            "calories": 49.67804752
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.236162,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562691032",
+      "image_filename": "dish_1562691032.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691032.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562691032",
+        "image_filename": "dish_1562691032.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691032.png",
+        "total_mass_g": 415.0,
+        "total_calories": 419.681702,
+        "total_fat_g": 22.039829,
+        "total_carbs_g": 39.058826,
+        "total_protein_g": 17.94734,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 85.0,
+            "calories": 48.45
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 80.0,
+            "calories": 40.0
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 66.0,
+            "calories": 93.06
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562774129",
+      "image_filename": "dish_1562774129.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774129.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562774129",
+        "image_filename": "dish_1562774129.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774129.png",
+        "total_mass_g": 77.0,
+        "total_calories": 73.083549,
+        "total_fat_g": 2.898097,
+        "total_carbs_g": 11.336127,
+        "total_protein_g": 1.539,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 37.0,
+            "calories": 21.09
+          },
+          {
+            "name": "vinaigrette",
+            "mass_g": 2.580645,
+            "calories": 12.012902475
+          },
+          {
+            "name": "granola",
+            "mass_g": 6.451612,
+            "calories": 30.277415116
+          },
+          {
+            "name": "blackberries",
+            "mass_g": 2.580645,
+            "calories": 1.10967735
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 25.80645,
+            "calories": 7.225806
+          },
+          {
+            "name": "raspberries",
+            "mass_g": 2.580645,
+            "calories": 1.36774185
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562775510",
+      "image_filename": "dish_1562775510.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775510.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562775510",
+        "image_filename": "dish_1562775510.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775510.png",
+        "total_mass_g": 190.0,
+        "total_calories": 114.217117,
+        "total_fat_g": 0.733756,
+        "total_carbs_g": 16.423389,
+        "total_protein_g": 10.066643,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 0.442804,
+            "calories": 3.91438736
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 79.0,
+            "calories": 41.08
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.221402,
+            "calories": 0.0
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 66.0,
+            "calories": 50.16
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.055351,
+            "calories": 0.0221404
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 44.280445,
+            "calories": 19.04059135
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562776497",
+      "image_filename": "dish_1562776497.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776497.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562776497",
+        "image_filename": "dish_1562776497.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776497.png",
+        "total_mass_g": 292.0,
+        "total_calories": 291.832458,
+        "total_fat_g": 13.205418,
+        "total_carbs_g": 32.771591,
+        "total_protein_g": 11.634132,
+        "foods": [
+          {
+            "name": "pepper",
+            "mass_g": 0.081181,
+            "calories": 0.0324724
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 4.210422,
+            "calories": 37.22013048
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.944649,
+            "calories": 27.92619907
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 142.439026,
+            "calories": 108.25365976
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 80.0,
+            "calories": 118.4
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.324723,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562777068",
+      "image_filename": "dish_1562777068.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777068.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562777068",
+        "image_filename": "dish_1562777068.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777068.png",
+        "total_mass_g": 236.0,
+        "total_calories": 236.723511,
+        "total_fat_g": 15.213988,
+        "total_carbs_g": 10.770336,
+        "total_protein_g": 14.960756,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 0.383764,
+            "calories": 3.39247376
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 38.376385,
+            "calories": 16.50184555
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.191882,
+            "calories": 0.0
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 65.0,
+            "calories": 21.45
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.04797,
+            "calories": 0.019188
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 132.0,
+            "calories": 195.36
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "dish_id": "dish_1562945332",
+      "image_filename": "dish_1562945332.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945332.png",
+      "prediction": {
+        "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1562945332",
+        "image_filename": "dish_1562945332.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945332.png",
+        "total_mass_g": 325.0,
+        "total_calories": 246.650803,
+        "total_fat_g": 8.793273,
+        "total_carbs_g": 18.078327,
+        "total_protein_g": 23.96172,
+        "foods": [
+          {
+            "name": "chia seeds",
+            "mass_g": 16.425127,
+            "calories": 79.82611722
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 65.365852,
+            "calories": 22.8780482
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 65.469917,
+            "calories": 38.62725103
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 106.0,
+            "calories": 55.12
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.634146,
+            "calories": 14.44585064
+          },
+          {
+            "name": "milk",
+            "mass_g": 70.104958,
+            "calories": 35.75352858
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    }
+  ]
+}

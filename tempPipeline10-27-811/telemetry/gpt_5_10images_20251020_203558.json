@@ -1,0 +1,392 @@
+{
+  "timestamp": "20251020_203558",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 10,
+  "successful": 0,
+  "failed": 10,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1556575273",
+      "image_filename": "dish_1556575273.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575273",
+        "image_filename": "dish_1556575273.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1556575327",
+      "image_filename": "dish_1556575327.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575327",
+        "image_filename": "dish_1556575327.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1556575386",
+      "image_filename": "dish_1556575386.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575386",
+        "image_filename": "dish_1556575386.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1556575446",
+      "image_filename": "dish_1556575446.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575446",
+        "image_filename": "dish_1556575446.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1556575499",
+      "image_filename": "dish_1556575499.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575499",
+        "image_filename": "dish_1556575499.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1556575558",
+      "image_filename": "dish_1556575558.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575558.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1556575558",
+        "image_filename": "dish_1556575558.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575558.png",
+        "total_mass_g": 151.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1557853429",
+      "image_filename": "dish_1557853429.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557853429.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1557853429",
+        "image_filename": "dish_1557853429.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557853429.png",
+        "total_mass_g": 276.0,
+        "total_calories": 330.152985,
+        "total_fat_g": 13.586999,
+        "total_carbs_g": 33.413998,
+        "total_protein_g": 17.637001,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 57.0,
+            "calories": 18.81
+          },
+          {
+            "name": "eggs",
+            "mass_g": 126.0,
+            "calories": 195.93
+          },
+          {
+            "name": "yam",
+            "mass_g": 93.0,
+            "calories": 115.413
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1557861837",
+      "image_filename": "dish_1557861837.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557861837.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1557861837",
+        "image_filename": "dish_1557861837.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557861837.png",
+        "total_mass_g": 123.0,
+        "total_calories": 61.883999,
+        "total_fat_g": 5.827,
+        "total_carbs_g": 4.46,
+        "total_protein_g": 8.698,
+        "foods": [
+          {
+            "name": "eggplant",
+            "mass_g": 53.0,
+            "calories": 13.144
+          },
+          {
+            "name": "caesar salad",
+            "mass_g": 31.0,
+            "calories": 13.64
+          },
+          {
+            "name": "fish",
+            "mass_g": 39.0,
+            "calories": 35.1
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1557862783",
+      "image_filename": "dish_1557862783.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557862783.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1557862783",
+        "image_filename": "dish_1557862783.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1557862783.png",
+        "total_mass_g": 258.0,
+        "total_calories": 442.97998,
+        "total_fat_g": 24.919001,
+        "total_carbs_g": 3.85,
+        "total_protein_g": 50.416,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 77.0,
+            "calories": 19.25
+          },
+          {
+            "name": "steak",
+            "mass_g": 118.0,
+            "calories": 319.78
+          },
+          {
+            "name": "chicken",
+            "mass_g": 63.0,
+            "calories": 103.95
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    },
+    {
+      "dish_id": "dish_1558026756",
+      "image_filename": "dish_1558026756.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558026756.png",
+      "prediction": {
+        "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+      },
+      "database_aligned": null,
+      "ground_truth": {
+        "dish_id": "dish_1558026756",
+        "image_filename": "dish_1558026756.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558026756.png",
+        "total_mass_g": 178.0,
+        "total_calories": 183.860001,
+        "total_fat_g": 10.305,
+        "total_carbs_g": 13.486,
+        "total_protein_g": 9.863,
+        "foods": [
+          {
+            "name": "honeydew melons",
+            "mass_g": 83.0,
+            "calories": 29.88
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 71.0,
+            "calories": 24.14
+          },
+          {
+            "name": "bacon",
+            "mass_g": 24.0,
+            "calories": 129.84
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": "Error code: 400 - {'error': {'message': \"Invalid value: 'text'. Supported values are: 'input_text', 'input_image', 'output_text', 'refusal', 'input_file', 'computer_screenshot', and 'summary_text'.\", 'type': 'invalid_request_error', 'param': 'input[0].content[0].type', 'code': 'invalid_value'}}"
+    }
+  ]
+}

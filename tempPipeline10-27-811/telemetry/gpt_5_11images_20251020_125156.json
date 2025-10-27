@@ -1,0 +1,777 @@
+{
+  "timestamp": "20251020_125156",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 11,
+  "successful": 11,
+  "failed": 0,
+  "average_accuracy": 73.00871278945885,
+  "results": [
+    {
+      "dish_id": "dish_1558629878",
+      "image_filename": "dish_1558629878.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629878.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fresh red apple (medium, with skin)",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.31,
+            "carbs_g": 24.86,
+            "protein_g": 0.47
+          },
+          {
+            "name": "shredded carrot piece",
+            "mass_g": 1,
+            "calories": 0.41,
+            "fat_g": 0.0,
+            "carbs_g": 0.1,
+            "protein_g": 0.01
+          }
+        ],
+        "totals": {
+          "mass_g": 181,
+          "calories": 94.41,
+          "fat_g": 0.31,
+          "carbs_g": 24.96,
+          "protein_g": 0.48
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3193
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558629878",
+        "image_filename": "dish_1558629878.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558629878.png",
+        "total_mass_g": 142.0,
+        "total_calories": 73.839996,
+        "total_fat_g": 0.284,
+        "total_carbs_g": 19.879999,
+        "total_protein_g": 0.426,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          }
+        ]
+      },
+      "accuracy": 79.45867247933853,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630006",
+      "image_filename": "dish_1558630006.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630006.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "red seedless grapes",
+            "mass_g": 55,
+            "calories": 38.0,
+            "fat_g": 0.09,
+            "carbs_g": 10.0,
+            "protein_g": 0.4
+          },
+          {
+            "name": "green seedless grape",
+            "mass_g": 5,
+            "calories": 3.5,
+            "fat_g": 0.01,
+            "carbs_g": 0.91,
+            "protein_g": 0.04
+          }
+        ],
+        "totals": {
+          "mass_g": 60,
+          "calories": 41.5,
+          "fat_g": 0.1,
+          "carbs_g": 10.91,
+          "protein_g": 0.44
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2998
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630006",
+        "image_filename": "dish_1558630006.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630006.png",
+        "total_mass_g": 75.0,
+        "total_calories": 51.75,
+        "total_fat_g": 0.15,
+        "total_carbs_g": 13.500001,
+        "total_protein_g": 0.525,
+        "foods": [
+          {
+            "name": "grapes",
+            "mass_g": 75.0,
+            "calories": 51.75
+          }
+        ]
+      },
+      "accuracy": 78.2968472039398,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630038",
+      "image_filename": "dish_1558630038.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630038.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "raw cauliflower florets",
+            "mass_g": 75,
+            "calories": 18.8,
+            "fat_g": 0.21,
+            "carbs_g": 3.73,
+            "protein_g": 1.44
+          },
+          {
+            "name": "shredded raw carrot",
+            "mass_g": 1,
+            "calories": 0.4,
+            "fat_g": 0.0,
+            "carbs_g": 0.1,
+            "protein_g": 0.01
+          }
+        ],
+        "totals": {
+          "mass_g": 76,
+          "calories": 19.2,
+          "fat_g": 0.21,
+          "carbs_g": 3.83,
+          "protein_g": 1.45
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3127
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630038",
+        "image_filename": "dish_1558630038.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630038.png",
+        "total_mass_g": 51.0,
+        "total_calories": 12.75,
+        "total_fat_g": 0.153,
+        "total_carbs_g": 2.55,
+        "total_protein_g": 0.918,
+        "foods": [
+          {
+            "name": "cauliflower",
+            "mass_g": 51.0,
+            "calories": 12.75
+          }
+        ]
+      },
+      "accuracy": 50.99782135076253,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630072",
+      "image_filename": "dish_1558630072.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630072.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "small red apple (raw, with skin)",
+            "mass_g": 150,
+            "calories": 78,
+            "fat_g": 0.3,
+            "carbs_g": 20.7,
+            "protein_g": 0.4
+          },
+          {
+            "name": "seedless grapes (mixed red and green)",
+            "mass_g": 80,
+            "calories": 55.2,
+            "fat_g": 0.1,
+            "carbs_g": 14.5,
+            "protein_g": 0.6
+          },
+          {
+            "name": "whole raw almonds",
+            "mass_g": 22,
+            "calories": 127.4,
+            "fat_g": 11,
+            "carbs_g": 4.8,
+            "protein_g": 4.6
+          },
+          {
+            "name": "raw cauliflower florets",
+            "mass_g": 70,
+            "calories": 17.5,
+            "fat_g": 0.2,
+            "carbs_g": 3.5,
+            "protein_g": 1.3
+          }
+        ],
+        "totals": {
+          "mass_g": 322,
+          "calories": 278.1,
+          "fat_g": 11.6,
+          "carbs_g": 43.5,
+          "protein_g": 6.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4023
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630072",
+        "image_filename": "dish_1558630072.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630072.png",
+        "total_mass_g": 295.0,
+        "total_calories": 294.427002,
+        "total_fat_g": 13.952,
+        "total_carbs_g": 42.058998,
+        "total_protein_g": 7.917001,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          },
+          {
+            "name": "almonds",
+            "mass_g": 27.0,
+            "calories": 156.087
+          },
+          {
+            "name": "grapes",
+            "mass_g": 75.0,
+            "calories": 51.75
+          },
+          {
+            "name": "cauliflower",
+            "mass_g": 51.0,
+            "calories": 12.75
+          }
+        ]
+      },
+      "accuracy": 90.43447622092879,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630176",
+      "image_filename": "dish_1558630176.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630176.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Gala apple (medium, raw)",
+            "mass_g": 170,
+            "calories": 88.4,
+            "fat_g": 0.29,
+            "carbs_g": 23.46,
+            "protein_g": 0.44
+          },
+          {
+            "name": "shredded carrot (tiny piece)",
+            "mass_g": 1,
+            "calories": 0.41,
+            "fat_g": 0.0,
+            "carbs_g": 0.1,
+            "protein_g": 0.01
+          }
+        ],
+        "totals": {
+          "mass_g": 171,
+          "calories": 88.81,
+          "fat_g": 0.29,
+          "carbs_g": 23.56,
+          "protein_g": 0.45
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3004
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630176",
+        "image_filename": "dish_1558630176.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630176.png",
+        "total_mass_g": 142.0,
+        "total_calories": 73.839996,
+        "total_fat_g": 0.284,
+        "total_carbs_g": 19.879999,
+        "total_protein_g": 0.426,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          }
+        ]
+      },
+      "accuracy": 86.60926851534288,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630207",
+      "image_filename": "dish_1558630207.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630207.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "raw whole almonds",
+            "mass_g": 100,
+            "calories": 579,
+            "fat_g": 50,
+            "carbs_g": 22,
+            "protein_g": 21
+          }
+        ],
+        "totals": {
+          "mass_g": 100,
+          "calories": 579,
+          "fat_g": 50,
+          "carbs_g": 22,
+          "protein_g": 21
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2214
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630207",
+        "image_filename": "dish_1558630207.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630207.png",
+        "total_mass_g": 116.0,
+        "total_calories": 670.596008,
+        "total_fat_g": 57.420002,
+        "total_carbs_g": 26.332001,
+        "total_protein_g": 25.984001,
+        "foods": [
+          {
+            "name": "almonds",
+            "mass_g": 116.0,
+            "calories": 670.596
+          }
+        ]
+      },
+      "accuracy": 84.79863292686264,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630288",
+      "image_filename": "dish_1558630288.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630288.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "spring mix salad greens (baby lettuce, spinach, chard)",
+            "mass_g": 25,
+            "calories": 5,
+            "fat_g": 0.1,
+            "carbs_g": 0.9,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 25,
+          "calories": 5,
+          "fat_g": 0.1,
+          "carbs_g": 0.9,
+          "protein_g": 0.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2107
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630288",
+        "image_filename": "dish_1558630288.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630288.png",
+        "total_mass_g": 11.0,
+        "total_calories": 7.106,
+        "total_fat_g": 0.374,
+        "total_carbs_g": 0.352,
+        "total_protein_g": 0.671,
+        "foods": [
+          {
+            "name": "garden salad",
+            "mass_g": 11.0,
+            "calories": 7.106
+          }
+        ]
+      },
+      "accuracy": 17.732428841016358,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630325",
+      "image_filename": "dish_1558630325.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630325.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "raw whole almonds",
+            "mass_g": 90,
+            "calories": 521,
+            "fat_g": 45.0,
+            "carbs_g": 19.4,
+            "protein_g": 19.0
+          },
+          {
+            "name": "red apple (with skin)",
+            "mass_g": 160,
+            "calories": 83,
+            "fat_g": 0.3,
+            "carbs_g": 22.1,
+            "protein_g": 0.4
+          },
+          {
+            "name": "spring mix salad greens",
+            "mass_g": 30,
+            "calories": 6,
+            "fat_g": 0.1,
+            "carbs_g": 1.1,
+            "protein_g": 0.6
+          }
+        ],
+        "totals": {
+          "mass_g": 280,
+          "calories": 610,
+          "fat_g": 45.4,
+          "carbs_g": 42.6,
+          "protein_g": 20.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3501
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630325",
+        "image_filename": "dish_1558630325.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630325.png",
+        "total_mass_g": 269.0,
+        "total_calories": 751.541992,
+        "total_fat_g": 58.078003,
+        "total_carbs_g": 46.563999,
+        "total_protein_g": 27.081001,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          },
+          {
+            "name": "garden salad",
+            "mass_g": 11.0,
+            "calories": 7.106
+          },
+          {
+            "name": "almonds",
+            "mass_g": 116.0,
+            "calories": 670.596
+          }
+        ]
+      },
+      "accuracy": 84.11749398402075,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630450",
+      "image_filename": "dish_1558630450.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630450.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "red seedless grapes",
+            "mass_g": 95,
+            "calories": 65.6,
+            "fat_g": 0.15,
+            "carbs_g": 17.2,
+            "protein_g": 0.68
+          },
+          {
+            "name": "green seedless grapes",
+            "mass_g": 15,
+            "calories": 10.4,
+            "fat_g": 0.02,
+            "carbs_g": 2.7,
+            "protein_g": 0.11
+          }
+        ],
+        "totals": {
+          "mass_g": 110,
+          "calories": 76.0,
+          "fat_g": 0.17,
+          "carbs_g": 19.9,
+          "protein_g": 0.79
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2998
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630450",
+        "image_filename": "dish_1558630450.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630450.png",
+        "total_mass_g": 125.0,
+        "total_calories": 86.25,
+        "total_fat_g": 0.25,
+        "total_carbs_g": 22.5,
+        "total_protein_g": 0.875,
+        "foods": [
+          {
+            "name": "grapes",
+            "mass_g": 125.0,
+            "calories": 86.25
+          }
+        ]
+      },
+      "accuracy": 84.56922015182884,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630488",
+      "image_filename": "dish_1558630488.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630488.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fresh cantaloupe chunks",
+            "mass_g": 120,
+            "calories": 41,
+            "fat_g": 0.2,
+            "carbs_g": 9.8,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 120,
+          "calories": 41,
+          "fat_g": 0.2,
+          "carbs_g": 9.8,
+          "protein_g": 1.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2356
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630488",
+        "image_filename": "dish_1558630488.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630488.png",
+        "total_mass_g": 88.0,
+        "total_calories": 29.92,
+        "total_fat_g": 0.176,
+        "total_carbs_g": 7.04,
+        "total_protein_g": 0.704,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 88.0,
+            "calories": 29.92
+          }
+        ]
+      },
+      "accuracy": 66.34358288770053,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558630600",
+      "image_filename": "dish_1558630600.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630600.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "fresh red apple (medium, with skin)",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.3,
+            "carbs_g": 24.7,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 180,
+          "calories": 94,
+          "fat_g": 0.3,
+          "carbs_g": 24.7,
+          "protein_g": 0.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2039
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558630600",
+        "image_filename": "dish_1558630600.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558630600.png",
+        "total_mass_g": 142.0,
+        "total_calories": 73.839996,
+        "total_fat_g": 0.284,
+        "total_carbs_g": 19.879999,
+        "total_protein_g": 0.426,
+        "foods": [
+          {
+            "name": "apple",
+            "mass_g": 142.0,
+            "calories": 73.84
+          }
+        ]
+      },
+      "accuracy": 79.73739612230575,
+      "error": null
+    }
+  ]
+}

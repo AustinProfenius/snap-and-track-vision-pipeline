@@ -1,0 +1,145 @@
+{
+  "description": "Sanity batch: 10 items to validate Phase A-D conversion wiring fixes",
+  "expected_metrics": {
+    "conversion_hit_rate": 0.60,
+    "no_unknown_stages": true,
+    "no_unknown_methods": true
+  },
+  "items": [
+    {
+      "id": "sanity_01_grilled_chicken",
+      "predicted_name": "chicken breast",
+      "predicted_form": "grilled",
+      "predicted_kcal_100g": 165,
+      "mass_g": 150,
+      "confidence": 0.90,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "stage1_blocked": true,
+        "method": "grilled",
+        "description": "Grilled chicken should use raw Foundation + conversion"
+      }
+    },
+    {
+      "id": "sanity_02_roasted_potatoes",
+      "predicted_name": "potato",
+      "predicted_form": "roasted",
+      "predicted_kcal_100g": 140,
+      "mass_g": 200,
+      "confidence": 0.88,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "roasted_oven",
+        "description": "Roasted potatoes should use raw Foundation + conversion with oil uptake"
+      }
+    },
+    {
+      "id": "sanity_03_pan_seared_salmon",
+      "predicted_name": "salmon",
+      "predicted_form": "pan seared",
+      "predicted_kcal_100g": 206,
+      "mass_g": 120,
+      "confidence": 0.85,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "pan_seared",
+        "description": "Pan-seared salmon should use conversion with method alias mapping"
+      }
+    },
+    {
+      "id": "sanity_04_boiled_eggs",
+      "predicted_name": "egg",
+      "predicted_form": "boiled",
+      "predicted_kcal_100g": 155,
+      "mass_g": 100,
+      "confidence": 0.92,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "boiled",
+        "description": "Boiled eggs should use raw Foundation + conversion"
+      }
+    },
+    {
+      "id": "sanity_05_mixed_salad_greens",
+      "predicted_name": "mixed salad greens",
+      "predicted_form": "raw",
+      "predicted_kcal_100g": 15,
+      "mass_g": 80,
+      "confidence": 0.80,
+      "expected": {
+        "core_class": "lettuce",
+        "alignment_stage": "stage1_cooked_exact",
+        "description": "Mixed salad greens synonym should map to lettuce, use Stage 1 (no conversion needed for raw)"
+      }
+    },
+    {
+      "id": "sanity_06_yellow_squash",
+      "predicted_name": "yellow squash",
+      "predicted_form": "cooked",
+      "predicted_kcal_100g": 20,
+      "mass_g": 150,
+      "confidence": 0.82,
+      "expected": {
+        "core_class": "squash_summer",
+        "description": "Yellow squash synonym should map to squash_summer"
+      }
+    },
+    {
+      "id": "sanity_07_tater_tots",
+      "predicted_name": "tater tots",
+      "predicted_form": "fried",
+      "predicted_kcal_100g": 290,
+      "mass_g": 120,
+      "confidence": 0.88,
+      "expected": {
+        "core_class": "potato_russet",
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "tater_tots",
+        "oil_uptake_applied": true,
+        "description": "Tater tots should map to potato_russet, use tater_tots method with 12g/100g oil"
+      }
+    },
+    {
+      "id": "sanity_08_pickled_olives",
+      "predicted_name": "olives",
+      "predicted_form": "pickled",
+      "predicted_kcal_100g": 115,
+      "mass_g": 50,
+      "confidence": 0.75,
+      "expected": {
+        "sodium_gate_active": true,
+        "description": "Pickled olives should trigger sodium gating to avoid canned/pickled high-sodium entries"
+      }
+    },
+    {
+      "id": "sanity_09_pumpkin",
+      "predicted_name": "pumpkin",
+      "predicted_form": "roasted",
+      "predicted_kcal_100g": 26,
+      "mass_g": 180,
+      "confidence": 0.85,
+      "expected": {
+        "negative_vocab_active": true,
+        "description": "Pumpkin should block seeds/pepitas via negative vocabulary guard"
+      }
+    },
+    {
+      "id": "sanity_10_egg_whites",
+      "predicted_name": "egg whites",
+      "predicted_form": "cooked",
+      "predicted_kcal_100g": 52,
+      "mass_g": 60,
+      "confidence": 0.90,
+      "expected": {
+        "core_class": "egg_white",
+        "negative_vocab_active": true,
+        "description": "Egg whites should block yolk entries via negative vocabulary guard"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+═══════════════════════════════════════════════════════════════
+  🍽️  NUTRITIONVERSE EVALUATOR - QUICK START
+═══════════════════════════════════════════════════════════════
+
+📦 WHAT YOU GET
+  ✅ Zero setup - automatically loads your dataset
+  ✅ OpenAI model selection (gpt-4o, gpt-4o-mini, gpt-4-turbo)
+  ✅ Macro-only or micro+macro modes
+  ✅ Comprehensive results with percentage errors
+  ✅ Per-food breakdown comparisons
+  ✅ Overall accuracy scoring
+
+═══════════════════════════════════════════════════════════════
+
+🚀 LAUNCH IN 3 STEPS:
+
+1. Ensure API key is set:
+   $ cat .env | grep OPENAI_API_KEY
+
+2. Launch the app:
+   $ ./run_app.sh
+
+3. In the app:
+   - Select model: gpt-4o-mini (recommended)
+   - Toggle micronutrients: OFF (for speed)
+   - Select a dish
+   - Click "Run Prediction"
+   - View results!
+
+═══════════════════════════════════════════════════════════════
+
+📊 WHAT YOU'LL SEE:
+
+COMPARISON TABLE:
+┌─────────────────┬───────────┬──────────┬─────────────┬──────────┐
+│ Metric          │ Predicted │ Actual   │ Difference  │ Error %  │
+├─────────────────┼───────────┼──────────┼─────────────┼──────────┤
+│ Total Calories  │ 520 kcal  │ 500 kcal │ +20 kcal    │ +4.0%  ✓ │
+│ Total Protein   │ 45g       │ 50g      │ -5g         │ -10.0% ~ │
+│ Total Carbs     │ 60g       │ 55g      │ +5g         │ +9.1%  ✓ │
+│ Total Fat       │ 18g       │ 15g      │ +3g         │ +20.0% ~ │
+│ Total Mass      │ 355g      │ 350g     │ +5g         │ +1.4%  ✓ │
+└─────────────────┴───────────┴──────────┴─────────────┴──────────┘
+
+Overall Accuracy: 91.2%
+
+PER-FOOD BREAKDOWN:
+  Predicted Foods               Actual Foods (Ground Truth)
+  ┌─────────────────────────┐  ┌─────────────────────────┐
+  │ Grilled Chicken Breast  │  │ Chicken Wing            │
+  │ 150g, 248 kcal          │  │ 153g, 374 kcal          │
+  │ P: 47g, C: 0g, F: 5g    │  │ P: 53g, C: 0g, F: 15g   │
+  └─────────────────────────┘  └─────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+1. START SMALL
+   - Use gpt-4o-mini for testing
+   - Keep micronutrients OFF initially
+   - Test on Train split first
+
+2. CHECK ACCURACY
+   - Green (<10%) = excellent
+   - Yellow (10-25%) = good
+   - Red (>25%) = needs improvement
+
+3. COMPARE MODELS
+   - Run same dish on multiple models
+   - Compare error percentages
+   - Note cost vs accuracy tradeoff
+
+4. ENABLE MICROS WHEN NEEDED
+   - Adds 7 micronutrients (vitamins, minerals)
+   - Increases cost by ~50%
+   - Use for detailed analysis only
+
+═══════════════════════════════════════════════════════════════
+
+💰 COST REFERENCE (per image):
+  gpt-4o-mini (macro):  $0.01-0.02  ⭐ RECOMMENDED
+  gpt-4o-mini (micro):  $0.02-0.03
+  gpt-4o (macro):       $0.05-0.08
+  gpt-4o (micro):       $0.08-0.12
+
+═══════════════════════════════════════════════════════════════
+
+📁 DATASET INFO:
+  Location: /Users/austinprofenius/snapandtrack-model-testing/nutritionverse
+  Total dishes: 225
+  Train: 158 | Val: 67
+  Foods per dish: 1-7
+
+  ✅ Automatically loaded - NO SETUP REQUIRED
+
+═══════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION:
+  Full guide:  NUTRITIONVERSE_README.md
+  Summary:     NUTRITIONVERSE_APP_SUMMARY.md
+  Launch:      ./run_app.sh
+
+═══════════════════════════════════════════════════════════════
+
+❓ TROUBLESHOOTING:
+
+Q: Dataset not loading?
+A: Check path exists: ls /Users/austinprofenius/snapandtrack-model-testing/nutritionverse
+
+Q: API errors?
+A: Verify OPENAI_API_KEY in .env: cat .env | grep OPENAI
+
+Q: Slow predictions?
+A: Use gpt-4o-mini, disable micronutrients
+
+Q: JSON errors?
+A: Try different model, app auto-repairs most issues
+
+═══════════════════════════════════════════════════════════════
+
+🎯 READY TO GO!
+
+  $ ./run_app.sh
+
+  Select a dish, run prediction, analyze results!
+
+═══════════════════════════════════════════════════════════════

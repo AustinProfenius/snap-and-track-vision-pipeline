@@ -1,0 +1,2184 @@
+{
+  "timestamp": "20251026_192714",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 10,
+  "successful": 10,
+  "failed": 0,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1558029923",
+      "image_filename": "dish_1558029923.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558029923.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 24,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.84
+          },
+          {
+            "name": "sweet potato",
+            "form": "roasted",
+            "mass_g": 150,
+            "count": 12,
+            "confidence": 0.78
+          },
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 120,
+            "count": 9,
+            "confidence": 0.82
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1920
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 24,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.6399999999999999,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "fried",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 36,
+              "candidate_pool_raw_foundation": 27,
+              "candidate_pool_cooked_sr_legacy": 9,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "bacon",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "sweet potato",
+            "form": "roasted",
+            "mass_g": 150,
+            "calories": 135.0,
+            "protein_g": 1.49,
+            "carbs_g": 5.26,
+            "fat_g": 0.3,
+            "fdc_id": 169303,
+            "fdc_name": "Sweet potato leaves raw (roasted_oven)",
+            "match_score": 0.78,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 169303,
+              "raw_source": "sr_legacy",
+              "raw_name": "Sweet potato leaves raw",
+              "conversion_steps": [
+                "shrinkage_12.00%",
+                "energy_clamp_17\u219290"
+              ],
+              "atwater_deviation_pct": 3.5411542100283824,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 27,
+              "candidate_pool_raw_foundation": 16,
+              "candidate_pool_cooked_sr_legacy": 11,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "sweet potato",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 120,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.6199999999999999,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 3,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "cantaloupe",
+              "search_variants_tried": 4
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 150,
+          "calories": 135.0,
+          "protein_g": 1.4855113636363637,
+          "carbs_g": 5.261931818181819,
+          "fat_g": 0.30426136363636364
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 2,
+            "stage2_raw_convert": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.3333333333333333
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558029923",
+        "image_filename": "dish_1558029923.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558029923.png",
+        "total_mass_g": 200.0,
+        "total_calories": 279.550995,
+        "total_fat_g": 9.596,
+        "total_carbs_g": 38.301998,
+        "total_protein_g": 10.452001,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 22.0,
+            "calories": 119.02
+          },
+          {
+            "name": "yam",
+            "mass_g": 111.0,
+            "calories": 137.751
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 67.0,
+            "calories": 22.78
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1560444931",
+      "image_filename": "dish_1560444931.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1560444931.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 55,
+            "count": 1,
+            "confidence": 0.7
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 80,
+            "count": 5,
+            "confidence": 0.66
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 140,
+            "count": 9,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.7
+          },
+          {
+            "name": "honeydew melon",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 3,
+            "confidence": 0.64
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1882
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 55,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.49999999999999994,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "pan_seared",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 1,
+              "candidate_pool_raw_foundation": 1,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "egg scrambled",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 80,
+            "calories": 0.0,
+            "protein_g": 0.37,
+            "carbs_g": 11.27,
+            "fat_g": 0.17,
+            "fdc_id": 2346398,
+            "fdc_name": "Pineapple raw",
+            "match_score": 0.46,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 43,
+              "candidate_pool_raw_foundation": 43,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7,
+              "search_normalized_query": "pineapple",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 140,
+            "calories": 64.7,
+            "protein_g": 1.32,
+            "carbs_g": 16.28,
+            "fat_g": 0.32,
+            "fdc_id": 167765,
+            "fdc_name": "Watermelon raw",
+            "match_score": 0.49999999999999994,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.11738746690203007,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 2,
+              "candidate_pool_raw_foundation": 1,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.731,
+              "search_normalized_query": "watermelon",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "honeydew melon",
+            "form": "raw",
+            "mass_g": 50,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.44,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 2,
+              "candidate_pool_raw_foundation": 2,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "melons honeydew raw",
+              "search_variants_tried": 4
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 220,
+          "calories": 64.68,
+          "protein_g": 1.6838799999999998,
+          "carbs_g": 27.551000000000002,
+          "fat_g": 0.49244
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage0_no_candidates": 2,
+            "stage1b_raw_foundation_direct": 2
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1560444931",
+        "image_filename": "dish_1560444931.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1560444931.png",
+        "total_mass_g": 200.0,
+        "total_calories": 112.660004,
+        "total_fat_g": 3.982,
+        "total_carbs_g": 16.460001,
+        "total_protein_g": 4.306,
+        "foods": [
+          {
+            "name": "watermelon",
+            "mass_g": 76.0,
+            "calories": 22.8
+          },
+          {
+            "name": "honeydew melons",
+            "mass_g": 39.0,
+            "calories": 14.04
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 51.0,
+            "calories": 25.5
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 34.0,
+            "calories": 50.32
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562690950",
+      "image_filename": "dish_1562690950.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562690950.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 40,
+            "count": 7,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.74
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 4,
+            "confidence": 0.81
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 20,
+            "count": 13,
+            "confidence": 0.85
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 9,
+            "confidence": 0.78
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1623
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 40,
+            "calories": 14.0,
+            "protein_g": 1.12,
+            "carbs_g": 2.63,
+            "fat_g": 0.15,
+            "fdc_id": 170379,
+            "fdc_name": "Broccoli raw (roasted_oven)",
+            "match_score": 0.74,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170379,
+              "raw_source": "sr_legacy",
+              "raw_name": "Broccoli raw",
+              "conversion_steps": [
+                "shrinkage_8.00%",
+                "energy_clamp_34\u219235"
+              ],
+              "atwater_deviation_pct": 0.14052428018908458,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 22,
+              "candidate_pool_raw_foundation": 14,
+              "candidate_pool_cooked_sr_legacy": 8,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "broccoli",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 25,
+            "calories": 12.2,
+            "protein_g": 0.25,
+            "carbs_g": 2.92,
+            "fat_g": 0.11,
+            "fdc_id": 167762,
+            "fdc_name": "Strawberries raw",
+            "match_score": 0.6100000000000001,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.11357340720221605,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 9,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7432,
+              "search_normalized_query": "strawberries",
+              "search_variants_tried": 5
+            }
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 20,
+            "calories": 16.9,
+            "protein_g": 0.22,
+            "carbs_g": 4.29,
+            "fat_g": 0.1,
+            "fdc_id": 171711,
+            "fdc_name": "Blueberries raw",
+            "match_score": 0.6499999999999999,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.10784160275473466,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 12,
+              "candidate_pool_raw_foundation": 11,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.9218,
+              "search_normalized_query": "blueberries",
+              "search_variants_tried": 5
+            }
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 70,
+            "calories": 0.0,
+            "protein_g": 0.32,
+            "carbs_g": 9.86,
+            "fat_g": 0.15,
+            "fdc_id": 2346398,
+            "fdc_name": "Pineapple raw",
+            "match_score": 0.5800000000000001,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 43,
+              "candidate_pool_raw_foundation": 43,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7,
+              "search_normalized_query": "pineapple",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 155,
+          "calories": 43.032,
+          "protein_g": 1.9120091304347822,
+          "carbs_g": 19.698620434782608,
+          "fat_g": 0.5059813043478261
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage2_raw_convert": 1,
+            "stage1b_raw_foundation_direct": 3
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.25
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562690950",
+        "image_filename": "dish_1562690950.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562690950.png",
+        "total_mass_g": 202.0,
+        "total_calories": 109.061714,
+        "total_fat_g": 1.381829,
+        "total_carbs_g": 24.826828,
+        "total_protein_g": 1.861341,
+        "foods": [
+          {
+            "name": "pineapple",
+            "mass_g": 80.0,
+            "calories": 40.0
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          },
+          {
+            "name": "berries",
+            "mass_g": 85.0,
+            "calories": 48.45
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1563824130",
+      "image_filename": "dish_1563824130.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563824130.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chicken breast",
+            "form": "pan_seared",
+            "mass_g": 80,
+            "count": 1,
+            "confidence": 0.64
+          },
+          {
+            "name": "zucchini",
+            "form": "steamed",
+            "mass_g": 30,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.56
+          },
+          {
+            "name": "yellow squash",
+            "form": "steamed",
+            "mass_g": 40,
+            "count": 1,
+            "modifiers": [
+              "yellow"
+            ],
+            "confidence": 0.56
+          },
+          {
+            "name": "couscous",
+            "form": "cooked",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.62
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1892
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "chicken breast",
+            "form": "pan_seared",
+            "mass_g": 80,
+            "calories": 120.0,
+            "protein_g": 24.35,
+            "carbs_g": 0.0,
+            "fat_g": 2.89,
+            "fdc_id": 2646170,
+            "fdc_name": "Chicken breast boneless skinless raw (pan_seared)",
+            "match_score": 0.64,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 2646170,
+              "raw_source": "foundation",
+              "raw_name": "Chicken breast boneless skinless raw",
+              "conversion_steps": [
+                "shrinkage_26.00%",
+                "oil_uptake_1.0g",
+                "atwater_soft_9\u2192111",
+                "energy_clamp_111\u2192150"
+              ],
+              "atwater_deviation_pct": 0.027731548797365144,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "pan_seared",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": true,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 11,
+              "candidate_pool_raw_foundation": 5,
+              "candidate_pool_cooked_sr_legacy": 6,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "chicken breast",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "zucchini",
+            "form": "steamed",
+            "mass_g": 30,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.56,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "steamed",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 5,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "zucchini",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "yellow squash",
+            "form": "steamed",
+            "mass_g": 40,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "couscous",
+            "form": "cooked",
+            "mass_g": 110,
+            "calories": 159.5,
+            "protein_g": 9.71,
+            "carbs_g": 58.94,
+            "fat_g": 0.49,
+            "fdc_id": 169699,
+            "fdc_name": "Couscous dry (boiled)",
+            "match_score": 0.54,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 169699,
+              "raw_source": "sr_legacy",
+              "raw_name": "Couscous dry",
+              "conversion_steps": [
+                "hydration_\u00d72.50",
+                "energy_clamp_260\u2192145"
+              ],
+              "atwater_deviation_pct": 0.4283052159381882,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "generic_cooked_fallback",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 2,
+              "candidate_pool_raw_foundation": 1,
+              "candidate_pool_cooked_sr_legacy": 1,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "couscous",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 190,
+          "calories": 279.5,
+          "protein_g": 34.06426335135135,
+          "carbs_g": 58.939716000000004,
+          "fat_g": 3.3779788108108106
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage2_raw_convert": 2,
+            "stage0_no_candidates": 2
+          },
+          "conversion_applied_count": 2,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.5
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1563824130",
+        "image_filename": "dish_1563824130.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563824130.png",
+        "total_mass_g": 202.0,
+        "total_calories": 111.319603,
+        "total_fat_g": 1.123033,
+        "total_carbs_g": 21.762623,
+        "total_protein_g": 3.990974,
+        "foods": [
+          {
+            "name": "couscous",
+            "mass_g": 67.0,
+            "calories": 75.04
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.084871,
+            "calories": 0.0339484
+          },
+          {
+            "name": "squash",
+            "mass_g": 22.0,
+            "calories": 4.51
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.678967,
+            "calories": 6.00206828
+          },
+          {
+            "name": "zucchini",
+            "mass_g": 22.0,
+            "calories": 3.3
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.339483,
+            "calories": 0.0
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 22.0,
+            "calories": 7.7
+          },
+          {
+            "name": "turnips",
+            "mass_g": 67.896683,
+            "calories": 14.733580211
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558549806",
+      "image_filename": "dish_1558549806.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558549806.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 75,
+            "count": 1,
+            "confidence": 0.7
+          },
+          {
+            "name": "rice",
+            "form": "cooked",
+            "mass_g": 120,
+            "count": 1,
+            "modifiers": [
+              "white"
+            ],
+            "confidence": 0.7
+          },
+          {
+            "name": "spinach",
+            "form": "raw",
+            "mass_g": 12,
+            "count": 1,
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1469
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 75,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.49999999999999994,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 49,
+              "candidate_pool_raw_foundation": 41,
+              "candidate_pool_cooked_sr_legacy": 8,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "almond",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "rice",
+            "form": "cooked",
+            "mass_g": 120,
+            "calories": 180.0,
+            "protein_g": 5.52,
+            "carbs_g": 66.31,
+            "fat_g": 0.48,
+            "fdc_id": 168879,
+            "fdc_name": "Rice white medium-grain raw enriched (boiled)",
+            "match_score": 0.62,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 168879,
+              "raw_source": "sr_legacy",
+              "raw_name": "Rice white medium-grain raw enriched",
+              "conversion_steps": [
+                "hydration_\u00d72.80",
+                "energy_clamp_251\u2192150"
+              ],
+              "atwater_deviation_pct": 0.3828874695300688,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "generic_cooked_fallback",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 47,
+              "candidate_pool_cooked_sr_legacy": 3,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "rice",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "spinach",
+            "form": "raw",
+            "mass_g": 12,
+            "calories": 0.8,
+            "protein_g": 0.1,
+            "carbs_g": 0.13,
+            "fat_g": 0.01,
+            "fdc_id": 168462,
+            "fdc_name": "Spinach raw",
+            "match_score": 0.5800000000000001,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "steamed",
+              "method_reason": "class_fallback",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": false,
+              "atwater_deviation_pct": 0.21954530030539537,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 29,
+              "candidate_pool_raw_foundation": 17,
+              "candidate_pool_cooked_sr_legacy": 12,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7,
+              "search_normalized_query": "spinach",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 132,
+          "calories": 180.828,
+          "protein_g": 5.627031428571429,
+          "carbs_g": 66.43625142857142,
+          "fat_g": 0.49875428571428576
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 1,
+            "stage2_raw_convert": 1,
+            "stage1b_raw_foundation_direct": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.3333333333333333
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558549806",
+        "image_filename": "dish_1558549806.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558549806.png",
+        "total_mass_g": 203.0,
+        "total_calories": 781.958008,
+        "total_fat_g": 58.674999,
+        "total_carbs_g": 48.146,
+        "total_protein_g": 28.747002,
+        "foods": [
+          {
+            "name": "almonds",
+            "mass_g": 118.0,
+            "calories": 682.158
+          },
+          {
+            "name": "white rice",
+            "mass_g": 75.0,
+            "calories": 97.5
+          },
+          {
+            "name": "spinach (raw)",
+            "mass_g": 10.0,
+            "calories": 2.3
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1567020366",
+      "image_filename": "dish_1567020366.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1567020366.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 120,
+            "count": 15,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 30,
+            "count": 3,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1454
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 120,
+            "calories": 42.0,
+            "protein_g": 3.35,
+            "carbs_g": 7.88,
+            "fat_g": 0.44,
+            "fdc_id": 170379,
+            "fdc_name": "Broccoli raw (roasted_oven)",
+            "match_score": 0.78,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170379,
+              "raw_source": "sr_legacy",
+              "raw_name": "Broccoli raw",
+              "conversion_steps": [
+                "shrinkage_8.00%",
+                "energy_clamp_34\u219235"
+              ],
+              "atwater_deviation_pct": 0.14052428018908458,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 22,
+              "candidate_pool_raw_foundation": 14,
+              "candidate_pool_cooked_sr_legacy": 8,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "broccoli",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 30,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.53,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 120,
+          "calories": 42.0,
+          "protein_g": 3.3472173913043473,
+          "carbs_g": 7.881391304347826,
+          "fat_g": 0.43917391304347825
+        },
+        "telemetry": {
+          "total_items": 2,
+          "alignment_stages": {
+            "stage2_raw_convert": 1,
+            "stage0_no_candidates": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.5
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1567020366",
+        "image_filename": "dish_1567020366.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1567020366.png",
+        "total_mass_g": 203.0,
+        "total_calories": 111.459381,
+        "total_fat_g": 5.200981,
+        "total_carbs_g": 14.576805,
+        "total_protein_g": 5.105492,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 34.440346,
+            "calories": 14.80934878
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 4.441964,
+            "calories": 39.26696176
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.04305,
+            "calories": 0.01722
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 163.902435,
+            "calories": 57.36585225
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.172202,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1559320019",
+      "image_filename": "dish_1559320019.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559320019.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.76
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 18,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 3,
+            "confidence": 0.72
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 11,
+            "count": 3,
+            "confidence": 0.75
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 30,
+            "count": 3,
+            "confidence": 0.73
+          },
+          {
+            "name": "blackberry",
+            "form": "raw",
+            "mass_g": 6,
+            "count": 1,
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2121
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 110,
+            "calories": 93.5,
+            "protein_g": 1.19,
+            "carbs_g": 5.78,
+            "fat_g": 0.93,
+            "fdc_id": 170032,
+            "fdc_name": "Potatoes raw skin (roasted_oven)",
+            "match_score": 0.76,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170032,
+              "raw_source": "sr_legacy",
+              "raw_name": "Potatoes raw skin",
+              "conversion_steps": [
+                "shrinkage_10.00%",
+                "oil_uptake_0.8g",
+                "energy_clamp_32\u219285"
+              ],
+              "atwater_deviation_pct": 1.5812154994398933,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 29,
+              "candidate_pool_cooked_sr_legacy": 20,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "potatoes",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 18,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.5800000000000001,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "fried",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 36,
+              "candidate_pool_raw_foundation": 27,
+              "candidate_pool_cooked_sr_legacy": 9,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "bacon",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "calories": 21.9,
+            "protein_g": 0.46,
+            "carbs_g": 5.25,
+            "fat_g": 0.21,
+            "fdc_id": 167762,
+            "fdc_name": "Strawberries raw",
+            "match_score": 0.52,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.11357340720221605,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 9,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7432,
+              "search_normalized_query": "strawberries",
+              "search_variants_tried": 5
+            }
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 11,
+            "calories": 7.0,
+            "protein_g": 0.16,
+            "carbs_g": 1.62,
+            "fat_g": 0.09,
+            "fdc_id": 167755,
+            "fdc_name": "Raspberries raw",
+            "match_score": 0.55,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.10974148262283842,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 9,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.8198,
+              "search_normalized_query": "raspberries",
+              "search_variants_tried": 4
+            }
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 30,
+            "calories": 0.0,
+            "protein_g": 0.14,
+            "carbs_g": 4.23,
+            "fat_g": 0.06,
+            "fdc_id": 2346398,
+            "fdc_name": "Pineapple raw",
+            "match_score": 0.53,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.0,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 43,
+              "candidate_pool_raw_foundation": 43,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.7,
+              "search_normalized_query": "pineapple",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "blackberry",
+            "form": "raw",
+            "mass_g": 6,
+            "calories": 5.7,
+            "protein_g": 0.04,
+            "carbs_g": 1.17,
+            "fat_g": 0.09,
+            "fdc_id": 173947,
+            "fdc_name": "Blackberry juice canned",
+            "match_score": 0.6000000000000001,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.005291005291005291,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 2,
+              "candidate_pool_raw_foundation": 2,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.625,
+              "search_normalized_query": "blackberry",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 202,
+          "calories": 128.1236,
+          "protein_g": 1.9975322222222225,
+          "carbs_g": 18.04374088888889,
+          "fat_g": 1.3729794444444448
+        },
+        "telemetry": {
+          "total_items": 6,
+          "alignment_stages": {
+            "stage2_raw_convert": 1,
+            "stage0_no_candidates": 1,
+            "stage1b_raw_foundation_direct": 4
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.16666666666666666
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1559320019",
+        "image_filename": "dish_1559320019.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559320019.png",
+        "total_mass_g": 205.0,
+        "total_calories": 196.820007,
+        "total_fat_g": 5.714,
+        "total_carbs_g": 30.732002,
+        "total_protein_g": 6.408,
+        "foods": [
+          {
+            "name": "pineapple",
+            "mass_g": 17.0,
+            "calories": 8.5
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 96.0,
+            "calories": 72.96
+          },
+          {
+            "name": "bacon",
+            "mass_g": 13.0,
+            "calories": 70.33
+          },
+          {
+            "name": "berries",
+            "mass_g": 79.0,
+            "calories": 45.03
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1561748950",
+      "image_filename": "dish_1561748950.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561748950.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "salmon",
+            "form": "baked",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.71
+          },
+          {
+            "name": "melon",
+            "form": "raw",
+            "mass_g": 95,
+            "count": 1,
+            "modifiers": [
+              "honeydew",
+              "green"
+            ],
+            "confidence": 0.65
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2285
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "salmon",
+            "form": "baked",
+            "mass_g": 80,
+            "calories": 120.0,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 12.8,
+            "fdc_id": 172343,
+            "fdc_name": "Fish oil salmon (roasted_oven)",
+            "match_score": 0.71,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 172343,
+              "raw_source": "sr_legacy",
+              "raw_name": "Fish oil salmon",
+              "conversion_steps": [
+                "shrinkage_15.00%",
+                "energy_clamp_144\u2192150"
+              ],
+              "atwater_deviation_pct": 0.041666666666666664,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": true,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 39,
+              "candidate_pool_cooked_sr_legacy": 10,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "salmon",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "melon",
+            "form": "raw",
+            "mass_g": 95,
+            "calories": 97.4,
+            "protein_g": 3.94,
+            "carbs_g": 16.73,
+            "fat_g": 2.79,
+            "fdc_id": 167791,
+            "fdc_name": "Horned melon (Kiwano)",
+            "match_score": 0.45,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.09650924024640664,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 14,
+              "candidate_pool_raw_foundation": 11,
+              "candidate_pool_cooked_sr_legacy": 2,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.5207333333333333,
+              "search_normalized_query": "melon",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 175,
+          "calories": 217.394,
+          "protein_g": 3.9400300000000006,
+          "carbs_g": 16.73406,
+          "fat_g": 15.589010000000002
+        },
+        "telemetry": {
+          "total_items": 2,
+          "alignment_stages": {
+            "stage2_raw_convert": 1,
+            "stage1b_raw_foundation_direct": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.5
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1561748950",
+        "image_filename": "dish_1561748950.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1561748950.png",
+        "total_mass_g": 205.0,
+        "total_calories": 197.252945,
+        "total_fat_g": 7.970456,
+        "total_carbs_g": 14.045125,
+        "total_protein_g": 16.746489,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.163319,
+            "calories": 0.0
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.482448,
+            "calories": 21.94484032
+          },
+          {
+            "name": "thyme",
+            "mass_g": 0.081659,
+            "calories": 0.08247559
+          },
+          {
+            "name": "honeydew melons",
+            "mass_g": 118.0,
+            "calories": 42.48
+          },
+          {
+            "name": "brown rice",
+            "mass_g": 13.065516,
+            "calories": 14.50272276
+          },
+          {
+            "name": "arugula",
+            "mass_g": 2.613103,
+            "calories": 0.65327575
+          },
+          {
+            "name": "pepper",
+            "mass_g": 3.266379,
+            "calories": 1.3065516
+          },
+          {
+            "name": "salmon",
+            "mass_g": 65.327576,
+            "calories": 116.28308528
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1563550614",
+      "image_filename": "dish_1563550614.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563550614.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg whites",
+            "form": "boiled",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.62
+          },
+          {
+            "name": "potatoes",
+            "form": "fried",
+            "mass_g": 40,
+            "count": 1,
+            "confidence": 0.6
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1888
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "egg whites",
+            "form": "boiled",
+            "mass_g": 110,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.42,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "boiled",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "egg white",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "potatoes",
+            "form": "fried",
+            "mass_g": 40,
+            "calories": 28.0,
+            "protein_g": 0.36,
+            "carbs_g": 1.72,
+            "fat_g": 0.01,
+            "fdc_id": 170032,
+            "fdc_name": "Potatoes raw skin (boiled)",
+            "match_score": 0.5,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170032,
+              "raw_source": "sr_legacy",
+              "raw_name": "Potatoes raw skin",
+              "conversion_steps": [
+                "hydration_\u00d71.10",
+                "energy_clamp_20\u219270"
+              ],
+              "atwater_deviation_pct": 2.32509975299259,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "boiled",
+              "method_reason": "class_fallback",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 29,
+              "candidate_pool_cooked_sr_legacy": 20,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "potatoes",
+              "search_variants_tried": 3
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 40,
+          "calories": 28.0,
+          "protein_g": 0.3551272727272727,
+          "carbs_g": 1.718981818181818,
+          "fat_g": 0.013818181818181816
+        },
+        "telemetry": {
+          "total_items": 2,
+          "alignment_stages": {
+            "stage0_no_candidates": 1,
+            "stage2_raw_convert": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.5
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1563550614",
+        "image_filename": "dish_1563550614.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1563550614.png",
+        "total_mass_g": 205.0,
+        "total_calories": 132.824387,
+        "total_fat_g": 1.753415,
+        "total_carbs_g": 11.551586,
+        "total_protein_g": 15.085366,
+        "foods": [
+          {
+            "name": "sweet potato",
+            "mass_g": 58.536587,
+            "calories": 44.48780612
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.463415,
+            "calories": 12.9365886
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 145.0,
+            "calories": 75.4
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1564590146",
+      "image_filename": "dish_1564590146.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564590146.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.63
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.69
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1126
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 110,
+            "calories": 93.5,
+            "protein_g": 1.19,
+            "carbs_g": 5.78,
+            "fat_g": 0.93,
+            "fdc_id": 170032,
+            "fdc_name": "Potatoes raw skin (roasted_oven)",
+            "match_score": 0.63,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170032,
+              "raw_source": "sr_legacy",
+              "raw_name": "Potatoes raw skin",
+              "conversion_steps": [
+                "shrinkage_10.00%",
+                "oil_uptake_0.8g",
+                "energy_clamp_32\u219285"
+              ],
+              "atwater_deviation_pct": 1.5812154994398933,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 29,
+              "candidate_pool_cooked_sr_legacy": 20,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "potatoes",
+              "search_variants_tried": 3
+            }
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 70,
+            "calories": 32.3,
+            "protein_g": 0.66,
+            "carbs_g": 8.14,
+            "fat_g": 0.16,
+            "fdc_id": 167765,
+            "fdc_name": "Watermelon raw",
+            "match_score": 0.48999999999999994,
+            "alignment_stage": "stage1b_raw_foundation_direct",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage1b_raw_foundation_direct",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "atwater_ok": true,
+              "atwater_deviation_pct": 0.11738746690203007,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 2,
+              "candidate_pool_raw_foundation": 1,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "stage1b_score": 0.731,
+              "search_normalized_query": "watermelon",
+              "search_variants_tried": 4
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 180,
+          "calories": 125.84,
+          "protein_g": 1.8512022222222222,
+          "carbs_g": 13.91658888888889,
+          "fat_g": 1.0881444444444446
+        },
+        "telemetry": {
+          "total_items": 2,
+          "alignment_stages": {
+            "stage2_raw_convert": 1,
+            "stage1b_raw_foundation_direct": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.5
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1564590146",
+        "image_filename": "dish_1564590146.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1564590146.png",
+        "total_mass_g": 205.0,
+        "total_calories": 141.005844,
+        "total_fat_g": 3.119219,
+        "total_carbs_g": 27.632782,
+        "total_protein_g": 1.684488,
+        "foods": [
+          {
+            "name": "watermelon",
+            "mass_g": 84.0,
+            "calories": 25.2
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 118.048782,
+            "calories": 89.71707432
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.951219,
+            "calories": 26.08877596
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,1527 @@
+{
+  "timestamp": "20251026_181556",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 10,
+  "successful": 10,
+  "failed": 0,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1556572657",
+      "image_filename": "dish_1556572657.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556572657.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "olive",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 10,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1804
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "olive",
+            "form": "raw",
+            "mass_g": 40,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.53,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 13,
+              "candidate_pool_raw_foundation": 13,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olive",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 1,
+          "alignment_stages": {
+            "stage0_no_candidates": 1
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556572657",
+        "image_filename": "dish_1556572657.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556572657.png",
+        "total_mass_g": 36.0,
+        "total_calories": 41.399998,
+        "total_fat_g": 3.852,
+        "total_carbs_g": 2.268,
+        "total_protein_g": 0.288,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 36.0,
+            "calories": 41.4
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556573514",
+      "image_filename": "dish_1556573514.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556573514.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "mixed salad greens",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.66
+          },
+          {
+            "name": "red onion",
+            "form": "raw",
+            "mass_g": 5,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.5
+          },
+          {
+            "name": "tomato",
+            "form": "raw",
+            "mass_g": 12,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.45
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1674
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "mixed salad greens",
+            "form": "raw",
+            "mass_g": 25,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "red onion",
+            "form": "raw",
+            "mass_g": 5,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "tomato",
+            "form": "raw",
+            "mass_g": 12,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.35,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted_oven",
+              "method_reason": "class_fallback",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 44,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "tomato",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 3
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556573514",
+        "image_filename": "dish_1556573514.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556573514.png",
+        "total_mass_g": 23.0,
+        "total_calories": 6.44,
+        "total_fat_g": 0.092,
+        "total_carbs_g": 1.219,
+        "total_protein_g": 0.506,
+        "foods": [
+          {
+            "name": "mixed greens",
+            "mass_g": 23.0,
+            "calories": 6.44
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575014",
+      "image_filename": "dish_1556575014.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575014.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 17,
+            "modifiers": [
+              "black",
+              "kalamata"
+            ],
+            "confidence": 0.6
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2129
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 60,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.39999999999999997,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 1,
+          "alignment_stages": {
+            "stage0_no_candidates": 1
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575014",
+        "image_filename": "dish_1556575014.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575014.png",
+        "total_mass_g": 62.0,
+        "total_calories": 71.299995,
+        "total_fat_g": 6.634,
+        "total_carbs_g": 3.906,
+        "total_protein_g": 0.496,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575083",
+      "image_filename": "dish_1556575083.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575083.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 80,
+            "count": 6,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1167
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 80,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.48000000000000004,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 1,
+          "alignment_stages": {
+            "stage0_no_candidates": 1
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575083",
+        "image_filename": "dish_1556575083.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575083.png",
+        "total_mass_g": 64.0,
+        "total_calories": 27.52,
+        "total_fat_g": 0.192,
+        "total_carbs_g": 5.76,
+        "total_protein_g": 2.176,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575124",
+      "image_filename": "dish_1556575124.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575124.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 20,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.67
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1037
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 20,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.47000000000000003,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 7,
+              "candidate_pool_cooked_sr_legacy": 2,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "celery",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 1,
+          "alignment_stages": {
+            "stage0_no_candidates": 1
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575124",
+        "image_filename": "dish_1556575124.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575124.png",
+        "total_mass_g": 28.0,
+        "total_calories": 4.48,
+        "total_fat_g": 0.056,
+        "total_carbs_g": 0.952,
+        "total_protein_g": 0.196,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575273",
+      "image_filename": "dish_1556575273.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 50,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.69
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 58,
+            "count": 13,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.65
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.74
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2121
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 50,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.48999999999999994,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 58,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.45,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 40,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.54,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 7,
+              "candidate_pool_cooked_sr_legacy": 2,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "celery",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 3
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575273",
+        "image_filename": "dish_1556575273.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575327",
+      "image_filename": "dish_1556575327.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 80,
+            "count": 7,
+            "confidence": 0.73
+          },
+          {
+            "name": "bell pepper",
+            "form": "raw",
+            "mass_g": 30,
+            "count": 9,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.64
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 15,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1989
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 80,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.53,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "bell pepper",
+            "form": "raw",
+            "mass_g": 30,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 50,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.52,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 3
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575327",
+        "image_filename": "dish_1556575327.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575386",
+      "image_filename": "dish_1556575386.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 85,
+            "count": 7,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.72
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 12,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.77
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 15,
+            "modifiers": [
+              "kalamata"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1997
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 85,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.52,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 45,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.5700000000000001,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 7,
+              "candidate_pool_cooked_sr_legacy": 2,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "celery",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 60,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.6000000000000001,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 3
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575386",
+        "image_filename": "dish_1556575386.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575446",
+      "image_filename": "dish_1556575446.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 70,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.63
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 55,
+            "count": 16,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.66
+          },
+          {
+            "name": "bell pepper",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1609
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 70,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.43,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 55,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.46,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "bell pepper",
+            "form": "raw",
+            "mass_g": 40,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "stage0_no_candidates": 3
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575446",
+        "image_filename": "dish_1556575446.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575446.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575499",
+      "image_filename": "dish_1556575499.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 70,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 14,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.76
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 12,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.83
+          },
+          {
+            "name": "garlic",
+            "form": "raw",
+            "mass_g": 3,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.6
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2725
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 70,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.5800000000000001,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "roasted",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 4,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "brussels sprouts",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 50,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.56,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 4,
+              "candidate_pool_raw_foundation": 4,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "olives",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 60,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.6299999999999999,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 9,
+              "candidate_pool_raw_foundation": 7,
+              "candidate_pool_cooked_sr_legacy": 2,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "celery",
+              "search_variants_tried": 1
+            }
+          },
+          {
+            "name": "garlic",
+            "form": "raw",
+            "mass_g": 3,
+            "calories": 4.8,
+            "protein_g": 0.26,
+            "carbs_g": 1.35,
+            "fat_g": 0.02,
+            "fdc_id": 169230,
+            "fdc_name": "Garlic raw (raw)",
+            "match_score": 0.39999999999999997,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 169230,
+              "raw_source": "sr_legacy",
+              "raw_name": "Garlic raw",
+              "conversion_steps": [
+                "energy_clamp_203\u2192160"
+              ],
+              "atwater_deviation_pct": 0.2745895990656714,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 7,
+              "candidate_pool_raw_foundation": 7,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "garlic",
+              "search_variants_tried": 1
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 3,
+          "calories": 4.8,
+          "protein_g": 0.259488,
+          "carbs_g": 1.3488479999999998,
+          "fat_g": 0.0204
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage0_no_candidates": 3,
+            "stage2_raw_convert": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.25
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575499",
+        "image_filename": "dish_1556575499.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575499.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    }
+  ]
+}

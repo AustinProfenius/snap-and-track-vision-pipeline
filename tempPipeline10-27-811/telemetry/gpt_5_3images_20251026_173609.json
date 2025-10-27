@@ -1,0 +1,637 @@
+{
+  "timestamp": "20251026_173609",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 3,
+  "successful": 3,
+  "failed": 0,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1558114609",
+      "image_filename": "dish_1558114609.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558114609.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 30,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 75,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.74
+          },
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 8,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.72
+          },
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 6,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.69
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 18,
+            "count": 14,
+            "modifiers": [],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3073
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 30,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "ERROR",
+            "match_score": 0.0,
+            "alignment_stage": "error",
+            "conversion_applied": false,
+            "error": "FdcEntry.__init__() missing 2 required positional arguments: 'source' and 'form'"
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 75,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 40,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.52,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 10,
+              "candidate_pool_raw_foundation": 10,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "grapes"
+            }
+          },
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 6,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.48999999999999994,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 10,
+              "candidate_pool_raw_foundation": 10,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "grapes"
+            }
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 18,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 5,
+          "alignment_stages": {
+            "stage0_no_candidates": 4
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558114609",
+        "image_filename": "dish_1558114609.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558114609.png",
+        "total_mass_g": 160.0,
+        "total_calories": 540.89801,
+        "total_fat_g": 41.223,
+        "total_carbs_g": 14.648001,
+        "total_protein_g": 29.140001,
+        "foods": [
+          {
+            "name": "grapes",
+            "mass_g": 39.0,
+            "calories": 26.91
+          },
+          {
+            "name": "sausage",
+            "mass_g": 75.0,
+            "calories": 258.45
+          },
+          {
+            "name": "almonds",
+            "mass_g": 18.0,
+            "calories": 104.058
+          },
+          {
+            "name": "bacon",
+            "mass_g": 28.0,
+            "calories": 151.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558115364",
+      "image_filename": "dish_1558115364.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558115364.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "apple",
+            "form": "raw",
+            "mass_g": 170,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.86
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 22,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 20,
+            "confidence": 0.74
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 130,
+            "count": 1,
+            "confidence": 0.76
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1692
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "apple",
+            "form": "raw",
+            "mass_g": 170,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.6599999999999999,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 1,
+              "candidate_pool_raw_foundation": 1,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "apples raw with skin"
+            }
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 22,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "ERROR",
+            "match_score": 0.0,
+            "alignment_stage": "error",
+            "conversion_applied": false,
+            "error": "FdcEntry.__init__() missing 2 required positional arguments: 'source' and 'form'"
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 25,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 130,
+            "calories": 110.5,
+            "protein_g": 1.41,
+            "carbs_g": 6.83,
+            "fat_g": 1.09,
+            "fdc_id": 170032,
+            "fdc_name": "Potatoes raw skin (roasted_oven)",
+            "match_score": 0.76,
+            "alignment_stage": "stage2_raw_convert",
+            "conversion_applied": true,
+            "telemetry": {
+              "raw_fdc_id": 170032,
+              "raw_source": "sr_legacy",
+              "raw_name": "Potatoes raw skin",
+              "conversion_steps": [
+                "shrinkage_10.00%",
+                "oil_uptake_0.8g",
+                "energy_clamp_32\u219285"
+              ],
+              "atwater_deviation_pct": 1.5812154994398933,
+              "energy_clamped": true,
+              "energy_band_outlier": false,
+              "alignment_stage": "stage2_raw_convert",
+              "method": "roasted_oven",
+              "method_reason": "explicit",
+              "method_inferred": true,
+              "conversion_applied": true,
+              "atwater_ok": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "oil_uptake_g_per_100g": 0,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "candidate_pool_size": 50,
+              "candidate_pool_raw_foundation": 29,
+              "candidate_pool_cooked_sr_legacy": 20,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "potatoes"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 130,
+          "calories": 110.5,
+          "protein_g": 1.4106444444444446,
+          "carbs_g": 6.828177777777778,
+          "fat_g": 1.094888888888889
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage0_no_candidates": 2,
+            "stage2_raw_convert": 1
+          },
+          "conversion_applied_count": 1,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.25
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558115364",
+        "image_filename": "dish_1558115364.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558115364.png",
+        "total_mass_g": 313.0,
+        "total_calories": 485.26001,
+        "total_fat_g": 27.008999,
+        "total_carbs_g": 26.504,
+        "total_protein_g": 39.459999,
+        "foods": [
+          {
+            "name": "potatoes",
+            "mass_g": 111.0,
+            "calories": 85.47
+          },
+          {
+            "name": "deprecated",
+            "mass_g": 144.0,
+            "calories": 74.88
+          },
+          {
+            "name": "almonds",
+            "mass_g": 30.0,
+            "calories": 173.43
+          },
+          {
+            "name": "bacon",
+            "mass_g": 28.0,
+            "calories": 151.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1558116298",
+      "image_filename": "dish_1558116298.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558116298.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 120,
+            "count": 24,
+            "modifiers": [
+              "red",
+              "green"
+            ],
+            "confidence": 0.73
+          },
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 9,
+            "confidence": 0.7
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 36,
+            "count": 32,
+            "confidence": 0.67
+          },
+          {
+            "name": "sausage",
+            "form": "cooked",
+            "mass_g": 85,
+            "count": 8,
+            "confidence": 0.62
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1881
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 120,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.53,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 10,
+              "candidate_pool_raw_foundation": 10,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "grapes"
+            }
+          },
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 90,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.49999999999999994,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false,
+            "telemetry": {
+              "alignment_stage": "stage0_no_candidates",
+              "method": "raw",
+              "method_reason": "no_profile",
+              "method_inferred": true,
+              "conversion_applied": false,
+              "stage1_blocked_raw_foundation_exists": true,
+              "sodium_gate_blocks": 0,
+              "sodium_gate_passes": 0,
+              "negative_vocab_blocks": 0,
+              "oil_uptake_g_per_100g": 0,
+              "candidate_pool_size": 3,
+              "candidate_pool_raw_foundation": 3,
+              "candidate_pool_cooked_sr_legacy": 0,
+              "candidate_pool_branded": 0,
+              "search_normalized_query": "melons cantaloupe raw"
+            }
+          },
+          {
+            "name": "almonds",
+            "form": "raw",
+            "mass_g": 36,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          },
+          {
+            "name": "sausage",
+            "form": "cooked",
+            "mass_g": 85,
+            "calories": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "fdc_id": null,
+            "fdc_name": "NO_MATCH",
+            "match_score": 0.0,
+            "alignment_stage": "stage0_no_candidates",
+            "conversion_applied": false
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 4,
+          "alignment_stages": {
+            "stage0_no_candidates": 4
+          },
+          "conversion_applied_count": 0,
+          "stage5_proxy_count": 0,
+          "unknown_stages": 0,
+          "unknown_methods": 0,
+          "conversion_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1558116298",
+        "image_filename": "dish_1558116298.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558116298.png",
+        "total_mass_g": 368.0,
+        "total_calories": 854.690979,
+        "total_fat_g": 62.372002,
+        "total_carbs_g": 48.107002,
+        "total_protein_g": 35.868004,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 91.0,
+            "calories": 30.94
+          },
+          {
+            "name": "almonds",
+            "mass_g": 75.0,
+            "calories": 433.575
+          },
+          {
+            "name": "grapes",
+            "mass_g": 111.0,
+            "calories": 76.59
+          },
+          {
+            "name": "sausage",
+            "mass_g": 91.0,
+            "calories": 313.586
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    }
+  ]
+}

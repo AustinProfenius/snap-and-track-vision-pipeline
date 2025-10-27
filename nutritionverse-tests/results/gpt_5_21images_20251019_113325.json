@@ -1,0 +1,1652 @@
+{
+  "timestamp": "20251019_113325",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 21,
+  "successful": 21,
+  "failed": 0,
+  "average_accuracy": 56.307254893136964,
+  "results": [
+    {
+      "dish_id": 62,
+      "image_filename": "dish_62_IMG_7098_jpeg.rf.6533d1cb278e2f2423417894cff1ceaf.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_62_IMG_7098_jpeg.rf.6533d1cb278e2f2423417894cff1ceaf.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 1.0,
+            "carbs_g": 14,
+            "protein_g": 2.5
+          },
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 1.0,
+            "carbs_g": 14,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam (on toast)",
+            "mass_g": 15,
+            "calories": 38,
+            "fat_g": 0.0,
+            "carbs_g": 10,
+            "protein_g": 0.0
+          },
+          {
+            "name": "cheddar egg bite",
+            "mass_g": 40,
+            "calories": 70,
+            "fat_g": 5.0,
+            "carbs_g": 1.0,
+            "protein_g": 5.5
+          },
+          {
+            "name": "cheddar egg bite",
+            "mass_g": 40,
+            "calories": 70,
+            "fat_g": 5.0,
+            "carbs_g": 1.0,
+            "protein_g": 5.5
+          }
+        ],
+        "totals": {
+          "mass_g": 151,
+          "calories": 328,
+          "fat_g": 12,
+          "carbs_g": 40,
+          "protein_g": 16
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3640
+        }
+      },
+      "ground_truth": {
+        "dish_id": 62,
+        "image_filename": "dish_62_IMG_7098_jpeg.rf.6533d1cb278e2f2423417894cff1ceaf.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_62_IMG_7098_jpeg.rf.6533d1cb278e2f2423417894cff1ceaf.jpg",
+        "total_mass_g": 213.0,
+        "total_calories": 275.04,
+        "total_fat_g": 2.221916666666667,
+        "total_carbs_g": 42.55473333333333,
+        "total_protein_g": 19.432199999999995,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "costco-egg",
+            "mass_g": 59.0,
+            "calories": 28.32
+          },
+          {
+            "name": "costco-egg",
+            "mass_g": 59.0,
+            "calories": 28.32
+          }
+        ]
+      },
+      "accuracy": -2.4206929702394007,
+      "error": null
+    },
+    {
+      "dish_id": 62,
+      "image_filename": "dish_62_IMG_7108_jpeg.rf.adc62c4e92694d5c0b23ca0b6666d97b.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_62_IMG_7108_jpeg.rf.adc62c4e92694d5c0b23ca0b6666d97b.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "cheddar egg muffin (egg bite)",
+            "mass_g": 60,
+            "calories": 112,
+            "fat_g": 8.1,
+            "carbs_g": 0.5,
+            "protein_g": 8.8
+          },
+          {
+            "name": "cheddar egg muffin (egg bite)",
+            "mass_g": 60,
+            "calories": 112,
+            "fat_g": 8.1,
+            "carbs_g": 0.5,
+            "protein_g": 8.8
+          },
+          {
+            "name": "white toast (slice)",
+            "mass_g": 25,
+            "calories": 70,
+            "fat_g": 1,
+            "carbs_g": 13,
+            "protein_g": 2
+          },
+          {
+            "name": "white toast with strawberry jam",
+            "mass_g": 45,
+            "calories": 126,
+            "fat_g": 1,
+            "carbs_g": 26,
+            "protein_g": 2
+          }
+        ],
+        "totals": {
+          "mass_g": 190,
+          "calories": 420,
+          "fat_g": 18.2,
+          "carbs_g": 40,
+          "protein_g": 21.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3451
+        }
+      },
+      "ground_truth": {
+        "dish_id": 62,
+        "image_filename": "dish_62_IMG_7108_jpeg.rf.adc62c4e92694d5c0b23ca0b6666d97b.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_62_IMG_7108_jpeg.rf.adc62c4e92694d5c0b23ca0b6666d97b.jpg",
+        "total_mass_g": 213.0,
+        "total_calories": 275.04,
+        "total_fat_g": 2.221916666666667,
+        "total_carbs_g": 42.55473333333333,
+        "total_protein_g": 19.432199999999995,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "costco-egg",
+            "mass_g": 59.0,
+            "calories": 28.32
+          },
+          {
+            "name": "costco-egg",
+            "mass_g": 59.0,
+            "calories": 28.32
+          }
+        ]
+      },
+      "accuracy": -59.954985513732595,
+      "error": null
+    },
+    {
+      "dish_id": 67,
+      "image_filename": "dish_67_IMG_7182_jpeg.rf.9b36dae9bba2e2f0dc5edc97b771fc16.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7182_jpeg.rf.9b36dae9bba2e2f0dc5edc97b771fc16.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 75,
+            "fat_g": 1.0,
+            "carbs_g": 14.0,
+            "protein_g": 2.7
+          },
+          {
+            "name": "toasted white bread slice with strawberry jam",
+            "mass_g": 43,
+            "calories": 114,
+            "fat_g": 1.0,
+            "carbs_g": 24.0,
+            "protein_g": 2.7
+          },
+          {
+            "name": "medium apple (with skin)",
+            "mass_g": 150,
+            "calories": 78,
+            "fat_g": 0.3,
+            "carbs_g": 21.0,
+            "protein_g": 0.4
+          }
+        ],
+        "totals": {
+          "mass_g": 221,
+          "calories": 267,
+          "fat_g": 2.3,
+          "carbs_g": 59.0,
+          "protein_g": 5.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3275
+        }
+      },
+      "ground_truth": {
+        "dish_id": 67,
+        "image_filename": "dish_67_IMG_7182_jpeg.rf.9b36dae9bba2e2f0dc5edc97b771fc16.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7182_jpeg.rf.9b36dae9bba2e2f0dc5edc97b771fc16.jpg",
+        "total_mass_g": 599.0,
+        "total_calories": 456.6,
+        "total_fat_g": 3.334316666666667,
+        "total_carbs_g": 100.15793333333332,
+        "total_protein_g": 9.8052,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 56.48188367979655,
+      "error": null
+    },
+    {
+      "dish_id": 67,
+      "image_filename": "dish_67_IMG_7204_jpeg.rf.e176e4f155ab36a88e126f399934dae0.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7204_jpeg.rf.e176e4f155ab36a88e126f399934dae0.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 35,
+            "calories": 92.8,
+            "fat_g": 1.1,
+            "carbs_g": 17.2,
+            "protein_g": 3.2
+          },
+          {
+            "name": "toasted white bread slice with strawberry jam",
+            "mass_g": 55,
+            "calories": 142.8,
+            "fat_g": 1.1,
+            "carbs_g": 30.2,
+            "protein_g": 3.2
+          },
+          {
+            "name": "medium Gala apple",
+            "mass_g": 182,
+            "calories": 94.6,
+            "fat_g": 0.4,
+            "carbs_g": 25.1,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 272,
+          "calories": 330.2,
+          "fat_g": 2.6,
+          "carbs_g": 72.5,
+          "protein_g": 6.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3409
+        }
+      },
+      "ground_truth": {
+        "dish_id": 67,
+        "image_filename": "dish_67_IMG_7204_jpeg.rf.e176e4f155ab36a88e126f399934dae0.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7204_jpeg.rf.e176e4f155ab36a88e126f399934dae0.jpg",
+        "total_mass_g": 599.0,
+        "total_calories": 456.6,
+        "total_fat_g": 3.334316666666667,
+        "total_carbs_g": 100.15793333333332,
+        "total_protein_g": 9.8052,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 67.69192818557829,
+      "error": null
+    },
+    {
+      "dish_id": 67,
+      "image_filename": "dish_67_IMG_7217_jpeg.rf.bfb0d4723a01591cc65b99edd0f6edaf.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7217_jpeg.rf.bfb0d4723a01591cc65b99edd0f6edaf.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "yellow apple (medium)",
+            "mass_g": 190,
+            "calories": 99,
+            "fat_g": 0.4,
+            "carbs_g": 26.2,
+            "protein_g": 0.6
+          },
+          {
+            "name": "red apple (medium)",
+            "mass_g": 170,
+            "calories": 88,
+            "fat_g": 0.3,
+            "carbs_g": 23.5,
+            "protein_g": 0.5
+          },
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 28,
+            "calories": 74,
+            "fat_g": 0.9,
+            "carbs_g": 13.7,
+            "protein_g": 2.5
+          },
+          {
+            "name": "toasted white bread slice with strawberry jam",
+            "mass_g": 43,
+            "calories": 112,
+            "fat_g": 0.9,
+            "carbs_g": 23.5,
+            "protein_g": 2.5
+          }
+        ],
+        "totals": {
+          "mass_g": 431,
+          "calories": 373,
+          "fat_g": 2.5,
+          "carbs_g": 86.9,
+          "protein_g": 6.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 5959
+        }
+      },
+      "ground_truth": {
+        "dish_id": 67,
+        "image_filename": "dish_67_IMG_7217_jpeg.rf.bfb0d4723a01591cc65b99edd0f6edaf.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7217_jpeg.rf.bfb0d4723a01591cc65b99edd0f6edaf.jpg",
+        "total_mass_g": 599.0,
+        "total_calories": 456.6,
+        "total_fat_g": 3.334316666666667,
+        "total_carbs_g": 100.15793333333332,
+        "total_protein_g": 9.8052,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 75.51935092821071,
+      "error": null
+    },
+    {
+      "dish_id": 67,
+      "image_filename": "dish_67_IMG_7239_jpeg.rf.6b5b3c7418e37db4a21762817ba873c0.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7239_jpeg.rf.6b5b3c7418e37db4a21762817ba873c0.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Gala apple, raw (medium)",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.4,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          },
+          {
+            "name": "Asian pear (nashi), raw (large)",
+            "mass_g": 220,
+            "calories": 92,
+            "fat_g": 0.4,
+            "carbs_g": 23.3,
+            "protein_g": 1.1
+          },
+          {
+            "name": "toasted white sandwich bread (plain slice)",
+            "mass_g": 30,
+            "calories": 80,
+            "fat_g": 1.0,
+            "carbs_g": 14.7,
+            "protein_g": 2.7
+          },
+          {
+            "name": "toasted white sandwich bread with strawberry jam",
+            "mass_g": 50,
+            "calories": 130,
+            "fat_g": 1.0,
+            "carbs_g": 27.7,
+            "protein_g": 2.8
+          }
+        ],
+        "totals": {
+          "mass_g": 480,
+          "calories": 396,
+          "fat_g": 2.8,
+          "carbs_g": 90.5,
+          "protein_g": 7.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4498
+        }
+      },
+      "ground_truth": {
+        "dish_id": 67,
+        "image_filename": "dish_67_IMG_7239_jpeg.rf.6b5b3c7418e37db4a21762817ba873c0.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_67_IMG_7239_jpeg.rf.6b5b3c7418e37db4a21762817ba873c0.jpg",
+        "total_mass_g": 599.0,
+        "total_calories": 456.6,
+        "total_fat_g": 3.334316666666667,
+        "total_carbs_g": 100.15793333333332,
+        "total_protein_g": 9.8052,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 82.72092521925187,
+      "error": null
+    },
+    {
+      "dish_id": 68,
+      "image_filename": "dish_68_IMG_6625_jpeg.rf.5e8c56d5d244b7d5d037201dcb38201f.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6625_jpeg.rf.5e8c56d5d244b7d5d037201dcb38201f.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "white sandwich bread (1 slice)",
+            "mass_g": 28,
+            "calories": 74.5,
+            "fat_g": 0.9,
+            "carbs_g": 13.7,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam",
+            "mass_g": 15,
+            "calories": 37.5,
+            "fat_g": 0.0,
+            "carbs_g": 9.8,
+            "protein_g": 0.1
+          },
+          {
+            "name": "red apple (with skin)",
+            "mass_g": 160,
+            "calories": 83.2,
+            "fat_g": 0.3,
+            "carbs_g": 22.1,
+            "protein_g": 0.4
+          },
+          {
+            "name": "yellow apple (with skin)",
+            "mass_g": 190,
+            "calories": 98.8,
+            "fat_g": 0.3,
+            "carbs_g": 26.2,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 393,
+          "calories": 294.0,
+          "fat_g": 1.5,
+          "carbs_g": 71.8,
+          "protein_g": 3.5
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3920
+        }
+      },
+      "ground_truth": {
+        "dish_id": 68,
+        "image_filename": "dish_68_IMG_6625_jpeg.rf.5e8c56d5d244b7d5d037201dcb38201f.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6625_jpeg.rf.5e8c56d5d244b7d5d037201dcb38201f.jpg",
+        "total_mass_g": 559.0,
+        "total_calories": 341.4,
+        "total_fat_g": 2.1623166666666664,
+        "total_carbs_g": 78.44593333333333,
+        "total_protein_g": 5.773199999999999,
+        "foods": [
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 75.58862298288791,
+      "error": null
+    },
+    {
+      "dish_id": 68,
+      "image_filename": "dish_68_IMG_6626_jpeg.rf.b2954567620e5fbdc20bca974f0f7e0e.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6626_jpeg.rf.b2954567620e5fbdc20bca974f0f7e0e.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 32,
+            "calories": 85,
+            "fat_g": 1.0,
+            "carbs_g": 15.7,
+            "protein_g": 2.9
+          },
+          {
+            "name": "strawberry jam (spread)",
+            "mass_g": 22,
+            "calories": 55,
+            "fat_g": 0.0,
+            "carbs_g": 14.3,
+            "protein_g": 0.0
+          },
+          {
+            "name": "red apple (medium)",
+            "mass_g": 170,
+            "calories": 88,
+            "fat_g": 0.3,
+            "carbs_g": 23.5,
+            "protein_g": 0.4
+          },
+          {
+            "name": "yellow apple (medium)",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.3,
+            "carbs_g": 24.9,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 404,
+          "calories": 322,
+          "fat_g": 1.6,
+          "carbs_g": 78.4,
+          "protein_g": 3.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4869
+        }
+      },
+      "ground_truth": {
+        "dish_id": 68,
+        "image_filename": "dish_68_IMG_6626_jpeg.rf.b2954567620e5fbdc20bca974f0f7e0e.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6626_jpeg.rf.b2954567620e5fbdc20bca974f0f7e0e.jpg",
+        "total_mass_g": 559.0,
+        "total_calories": 341.4,
+        "total_fat_g": 2.1623166666666664,
+        "total_carbs_g": 78.44593333333333,
+        "total_protein_g": 5.773199999999999,
+        "foods": [
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 81.26939402608325,
+      "error": null
+    },
+    {
+      "dish_id": 68,
+      "image_filename": "dish_68_IMG_6634_jpeg.rf.16bf0f48eb6a4fe8e0028c3cbb0517fc.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6634_jpeg.rf.16bf0f48eb6a4fe8e0028c3cbb0517fc.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "gala apple",
+            "mass_g": 160,
+            "calories": 83,
+            "fat_g": 0.3,
+            "carbs_g": 22.1,
+            "protein_g": 0.4
+          },
+          {
+            "name": "asian pear (nashi)",
+            "mass_g": 250,
+            "calories": 105,
+            "fat_g": 0.6,
+            "carbs_g": 26.6,
+            "protein_g": 1.3
+          },
+          {
+            "name": "white bread toast slice",
+            "mass_g": 28,
+            "calories": 74.5,
+            "fat_g": 0.9,
+            "carbs_g": 13.7,
+            "protein_g": 2.5
+          },
+          {
+            "name": "strawberry jam",
+            "mass_g": 20,
+            "calories": 56,
+            "fat_g": 0,
+            "carbs_g": 13.8,
+            "protein_g": 0
+          }
+        ],
+        "totals": {
+          "mass_g": 458,
+          "calories": 318.5,
+          "fat_g": 1.8,
+          "carbs_g": 76.2,
+          "protein_g": 4.2
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4162
+        }
+      },
+      "ground_truth": {
+        "dish_id": 68,
+        "image_filename": "dish_68_IMG_6634_jpeg.rf.16bf0f48eb6a4fe8e0028c3cbb0517fc.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6634_jpeg.rf.16bf0f48eb6a4fe8e0028c3cbb0517fc.jpg",
+        "total_mass_g": 559.0,
+        "total_calories": 341.4,
+        "total_fat_g": 2.1623166666666664,
+        "total_carbs_g": 78.44593333333333,
+        "total_protein_g": 5.773199999999999,
+        "foods": [
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 85.67106265225472,
+      "error": null
+    },
+    {
+      "dish_id": 68,
+      "image_filename": "dish_68_IMG_6635_jpeg.rf.70e6eccefc1a1fdb7e0606a11b075623.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6635_jpeg.rf.70e6eccefc1a1fdb7e0606a11b075623.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "red apple (raw)",
+            "mass_g": 150,
+            "calories": 78,
+            "fat_g": 0.26,
+            "carbs_g": 20.7,
+            "protein_g": 0.39
+          },
+          {
+            "name": "Asian pear (nashi), raw",
+            "mass_g": 230,
+            "calories": 96.6,
+            "fat_g": 0.53,
+            "carbs_g": 24.5,
+            "protein_g": 1.15
+          },
+          {
+            "name": "white bread toast (1 slice)",
+            "mass_g": 28,
+            "calories": 74.2,
+            "fat_g": 0.9,
+            "carbs_g": 13.72,
+            "protein_g": 2.52
+          },
+          {
+            "name": "strawberry jam",
+            "mass_g": 20,
+            "calories": 50,
+            "fat_g": 0.04,
+            "carbs_g": 13,
+            "protein_g": 0.06
+          }
+        ],
+        "totals": {
+          "mass_g": 428,
+          "calories": 298.8,
+          "fat_g": 1.73,
+          "carbs_g": 71.92,
+          "protein_g": 4.12
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4363
+        }
+      },
+      "ground_truth": {
+        "dish_id": 68,
+        "image_filename": "dish_68_IMG_6635_jpeg.rf.70e6eccefc1a1fdb7e0606a11b075623.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_68_IMG_6635_jpeg.rf.70e6eccefc1a1fdb7e0606a11b075623.jpg",
+        "total_mass_g": 559.0,
+        "total_calories": 341.4,
+        "total_fat_g": 2.1623166666666664,
+        "total_carbs_g": 78.44593333333333,
+        "total_protein_g": 5.773199999999999,
+        "foods": [
+          {
+            "name": "toast-with-strawberry-jam",
+            "mass_g": 55.0,
+            "calories": 103.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 81.42785211002882,
+      "error": null
+    },
+    {
+      "dish_id": 69,
+      "image_filename": "dish_69_IMG_7259_jpeg.rf.7757588bcb578f6d4f236e80d79d5486.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7259_jpeg.rf.7757588bcb578f6d4f236e80d79d5486.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 35,
+            "calories": 92.8,
+            "fat_g": 1.1,
+            "carbs_g": 17.2,
+            "protein_g": 3.2
+          },
+          {
+            "name": "red apple (raw, with skin)",
+            "mass_g": 170,
+            "calories": 88.4,
+            "fat_g": 0.3,
+            "carbs_g": 23.5,
+            "protein_g": 0.4
+          },
+          {
+            "name": "yellow apple (raw, with skin)",
+            "mass_g": 180,
+            "calories": 93.6,
+            "fat_g": 0.3,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          }
+        ],
+        "totals": {
+          "mass_g": 385,
+          "calories": 274.8,
+          "fat_g": 1.7,
+          "carbs_g": 65.5,
+          "protein_g": 4.1
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4244
+        }
+      },
+      "ground_truth": {
+        "dish_id": 69,
+        "image_filename": "dish_69_IMG_7259_jpeg.rf.7757588bcb578f6d4f236e80d79d5486.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7259_jpeg.rf.7757588bcb578f6d4f236e80d79d5486.jpg",
+        "total_mass_g": 544.0,
+        "total_calories": 353.4,
+        "total_fat_g": 2.2844,
+        "total_carbs_g": 80.7076,
+        "total_protein_g": 6.193199999999999,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 74.06151357021723,
+      "error": null
+    },
+    {
+      "dish_id": 69,
+      "image_filename": "dish_69_IMG_7261_jpeg.rf.da3400308c3f6b3a00f4abe03bb741f8.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7261_jpeg.rf.da3400308c3f6b3a00f4abe03bb741f8.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pressed grilled cheese sandwich (white bread, cheddar, butter)",
+            "mass_g": 90,
+            "calories": 300,
+            "fat_g": 15,
+            "carbs_g": 27,
+            "protein_g": 12
+          },
+          {
+            "name": "Golden Delicious apple",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.4,
+            "carbs_g": 25.2,
+            "protein_g": 0.5
+          },
+          {
+            "name": "Gala apple",
+            "mass_g": 160,
+            "calories": 83,
+            "fat_g": 0.3,
+            "carbs_g": 22.4,
+            "protein_g": 0.4
+          }
+        ],
+        "totals": {
+          "mass_g": 430,
+          "calories": 477,
+          "fat_g": 15.7,
+          "carbs_g": 74.6,
+          "protein_g": 12.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2692
+        }
+      },
+      "ground_truth": {
+        "dish_id": 69,
+        "image_filename": "dish_69_IMG_7261_jpeg.rf.da3400308c3f6b3a00f4abe03bb741f8.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7261_jpeg.rf.da3400308c3f6b3a00f4abe03bb741f8.jpg",
+        "total_mass_g": 544.0,
+        "total_calories": 353.4,
+        "total_fat_g": 2.2844,
+        "total_carbs_g": 80.7076,
+        "total_protein_g": 6.193199999999999,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": -51.812225436306136,
+      "error": null
+    },
+    {
+      "dish_id": 69,
+      "image_filename": "dish_69_IMG_7275_jpeg.rf.cbf0e8ee746965202e64096659f168f8.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7275_jpeg.rf.cbf0e8ee746965202e64096659f168f8.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 35,
+            "calories": 93,
+            "fat_g": 1.1,
+            "carbs_g": 17.2,
+            "protein_g": 3.2
+          },
+          {
+            "name": "raw red apple",
+            "mass_g": 160,
+            "calories": 83,
+            "fat_g": 0.3,
+            "carbs_g": 22.1,
+            "protein_g": 0.4
+          },
+          {
+            "name": "raw yellow apple",
+            "mass_g": 170,
+            "calories": 88,
+            "fat_g": 0.3,
+            "carbs_g": 23.5,
+            "protein_g": 0.4
+          }
+        ],
+        "totals": {
+          "mass_g": 365,
+          "calories": 264,
+          "fat_g": 1.7,
+          "carbs_g": 62.8,
+          "protein_g": 4.0
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3204
+        }
+      },
+      "ground_truth": {
+        "dish_id": 69,
+        "image_filename": "dish_69_IMG_7275_jpeg.rf.cbf0e8ee746965202e64096659f168f8.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7275_jpeg.rf.cbf0e8ee746965202e64096659f168f8.jpg",
+        "total_mass_g": 544.0,
+        "total_calories": 353.4,
+        "total_fat_g": 2.2844,
+        "total_carbs_g": 80.7076,
+        "total_protein_g": 6.193199999999999,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 71.72299721790647,
+      "error": null
+    },
+    {
+      "dish_id": 69,
+      "image_filename": "dish_69_IMG_7279_jpeg.rf.9758b7365f05c3a249bd75ca88514404.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7279_jpeg.rf.9758b7365f05c3a249bd75ca88514404.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Golden Delicious apple (whole)",
+            "mass_g": 220,
+            "calories": 114.4,
+            "fat_g": 0.4,
+            "carbs_g": 30.4,
+            "protein_g": 0.6
+          },
+          {
+            "name": "Gala apple (whole)",
+            "mass_g": 150,
+            "calories": 78,
+            "fat_g": 0.3,
+            "carbs_g": 20.7,
+            "protein_g": 0.4
+          },
+          {
+            "name": "toasted white bread slice",
+            "mass_g": 30,
+            "calories": 79.5,
+            "fat_g": 1,
+            "carbs_g": 14.7,
+            "protein_g": 2.7
+          }
+        ],
+        "totals": {
+          "mass_g": 400,
+          "calories": 271.9,
+          "fat_g": 1.7,
+          "carbs_g": 65.8,
+          "protein_g": 3.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3852
+        }
+      },
+      "ground_truth": {
+        "dish_id": 69,
+        "image_filename": "dish_69_IMG_7279_jpeg.rf.9758b7365f05c3a249bd75ca88514404.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_69_IMG_7279_jpeg.rf.9758b7365f05c3a249bd75ca88514404.jpg",
+        "total_mass_g": 544.0,
+        "total_calories": 353.4,
+        "total_fat_g": 2.2844,
+        "total_carbs_g": 80.7076,
+        "total_protein_g": 6.193199999999999,
+        "foods": [
+          {
+            "name": "plain-toast",
+            "mass_g": 40.0,
+            "calories": 115.2
+          },
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 73.23146729519435,
+      "error": null
+    },
+    {
+      "dish_id": 70,
+      "image_filename": "dish_70_IMG_7292_jpeg.rf.98c7366f44025d458f95c6a4d4c47000.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7292_jpeg.rf.98c7366f44025d458f95c6a4d4c47000.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Asian pear (nashi), raw with skin",
+            "mass_g": 280,
+            "calories": 118,
+            "fat_g": 0.6,
+            "carbs_g": 30.0,
+            "protein_g": 1.4
+          },
+          {
+            "name": "Gala apple, raw with skin (small)",
+            "mass_g": 120,
+            "calories": 62,
+            "fat_g": 0.2,
+            "carbs_g": 16.8,
+            "protein_g": 0.4
+          }
+        ],
+        "totals": {
+          "mass_g": 400,
+          "calories": 180,
+          "fat_g": 0.8,
+          "carbs_g": 46.8,
+          "protein_g": 1.8
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2514
+        }
+      },
+      "ground_truth": {
+        "dish_id": 70,
+        "image_filename": "dish_70_IMG_7292_jpeg.rf.98c7366f44025d458f95c6a4d4c47000.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7292_jpeg.rf.98c7366f44025d458f95c6a4d4c47000.jpg",
+        "total_mass_g": 504.0,
+        "total_calories": 238.2,
+        "total_fat_g": 1.1124,
+        "total_carbs_g": 58.9956,
+        "total_protein_g": 2.1611999999999996,
+        "foods": [
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 77.89268387793534,
+      "error": null
+    },
+    {
+      "dish_id": 70,
+      "image_filename": "dish_70_IMG_7304_jpeg.rf.06f80301ac9384a018b1e144ae8951a5.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7304_jpeg.rf.06f80301ac9384a018b1e144ae8951a5.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Golden Delicious apple (whole, raw)",
+            "mass_g": 180,
+            "calories": 94,
+            "fat_g": 0.3,
+            "carbs_g": 24.8,
+            "protein_g": 0.5
+          },
+          {
+            "name": "Gala apple (whole, raw)",
+            "mass_g": 140,
+            "calories": 73,
+            "fat_g": 0.2,
+            "carbs_g": 19.3,
+            "protein_g": 0.4
+          }
+        ],
+        "totals": {
+          "mass_g": 320,
+          "calories": 167,
+          "fat_g": 0.5,
+          "carbs_g": 44.1,
+          "protein_g": 0.9
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2638
+        }
+      },
+      "ground_truth": {
+        "dish_id": 70,
+        "image_filename": "dish_70_IMG_7304_jpeg.rf.06f80301ac9384a018b1e144ae8951a5.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7304_jpeg.rf.06f80301ac9384a018b1e144ae8951a5.jpg",
+        "total_mass_g": 504.0,
+        "total_calories": 238.2,
+        "total_fat_g": 1.1124,
+        "total_carbs_g": 58.9956,
+        "total_protein_g": 2.1611999999999996,
+        "foods": [
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 58.98878894127394,
+      "error": null
+    },
+    {
+      "dish_id": 70,
+      "image_filename": "dish_70_IMG_7310_jpeg.rf.3836764e1725b36e3afeb572a6a3e954.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7310_jpeg.rf.3836764e1725b36e3afeb572a6a3e954.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "Gala apple (raw, with skin)",
+            "mass_g": 140,
+            "calories": 73,
+            "fat_g": 0.3,
+            "carbs_g": 19.3,
+            "protein_g": 0.4
+          },
+          {
+            "name": "Asian pear (nashi pear, raw)",
+            "mass_g": 240,
+            "calories": 101,
+            "fat_g": 0.5,
+            "carbs_g": 25.7,
+            "protein_g": 1.2
+          }
+        ],
+        "totals": {
+          "mass_g": 380,
+          "calories": 174,
+          "fat_g": 0.8,
+          "carbs_g": 45.0,
+          "protein_g": 1.6
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3024
+        }
+      },
+      "ground_truth": {
+        "dish_id": 70,
+        "image_filename": "dish_70_IMG_7310_jpeg.rf.3836764e1725b36e3afeb572a6a3e954.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7310_jpeg.rf.3836764e1725b36e3afeb572a6a3e954.jpg",
+        "total_mass_g": 504.0,
+        "total_calories": 238.2,
+        "total_fat_g": 1.1124,
+        "total_carbs_g": 58.9956,
+        "total_protein_g": 2.1611999999999996,
+        "foods": [
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 74.13421613115904,
+      "error": null
+    },
+    {
+      "dish_id": 70,
+      "image_filename": "dish_70_IMG_7315_jpeg.rf.ede3fc4c59a23042410c9064d3b47295.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7315_jpeg.rf.ede3fc4c59a23042410c9064d3b47295.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "raw Asian pear (nashi pear)",
+            "mass_g": 220,
+            "calories": 92.4,
+            "fat_g": 0.5,
+            "carbs_g": 23.4,
+            "protein_g": 1.1
+          },
+          {
+            "name": "raw apple with skin (small)",
+            "mass_g": 130,
+            "calories": 67.6,
+            "fat_g": 0.2,
+            "carbs_g": 17.9,
+            "protein_g": 0.3
+          }
+        ],
+        "totals": {
+          "mass_g": 350,
+          "calories": 160,
+          "fat_g": 0.7,
+          "carbs_g": 41.3,
+          "protein_g": 1.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2833
+        }
+      },
+      "ground_truth": {
+        "dish_id": 70,
+        "image_filename": "dish_70_IMG_7315_jpeg.rf.ede3fc4c59a23042410c9064d3b47295.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_70_IMG_7315_jpeg.rf.ede3fc4c59a23042410c9064d3b47295.jpg",
+        "total_mass_g": 504.0,
+        "total_calories": 238.2,
+        "total_fat_g": 1.1124,
+        "total_carbs_g": 58.9956,
+        "total_protein_g": 2.1611999999999996,
+        "foods": [
+          {
+            "name": "red-apple",
+            "mass_g": 156.0,
+            "calories": 92.04
+          },
+          {
+            "name": "asian-pear",
+            "mass_g": 348.0,
+            "calories": 146.16
+          }
+        ]
+      },
+      "accuracy": 66.86518828587455,
+      "error": null
+    },
+    {
+      "dish_id": 74,
+      "image_filename": "dish_74_IMG_7457_jpeg.rf.c832dcdaf1a854326e57513968140447.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7457_jpeg.rf.c832dcdaf1a854326e57513968140447.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "smoked pork spare ribs (2 ribs)",
+            "mass_g": 130,
+            "calories": 416,
+            "fat_g": 33.8,
+            "carbs_g": 0,
+            "protein_g": 28.6
+          },
+          {
+            "name": "soft white dinner roll",
+            "mass_g": 45,
+            "calories": 119,
+            "fat_g": 1.8,
+            "carbs_g": 22.5,
+            "protein_g": 3.8
+          },
+          {
+            "name": "grilled corn on the cob (1/3 ear)",
+            "mass_g": 30,
+            "calories": 28.8,
+            "fat_g": 0.5,
+            "carbs_g": 6.3,
+            "protein_g": 1.0
+          }
+        ],
+        "totals": {
+          "mass_g": 205,
+          "calories": 563.8,
+          "fat_g": 36.1,
+          "carbs_g": 28.8,
+          "protein_g": 33.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3794
+        }
+      },
+      "ground_truth": {
+        "dish_id": 74,
+        "image_filename": "dish_74_IMG_7457_jpeg.rf.c832dcdaf1a854326e57513968140447.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7457_jpeg.rf.c832dcdaf1a854326e57513968140447.jpg",
+        "total_mass_g": 388.0,
+        "total_calories": 855.6500000000001,
+        "total_fat_g": 39.2029,
+        "total_carbs_g": 38.4455,
+        "total_protein_g": 85.16340000000001,
+        "foods": [
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "half-bread-loaf",
+            "mass_g": 43.0,
+            "calories": 112.23000000000002
+          },
+          {
+            "name": "corn",
+            "mass_g": 79.0,
+            "calories": 83.74
+          }
+        ]
+      },
+      "accuracy": 64.98829336788089,
+      "error": null
+    },
+    {
+      "dish_id": 74,
+      "image_filename": "dish_74_IMG_7460_jpeg.rf.0c1de769f09f08b51261b5826a3d3140.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7460_jpeg.rf.0c1de769f09f08b51261b5826a3d3140.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "smoked pork spare rib with barbecue sauce",
+            "mass_g": 85,
+            "calories": 255,
+            "fat_g": 18.5,
+            "carbs_g": 6,
+            "protein_g": 17
+          },
+          {
+            "name": "grilled corn on the cob (segment)",
+            "mass_g": 50,
+            "calories": 48,
+            "fat_g": 0.8,
+            "carbs_g": 10.5,
+            "protein_g": 1.7
+          },
+          {
+            "name": "white dinner roll",
+            "mass_g": 40,
+            "calories": 125,
+            "fat_g": 2,
+            "carbs_g": 22,
+            "protein_g": 4
+          }
+        ],
+        "totals": {
+          "mass_g": 175,
+          "calories": 428,
+          "fat_g": 21.3,
+          "carbs_g": 38.5,
+          "protein_g": 22.7
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3586
+        }
+      },
+      "ground_truth": {
+        "dish_id": 74,
+        "image_filename": "dish_74_IMG_7460_jpeg.rf.0c1de769f09f08b51261b5826a3d3140.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7460_jpeg.rf.0c1de769f09f08b51261b5826a3d3140.jpg",
+        "total_mass_g": 388.0,
+        "total_calories": 855.6500000000001,
+        "total_fat_g": 39.2029,
+        "total_carbs_g": 38.4455,
+        "total_protein_g": 85.16340000000001,
+        "foods": [
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "half-bread-loaf",
+            "mass_g": 43.0,
+            "calories": 112.23000000000002
+          },
+          {
+            "name": "corn",
+            "mass_g": 79.0,
+            "calories": 83.74
+          }
+        ]
+      },
+      "accuracy": 55.19382877231652,
+      "error": null
+    },
+    {
+      "dish_id": 74,
+      "image_filename": "dish_74_IMG_7466_jpeg.rf.6d0e9a6ee4ffde51d20e873a36b1d809.jpg",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7466_jpeg.rf.6d0e9a6ee4ffde51d20e873a36b1d809.jpg",
+      "prediction": {
+        "foods": [
+          {
+            "name": "barbecue pork spare ribs (sauced)",
+            "mass_g": 150,
+            "calories": 480,
+            "fat_g": 36,
+            "carbs_g": 9,
+            "protein_g": 30
+          },
+          {
+            "name": "soft white dinner roll (half)",
+            "mass_g": 55,
+            "calories": 146,
+            "fat_g": 1.8,
+            "carbs_g": 27,
+            "protein_g": 5
+          },
+          {
+            "name": "grilled corn on the cob (segment)",
+            "mass_g": 40,
+            "calories": 38,
+            "fat_g": 0.6,
+            "carbs_g": 8.4,
+            "protein_g": 1.4
+          }
+        ],
+        "totals": {
+          "mass_g": 245,
+          "calories": 664,
+          "fat_g": 38.4,
+          "carbs_g": 44.4,
+          "protein_g": 36.4
+        },
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 4166
+        }
+      },
+      "ground_truth": {
+        "dish_id": 74,
+        "image_filename": "dish_74_IMG_7466_jpeg.rf.6d0e9a6ee4ffde51d20e873a36b1d809.jpg",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/nutritionverse/nutritionverse-manual/nutritionverse-manual/images/dish_74_IMG_7466_jpeg.rf.6d0e9a6ee4ffde51d20e873a36b1d809.jpg",
+        "total_mass_g": 388.0,
+        "total_calories": 855.6500000000001,
+        "total_fat_g": 39.2029,
+        "total_carbs_g": 38.4455,
+        "total_protein_g": 85.16340000000001,
+        "foods": [
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "rib",
+            "mass_g": 133.0,
+            "calories": 329.84000000000003
+          },
+          {
+            "name": "half-bread-loaf",
+            "mass_g": 43.0,
+            "calories": 112.23000000000002
+          },
+          {
+            "name": "corn",
+            "mass_g": 79.0,
+            "calories": 83.74
+          }
+        ]
+      },
+      "accuracy": 73.1902594323039,
+      "error": null
+    }
+  ]
+}

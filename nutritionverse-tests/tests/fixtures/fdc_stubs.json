@@ -1,0 +1,226 @@
+{
+  "$schema": "fdc-test-fixtures.v1",
+  "description": "Sample FDC database entries for testing raw→cooked conversion",
+
+  "foundation_foods_raw": [
+    {
+      "fdc_id": 168874,
+      "name": "Rice, white, long-grain, regular, raw, unenriched",
+      "data_type": "foundation_food",
+      "calories_value": 365.0,
+      "protein_value": 7.13,
+      "total_fat_value": 0.66,
+      "carbohydrates_value": 79.95,
+      "fiber_value": 1.3
+    },
+    {
+      "fdc_id": 168876,
+      "name": "Rice, brown, long-grain, raw",
+      "data_type": "foundation_food",
+      "calories_value": 370.0,
+      "protein_value": 7.94,
+      "total_fat_value": 2.92,
+      "carbohydrates_value": 77.24,
+      "fiber_value": 3.5
+    },
+    {
+      "fdc_id": 171705,
+      "name": "Chicken, broilers or fryers, breast, meat only, raw",
+      "data_type": "sr_legacy_food",
+      "calories_value": 120.0,
+      "protein_value": 22.5,
+      "total_fat_value": 2.6,
+      "carbohydrates_value": 0.0,
+      "fiber_value": 0.0
+    },
+    {
+      "fdc_id": 173756,
+      "name": "Beef, round, eye of round, separable lean only, trimmed to 1/8\" fat, choice, raw",
+      "data_type": "sr_legacy_food",
+      "calories_value": 143.0,
+      "protein_value": 22.0,
+      "total_fat_value": 5.1,
+      "carbohydrates_value": 0.0,
+      "fiber_value": 0.0
+    },
+    {
+      "fdc_id": 175167,
+      "name": "Fish, salmon, Atlantic, farmed, raw",
+      "data_type": "foundation_food",
+      "calories_value": 208.0,
+      "protein_value": 20.42,
+      "total_fat_value": 13.42,
+      "carbohydrates_value": 0.0,
+      "fiber_value": 0.0
+    },
+    {
+      "fdc_id": 169967,
+      "name": "Spinach, raw",
+      "data_type": "foundation_food",
+      "calories_value": 23.0,
+      "protein_value": 2.86,
+      "total_fat_value": 0.39,
+      "carbohydrates_value": 3.63,
+      "fiber_value": 2.2
+    },
+    {
+      "fdc_id": 170379,
+      "name": "Broccoli, raw",
+      "data_type": "foundation_food",
+      "calories_value": 34.0,
+      "protein_value": 2.82,
+      "total_fat_value": 0.37,
+      "carbohydrates_value": 6.64,
+      "fiber_value": 2.6
+    },
+    {
+      "fdc_id": 170026,
+      "name": "Potatoes, russet, flesh and skin, raw",
+      "data_type": "foundation_food",
+      "calories_value": 79.0,
+      "protein_value": 2.02,
+      "total_fat_value": 0.08,
+      "carbohydrates_value": 18.07,
+      "fiber_value": 2.1
+    }
+  ],
+
+  "foundation_foods_cooked": [
+    {
+      "fdc_id": 168878,
+      "name": "Rice, white, long-grain, regular, cooked",
+      "data_type": "foundation_food",
+      "calories_value": 130.0,
+      "protein_value": 2.69,
+      "total_fat_value": 0.28,
+      "carbohydrates_value": 28.17,
+      "fiber_value": 0.4
+    },
+    {
+      "fdc_id": 168879,
+      "name": "Rice, brown, long-grain, cooked",
+      "data_type": "foundation_food",
+      "calories_value": 123.0,
+      "protein_value": 2.74,
+      "total_fat_value": 0.97,
+      "carbohydrates_value": 25.58,
+      "fiber_value": 1.6
+    },
+    {
+      "fdc_id": 171107,
+      "name": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "data_type": "sr_legacy_food",
+      "calories_value": 165.0,
+      "protein_value": 31.02,
+      "total_fat_value": 3.57,
+      "carbohydrates_value": 0.0,
+      "fiber_value": 0.0
+    },
+    {
+      "fdc_id": 169967,
+      "name": "Spinach, cooked, boiled, drained, without salt",
+      "data_type": "sr_legacy_food",
+      "calories_value": 23.0,
+      "protein_value": 2.97,
+      "total_fat_value": 0.26,
+      "carbohydrates_value": 3.75,
+      "fiber_value": 2.4
+    }
+  ],
+
+  "branded_foods_cooked": [
+    {
+      "fdc_id": 450001,
+      "name": "Uncle Ben's Ready Rice, Original Long Grain",
+      "data_type": "branded_food",
+      "brand": "Uncle Ben's",
+      "calories_value": 125.0,
+      "protein_value": 2.5,
+      "total_fat_value": 0.5,
+      "carbohydrates_value": 27.0,
+      "fiber_value": 0.5
+    },
+    {
+      "fdc_id": 450002,
+      "name": "Perdue Simply Smart Grilled Chicken Breast Strips",
+      "data_type": "branded_food",
+      "brand": "Perdue",
+      "calories_value": 110.0,
+      "protein_value": 21.0,
+      "total_fat_value": 2.5,
+      "carbohydrates_value": 1.0,
+      "fiber_value": 0.0
+    }
+  ],
+
+  "conversion_test_cases": [
+    {
+      "test_name": "rice_white_boiled",
+      "description": "Raw white rice → boiled rice conversion",
+      "raw_fdc_id": 168874,
+      "expected_cooked_kcal_100g": 130.0,
+      "method": "boiled",
+      "hydration_factor": 2.8,
+      "tolerance": 0.15
+    },
+    {
+      "test_name": "chicken_breast_grilled",
+      "description": "Raw chicken breast → grilled conversion",
+      "raw_fdc_id": 171705,
+      "expected_cooked_kcal_100g": 165.0,
+      "method": "grilled",
+      "shrinkage_fraction": 0.29,
+      "tolerance": 0.15
+    },
+    {
+      "test_name": "spinach_steamed",
+      "description": "Raw spinach → steamed conversion",
+      "raw_fdc_id": 169967,
+      "expected_cooked_kcal_100g": 23.0,
+      "method": "steamed",
+      "shrinkage_fraction": 0.10,
+      "tolerance": 0.20
+    },
+    {
+      "test_name": "salmon_grilled",
+      "description": "Raw salmon → grilled conversion",
+      "raw_fdc_id": 175167,
+      "expected_cooked_kcal_100g": 206.0,
+      "method": "grilled",
+      "shrinkage_fraction": 0.20,
+      "fat_render_fraction": 0.05,
+      "tolerance": 0.15
+    }
+  ],
+
+  "alignment_test_cases": [
+    {
+      "test_name": "stage1_cooked_exact",
+      "description": "Should match Foundation cooked entry directly",
+      "predicted_name": "rice",
+      "predicted_form": "boiled",
+      "predicted_kcal_100g": 132.0,
+      "expected_stage": "stage1_cooked_exact",
+      "expected_fdc_id": 168878
+    },
+    {
+      "test_name": "stage2_raw_convert",
+      "description": "Should convert raw Foundation entry to cooked",
+      "predicted_name": "chicken breast",
+      "predicted_form": "grilled",
+      "predicted_kcal_100g": 168.0,
+      "expected_stage": "stage2_raw_convert",
+      "expected_source_fdc_id": 171705,
+      "expected_conversion": true
+    },
+    {
+      "test_name": "stage3_branded_cooked",
+      "description": "Should fall back to branded cooked if no Foundation match",
+      "predicted_name": "rice",
+      "predicted_form": "cooked",
+      "predicted_kcal_100g": 125.0,
+      "expected_stage": "stage3_branded_cooked",
+      "expected_fdc_id": 450001
+    }
+  ]
+}

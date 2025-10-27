@@ -1,0 +1,458 @@
+{
+  "timestamp": "20251024_113730",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 3,
+  "successful": 3,
+  "failed": 0,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1556575273",
+      "image_filename": "dish_1556575273.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 50,
+            "count": 6,
+            "confidence": 0.8
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 55,
+            "count": 14,
+            "confidence": 0.85
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 35,
+            "count": 10,
+            "confidence": 0.7
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1647
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "olives",
+            "fdc_id": 169096,
+            "matched_name": "Olives pickled canned or bottled green",
+            "data_type": "sr_legacy_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "db_ok",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "unknown": 3
+          },
+          "method_resolution": {
+            "unknown": 3
+          },
+          "conversion_applied_count": 0,
+          "energy_band_outliers": 0,
+          "mass_inflation_guards": 0,
+          "kcal_deltas": [],
+          "processing_mismatch_blocks": 1,
+          "negative_vocabulary_blocks": 0,
+          "macro_plausibility_blocks": 0,
+          "species_mismatch_blocks": 0,
+          "branded_gate_rejects": 0,
+          "why_not_chosen": [],
+          "produce_raw_first_penalties": 0,
+          "ingredient_form_bans": 0,
+          "branded_last_resort_used": 0,
+          "branded_cooked_method_mismatch_rejects": 0,
+          "conversion_hit_rate": 0.0,
+          "energy_band_outlier_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575273",
+        "image_filename": "dish_1556575273.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575273.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575327",
+      "image_filename": "dish_1556575327.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 75,
+            "count": 6,
+            "confidence": 0.73
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 9,
+            "confidence": 0.71
+          },
+          {
+            "name": "kalamata olives",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 14,
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1585
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "unknown": 2
+          },
+          "method_resolution": {
+            "unknown": 2
+          },
+          "conversion_applied_count": 0,
+          "energy_band_outliers": 0,
+          "mass_inflation_guards": 0,
+          "kcal_deltas": [],
+          "processing_mismatch_blocks": 0,
+          "negative_vocabulary_blocks": 0,
+          "macro_plausibility_blocks": 0,
+          "species_mismatch_blocks": 0,
+          "branded_gate_rejects": 0,
+          "why_not_chosen": [],
+          "produce_raw_first_penalties": 0,
+          "ingredient_form_bans": 0,
+          "branded_last_resort_used": 0,
+          "branded_cooked_method_mismatch_rejects": 0,
+          "conversion_hit_rate": 0.0,
+          "energy_band_outlier_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575327",
+        "image_filename": "dish_1556575327.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575327.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.300003,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          },
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1556575386",
+      "image_filename": "dish_1556575386.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 80,
+            "count": 6,
+            "confidence": 0.74
+          },
+          {
+            "name": "kalamata olives",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 14,
+            "confidence": 0.7
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 10,
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1777
+        }
+      },
+      "database_aligned": {
+        "available": true,
+        "foods": [
+          {
+            "predicted_name": "brussels sprouts",
+            "fdc_id": 2685575,
+            "matched_name": "Brussels sprouts raw",
+            "data_type": "foundation_food",
+            "confidence": 0.64,
+            "score": 0.4,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "net_carbs_2kcal_per_g",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          },
+          {
+            "predicted_name": "celery",
+            "fdc_id": 2346405,
+            "matched_name": "Celery raw",
+            "data_type": "foundation_food",
+            "confidence": 0.62,
+            "score": 0.2,
+            "nutrition": {
+              "mass_g": 0,
+              "calories": 0,
+              "protein_g": 0,
+              "carbs_g": 0,
+              "fat_g": 0
+            },
+            "provenance": {
+              "energy_source": "derived_from_macros",
+              "fiber_policy": "no_fiber_data",
+              "scaling_policy": "calorie_anchored_db_ratio"
+            }
+          }
+        ],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        },
+        "telemetry": {
+          "total_items": 3,
+          "alignment_stages": {
+            "unknown": 2
+          },
+          "method_resolution": {
+            "unknown": 2
+          },
+          "conversion_applied_count": 0,
+          "energy_band_outliers": 0,
+          "mass_inflation_guards": 0,
+          "kcal_deltas": [],
+          "processing_mismatch_blocks": 0,
+          "negative_vocabulary_blocks": 0,
+          "macro_plausibility_blocks": 0,
+          "species_mismatch_blocks": 0,
+          "branded_gate_rejects": 0,
+          "why_not_chosen": [],
+          "produce_raw_first_penalties": 0,
+          "ingredient_form_bans": 0,
+          "branded_last_resort_used": 0,
+          "branded_cooked_method_mismatch_rejects": 0,
+          "conversion_hit_rate": 0.0,
+          "energy_band_outlier_rate": 0.0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1556575386",
+        "image_filename": "dish_1556575386.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1556575386.png",
+        "total_mass_g": 152.0,
+        "total_calories": 103.299995,
+        "total_fat_g": 6.882,
+        "total_carbs_g": 10.618,
+        "total_protein_g": 2.868,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 62.0,
+            "calories": 71.3
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.0,
+            "calories": 27.52
+          },
+          {
+            "name": "celery",
+            "mass_g": 28.0,
+            "calories": 4.48
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    }
+  ]
+}

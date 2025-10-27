@@ -1,0 +1,51 @@
+# Negative Vocabulary for FDC Alignment
+# These words trigger hard filters - candidates containing these words are skipped entirely
+# Applied in Stage-1b before scoring (align_convert.py line 605-609)
+
+apple:
+  - strudel
+  - pie
+  - juice
+  - sauce
+  - chip
+  - chips
+  - dried
+  - dehydrated
+
+grape:
+  - juice
+  - jam
+  - jelly
+  - raisin
+  - raisins
+  - dried
+
+almond:
+  - oil
+  - butter
+  - flour
+  - meal
+  - paste
+
+potato:
+  - bread
+  - flour
+  - starch
+  - powder
+
+sweet_potato:
+  - leave
+  - leaf
+  - leaves
+  - flour
+  - starch
+  - powder
+
+# Future additions (not yet implemented):
+# walnut:
+#   - oil
+#   - butter
+#
+# peanut:
+#   - oil
+#   - butter

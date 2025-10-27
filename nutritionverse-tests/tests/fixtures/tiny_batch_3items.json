@@ -1,0 +1,47 @@
+{
+  "description": "Tiny 3-item batch for Phase 0.6 E2E test - validates wiring with no unknowns",
+  "items": [
+    {
+      "id": "tiny_01_grilled_chicken",
+      "predicted_name": "chicken breast",
+      "predicted_form": "grilled",
+      "predicted_kcal_100g": 165,
+      "mass_g": 150,
+      "confidence": 0.90,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "grilled",
+        "candidate_pool_raw_foundation": ">0"
+      }
+    },
+    {
+      "id": "tiny_02_roasted_potatoes",
+      "predicted_name": "potato",
+      "predicted_form": "roasted",
+      "predicted_kcal_100g": 140,
+      "mass_g": 200,
+      "confidence": 0.88,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "roasted_oven",
+        "candidate_pool_raw_foundation": ">0"
+      }
+    },
+    {
+      "id": "tiny_03_boiled_eggs",
+      "predicted_name": "egg",
+      "predicted_form": "boiled",
+      "predicted_kcal_100g": 155,
+      "mass_g": 100,
+      "confidence": 0.92,
+      "expected": {
+        "alignment_stage": "stage2_raw_convert",
+        "conversion_applied": true,
+        "method": "boiled",
+        "candidate_pool_raw_foundation": ">0"
+      }
+    }
+  ]
+}
