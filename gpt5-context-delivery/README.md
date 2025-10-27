@@ -17,8 +17,8 @@ gpt5-context-delivery/
 ├── data/                               # FDC database loaders
 ├── configs/                            # Configuration & conversion data
 ├── telemetry/                          # Baseline test results
-├── vision/                             # Vision model adapters
-├── ground_truth/                       # Evaluation (TBD)
+├── vision/                             # Vision model adapters ✅
+├── ground_truth/                       # Evaluation scripts & ground truth data ✅
 └── web_app_logs/                       # Web app results (TBD - you'll add)
 ```
 
@@ -30,9 +30,12 @@ gpt5-context-delivery/
 
 | File | Purpose | Output |
 |------|---------|--------|
-| `run_459_batch_evaluation.py` | Full 459-image evaluation | JSON with telemetry |
-| `run_first_50_by_dish_id.py` | **NEW**: First 50 dishes (sorted by ID) | Matches web app test |
+| `nutritionverse_app.py` | **Streamlit web app** (vision + alignment) | Interactive UI + JSON export |
+| `run_459_batch_evaluation.py` | 459-image synthetic batch (no vision) | JSON with telemetry |
+| `run_first_50_by_dish_id.py` | First 50 dishes batch (ground truth) | Batch harness JSON |
 | `test_surgical_fixes.py` | Single-item validation | Console output |
+
+**See [entrypoints/ENTRYPOINTS.md](entrypoints/ENTRYPOINTS.md) for complete documentation**
 
 ### How to Run First 50 Test (Batch Harness)
 
@@ -259,34 +262,91 @@ Contains:
 
 ---
 
-## 6. Ground Truth & Evaluation
+## 6. Vision Model Adapters
 
-### Ground Truth Data
+**Directory**: `vision/`
 
-**Status**: ⚠️  NOT INCLUDED (need to add)
+| File | Purpose |
+|------|---------|
+| `openai_.py` | OpenAI API adapter (GPT-4V, GPT-5) |
+| `runner.py` | Vision model batch runner |
+| `nutritionverse_prompts.py` | Prompts for food detection |
+| `advanced_prompts.py` | Advanced prompting strategies |
+| `image_preprocessing.py` | Image preprocessing utilities |
 
-**Required Format**:
-```csv
-dish_id,food_name,mass_g,true_fdc_id,true_calories,true_protein_g,true_carbs_g,true_fat_g
-dish_1558029923,bacon,22.0,168322,119.02,10.45,0.0,9.60
+**Output Format** (from vision model):
+```json
+{
+  "foods": [
+    {"name": "chicken breast", "form": "grilled", "mass_g": 150, "confidence": 0.85}
+  ],
+  "_metadata": {"model": "gpt-5", "tokens_total": 1932}
+}
 ```
 
-### Evaluation Metrics
-
-**Status**: ⚠️  NOT INCLUDED (need to add)
-
-**Required File**: `eval_aggregator.py`
-
-**Metrics Needed**:
-- Conversion rate (% not stage0)
-- Stage distribution
-- Calorie accuracy (±20% tolerance)
-- Macro accuracy (±5g tolerance)
-- Stage-Z violations (MUST be 0 for produce)
+This prediction format is passed directly to the alignment engine.
 
 ---
 
-## 7. Fixes Applied (2025-10-27)
+## 7. Ground Truth & Evaluation
+
+### Ground Truth Data
+
+**Status**: ✅ **INCLUDED**
+
+**File**: `ground_truth/metadata.jsonl`
+
+**Format**: JSONL (3260 dishes with ingredient-level ground truth)
+
+```json
+{
+  "id": "dish_1556572657",
+  "file_name": "test/dish_1556572657.png",
+  "ingredients": [
+    {"name": "olives", "grams": 36.0, "calories": 41.4, "fat": 3.852, "carb": 2.268, "protein": 0.288}
+  ],
+  "total_calories": 41.4,
+  "total_mass": 36.0
+}
+```
+
+### Evaluation Scripts
+
+**Status**: ✅ **INCLUDED**
+
+**File**: `ground_truth/eval_aggregator.py`
+
+**Functions**:
+- `validate_telemetry_schema()`: Validates alignment telemetry structure
+- `compute_telemetry_stats()`: Computes stage distribution and conversion rate
+
+**Metrics Computed**:
+- Conversion rate (% items using Stage 2 raw→cooked)
+- Stage distribution (Stage 1b/2/3/4/5/Z breakdown)
+- Unknown stage/method detection
+- Stage-Z violations (for produce)
+
+---
+
+## 8. FDC Database Structure
+
+**File**: `data/FDC_DATABASE.md`
+
+Complete documentation of the USDA FoodData Central PostgreSQL database including:
+- Database schema (foods table, nutrition columns)
+- Data types (Foundation, SR Legacy, Branded)
+- Search query patterns
+- **Deterministic rebuild instructions**
+- Database snapshot export/import
+- Validation checklist
+
+**Connection**: Set `NEON_CONNECTION_URL` in `.env` file
+
+Both batch harness and web app must connect to the **same database** to ensure identical candidate pools.
+
+---
+
+## 9. Fixes Applied (2025-10-27)
 
 See `SURGICAL_FIXES_COMPLETE.md` and `STAGE1B_FIXES_COMPLETE.md` for details.
 
