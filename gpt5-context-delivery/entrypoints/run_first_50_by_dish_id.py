@@ -1,12 +1,12 @@
 """
 Run First 50 Images (Sorted by Dish ID) - Batch Harness Test
-Matches web app test for direct comparison.
+Uses unified pipeline for reproducibility.
 
 This script:
 1. Loads test dataset from food-nutrients/test
 2. Sorts images by dish_id
-3. Processes first 50 images
-4. Outputs results with full telemetry
+3. Processes first 50 images using pipeline.run_once()
+4. Outputs results to runs/<timestamp>/ with version tracking
 """
 
 import os
@@ -16,11 +16,14 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
-# Add nutritionverse-tests to path (use actual implementation, not copy)
-nutritionverse_path = Path(__file__).parent.parent.parent / "nutritionverse-tests"
-sys.path.insert(0, str(nutritionverse_path))
+# Add parent directory to path for pipeline imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.adapters.alignment_adapter import AlignmentEngineAdapter
+# Import unified pipeline
+from pipeline.run import run_once
+from pipeline.config_loader import load_pipeline_config, get_code_git_sha
+from pipeline.fdc_index import load_fdc_index
+from pipeline.schemas import AlignmentRequest, DetectedFood
 
 def load_metadata(metadata_path):
     """Load metadata.jsonl with dish information."""
@@ -45,9 +48,9 @@ def get_first_50_dishes_sorted(test_dir):
     return dish_ids[:50]
 
 def run_batch_test():
-    """Run batch test on first 50 dishes (sorted by ID)."""
+    """Run batch test on first 50 dishes using unified pipeline."""
 
-    # Load environment from nutritionverse-tests directory
+    # Load environment
     env_path = Path(__file__).parent.parent.parent / "nutritionverse-tests" / ".env"
     load_dotenv(dotenv_path=env_path, override=True)
 
@@ -55,12 +58,22 @@ def run_batch_test():
     test_dir = Path("/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test")
     metadata_path = Path("/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/metadata.jsonl")
 
-    # Output directory
-    output_dir = Path(__file__).parent.parent / "telemetry"
-    output_dir.mkdir(exist_ok=True)
+    # Load pipeline components ONCE
+    print("Loading pipeline configuration...")
+    repo_root = Path(__file__).parent.parent.parent
+    configs_path = repo_root / "configs"
+    CONFIG = load_pipeline_config(root=str(configs_path))
+    print(f"  Config version: {CONFIG.config_version}")
+
+    print("Loading FDC index...")
+    FDC = load_fdc_index()
+    print(f"  FDC version: {FDC.version}")
+
+    CODE_SHA = get_code_git_sha()
+    print(f"  Code SHA: {CODE_SHA}")
 
     # Load metadata
-    print("Loading metadata...")
+    print("\nLoading metadata...")
     metadata = load_metadata(metadata_path)
 
     # Get first 50 dishes sorted by ID
@@ -71,20 +84,12 @@ def run_batch_test():
     print(f"First dish: {dish_ids[0]}")
     print(f"Last dish: {dish_ids[-1]}")
 
-    # Initialize alignment adapter
-    print("\nInitializing alignment adapter...")
-    adapter = AlignmentEngineAdapter()
-
-    if not adapter.db_available:
-        print("ERROR: Database not available. Set NEON_CONNECTION_URL.")
-        return
-
     # Process each dish
-    results = []
-
     print(f"\n{'='*70}")
     print(f"BATCH TEST: First 50 Dishes (Sorted by ID)")
     print(f"{'='*70}\n")
+
+    stage_summary = {}
 
     for idx, dish_id in enumerate(dish_ids):
         print(f"[{idx+1}/50] Processing {dish_id}...")
@@ -95,97 +100,64 @@ def run_batch_test():
             print(f"  WARNING: No metadata for {dish_id}")
             continue
 
-        # Convert metadata ingredients to prediction format
+        # Convert metadata ingredients to DetectedFood objects
         ingredients = dish_meta.get("ingredients", [])
         if not ingredients:
             print(f"  WARNING: No ingredients for {dish_id}")
             continue
 
-        # Convert ingredients to prediction format
-        prediction = {
-            "foods": [
-                {
-                    "name": ingr["name"],
-                    "form": "raw",  # Default to raw, alignment engine will handle
-                    "mass_g": ingr["grams"],
-                    "confidence": 0.85  # Default confidence
-                }
-                for ingr in ingredients
-            ]
-        }
+        detected_foods = [
+            DetectedFood(
+                name=ingr["name"],
+                form="raw",  # Default to raw
+                mass_g=ingr["grams"],
+                confidence=0.85
+            )
+            for ingr in ingredients
+        ]
 
-        # Run alignment
+        # Create alignment request
+        request = AlignmentRequest(
+            image_id=dish_id,
+            foods=detected_foods,
+            config_version=CONFIG.config_version
+        )
+
+        # Run unified pipeline
         try:
-            aligned = adapter.align_prediction_batch(prediction)
-
-            # Build result with ground truth from metadata
-            result = {
-                "dish_id": dish_id,
-                "image_filename": f"{dish_id}.png",
-                "prediction": prediction,
-                "database_aligned": aligned,
-                "ground_truth": {
-                    "ingredients": ingredients,
-                    "total_calories": dish_meta.get("total_calories"),
-                    "total_mass": dish_meta.get("total_mass"),
-                    "total_fat": dish_meta.get("total_fat"),
-                    "total_carb": dish_meta.get("total_carb"),
-                    "total_protein": dish_meta.get("total_protein")
-                }
-            }
-
-            results.append(result)
+            result = run_once(
+                request=request,
+                cfg=CONFIG,
+                fdc_index=FDC,
+                allow_stage_z=False,  # Never allow Stage-Z in evaluations
+                code_git_sha=CODE_SHA
+            )
 
             # Print summary
-            foods = aligned.get("foods", [])
-            stage_summary = {}
-            for food in foods:
-                stage = food.get("alignment_stage", "unknown")
-                stage_summary[stage] = stage_summary.get(stage, 0) + 1
+            print(f"  Foods: {len(result.foods)}, Stages: {result.telemetry_summary['stage_counts']}")
 
-            print(f"  Foods: {len(foods)}, Stages: {stage_summary}")
+            # Aggregate stage counts
+            for stage, count in result.telemetry_summary['stage_counts'].items():
+                stage_summary[stage] = stage_summary.get(stage, 0) + count
 
         except Exception as e:
             print(f"  ERROR: {e}")
             import traceback
             traceback.print_exc()
 
-    # Save results
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = output_dir / f"batch_harness_first50_sorted_{timestamp}.json"
-
-    output = {
-        "timestamp": timestamp,
-        "test_type": "batch_harness_first_50_sorted_by_dish_id",
-        "total_dishes": len(results),
-        "dish_ids": dish_ids,
-        "results": results
-    }
-
-    with open(output_file, 'w') as f:
-        json.dump(output, f, indent=2)
-
+    # Print final summary
     print(f"\n{'='*70}")
     print(f"BATCH TEST COMPLETE")
     print(f"{'='*70}")
-    print(f"Processed: {len(results)} dishes")
-    print(f"Output: {output_file}")
-
-    # Summary statistics
-    total_items = sum(len(r["database_aligned"]["foods"]) for r in results)
-    stage_dist = {}
-    for r in results:
-        for food in r["database_aligned"]["foods"]:
-            stage = food.get("alignment_stage", "unknown")
-            stage_dist[stage] = stage_dist.get(stage, 0) + 1
-
-    print(f"\nTotal food items: {total_items}")
-    print(f"Stage distribution:")
-    for stage, count in sorted(stage_dist.items()):
+    print(f"Processed: {len(dish_ids)} dishes")
+    print(f"\nStage distribution:")
+    total_items = sum(stage_summary.values())
+    for stage, count in sorted(stage_summary.items()):
         pct = (count / total_items * 100) if total_items > 0 else 0
         print(f"  {stage}: {count} ({pct:.1f}%)")
 
-    return output_file
+    print(f"\nResults saved to: runs/<timestamp>/results.jsonl")
+    print(f"Telemetry saved to: runs/<timestamp>/telemetry.jsonl")
 
 if __name__ == "__main__":
     run_batch_test()

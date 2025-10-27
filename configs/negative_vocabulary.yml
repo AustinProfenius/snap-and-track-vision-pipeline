@@ -1,0 +1,51 @@
+# Negative vocabulary for hard filtering BEFORE scoring
+#
+# Filters are applied to raw FDC entry names (case-insensitive substring match)
+# If any negative term found in entry name, candidate is skipped entirely
+
+apple:
+  - strudel
+  - pie
+  - juice
+  - sauce
+  - chip
+  - dried
+
+grape:
+  - juice
+  - jam
+  - jelly
+  - raisin
+
+almond:
+  - oil
+  - butter
+  - flour
+  - meal
+  - paste
+
+# Cucumber safeguard: prevent matching "Sea cucumber yane (Alaska Native)"
+cucumber:
+  - sea cucumber
+  - yane
+  - alaska native
+
+# Olive safeguard: prevent matching "Oil olive salad or cooking"
+olive:
+  - oil
+  - extra virgin
+  - light tasting
+  - salad or cooking
+
+potato:
+  - bread
+  - flour
+  - starch
+  - powder
+
+sweet_potato:
+  - leave
+  - leaf
+  - flour
+  - starch
+  - powder

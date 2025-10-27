@@ -1,0 +1,255 @@
+name: Pipeline Convergence CI
+
+# Trigger on pull requests and pushes to main
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'pipeline/**'
+      - 'configs/**'
+      - 'tests/**'
+      - 'gpt5-context-delivery/entrypoints/**'
+      - 'nutritionverse-tests/src/nutrition/alignment/align_convert.py'
+      - '.github/workflows/pipeline-ci.yml'
+  push:
+    branches: [main, master]
+    paths:
+      - 'pipeline/**'
+      - 'configs/**'
+      - 'tests/**'
+
+jobs:
+  # Job 1: Run unit tests (no database required)
+  unit-tests:
+    name: Unit Tests (No DB)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git SHA
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pydantic PyYAML
+
+      - name: Run unit tests
+        run: |
+          pytest tests/test_config_loader.py tests/test_negative_vocab.py -v --tb=short --cov=pipeline --cov-report=term-missing
+
+      - name: Upload coverage reports
+        if: always()
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage.xml
+          flags: unittests
+          name: unit-test-coverage
+
+  # Job 2: Config validation (critical thresholds)
+  config-validation:
+    name: Config Drift Detection
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic PyYAML
+
+      - name: Verify critical thresholds unchanged
+        run: |
+          python -c "
+          from pipeline.config_loader import load_pipeline_config
+          from pathlib import Path
+
+          cfg = load_pipeline_config(root=str(Path.cwd() / 'configs'))
+
+          # Critical thresholds that should not change without review
+          critical_values = {
+              'grape': 0.30,
+              'cantaloupe': 0.30,
+              'honeydew': 0.30,
+              'almond': 0.30
+          }
+
+          failed = False
+          for food, expected in critical_values.items():
+              actual = cfg.thresholds.get(food)
+              if actual != expected:
+                  print(f'❌ CRITICAL: {food} threshold changed from {expected} to {actual}')
+                  failed = True
+
+          if failed:
+              print('Config drift detected! Review PIPELINE_CONVERGENCE_PROGRESS.md')
+              exit(1)
+
+          print('✅ All critical thresholds unchanged')
+          "
+
+      - name: Verify cucumber safeguards present
+        run: |
+          python -c "
+          from pipeline.config_loader import load_pipeline_config
+          from pathlib import Path
+
+          cfg = load_pipeline_config(root=str(Path.cwd() / 'configs'))
+
+          # Verify cucumber safeguards
+          if 'cucumber' in cfg.neg_vocab:
+              cucumber_negatives = [n.lower() for n in cfg.neg_vocab['cucumber']]
+              if not any('sea cucumber' in n for n in cucumber_negatives):
+                  print('❌ CRITICAL: Cucumber safeguard (sea cucumber) removed')
+                  exit(1)
+
+          # Verify olive safeguards
+          if 'olive' in cfg.neg_vocab:
+              olive_negatives = [n.lower() for n in cfg.neg_vocab['olive']]
+              if not any('oil' in n for n in olive_negatives):
+                  print('❌ CRITICAL: Olive safeguard (oil) removed')
+                  exit(1)
+
+          print('✅ All safeguards present')
+          "
+
+      - name: Verify config fingerprint is deterministic
+        run: |
+          python -c "
+          from pipeline.config_loader import load_pipeline_config
+          from pathlib import Path
+
+          cfg1 = load_pipeline_config(root=str(Path.cwd() / 'configs'))
+          cfg2 = load_pipeline_config(root=str(Path.cwd() / 'configs'))
+
+          if cfg1.config_version != cfg2.config_version:
+              print(f'❌ Config fingerprint not deterministic: {cfg1.config_version} vs {cfg2.config_version}')
+              exit(1)
+
+          print(f'✅ Config fingerprint deterministic: {cfg1.config_version}')
+          "
+
+  # Job 3: Integration tests (with database)
+  integration-tests:
+    name: Integration Tests (With DB)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Only run if unit tests pass
+    needs: [unit-tests, config-validation]
+
+    # Skip if secrets not available (fork PRs)
+    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pydantic PyYAML psycopg2-binary
+
+      - name: Run integration tests
+        env:
+          NEON_CONNECTION_URL: ${{ secrets.NEON_CONNECTION_URL }}
+        run: |
+          pytest tests/test_pipeline_e2e.py tests/test_telemetry_schema.py -v --tb=short
+
+  # Job 4: Schema validation
+  schema-validation:
+    name: Telemetry Schema Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic
+
+      - name: Verify TelemetryEvent schema has version fields
+        run: |
+          python -c "
+          from pipeline.schemas import TelemetryEvent
+
+          required_fields = ['code_git_sha', 'config_version', 'fdc_index_version', 'config_source']
+          model_fields = list(TelemetryEvent.model_fields.keys())
+
+          missing = [f for f in required_fields if f not in model_fields]
+
+          if missing:
+              print(f'❌ Missing required telemetry fields: {missing}')
+              exit(1)
+
+          print('✅ TelemetryEvent schema has all required version tracking fields')
+          "
+
+  # Job 5: Fail-fast summary
+  ci-summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [unit-tests, config-validation, schema-validation]
+    if: always()
+
+    steps:
+      - name: Check all required jobs passed
+        run: |
+          if [ "${{ needs.unit-tests.result }}" != "success" ]; then
+            echo "❌ Unit tests failed"
+            exit 1
+          fi
+
+          if [ "${{ needs.config-validation.result }}" != "success" ]; then
+            echo "❌ Config validation failed"
+            exit 1
+          fi
+
+          if [ "${{ needs.schema-validation.result }}" != "success" ]; then
+            echo "❌ Schema validation failed"
+            exit 1
+          fi
+
+          echo "✅ All required CI checks passed"
+
+      - name: Post summary
+        if: always()
+        run: |
+          echo "## Pipeline CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Unit Tests: ${{ needs.unit-tests.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Config Validation: ${{ needs.config-validation.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Schema Validation: ${{ needs.schema-validation.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Integration tests run separately with database secrets." >> $GITHUB_STEP_SUMMARY

@@ -21,6 +21,16 @@ load_dotenv()
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent))
 
+# Add repo root to path for pipeline imports
+repo_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(repo_root))
+
+# Import pipeline components
+from pipeline.run import run_once
+from pipeline.config_loader import load_pipeline_config, get_code_git_sha
+from pipeline.fdc_index import load_fdc_index
+from pipeline.schemas import AlignmentRequest, DetectedFood
+
 from src.core.food_nutrients_loader import FoodNutrientsDataset, DishData
 from src.core.nutritionverse_prompts import (
     SYSTEM_MESSAGE,
@@ -85,6 +95,16 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+# Load pipeline components (cached for Streamlit)
+@st.cache_resource
+def load_pipeline_components():
+    """Load pipeline config and FDC index once (cached across reruns)."""
+    configs_path = repo_root / "configs"
+    config = load_pipeline_config(root=str(configs_path))
+    fdc_index = load_fdc_index()
+    code_sha = get_code_git_sha()
+    return config, fdc_index, code_sha
 
 # Initialize session state
 if "dataset" not in st.session_state:
@@ -280,13 +300,73 @@ async def run_single_dish_with_result(dish: DishData, model: str, include_micros
         if total_acc is not None:
             accuracy = 100 - total_acc
 
-    # Align predicted foods to FDC database
-    print(f"\n[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish {dish.dish_id}")
-    alignment_engine = AlignmentEngineAdapter()
+    # Align predicted foods to FDC database using pipeline
+    print(f"\n[APP] Running alignment through unified pipeline for dish {dish.dish_id}")
     database_aligned = None
     if "error" not in prediction:
-        print(f"[APP] Running database alignment...")
-        database_aligned = alignment_engine.align_prediction_batch(prediction)
+        print(f"[APP] Loading pipeline components...")
+        CONFIG, FDC, CODE_SHA = load_pipeline_components()
+        print(f"  Config: {CONFIG.config_version}, FDC: {FDC.version}, Code: {CODE_SHA}")
+
+        # Convert prediction to AlignmentRequest
+        detected_foods = [
+            DetectedFood(
+                name=food["name"],
+                form=food.get("form", "raw"),
+                mass_g=food.get("grams", 0.0),
+                confidence=food.get("confidence", 0.85)
+            )
+            for food in prediction.get("foods", [])
+        ]
+
+        request = AlignmentRequest(
+            image_id=dish.dish_id,
+            foods=detected_foods,
+            config_version=CONFIG.config_version
+        )
+
+        print(f"[APP] Running pipeline alignment...")
+        pipeline_result = run_once(
+            request=request,
+            cfg=CONFIG,
+            fdc_index=FDC,
+            allow_stage_z=True,  # Web app: allow branded fallback for graceful UX
+            code_git_sha=CODE_SHA
+        )
+
+        # Convert pipeline result back to legacy format for UI compatibility
+        database_aligned = {
+            "foods": [
+                {
+                    "name": f.name,
+                    "form": f.form,
+                    "mass_g": f.mass_g,
+                    "fdc_id": f.fdc_id,
+                    "fdc_name": f.fdc_name,
+                    "alignment_stage": f.alignment_stage,
+                    "conversion_applied": f.conversion_applied,
+                    "match_score": f.match_score,
+                    "calories": f.calories,
+                    "protein_g": f.protein_g,
+                    "carbs_g": f.carbs_g,
+                    "fat_g": f.fat_g,
+                    "telemetry": {
+                        "method": f.method,
+                        "method_reason": f.method_reason,
+                        "variant_chosen": f.variant_chosen
+                    }
+                }
+                for f in pipeline_result.foods
+            ],
+            "totals": {
+                "mass_g": pipeline_result.totals.mass_g,
+                "calories": pipeline_result.totals.calories,
+                "protein_g": pipeline_result.totals.protein_g,
+                "carbs_g": pipeline_result.totals.carbs_g,
+                "fat_g": pipeline_result.totals.fat_g
+            },
+            "telemetry_summary": pipeline_result.telemetry_summary
+        }
         print(f"[APP] Alignment result: available={database_aligned.get('available', False)}, foods={len(database_aligned.get('foods', []))}")
 
     result_entry = {
@@ -920,11 +1000,69 @@ def main():
 
                 st.session_state.prediction = prediction
 
-                # Align to database if prediction succeeded
+                # Align to database if prediction succeeded (using pipeline)
                 if "error" not in prediction:
-                    print(f"\n[APP] Running database alignment (Stage 5 with conversion) for single image...")
-                    alignment_engine = AlignmentEngineAdapter()
-                    st.session_state.database_aligned = alignment_engine.align_prediction_batch(prediction)
+                    print(f"\n[APP] Running database alignment through pipeline for single image...")
+                    CONFIG, FDC, CODE_SHA = load_pipeline_components()
+
+                    # Convert to pipeline format
+                    detected_foods = [
+                        DetectedFood(
+                            name=food["name"],
+                            form=food.get("form", "raw"),
+                            mass_g=food.get("grams", 0.0),
+                            confidence=food.get("confidence", 0.85)
+                        )
+                        for food in prediction.get("foods", [])
+                    ]
+
+                    request = AlignmentRequest(
+                        image_id=current_dish.dish_id,
+                        foods=detected_foods,
+                        config_version=CONFIG.config_version
+                    )
+
+                    pipeline_result = run_once(
+                        request=request,
+                        cfg=CONFIG,
+                        fdc_index=FDC,
+                        allow_stage_z=True,  # Web app: allow branded fallback
+                        code_git_sha=CODE_SHA
+                    )
+
+                    # Convert to legacy format for UI
+                    st.session_state.database_aligned = {
+                        "foods": [
+                            {
+                                "name": f.name,
+                                "form": f.form,
+                                "mass_g": f.mass_g,
+                                "fdc_id": f.fdc_id,
+                                "fdc_name": f.fdc_name,
+                                "alignment_stage": f.alignment_stage,
+                                "conversion_applied": f.conversion_applied,
+                                "match_score": f.match_score,
+                                "calories": f.calories,
+                                "protein_g": f.protein_g,
+                                "carbs_g": f.carbs_g,
+                                "fat_g": f.fat_g,
+                                "telemetry": {
+                                    "method": f.method,
+                                    "method_reason": f.method_reason,
+                                    "variant_chosen": f.variant_chosen
+                                }
+                            }
+                            for f in pipeline_result.foods
+                        ],
+                        "totals": {
+                            "mass_g": pipeline_result.totals.mass_g,
+                            "calories": pipeline_result.totals.calories,
+                            "protein_g": pipeline_result.totals.protein_g,
+                            "carbs_g": pipeline_result.totals.carbs_g,
+                            "fat_g": pipeline_result.totals.fat_g
+                        },
+                        "telemetry_summary": pipeline_result.telemetry_summary
+                    }
                 else:
                     st.session_state.database_aligned = None
 

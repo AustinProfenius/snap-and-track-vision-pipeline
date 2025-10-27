@@ -1,0 +1,14 @@
+# Class-specific Jaccard thresholds for Stage 1b alignment
+#
+# Lower thresholds for single-token classes with high FDC name verbosity
+# (e.g., "grape" vs "Grapes, red or green, Thompson seedless, raw")
+
+grape: 0.30          # Single-token, high verbosity in FDC
+cantaloupe: 0.30     # Single-token melon
+honeydew: 0.30       # Single-token melon
+almond: 0.30         # Single-token nut
+olive: 0.35          # Processing-heavy (pickled, stuffed, etc.)
+tomato: 0.35         # Processing-heavy (cherry, grape, etc.)
+
+# Default threshold for multi-token classes
+default: 0.45

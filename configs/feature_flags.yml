@@ -1,0 +1,19 @@
+# Feature flags for alignment pipeline behavior
+#
+# These flags control which stages are active and how they behave
+
+# Stage 2: Raw Foundation + conversion (PREFERRED)
+prefer_raw_foundation_convert: true
+
+# Stage 5: Proxy alignment for classes lacking Foundation/Legacy
+enable_proxy_alignment: true
+
+# Stage Z: Branded universal fallback (DISABLED by default in evaluations)
+# Set to false for reproducible testing, true for graceful end-user mode
+stageZ_branded_fallback: false
+
+# Vision model mode
+vision_mass_only: true
+
+# Stage 1: Strict cooked exact match gate
+strict_cooked_exact_gate: true

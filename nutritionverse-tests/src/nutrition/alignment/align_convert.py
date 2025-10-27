@@ -85,7 +85,11 @@ class FDCAlignmentWithConversion:
     def __init__(
         self,
         cook_cfg_path: Optional[Path] = None,
-        energy_bands_path: Optional[Path] = None
+        energy_bands_path: Optional[Path] = None,
+        # NEW: External config support for pipeline convergence
+        class_thresholds: Optional[Dict[str, float]] = None,
+        negative_vocab: Optional[Dict[str, List[str]]] = None,
+        feature_flags: Optional[Dict[str, bool]] = None
     ):
         """
         Initialize alignment engine.
@@ -93,9 +97,28 @@ class FDCAlignmentWithConversion:
         Args:
             cook_cfg_path: Path to cook_conversions.v2.json
             energy_bands_path: Path to energy_bands.json
+            class_thresholds: Per-class Jaccard thresholds (or None for defaults)
+            negative_vocab: Per-class negative vocabulary (or None for defaults)
+            feature_flags: Feature flags dict (or None for defaults)
         """
         self.cook_cfg = load_cook_conversions(cook_cfg_path)
         self.energy_bands = load_energy_bands(energy_bands_path)
+
+        # NEW: Store external configs (or None to trigger fallback in align methods)
+        self._external_class_thresholds = class_thresholds
+        self._external_negative_vocab = negative_vocab
+        self._external_feature_flags = feature_flags
+
+        # Track config source for telemetry
+        self.config_source = (
+            "external" if any([class_thresholds, negative_vocab, feature_flags])
+            else "fallback"
+        )
+
+        # Emit warning if using fallback
+        if self.config_source == "fallback":
+            print("[WARNING] Using hardcoded config defaults in align_convert.py.")
+            print("[WARNING] Load from configs/ directory for reproducibility.")
 
         # Telemetry counters for micro-fixes (Fix 5.6) + Stage Z
         self.telemetry = {
@@ -550,13 +573,20 @@ class FDCAlignmentWithConversion:
         }
 
         # Class-specific negatives (exclude processed/derived forms)
-        NEGATIVES_BY_CLASS = {
-            "apple": {"strudel", "pie", "juice", "sauce", "chip", "dried"},
-            "grape": {"juice", "jam", "jelly", "raisin"},
-            "almond": {"oil", "butter", "flour", "meal", "paste"},  # NEW
-            "potato": {"bread", "flour", "starch", "powder"},
-            "sweet_potato": {"leave", "leaf", "flour", "starch", "powder"},
-        }
+        # Use external config if provided, otherwise fall back to hardcoded defaults
+        if self._external_negative_vocab:
+            NEGATIVES_BY_CLASS = {
+                cls: set(words) for cls, words in self._external_negative_vocab.items()
+            }
+        else:
+            # Fallback to hardcoded defaults
+            NEGATIVES_BY_CLASS = {
+                "apple": {"strudel", "pie", "juice", "sauce", "chip", "dried"},
+                "grape": {"juice", "jam", "jelly", "raisin"},
+                "almond": {"oil", "butter", "flour", "meal", "paste"},  # NEW
+                "potato": {"bread", "flour", "starch", "powder"},
+                "sweet_potato": {"leave", "leaf", "flour", "starch", "powder"},
+            }
 
         def _norm_token(t: str) -> str:
             """Normalize token: strip punctuation, plural 's', lowercase."""
@@ -598,14 +628,19 @@ class FDCAlignmentWithConversion:
             threshold = 0.55  # Standard threshold
 
         # Class-specific threshold overrides (for single-token matching leniency)
-        CLASS_THRESHOLDS = {
-            "grape": 0.30,        # Single-token, high verbosity in FDC
-            "cantaloupe": 0.30,   # Single-token melon
-            "honeydew": 0.30,     # Single-token melon
-            "almond": 0.30,       # Single-token nut
-            "olive": 0.35,        # Processing-heavy (pickled, stuffed, etc.)
-            "tomato": 0.35,       # Processing-heavy (cherry, grape, etc.)
-        }
+        # Use external config if provided, otherwise fall back to hardcoded defaults
+        if self._external_class_thresholds:
+            CLASS_THRESHOLDS = self._external_class_thresholds
+        else:
+            # Fallback to hardcoded defaults
+            CLASS_THRESHOLDS = {
+                "grape": 0.30,        # Single-token, high verbosity in FDC
+                "cantaloupe": 0.30,   # Single-token melon
+                "honeydew": 0.30,     # Single-token melon
+                "almond": 0.30,       # Single-token nut
+                "olive": 0.35,        # Processing-heavy (pickled, stuffed, etc.)
+                "tomato": 0.35,       # Processing-heavy (cherry, grape, etc.)
+            }
         threshold = CLASS_THRESHOLDS.get(base_class, threshold)
 
         for entry in raw_foundation:

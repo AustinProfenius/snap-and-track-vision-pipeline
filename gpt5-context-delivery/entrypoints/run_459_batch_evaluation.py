@@ -34,9 +34,18 @@ load_dotenv()
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
-# Import alignment engine and database
-from src.nutrition.alignment.align_convert import FDCAlignmentWithConversion, print_alignment_banner
-from src.adapters.fdc_database import FDCDatabase
+# Add repo root to path for pipeline imports
+repo_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(repo_root))
+
+# Import pipeline components
+from pipeline.run import run_once
+from pipeline.config_loader import load_pipeline_config, get_code_git_sha
+from pipeline.fdc_index import load_fdc_index
+from pipeline.schemas import AlignmentRequest, DetectedFood
+
+# Import legacy utilities (keep for compatibility)
+from src.nutrition.alignment.align_convert import print_alignment_banner
 from tools.eval_aggregator import compute_telemetry_stats, validate_telemetry_schema
 
 
@@ -169,9 +178,18 @@ def run_batch_evaluation(batch: List[Dict[str, Any]], output_dir: Path):
     # Print alignment banner
     print_alignment_banner()
 
-    # Initialize alignment engine and FDC database
-    aligner = FDCAlignmentWithConversion()
-    fdc_db = FDCDatabase()
+    # Load pipeline components ONCE
+    print("Loading pipeline configuration...")
+    configs_path = repo_root / "configs"
+    CONFIG = load_pipeline_config(root=str(configs_path))
+    print(f"  Config version: {CONFIG.config_version}")
+
+    print("Loading FDC index...")
+    FDC = load_fdc_index()
+    print(f"  FDC version: {FDC.version}")
+
+    CODE_SHA = get_code_git_sha()
+    print(f"  Code SHA: {CODE_SHA}\n")
 
     # Track results
     results = []
@@ -198,13 +216,122 @@ def run_batch_evaluation(batch: List[Dict[str, Any]], output_dir: Path):
         if idx % 50 == 0 or idx == 1:
             print(f"[{idx}/{len(batch)}] Processing...")
 
-        # Get FDC candidates
-        fdc_candidates = fdc_db.search_foods(predicted_name, limit=50)
+        # Create pipeline request
+        detected_food = DetectedFood(
+            name=predicted_name,
+            form=predicted_form,
+            mass_g=100.0,  # Use 100g for per-100g calculations
+            confidence=confidence
+        )
 
-        if not fdc_candidates:
-            if verbose:
-                print(f"  [{item_id}] No FDC candidates found")
+        request = AlignmentRequest(
+            image_id=item_id,
+            foods=[detected_food],
+            config_version=CONFIG.config_version
+        )
 
+        # Run through pipeline
+        try:
+            pipeline_result = run_once(
+                request=request,
+                cfg=CONFIG,
+                fdc_index=FDC,
+                allow_stage_z=False,  # Evaluation mode: no branded fallback
+                code_git_sha=CODE_SHA
+            )
+
+            # Extract first food result
+            food_result = pipeline_result.foods[0] if pipeline_result.foods else None
+
+            if not food_result or food_result.alignment_stage == "stage0_no_candidates":
+                if verbose:
+                    print(f"  [{item_id}] No FDC candidates found")
+
+                results.append({
+                    "dish_id": item_id,
+                    "image_id": item.get("image_id", "unknown"),
+                    "predicted_name": predicted_name,
+                    "predicted_form": predicted_form,
+                    "predicted_kcal_100g": predicted_kcal,
+                    "fdc_id": None,
+                    "fdc_name": "NO_MATCH",
+                    "telemetry": {
+                        "alignment_stage": "stage0_no_candidates",
+                        "method": predicted_form or "unknown",
+                        "conversion_applied": False,
+                        "candidate_pool_size": 0,
+                        "candidate_pool_raw_foundation": 0,
+                        "candidate_pool_cooked_sr_legacy": 0,
+                        "candidate_pool_branded": 0
+                    }
+                })
+                stage_distribution["stage0_no_candidates"] += 1
+                continue
+
+            # Extract telemetry from pipeline result
+            stage = food_result.alignment_stage
+            method = food_result.method or "unknown"
+
+            # Track distributions
+            stage_distribution[stage] += 1
+            method_distribution[method] += 1
+
+            # Track unknowns
+            if stage == "unknown":
+                unknown_stages.append(item_id)
+            if method == "unknown":
+                unknown_methods.append(item_id)
+
+            # Track Stage 5 usage
+            if stage == "stage5_proxy_alignment":
+                stage5_items.append({
+                    "item_id": item_id,
+                    "predicted_name": predicted_name,
+                    "fdc_name": food_result.fdc_name or "N/A",
+                    "proxy_formula": food_result.method_reason or "N/A"
+                })
+
+            # Track branded usage
+            if stage in ["stage3_branded_cooked", "stage4_branded_energy", "stageZ_branded_last_resort"]:
+                is_tuna_salad = "tuna" in predicted_name.lower() and "salad" in predicted_name.lower()
+                if is_tuna_salad:
+                    tuna_salad_items.append(item_id)
+                else:
+                    branded_items.append({
+                        "item_id": item_id,
+                        "predicted_name": predicted_name,
+                        "fdc_name": food_result.fdc_name or "N/A",
+                        "stage": stage
+                    })
+
+            # Store result (convert pipeline format to legacy format for compatibility)
+            results.append({
+                "dish_id": item_id,
+                "image_id": item.get("image_id", "unknown"),
+                "predicted_name": predicted_name,
+                "predicted_form": predicted_form,
+                "predicted_kcal_100g": predicted_kcal,
+                "fdc_id": food_result.fdc_id,
+                "fdc_name": food_result.fdc_name,
+                "protein_100g": food_result.protein_g,
+                "carbs_100g": food_result.carbs_g,
+                "fat_100g": food_result.fat_g,
+                "kcal_100g": food_result.calories,
+                "confidence": confidence,
+                "telemetry": {
+                    "alignment_stage": stage,
+                    "method": method,
+                    "conversion_applied": food_result.conversion_applied or False,
+                    "candidate_pool_size": 0,  # Not directly available in new format
+                    "candidate_pool_raw_foundation": 0,
+                    "candidate_pool_cooked_sr_legacy": 0,
+                    "candidate_pool_branded": 0
+                },
+                "provenance": {}
+            })
+
+        except Exception as e:
+            print(f"  ERROR processing {item_id}: {str(e)}")
             results.append({
                 "dish_id": item_id,
                 "image_id": item.get("image_id", "unknown"),
@@ -212,82 +339,15 @@ def run_batch_evaluation(batch: List[Dict[str, Any]], output_dir: Path):
                 "predicted_form": predicted_form,
                 "predicted_kcal_100g": predicted_kcal,
                 "fdc_id": None,
-                "fdc_name": "NO_MATCH",
+                "fdc_name": "ERROR",
                 "telemetry": {
-                    "alignment_stage": "stage0_no_candidates",
-                    "method": predicted_form or "unknown",
+                    "alignment_stage": "error",
+                    "method": "error",
                     "conversion_applied": False,
-                    "candidate_pool_size": 0,
-                    "candidate_pool_raw_foundation": 0,
-                    "candidate_pool_cooked_sr_legacy": 0,
-                    "candidate_pool_branded": 0
+                    "error": str(e)
                 }
             })
-            stage_distribution["stage0_no_candidates"] += 1
-            continue
-
-        # Run alignment
-        result = aligner.align_food_item(
-            predicted_name=predicted_name,
-            predicted_form=predicted_form,
-            predicted_kcal_100g=predicted_kcal,
-            fdc_candidates=fdc_candidates,
-            confidence=confidence
-        )
-
-        # Extract telemetry
-        stage = result.telemetry.get("alignment_stage", "unknown")
-        method = result.telemetry.get("method", "unknown")
-
-        # Track distributions
-        stage_distribution[stage] += 1
-        method_distribution[method] += 1
-
-        # Track unknowns
-        if stage == "unknown":
-            unknown_stages.append(item_id)
-        if method == "unknown":
-            unknown_methods.append(item_id)
-
-        # Track Stage 5 usage
-        if stage == "stage5_proxy_alignment":
-            stage5_items.append({
-                "item_id": item_id,
-                "predicted_name": predicted_name,
-                "fdc_name": result.name,
-                "proxy_formula": result.telemetry.get("proxy_formula", "N/A")
-            })
-
-        # Track branded usage
-        if stage in ["stage3_branded_cooked", "stage4_branded_energy", "stageZ_branded_last_resort"]:
-            is_tuna_salad = "tuna" in predicted_name.lower() and "salad" in predicted_name.lower()
-            if is_tuna_salad:
-                tuna_salad_items.append(item_id)
-            else:
-                branded_items.append({
-                    "item_id": item_id,
-                    "predicted_name": predicted_name,
-                    "fdc_name": result.name,
-                    "stage": stage
-                })
-
-        # Store result
-        results.append({
-            "dish_id": item_id,
-            "image_id": item.get("image_id", "unknown"),
-            "predicted_name": predicted_name,
-            "predicted_form": predicted_form,
-            "predicted_kcal_100g": predicted_kcal,
-            "fdc_id": result.fdc_id,
-            "fdc_name": result.name,
-            "protein_100g": result.protein_100g,
-            "carbs_100g": result.carbs_100g,
-            "fat_100g": result.fat_100g,
-            "kcal_100g": result.kcal_100g,
-            "confidence": result.confidence,
-            "telemetry": result.telemetry,
-            "provenance": getattr(result, 'provenance', {})
-        })
+            stage_distribution["error"] += 1
 
     print(f"\n✓ Processed all {len(batch)} items\n")
 

@@ -1,0 +1,121 @@
+# Pre-commit hooks for pipeline convergence project
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Python code formatting
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3
+        files: ^(pipeline|tests|gpt5-context-delivery)/.*\.py$
+
+  # Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+        files: ^(pipeline|tests|gpt5-context-delivery)/.*\.py$
+
+  # Linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: ["--max-line-length=120", "--extend-ignore=E203,W503"]
+        files: ^(pipeline|tests|gpt5-context-delivery)/.*\.py$
+
+  # Type checking (optional but recommended)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        args: ["--ignore-missing-imports", "--no-strict-optional"]
+        files: ^pipeline/.*\.py$
+        additional_dependencies: [pydantic>=2.0]
+
+  # YAML validation
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+        files: ^configs/.*\.yml$
+      - id: check-json
+        files: ^configs/.*\.json$
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+
+  # CRITICAL: Pipeline unit tests must pass before commit
+  - repo: local
+    hooks:
+      - id: pipeline-unit-tests
+        name: Pipeline Unit Tests
+        entry: pytest
+        args:
+          - "tests/test_config_loader.py"
+          - "tests/test_negative_vocab.py"
+          - "-v"
+          - "--tb=short"
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit]
+
+      # Config drift detection - fail if critical thresholds changed
+      - id: config-drift-detection
+        name: Config Drift Detection
+        entry: python
+        args:
+          - "-c"
+          - |
+            from pipeline.config_loader import load_pipeline_config
+            from pathlib import Path
+            cfg = load_pipeline_config(root=str(Path.cwd() / "configs"))
+
+            # Critical thresholds that should not change without approval
+            critical_values = {
+                "grape": 0.30,
+                "cantaloupe": 0.30,
+                "honeydew": 0.30,
+                "almond": 0.30
+            }
+
+            for food, expected_threshold in critical_values.items():
+                actual = cfg.thresholds.get(food)
+                if actual != expected_threshold:
+                    print(f"❌ CRITICAL: {food} threshold changed from {expected_threshold} to {actual}")
+                    print(f"   This may impact evaluation results. Please review PIPELINE_CONVERGENCE_PROGRESS.md")
+                    exit(1)
+
+            # Verify cucumber safeguards present
+            if "cucumber" in cfg.neg_vocab:
+                cucumber_negatives = [n.lower() for n in cfg.neg_vocab["cucumber"]]
+                if not any("sea cucumber" in n for n in cucumber_negatives):
+                    print("❌ CRITICAL: Cucumber safeguard (sea cucumber) removed")
+                    exit(1)
+
+            # Verify olive safeguards present
+            if "olive" in cfg.neg_vocab:
+                olive_negatives = [n.lower() for n in cfg.neg_vocab["olive"]]
+                if not any("oil" in n for n in olive_negatives):
+                    print("❌ CRITICAL: Olive safeguard (oil) removed")
+                    exit(1)
+
+            print("✅ Config validation passed")
+        language: system
+        pass_filenames: false
+        files: ^configs/.*\.(yml|json)$
+        stages: [commit]
+
+# Configuration
+default_language_version:
+  python: python3
+
+# Only run on changed files by default
+default_stages: [commit]
+
+# Fail fast - stop on first failure
+fail_fast: false

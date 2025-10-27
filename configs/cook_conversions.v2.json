@@ -1,0 +1,371 @@
+{
+  "$schema": "cook-conversions.v2",
+  "globals": {
+    "defaults": { "energy_clamp_sigma": 2.0 },
+    "method_aliases": {
+      "sauteed": "pan_seared",
+      "saute": "pan_seared",
+      "pan-fried": "pan_seared",
+      "pan fry": "pan_seared",
+      "panfry": "pan_seared",
+      "seared": "pan_seared",
+      "sear": "pan_seared",
+      "stir-fried": "pan_seared",
+      "stir fried": "pan_seared",
+      "stirfry": "pan_seared",
+      "stir fry": "pan_seared",
+      "baked": "roasted_oven",
+      "air-fried": "roasted_oven",
+      "air fried": "roasted_oven",
+      "airfryer": "roasted_oven",
+      "air fryer": "roasted_oven",
+      "poached": "boiled",
+      "steam": "steamed",
+      "slow-cooked": "braised"
+    }
+  },
+
+  "fallback_policies": {
+    "meat_poultry": {
+      "generic_cooked": ["grilled", "pan_seared", "roasted_oven"],
+      "selection_rule": "dry_heat_preferred"
+    },
+    "starch_grain": {
+      "generic_cooked": ["boiled", "steamed"],
+      "selection_rule": "moist_heat_default"
+    },
+    "vegetable": {
+      "generic_cooked": ["steamed", "boiled", "roasted_oven"],
+      "selection_rule": "moist_then_dry_if_browning"
+    }
+  },
+
+  "classes": {
+    "beef_steak": {
+      "edible_yield": { "mean": 0.97, "sd": 0.01 },
+      "method_profiles": {
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.29, "sd": 0.04 }, "fat_render_fraction": { "mean": 0.25, "sd": 0.06 }, "macro_retention": { "protein": 0.96, "fat": 0.92, "carbs": 1.0 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.25, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 1.5, "sd": 0.7 }, "fat_render_fraction": { "mean": 0.20, "sd": 0.05 }, "macro_retention": { "protein": 0.96, "fat": 0.93, "carbs": 1.0 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.22, "sd": 0.04 }, "fat_render_fraction": { "mean": 0.23, "sd": 0.05 }, "macro_retention": { "protein": 0.97, "fat": 0.93, "carbs": 1.0 } },
+        "braised":      { "pipeline": ["boiled_short", "roasted_oven"] },
+        "boiled_short": { "mass_change": { "type": "shrinkage", "mean": 0.15, "sd": 0.03 }, "macro_retention": { "protein": 0.97, "fat": 0.95, "carbs": 1.0 } }
+      },
+      "fallback": "pan_seared"
+    },
+
+    "beef_ground_85": {
+      "edible_yield": { "mean": 0.98, "sd": 0.01 },
+      "method_profiles": {
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.27, "sd": 0.04 }, "fat_render_fraction": { "mean": 0.30, "sd": 0.06 }, "surface_oil_uptake_g_per_100g": { "mean": 0.5, "sd": 0.3 }, "macro_retention": { "protein": 0.97, "fat": 0.90, "carbs": 1.0 } },
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.30, "sd": 0.05 }, "fat_render_fraction": { "mean": 0.35, "sd": 0.07 }, "macro_retention": { "protein": 0.97, "fat": 0.90, "carbs": 1.0 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.24, "sd": 0.04 }, "fat_render_fraction": { "mean": 0.28, "sd": 0.05 } }
+      },
+      "fallback": "pan_seared"
+    },
+
+    "pork_chop": {
+      "edible_yield": { "mean": 0.95, "sd": 0.02 },
+      "method_profiles": {
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.28, "sd": 0.05 }, "fat_render_fraction": { "mean": 0.18, "sd": 0.05 }, "macro_retention": { "protein": 0.97, "fat": 0.93, "carbs": 1.0 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.24, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 1.2, "sd": 0.6 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.20, "sd": 0.03 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "chicken_breast": {
+      "edible_yield": { "mean": 0.99, "sd": 0.005 },
+      "method_profiles": {
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.27, "sd": 0.03 }, "macro_retention": { "protein": 0.98, "fat": 0.92, "carbs": 1.0 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.24, "sd": 0.03 }, "macro_retention": { "protein": 0.98, "fat": 0.93, "carbs": 1.0 } },
+        "poached":      { "mass_change": { "type": "shrinkage", "mean": 0.18, "sd": 0.03 }, "macro_retention": { "protein": 0.99, "fat": 0.97, "carbs": 1.0 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.26, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 1.0, "sd": 0.5 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "chicken_thigh": {
+      "edible_yield": { "mean": 0.97, "sd": 0.01 },
+      "method_profiles": {
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.27, "sd": 0.04 }, "fat_render_fraction": { "mean": 0.22, "sd": 0.05 } },
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.29, "sd": 0.05 }, "fat_render_fraction": { "mean": 0.25, "sd": 0.06 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.25, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 1.2, "sd": 0.6 } },
+        "braised":      { "mass_change": { "type": "shrinkage", "mean": 0.20, "sd": 0.04 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "turkey_breast": {
+      "edible_yield": { "mean": 0.98, "sd": 0.01 },
+      "method_profiles": {
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.24, "sd": 0.03 } },
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.26, "sd": 0.03 } },
+        "poached":      { "mass_change": { "type": "shrinkage", "mean": 0.16, "sd": 0.03 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "salmon_fillet": {
+      "edible_yield": { "mean": 0.99, "sd": 0.005 },
+      "method_profiles": {
+        "grilled":      { "mass_change": { "type": "shrinkage", "mean": 0.18, "sd": 0.03 }, "fat_render_fraction": { "mean": 0.12, "sd": 0.04 }, "macro_retention": { "protein": 0.98, "fat": 0.92, "carbs": 1.0 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.16, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.8, "sd": 0.4 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.15, "sd": 0.03 } },
+        "poached":      { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.02 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "white_fish_cod": {
+      "edible_yield": { "mean": 0.99, "sd": 0.005 },
+      "method_profiles": {
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.14, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.9, "sd": 0.4 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.03 } },
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.02 } },
+        "boiled":       { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.02 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "tuna_steak": {
+      "edible_yield": { "mean": 0.99, "sd": 0.005 },
+      "method_profiles": {
+        "grilled":    { "mass_change": { "type": "shrinkage", "mean": 0.16, "sd": 0.03 }, "macro_retention": { "protein": 0.98, "fat": 0.95, "carbs": 1.0 } },
+        "pan_seared": { "mass_change": { "type": "shrinkage", "mean": 0.14, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.7, "sd": 0.4 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.03 } }
+      },
+      "fallback": "pan_seared"
+    },
+
+    "shrimp": {
+      "edible_yield": { "mean": 0.99, "sd": 0.005 },
+      "method_profiles": {
+        "boiled":   { "mass_change": { "type": "shrinkage", "mean": 0.20, "sd": 0.04 } },
+        "pan_seared": { "mass_change": { "type": "shrinkage", "mean": 0.18, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 0.8, "sd": 0.4 } },
+        "grilled":  { "mass_change": { "type": "shrinkage", "mean": 0.19, "sd": 0.04 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "egg_whole": {
+      "method_profiles": {
+        "scrambled": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 2.0, "sd": 0.8 } },
+        "fried":     { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 3.0, "sd": 1.0 } },
+        "boiled":    { "mass_change": { "type": "shrinkage", "mean": 0.06, "sd": 0.02 } }
+      },
+      "fallback": "scrambled"
+    },
+
+    "egg_white": {
+      "method_profiles": {
+        "scrambled": { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.02 } },
+        "boiled":    { "mass_change": { "type": "shrinkage", "mean": 0.05, "sd": 0.02 } }
+      },
+      "fallback": "scrambled"
+    },
+
+    "rice_white": {
+      "method_profiles": {
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.8, "factor_sd": 0.2 } },
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.6, "factor_sd": 0.2 } },
+        "fried":   { "mass_change": { "type": "hydration", "factor_mean": 2.2, "factor_sd": 0.2 }, "surface_oil_uptake_g_per_100g": { "mean": 4.0, "sd": 1.5 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "rice_brown": {
+      "method_profiles": {
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.6, "factor_sd": 0.2 } },
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.5, "factor_sd": 0.2 } },
+        "fried":   { "mass_change": { "type": "hydration", "factor_mean": 2.1, "factor_sd": 0.2 }, "surface_oil_uptake_g_per_100g": { "mean": 3.5, "sd": 1.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "pasta_wheat": {
+      "method_profiles": {
+        "boiled":   { "mass_change": { "type": "hydration", "factor_mean": 2.0, "factor_sd": 0.15 } },
+        "al_dente": { "mass_change": { "type": "hydration", "factor_mean": 1.8, "factor_sd": 0.15 } },
+        "fried":    { "mass_change": { "type": "hydration", "factor_mean": 1.7, "factor_sd": 0.15 }, "surface_oil_uptake_g_per_100g": { "mean": 3.0, "sd": 1.0 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "couscous": {
+      "method_profiles": {
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.7, "factor_sd": 0.2 } },
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.5, "factor_sd": 0.2 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "quinoa": {
+      "method_profiles": {
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.7, "factor_sd": 0.2 } },
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.6, "factor_sd": 0.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "oats_rolled": {
+      "method_profiles": {
+        "boiled":   { "mass_change": { "type": "hydration", "factor_mean": 2.2, "factor_sd": 0.2 } },
+        "microwaved": { "mass_change": { "type": "hydration", "factor_mean": 2.1, "factor_sd": 0.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "potato_russet": {
+      "method_profiles": {
+        "boiled":       { "mass_change": { "type": "hydration", "factor_mean": 1.10, "factor_sd": 0.05 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.8, "sd": 0.4 } },
+        "mashed":       { "mass_change": { "type": "hydration", "factor_mean": 1.20, "factor_sd": 0.08 } },
+        "wedges":       { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 1.0, "sd": 0.5 } },
+        "hash_browns":  { "mass_change": { "type": "shrinkage", "mean": 0.24, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 11.5, "sd": 3.5 }, "macro_retention": { "protein": 0.98, "fat": 1.0, "carbs": 0.97 } },
+        "fries":        { "mass_change": { "type": "shrinkage", "mean": 0.15, "sd": 0.05 }, "surface_oil_uptake_g_per_100g": { "mean": 11, "sd": 3 } },
+        "homefries":    { "mass_change": { "type": "shrinkage", "mean": 0.18, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 7.5, "sd": 2.5 }, "macro_retention": { "protein": 0.98, "fat": 1.0, "carbs": 0.98 } },
+        "tater_tots":   { "mass_change": { "type": "shrinkage", "mean": 0.20, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 12.0, "sd": 3.5 }, "macro_retention": { "protein": 0.98, "fat": 1.0, "carbs": 0.97 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "sweet_potato": {
+      "method_profiles": {
+        "boiled":       { "mass_change": { "type": "hydration", "factor_mean": 1.08, "factor_sd": 0.05 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.04 } },
+        "mashed":       { "mass_change": { "type": "hydration", "factor_mean": 1.18, "factor_sd": 0.08 } }
+      },
+      "fallback": "roasted_oven"
+    },
+
+    "yam": {
+      "method_profiles": {
+        "boiled": { "mass_change": { "type": "hydration", "factor_mean": 1.08, "factor_sd": 0.05 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.04 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "beans_black": {
+      "method_profiles": {
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.4, "factor_sd": 0.2 }, "macro_retention": { "protein": 0.98, "fat": 0.98, "carbs": 0.98 } },
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.3, "factor_sd": 0.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "beans_kidney": {
+      "method_profiles": {
+        "boiled": { "mass_change": { "type": "hydration", "factor_mean": 2.4, "factor_sd": 0.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "chickpeas": {
+      "method_profiles": {
+        "boiled":  { "mass_change": { "type": "hydration", "factor_mean": 2.3, "factor_sd": 0.2 } },
+        "steamed": { "mass_change": { "type": "hydration", "factor_mean": 2.2, "factor_sd": 0.2 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.04 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "lentils_brown": {
+      "method_profiles": {
+        "boiled": { "mass_change": { "type": "hydration", "factor_mean": 2.5, "factor_sd": 0.2 } }
+      },
+      "fallback": "boiled"
+    },
+
+    "broccoli": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.05, "sd": 0.02 } },
+        "boiled":       { "mass_change": { "type": "hydration", "factor_mean": 1.03, "factor_sd": 0.03 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.03 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.04 }, "surface_oil_uptake_g_per_100g": { "mean": 0.8, "sd": 0.3 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "carrot": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.04, "sd": 0.02 } },
+        "boiled":       { "mass_change": { "type": "hydration", "factor_mean": 1.05, "factor_sd": 0.04 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "spinach": {
+      "method_profiles": {
+        "steamed":    { "mass_change": { "type": "shrinkage", "mean": 0.80, "sd": 0.05 } },
+        "pan_seared": { "mass_change": { "type": "shrinkage", "mean": 0.82, "sd": 0.05 }, "surface_oil_uptake_g_per_100g": { "mean": 0.7, "sd": 0.3 } },
+        "boiled":     { "mass_change": { "type": "shrinkage", "mean": 0.78, "sd": 0.05 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "mushrooms_white": {
+      "method_profiles": {
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.30, "sd": 0.07 }, "surface_oil_uptake_g_per_100g": { "mean": 1.5, "sd": 0.7 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.28, "sd": 0.06 } },
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.20, "sd": 0.05 } }
+      },
+      "fallback": "pan_seared"
+    },
+
+    "bell_pepper": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.06, "sd": 0.02 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.5, "sd": 0.2 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "onion": {
+      "method_profiles": {
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.35, "sd": 0.06 }, "surface_oil_uptake_g_per_100g": { "mean": 1.5, "sd": 0.6 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.30, "sd": 0.06 } },
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 } }
+      },
+      "fallback": "pan_seared"
+    },
+
+    "cauliflower": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.06, "sd": 0.02 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.6, "sd": 0.3 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "asparagus": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.07, "sd": 0.02 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.03 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.03 }, "surface_oil_uptake_g_per_100g": { "mean": 0.5, "sd": 0.2 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "zucchini": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.08, "sd": 0.03 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.04 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.15, "sd": 0.05 }, "surface_oil_uptake_g_per_100g": { "mean": 0.7, "sd": 0.3 } }
+      },
+      "fallback": "steamed"
+    },
+
+    "tomato": {
+      "method_profiles": {
+        "steamed":      { "mass_change": { "type": "shrinkage", "mean": 0.05, "sd": 0.02 } },
+        "roasted_oven": { "mass_change": { "type": "shrinkage", "mean": 0.12, "sd": 0.04 } },
+        "pan_seared":   { "mass_change": { "type": "shrinkage", "mean": 0.10, "sd": 0.04 } }
+      },
+      "fallback": "roasted_oven"
+    }
+  }
+}
