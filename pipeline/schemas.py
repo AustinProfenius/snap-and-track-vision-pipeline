@@ -38,6 +38,10 @@ class FoodAlignment(BaseModel):
     conversion_applied: bool = False
     match_score: Optional[float] = None
 
+    # Phase 7.1: StageZ-specific fields (energy-only proxies have no FDC ID)
+    stagez_tag: Optional[str] = None  # e.g., "beef_steak", "chicken_breast"
+    stagez_energy_kcal: Optional[float] = None  # Energy used for proxy
+
     # Nutrition (per 100g from FDC, scaled by mass_g)
     calories: Optional[float] = None
     protein_g: Optional[float] = None

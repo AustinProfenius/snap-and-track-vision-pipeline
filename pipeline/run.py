@@ -84,6 +84,7 @@ def run_once(
         feature_flags={**cfg.feature_flags, "stageZ_branded_fallback": allow_stage_z},
         variants=cfg.variants,
         proxy_rules=cfg.proxy_rules,
+        category_allowlist=cfg.category_allowlist,  # Phase 7.1: Form-aware category gates
         fdc_db=adapter.fdc_db  # Phase 7: Inject FDC database for Stage 5 proxy
     )
 
@@ -112,16 +113,33 @@ def run_once(
     telemetry_events = []
 
     for idx, food_result in enumerate(aligned_result.get("foods", [])):
+        # Phase 7.1: Handle StageZ string fdc_id (prevents Pydantic validation error)
+        _fdc_id = food_result.get("fdc_id")
+        _stage = food_result.get("alignment_stage", "unknown")
+        stagez_tag = None
+        stagez_energy_kcal = None
+
+        # Check if this is a StageZ result with string fdc_id
+        if _stage and _stage.lower().startswith("stagez"):
+            # StageZ emits string IDs like "stagez_beef_steak"
+            if isinstance(_fdc_id, str) and _fdc_id.lower().startswith("stagez_"):
+                stagez_tag = _fdc_id  # Store the tag
+                _fdc_id = None  # Clear fdc_id (StageZ has no real FDC entry)
+            # Extract energy if available in telemetry
+            stagez_energy_kcal = food_result.get("telemetry", {}).get("energy_kcal")
+
         # Build FoodAlignment from result
         aligned_food = FoodAlignment(
             name=food_result.get("name", ""),
             form=food_result.get("form", ""),
             mass_g=food_result.get("mass_g", 0.0),
-            alignment_stage=food_result.get("alignment_stage", "unknown"),
-            fdc_id=food_result.get("fdc_id"),
+            alignment_stage=_stage,
+            fdc_id=_fdc_id if isinstance(_fdc_id, int) else None,
             fdc_name=food_result.get("fdc_name"),
             conversion_applied=food_result.get("conversion_applied", False),
             match_score=food_result.get("match_score"),
+            stagez_tag=stagez_tag,  # Phase 7.1: StageZ tag
+            stagez_energy_kcal=stagez_energy_kcal,  # Phase 7.1: StageZ energy
             calories=food_result.get("calories"),
             protein_g=food_result.get("protein_g"),
             carbs_g=food_result.get("carbs_g"),

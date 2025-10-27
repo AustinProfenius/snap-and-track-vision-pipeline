@@ -29,6 +29,7 @@ cucumber:
   - sea cucumber
   - yane
   - alaska native
+  - pickled  # Phase 7.1: unless method indicates pickled
 
 # Olive safeguard: prevent matching "Oil olive salad or cooking"
 olive:
@@ -36,6 +37,8 @@ olive:
   - extra virgin
   - light tasting
   - salad or cooking
+  - loaf  # Phase 7.1: prevent "Olive loaf pork"
+  - spread  # Phase 7.1
 
 potato:
   - bread
@@ -73,3 +76,35 @@ strawberry:
 # Salad safeguard: prefer leafy greens over dressings
 salad:
   - dressing
+
+# Phase 7.1: Additional safeguards from 370-image batch analysis
+
+# Celery safeguard: prevent matching soups
+celery:
+  - cream of
+  - soup
+  - condensed
+
+# Spinach safeguard: prevent matching baby food
+spinach:
+  - baby food
+  - babyfood
+  - puree
+  - creamed
+  - strained
+
+# Tomato safeguard: prevent matching soups
+tomato:
+  - soup
+  - condensed
+
+# Eggs safeguard: prevent matching bread/composite products
+egg:
+  - bread egg
+  - toast
+  - sandwich
+
+# Avocado safeguard: prevent matching oil
+avocado:
+  - oil
+  - spread

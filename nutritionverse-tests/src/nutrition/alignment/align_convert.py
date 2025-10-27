@@ -92,6 +92,7 @@ class FDCAlignmentWithConversion:
         feature_flags: Optional[Dict[str, bool]] = None,
         variants: Optional[Dict[str, List[str]]] = None,
         proxy_rules: Optional[Dict[str, str]] = None,
+        category_allowlist: Optional[Dict[str, Any]] = None,  # Phase 7.1: Form-aware category gates
         fdc_db: Any = None  # Phase 7: FDC database instance for Stage 5 proxy search
     ):
         """
@@ -105,6 +106,7 @@ class FDCAlignmentWithConversion:
             feature_flags: Feature flags dict (or None for defaults)
             variants: Food variant mappings for canonical query generation (Phase 7)
             proxy_rules: Stage 5 proxy alignment rules for prepared foods (Phase 7)
+            category_allowlist: Form-aware category gates for raw produce (Phase 7.1)
             fdc_db: FDC database instance for Stage 5 proxy search (Phase 7)
         """
         self.cook_cfg = load_cook_conversions(cook_cfg_path)
@@ -116,11 +118,12 @@ class FDCAlignmentWithConversion:
         self._external_feature_flags = feature_flags
         self._external_variants = variants or {}
         self._external_proxy_rules = proxy_rules or {}
+        self._external_category_allowlist = category_allowlist or {}  # Phase 7.1
         self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
         # Track config source for telemetry
         self.config_source = (
-            "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules])
+            "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules, category_allowlist])
             else "fallback"
         )
 
@@ -704,12 +707,65 @@ class FDCAlignmentWithConversion:
             # Combined score: 70% name match + 30% energy match
             score = 0.7 * jaccard + 0.3 * energy_sim
 
+            # Phase 7.1: Apply raw-form demotion using category allowlist
+            # This prevents processed foods (soups, oils, baby foods) from winning
+            # when the predicted form is "raw"
+            penalty_applied = False
+            penalty_tokens = []
+            skip_candidate = False
+
+            if self._external_category_allowlist:
+                # Check if we should apply category gates for this class
+                gate_config = None
+                if 'olive' in base_class:
+                    gate_config = self._external_category_allowlist.get('olives', {})
+                elif 'cucumber' in base_class:
+                    gate_config = self._external_category_allowlist.get('cucumber', {})
+                elif 'celery' in base_class:
+                    gate_config = self._external_category_allowlist.get('celery', {})
+                elif 'spinach' in base_class:
+                    gate_config = self._external_category_allowlist.get('spinach', {})
+                elif 'tomato' in base_class:
+                    gate_config = self._external_category_allowlist.get('tomato', {})
+                elif 'avocado' in base_class:
+                    gate_config = self._external_category_allowlist.get('avocado', {})
+                elif 'egg' in base_class:
+                    gate_config = self._external_category_allowlist.get('eggs', {})
+                elif any(fv in base_class for fv in ['apple', 'grape', 'berr', 'melon', 'banana', 'orange', 'pineapple', 'strawberry', 'blueberry']):
+                    gate_config = self._external_category_allowlist.get('fruits', {})
+                elif any(fv in base_class for fv in ['carrot', 'pepper', 'broccoli', 'cauliflower', 'lettuce']):
+                    gate_config = self._external_category_allowlist.get('vegetables', {})
+
+                if gate_config:
+                    # Check hard_block_contains first (completely block candidate)
+                    hard_blocks = gate_config.get('hard_block_contains', [])
+                    for block_token in hard_blocks:
+                        if block_token in entry_name_lower:
+                            skip_candidate = True
+                            break
+
+                    # Check penalize_contains (demote score by 0.25)
+                    if not skip_candidate:
+                        penalize_tokens_list = gate_config.get('penalize_contains', [])
+                        for token in penalize_tokens_list:
+                            if token in entry_name_lower:
+                                score -= 0.25
+                                penalty_applied = True
+                                penalty_tokens.append(token)
+                                break  # Apply penalty once per candidate
+
+            # Skip this candidate if hard-blocked
+            if skip_candidate:
+                continue
+
             # DEBUG: Log all scores in verbose mode
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"  [Stage1b] Candidate: {entry.name[:50]}")
                 print(f"    class_tokens: {class_tokens}")
                 print(f"    entry_tokens: {entry_name_tokens}")
                 print(f"    jaccard: {jaccard:.3f}, energy_sim: {energy_sim:.3f}, score: {score:.3f}, threshold: {threshold:.2f}, pass: {score >= threshold}")
+                if penalty_applied:
+                    print(f"    [RAW_PENALTY] Applied: -{0.25}, tokens: {penalty_tokens}")
 
             if score > best_score and score >= threshold:
                 best_score = score

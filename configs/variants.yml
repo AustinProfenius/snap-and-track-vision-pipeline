@@ -28,12 +28,38 @@ carrot:
 cucumber:
   - cucumber
   - cucumbers
+  - cucumber peeled  # Phase 7.1
 
 olive:
   - olive
   - olives
   - kalamata olive
   - green olive
+  - olives ripe  # Phase 7.1
+  - olives green  # Phase 7.1
+  - olives black  # Phase 7.1
+  - table olives  # Phase 7.1
+
+# Phase 7.1: Additional variants from 370-image batch analysis
+
+celery:
+  - celery
+  - celery stalk
+  - celery sticks
+
+spinach:
+  - spinach
+  - spinach leaves
+  - baby spinach
+
+tomato:
+  - tomato
+  - tomatoes
+  - tomato vine-ripe
+
+avocado:
+  - avocado
+  - avocados
 
 salad:
   - romaine lettuce

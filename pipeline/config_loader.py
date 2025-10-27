@@ -24,6 +24,7 @@ class PipelineConfig:
     feature_flags: Dict[str, Any]
     energy_bands: Dict[str, Any]
     proxy_rules: Dict[str, Any]
+    category_allowlist: Dict[str, Any]  # Phase 7.1: Form-aware category gates
     config_version: str
     config_fingerprint: str
 
@@ -64,6 +65,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
         "energy_bands": root_path / "energy_bands.json",
         "proxy_rules": root_path / "proxy_alignment_rules.json",
         "variants": root_path / "variants.yml",
+        "category_allowlist": root_path / "category_allowlist.yml",  # Phase 7.1
     }
 
     # Load configs (use empty dict if file doesn't exist)
@@ -78,7 +80,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
                 raise ValueError(f"Unknown config file type: {path}")
         else:
             # Optional configs default to empty dict
-            if key in ('energy_bands', 'proxy_rules', 'variants'):
+            if key in ('energy_bands', 'proxy_rules', 'variants', 'category_allowlist'):
                 data[key] = {}
             else:
                 # Required configs must exist
@@ -101,6 +103,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
         feature_flags=data["feature_flags"],
         energy_bands=data["energy_bands"],
         proxy_rules=data["proxy_rules"],
+        category_allowlist=data["category_allowlist"],  # Phase 7.1
         config_version=config_version,
         config_fingerprint=fingerprint,
     )

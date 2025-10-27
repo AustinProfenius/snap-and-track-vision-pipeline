@@ -1,0 +1,165 @@
+# Category Allowlist Configuration (Phase 7.1)
+#
+# Purpose: Form-aware category gates to favor fresh produce when form=raw
+# and prevent matching processed foods (soups, oils, baby foods, etc.)
+#
+# Structure:
+#   <food_class>:
+#     allow_contains: List of category/name tokens that indicate good matches
+#     penalize_contains: List of tokens that indicate processed/wrong forms (score -= 0.25)
+#     hard_block_contains: List of tokens that should completely block the candidate
+#
+# Applied during Stage 1b candidate scoring when predicted form="raw"
+
+# Fruits - prefer fresh/raw fruits over juices, toppings, baked goods
+fruits:
+  allow_contains:
+    - fruit
+    - fruits
+    - berries
+    - berry
+    - melon
+    - melons
+    - raw
+    - fresh
+  penalize_contains:
+    - juice
+    - topping
+    - syrup
+    - muffin
+    - canned
+    - frozen sweetened
+    - pie filling
+    - jam
+    - jelly
+    - preserve
+  hard_block_contains: []
+
+# Vegetables - prefer fresh vegetables over soups, baby foods, processed forms
+vegetables:
+  allow_contains:
+    - vegetable
+    - vegetables
+    - greens
+    - leaf
+    - lettuce
+    - cabbage
+    - tomato
+    - tomatoes
+    - spinach
+    - celery
+    - pepper
+    - peppers
+    - raw
+    - fresh
+  penalize_contains:
+    - soup
+    - cream of
+    - baby food
+    - babyfood
+    - puree
+    - pickled
+    - canned condensed
+    - condensed
+    - strained
+    - creamed
+  hard_block_contains: []
+
+# Olives - prefer table olives over oil, loaf, spreads
+olives:
+  allow_contains:
+    - olives ripe
+    - olives green
+    - olives black
+    - olives canned
+    - olives pickled
+    - table olives
+  penalize_contains:
+    - oil
+    - loaf
+    - spread
+    - salad or cooking
+  hard_block_contains:
+    - olive oil
+    - oil olive
+
+# Cucumber - NEVER match sea cucumber (finfish/shellfish)
+cucumber:
+  allow_contains:
+    - cucumber
+    - cucumbers
+    - vegetable
+  penalize_contains:
+    - pickled
+    - sea
+  hard_block_contains:
+    - sea cucumber
+    - trepang
+
+# Celery - prefer fresh celery over soups
+celery:
+  allow_contains:
+    - celery raw
+    - celery stalk
+    - celery sticks
+  penalize_contains:
+    - soup
+    - cream of
+    - condensed
+  hard_block_contains: []
+
+# Spinach - prefer fresh spinach over baby food
+spinach:
+  allow_contains:
+    - spinach raw
+    - spinach leaves
+    - baby spinach
+  penalize_contains:
+    - baby food
+    - babyfood
+    - puree
+    - creamed
+    - strained
+  hard_block_contains: []
+
+# Tomato - prefer fresh tomatoes over soups/sauces
+tomato:
+  allow_contains:
+    - tomato raw
+    - tomatoes raw
+    - tomato red
+    - tomato vine
+  penalize_contains:
+    - soup
+    - condensed
+    - sauce
+    - paste
+    - puree
+  hard_block_contains: []
+
+# Avocado - prefer fresh avocado over oil
+avocado:
+  allow_contains:
+    - avocado raw
+    - avocados raw
+  penalize_contains:
+    - oil
+    - spread
+  hard_block_contains:
+    - avocado oil
+
+# Eggs - prefer whole eggs over bread/composite products
+eggs:
+  allow_contains:
+    - egg whole
+    - egg raw
+    - egg cooked
+    - egg scrambled
+    - egg fried
+    - egg boiled
+  penalize_contains:
+    - bread
+    - toast
+    - sandwich
+  hard_block_contains:
+    - bread egg toasted
