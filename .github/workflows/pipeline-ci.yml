@@ -171,7 +171,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pydantic PyYAML psycopg2-binary
+          pip install pytest pydantic PyYAML psycopg2-binary python-dotenv numpy pandas
 
       - name: Run integration tests
         env:
