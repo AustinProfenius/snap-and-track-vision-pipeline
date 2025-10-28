@@ -79,11 +79,13 @@ salad:
 
 # Phase 7.1: Additional safeguards from 370-image batch analysis
 
-# Celery safeguard: prevent matching soups
+# Celery safeguard: prevent matching soups and tomato products
 celery:
   - cream of
   - soup
   - condensed
+  - tomato products  # Phase 7.2: prevent "Celery flakes dried sauce with onions tomato products"
+  - sauce with onions  # Phase 7.2
 
 # Spinach safeguard: prevent matching baby food
 spinach:
@@ -103,8 +105,15 @@ egg:
   - bread egg
   - toast
   - sandwich
+  - roll  # Phase 7.2: prevent "Bread egg toasted dinner rolls egg"
+  - bun  # Phase 7.2
 
 # Avocado safeguard: prevent matching oil
 avocado:
   - oil
   - spread
+
+# Broccoli safeguard: prevent matching soups and cheese products
+broccoli:
+  - soup  # Phase 7.2: prevent "Soup broccoli cheese canned condensed"
+  - cheese  # Phase 7.2

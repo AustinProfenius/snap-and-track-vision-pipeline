@@ -675,9 +675,46 @@ class FDCAlignmentWithConversion:
         threshold = CLASS_THRESHOLDS.get(base_class, threshold)
 
         for entry in raw_foundation:
-            # HARD FILTER: Skip candidates containing class-specific negative words
-            # (e.g., skip "Strudel apple" for "apple", "Almond oil" for "almond")
             entry_name_lower = entry.name.lower()
+
+            # Phase 7.2 FIX: Check category allowlist HARD BLOCKS FIRST (before scoring)
+            skip_candidate = False
+            if self._external_category_allowlist:
+                gate_config = None
+                # Map core_class to gate category
+                if 'olive' in base_class:
+                    gate_config = self._external_category_allowlist.get('olives', {})
+                elif 'cucumber' in base_class:
+                    gate_config = self._external_category_allowlist.get('cucumber', {})
+                elif 'celery' in base_class:
+                    gate_config = self._external_category_allowlist.get('celery', {})
+                elif 'spinach' in base_class:
+                    gate_config = self._external_category_allowlist.get('spinach', {})
+                elif 'tomato' in base_class:
+                    gate_config = self._external_category_allowlist.get('tomato', {})
+                elif 'avocado' in base_class:
+                    gate_config = self._external_category_allowlist.get('avocado', {})
+                elif 'egg' in base_class:
+                    gate_config = self._external_category_allowlist.get('eggs', {})
+                elif 'broccoli' in base_class:
+                    gate_config = self._external_category_allowlist.get('vegetables', {})
+                elif any(fv in base_class for fv in ['apple', 'grape', 'berr', 'melon', 'banana', 'orange', 'pineapple', 'strawberry', 'blueberry']):
+                    gate_config = self._external_category_allowlist.get('fruits', {})
+                elif any(fv in base_class for fv in ['carrot', 'pepper', 'cauliflower', 'lettuce']):
+                    gate_config = self._external_category_allowlist.get('vegetables', {})
+
+                if gate_config:
+                    hard_blocks = gate_config.get('hard_block_contains', [])
+                    if any(tok in entry_name_lower for tok in hard_blocks):
+                        skip_candidate = True
+                        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                            print(f"    [HARD_BLOCK] Skipped '{entry.name[:60]}'")
+
+            if skip_candidate:
+                continue  # Skip this candidate entirely
+
+            # THEN apply negative vocab filter
+            # (e.g., skip "Strudel apple" for "apple", "Almond oil" for "almond")
             if any(neg in entry_name_lower for neg in class_negatives):
                 continue  # Skip entirely - don't score
 
@@ -707,16 +744,13 @@ class FDCAlignmentWithConversion:
             # Combined score: 70% name match + 30% energy match
             score = 0.7 * jaccard + 0.3 * energy_sim
 
-            # Phase 7.1: Apply raw-form demotion using category allowlist
-            # This prevents processed foods (soups, oils, baby foods) from winning
-            # when the predicted form is "raw"
+            # Phase 7.2: Apply soft penalties from category allowlist (hard blocks already applied above)
             penalty_applied = False
             penalty_tokens = []
-            skip_candidate = False
 
             if self._external_category_allowlist:
-                # Check if we should apply category gates for this class
                 gate_config = None
+                # Same mapping as hard-block check above
                 if 'olive' in base_class:
                     gate_config = self._external_category_allowlist.get('olives', {})
                 elif 'cucumber' in base_class:
@@ -731,32 +765,41 @@ class FDCAlignmentWithConversion:
                     gate_config = self._external_category_allowlist.get('avocado', {})
                 elif 'egg' in base_class:
                     gate_config = self._external_category_allowlist.get('eggs', {})
+                elif 'broccoli' in base_class:
+                    gate_config = self._external_category_allowlist.get('vegetables', {})
                 elif any(fv in base_class for fv in ['apple', 'grape', 'berr', 'melon', 'banana', 'orange', 'pineapple', 'strawberry', 'blueberry']):
                     gate_config = self._external_category_allowlist.get('fruits', {})
-                elif any(fv in base_class for fv in ['carrot', 'pepper', 'broccoli', 'cauliflower', 'lettuce']):
+                elif any(fv in base_class for fv in ['carrot', 'pepper', 'cauliflower', 'lettuce']):
                     gate_config = self._external_category_allowlist.get('vegetables', {})
 
+                # Apply soft penalties (score demotion)
                 if gate_config:
-                    # Check hard_block_contains first (completely block candidate)
-                    hard_blocks = gate_config.get('hard_block_contains', [])
-                    for block_token in hard_blocks:
-                        if block_token in entry_name_lower:
-                            skip_candidate = True
-                            break
+                    penalize_tokens_list = gate_config.get('penalize_contains', [])
+                    for token in penalize_tokens_list:
+                        if token in entry_name_lower:
+                            score -= 0.25
+                            penalty_applied = True
+                            penalty_tokens.append(token)
+                            break  # Apply penalty once per candidate
 
-                    # Check penalize_contains (demote score by 0.25)
-                    if not skip_candidate:
-                        penalize_tokens_list = gate_config.get('penalize_contains', [])
-                        for token in penalize_tokens_list:
-                            if token in entry_name_lower:
-                                score -= 0.25
-                                penalty_applied = True
-                                penalty_tokens.append(token)
-                                break  # Apply penalty once per candidate
-
-            # Skip this candidate if hard-blocked
-            if skip_candidate:
-                continue
+            # Phase 7.2: Apply tie-break bonuses for preferred forms
+            bonus_applied = False
+            bonus_reason = ""
+            preferred_forms = [
+                ('raw', 'raw'),
+                ('table olives', 'table'),
+                ('olives ripe', 'table'),
+                ('olives green', 'table'),
+                ('whole', 'whole'),
+                ('egg whole', 'whole'),
+                ('fresh', 'fresh'),
+            ]
+            for (pattern, reason) in preferred_forms:
+                if pattern in entry_name_lower:
+                    score += 0.05
+                    bonus_applied = True
+                    bonus_reason = reason
+                    break  # Apply bonus once per candidate
 
             # DEBUG: Log all scores in verbose mode
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -766,6 +809,8 @@ class FDCAlignmentWithConversion:
                 print(f"    jaccard: {jaccard:.3f}, energy_sim: {energy_sim:.3f}, score: {score:.3f}, threshold: {threshold:.2f}, pass: {score >= threshold}")
                 if penalty_applied:
                     print(f"    [RAW_PENALTY] Applied: -{0.25}, tokens: {penalty_tokens}")
+                if bonus_applied:
+                    print(f"    [TIE_BREAK_BONUS] Applied: +0.05, reason: {bonus_reason}")
 
             if score > best_score and score >= threshold:
                 best_score = score

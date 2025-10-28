@@ -89,8 +89,14 @@ class TelemetryEvent(BaseModel):
 
     # Alignment outcome
     alignment_stage: str
-    fdc_id: Optional[int] = None
+    fdc_id: Optional[int] = None  # None for StageZ (uses stagez_fdc_id string instead)
     fdc_name: Optional[str] = None
+
+    # Phase 7.2: StageZ-specific fields (energy-only proxies)
+    stagez_fdc_id: Optional[str] = None  # e.g., "stagez_beef_steak"
+    stagez_tag: Optional[str] = None  # e.g., "beef_steak"
+    stagez_energy_kcal: Optional[float] = None  # Energy used for proxy
+    stagez_category: Optional[str] = None  # e.g., "beef", "chicken"
 
     # Candidate search
     candidate_pool_size: int

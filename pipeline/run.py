@@ -165,13 +165,36 @@ def run_once(
         if sodium_gate is not None and not isinstance(sodium_gate, str):
             sodium_gate = None
 
+        # Phase 7.2: Normalize StageZ fdc_id (string) to separate fields
+        raw_fdc_id = food_result.get("fdc_id")
+        fdc_id_int = None
+        stagez_fdc_id_str = None
+
+        if raw_fdc_id is not None:
+            if isinstance(raw_fdc_id, str):
+                # StageZ synthetic ID (e.g., "stagez_beef_steak")
+                stagez_fdc_id_str = raw_fdc_id
+            elif isinstance(raw_fdc_id, int):
+                fdc_id_int = raw_fdc_id
+            else:
+                # Try to convert to int
+                try:
+                    fdc_id_int = int(raw_fdc_id)
+                except (ValueError, TypeError):
+                    stagez_fdc_id_str = str(raw_fdc_id)
+
         telemetry_event = TelemetryEvent(
             image_id=request.image_id,
             food_idx=idx,
             query=food_result.get("name", ""),
             alignment_stage=food_result.get("alignment_stage", "unknown"),
-            fdc_id=food_result.get("fdc_id"),
+            fdc_id=fdc_id_int,  # Integer FDC ID only (None for StageZ)
             fdc_name=food_result.get("fdc_name"),
+            # Phase 7.2: StageZ-specific fields
+            stagez_fdc_id=stagez_fdc_id_str,
+            stagez_tag=telemetry.get("stagez_tag"),
+            stagez_energy_kcal=telemetry.get("stagez_energy_kcal"),
+            stagez_category=telemetry.get("stagez_category"),
             candidate_pool_size=telemetry.get("candidate_pool_size", 0),
             foundation_pool_count=telemetry.get("candidate_pool_raw_foundation", 0),
             search_variants_tried=search_variants,
