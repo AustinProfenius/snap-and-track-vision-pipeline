@@ -92,94 +92,78 @@ def _contains_any(haystack: str, needles: List[str]) -> bool:
 
 
 # Stage 1c: Raw-first preference helpers
-_STAGE1C_PROCESSED_TERMS = [
+# Default lists; can be overridden by config if present
+_STAGE1C_PROCESSED_TERMS_DEFAULT = [
     "frozen", "pickled", "canned", "brined", "cured", "stuffed",
-    "powder", "powdered", "dehydrated", "dried",
-    "in syrup", "in juice", "oil", "sauce", "soup", "cheese"
+    "powder", "powdered", "dehydrated", "dried", "in syrup", "in juice",
+    "oil", "sauce", "soup", "cheese"
 ]
-
-_STAGE1C_RAW_SYNONYMS = ["raw", "fresh", "uncooked", "unprocessed"]
+_STAGE1C_RAW_SYNONYMS_DEFAULT = ["raw", "fresh", "uncooked", "unprocessed"]
 
 
 def _normalized(text: str) -> str:
     """Normalize text for Stage 1c comparison: lowercase, strip whitespace."""
-    return (text or "").lower().strip()
+    return (text or "").strip().lower()
 
 
-def _label_bad_for_raw(label: str) -> bool:
+def _label_bad_for_raw(label: str, processed_terms: List[str]) -> bool:
     """Check if label contains processed/wrong-for-raw terms."""
-    return _contains_any(label, _STAGE1C_PROCESSED_TERMS)
+    return _contains_any(label, processed_terms)
 
 
-def _label_good_for_raw(label: str) -> bool:
+def _label_good_for_raw(label: str, raw_synonyms: List[str]) -> bool:
     """Check if label contains raw/fresh synonyms."""
-    return _contains_any(label, _STAGE1C_RAW_SYNONYMS)
+    return _contains_any(label, raw_synonyms)
 
 
 def _prefer_raw_stage1c(
-    food_name: str,
+    core_class: str,
     picked: Any,
-    candidates: List[Any]
+    candidates: List[Any],
+    *,
+    cfg: Optional[Dict[str, Any]] = None,
 ) -> Any:
     """
-    Stage 1c raw-first preference: if the picked candidate looks processed
-    (frozen/pickled/canned/soup/cheese/oil/etc.), switch to a clearly raw/fresh
-    candidate if one exists for the same ingredient concept.
-
-    This is non-destructive: if no raw candidate exists, keep the original pick.
+    If the current picked candidate looks processed (oil/soup/frozen/etc.),
+    switch to a raw/fresh alternative from the same candidate set when available.
+    Never throws; returns the original 'picked' if no better raw exists.
 
     Args:
-        food_name: Original predicted food name
-        picked: The currently selected candidate
+        core_class: Core food class name (e.g., "eggs", "broccoli")
+        picked: The currently selected candidate (FdcEntry or dict)
         candidates: Full list of candidates to consider
+        cfg: Optional config dict with negative_vocabulary settings
 
     Returns:
         Either the original picked candidate or a better raw/fresh alternative
     """
-    if not picked or not candidates:
+    if not picked:
         return picked
 
-    try:
-        # Extract label from picked candidate
-        if isinstance(picked, dict):
-            picked_label = picked.get("description") or picked.get("name") or ""
+    # Pull config-driven lists if present; else use defaults
+    processed_terms = (cfg or {}).get("stage1c_processed_penalties") or _STAGE1C_PROCESSED_TERMS_DEFAULT
+    raw_synonyms = (cfg or {}).get("stage1c_raw_synonyms") or _STAGE1C_RAW_SYNONYMS_DEFAULT
+
+    # Extract name from picked (handle both dict and FdcEntry)
+    if isinstance(picked, dict):
+        picked_name = _normalized(picked.get("name", ""))
+    else:
+        picked_name = _normalized(getattr(picked, "name", ""))
+
+    if not _label_bad_for_raw(picked_name, processed_terms):
+        return picked  # already raw-ish or acceptable
+
+    # Find a raw alt: must contain a raw synonym and NOT contain processed terms
+    for cand in candidates or []:
+        # Extract name from candidate (handle both dict and FdcEntry)
+        if isinstance(cand, dict):
+            cname = _normalized(cand.get("name", ""))
         else:
-            picked_label = getattr(picked, "description", "") or getattr(picked, "name", "") or ""
+            cname = _normalized(getattr(cand, "name", ""))
 
-        picked_label_norm = _normalized(picked_label)
-
-        # If picked is NOT processed-looking, keep it
-        if not _label_bad_for_raw(picked_label_norm):
-            return picked
-
-        # Picked looks processed — try to find a raw/fresh alternative
-        raw_alternatives = []
-        for c in candidates:
-            if isinstance(c, dict):
-                c_label = c.get("description") or c.get("name") or ""
-            else:
-                c_label = getattr(c, "description", "") or getattr(c, "name", "") or ""
-
-            c_label_norm = _normalized(c_label)
-
-            # Skip if this candidate also looks processed
-            if _label_bad_for_raw(c_label_norm):
-                continue
-
-            # Prefer candidates explicitly labeled raw/fresh
-            if _label_good_for_raw(c_label_norm):
-                raw_alternatives.append(c)
-
-        # If we found raw/fresh alternatives, pick the first one
-        if raw_alternatives:
-            return raw_alternatives[0]
-
-        # No raw alternative found — keep original pick
-        return picked
-
-    except Exception:
-        # Safety: never fail Stage 1c due to this preference pass
-        return picked
+        if _label_good_for_raw(cname, raw_synonyms) and not _label_bad_for_raw(cname, processed_terms):
+            return cand
+    return picked
 
 
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
@@ -1183,7 +1167,12 @@ class FDCAlignmentWithConversion:
         if best_match:
             # Stage 1c: Apply raw-first preference (switch processed → raw if available)
             try:
-                best_match = _prefer_raw_stage1c(core_class, best_match, raw_foundation)
+                best_match = _prefer_raw_stage1c(
+                    core_class,
+                    best_match,
+                    raw_foundation,
+                    cfg=self._external_negative_vocab
+                )
             except Exception:
                 pass  # Safety: never fail Stage 1b due to raw preference
 
