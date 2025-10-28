@@ -1551,15 +1551,21 @@ class FDCAlignmentWithConversion:
             return None
 
         # Build AlignmentResult with decomposition info
+        # Phase 7.3: For decomposed salads, return dummy nutrition (components have real values)
         result = AlignmentResult(
             fdc_id=None,
-            fdc_name=None,
-            alignment_stage="stage5b_salad_decomposition",
+            name=predicted_name or "salad",
+            source="decomposed",
+            protein_100g=0.0,
+            carbs_100g=0.0,
+            fat_100g=0.0,
+            kcal_100g=0.0,
+            match_score=0.0,
             confidence=0.75,  # Reasonable confidence for decomposed salads
+            alignment_stage="stage5b_salad_decomposition",
             method=predicted_form or "raw",
             method_reason="salad_decomposition",
             conversion_applied=False,
-            match_score=None,
             telemetry={
                 "decomposition_recipe": recipe.get("recipe_name", recipe_key),
                 "decomposition_count": len(expanded_foods),

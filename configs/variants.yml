@@ -99,6 +99,14 @@ lettuce_romaine_raw:
   - lettuce romaine
   - romaine lettuce
 
+lettuce_mixed_greens:
+  - Lettuce, green leaf, raw
+  - Lettuce, red leaf, raw
+  - lettuce mixed greens
+  - mixed greens
+  - spring mix
+  - mesclun
+
 parmesan_cheese_grated:
   - Cheese, parmesan, grated
   - parmesan cheese grated

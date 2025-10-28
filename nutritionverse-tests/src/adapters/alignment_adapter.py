@@ -167,7 +167,66 @@ class AlignmentEngineAdapter:
                     in {"foundation_food", "foundation", "sr_legacy_food", "sr_legacy"}
                 )
 
-                # Extract telemetry
+                # Phase 7.3: Handle Stage 5B salad decomposition (multiple components)
+                expanded_foods = result.telemetry.get("expanded_foods", [])
+                if expanded_foods and result.alignment_stage == "stage5b_salad_decomposition":
+                    recipe_name = result.telemetry.get("decomposition_recipe", "unknown")
+                    print(f"[ADAPTER]   ✓ Decomposed '{name}' via Stage 5B: {recipe_name} ({len(expanded_foods)} components)")
+
+                    # Process each component separately
+                    for comp_idx, comp in enumerate(expanded_foods):
+                        comp_mass = mass_g * comp.get("decomposition_ratio", 0.0)
+                        comp_name = comp.get("name", f"component_{comp_idx}")
+                        comp_fdc_id = comp.get("fdc_id")
+                        comp_fdc_name = comp.get("fdc_name", comp_name)
+                        comp_stage = comp.get("alignment_stage", "stage5b_salad_component")
+
+                        # Track stage
+                        telemetry["alignment_stages"][comp_stage] = \
+                            telemetry["alignment_stages"].get(comp_stage, 0) + 1
+
+                        # Calculate nutrition (with None safety)
+                        if comp_fdc_id:
+                            kcal = comp.get("kcal_100g") or 0
+                            protein = comp.get("protein_100g") or 0
+                            carbs = comp.get("carbs_100g") or 0
+                            fat = comp.get("fat_100g") or 0
+
+                            calories = (kcal * comp_mass) / 100
+                            protein_g = (protein * comp_mass) / 100
+                            carbs_g = (carbs * comp_mass) / 100
+                            fat_g = (fat * comp_mass) / 100
+
+                            totals["mass_g"] += comp_mass
+                            totals["calories"] += calories
+                            totals["protein_g"] += protein_g
+                            totals["carbs_g"] += carbs_g
+                            totals["fat_g"] += fat_g
+
+                            print(f"[ADAPTER]     [{comp_idx+1}/{len(expanded_foods)}] {comp_name} → {comp_fdc_name} ({comp_mass:.1f}g)")
+
+                            # Add as separate food item
+                            aligned_foods.append({
+                                "name": f"{name} - {comp_name}",
+                                "form": form,
+                                "mass_g": comp_mass,
+                                "calories": round(calories, 1),
+                                "protein_g": round(protein_g, 1),
+                                "carbs_g": round(carbs_g, 1),
+                                "fat_g": round(fat_g, 1),
+                                "fdc_id": comp_fdc_id,
+                                "fdc_name": comp_fdc_name,
+                                "confidence": confidence,
+                                "match_score": 0.0,
+                                "alignment_stage": comp_stage,
+                                "conversion_applied": False
+                            })
+                        else:
+                            print(f"[ADAPTER]     [{comp_idx+1}/{len(expanded_foods)}] {comp_name} → NO MATCH")
+
+                    continue  # Skip normal processing for decomposed items
+
+                # Extract telemetry (normal single-item processing)
                 stage = result.telemetry.get("alignment_stage", "unknown")
                 method = result.telemetry.get("method", "unknown")
                 conversion_applied = result.telemetry.get("conversion_applied", False)
