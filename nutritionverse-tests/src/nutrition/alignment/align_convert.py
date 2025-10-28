@@ -116,6 +116,13 @@ def _label_good_for_raw(label: str, raw_synonyms: List[str]) -> bool:
     return _contains_any(label, raw_synonyms)
 
 
+def _cand_name(cand: Any) -> str:
+    """Extract name from candidate (supports both FdcEntry and dict)."""
+    if isinstance(cand, dict):
+        return _normalized(cand.get("name", ""))
+    return _normalized(getattr(cand, "name", ""))
+
+
 def _prefer_raw_stage1c(
     core_class: str,
     picked: Any,
@@ -137,33 +144,29 @@ def _prefer_raw_stage1c(
     Returns:
         Either the original picked candidate or a better raw/fresh alternative
     """
-    if not picked:
+    try:
+        if not picked:
+            return picked
+
+        # Pull config-driven lists if present; else use defaults
+        processed_terms = (cfg or {}).get("stage1c_processed_penalties") or _STAGE1C_PROCESSED_TERMS_DEFAULT
+        raw_synonyms = (cfg or {}).get("stage1c_raw_synonyms") or _STAGE1C_RAW_SYNONYMS_DEFAULT
+
+        # Extract name from picked using helper
+        picked_name = _cand_name(picked)
+
+        if not _label_bad_for_raw(picked_name, processed_terms):
+            return picked  # already raw-ish or acceptable
+
+        # Find a raw alt: must contain a raw synonym and NOT contain processed terms
+        for cand in candidates or []:
+            cname = _cand_name(cand)
+            if _label_good_for_raw(cname, raw_synonyms) and not _label_bad_for_raw(cname, processed_terms):
+                return cand
         return picked
-
-    # Pull config-driven lists if present; else use defaults
-    processed_terms = (cfg or {}).get("stage1c_processed_penalties") or _STAGE1C_PROCESSED_TERMS_DEFAULT
-    raw_synonyms = (cfg or {}).get("stage1c_raw_synonyms") or _STAGE1C_RAW_SYNONYMS_DEFAULT
-
-    # Extract name from picked (handle both dict and FdcEntry)
-    if isinstance(picked, dict):
-        picked_name = _normalized(picked.get("name", ""))
-    else:
-        picked_name = _normalized(getattr(picked, "name", ""))
-
-    if not _label_bad_for_raw(picked_name, processed_terms):
-        return picked  # already raw-ish or acceptable
-
-    # Find a raw alt: must contain a raw synonym and NOT contain processed terms
-    for cand in candidates or []:
-        # Extract name from candidate (handle both dict and FdcEntry)
-        if isinstance(cand, dict):
-            cname = _normalized(cand.get("name", ""))
-        else:
-            cname = _normalized(getattr(cand, "name", ""))
-
-        if _label_good_for_raw(cname, raw_synonyms) and not _label_bad_for_raw(cname, processed_terms):
-            return cand
-    return picked
+    except Exception:
+        # Safety: never fail - return original pick on any error
+        return picked
 
 
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
@@ -1167,11 +1170,18 @@ class FDCAlignmentWithConversion:
         if best_match:
             # Stage 1c: Apply raw-first preference (switch processed → raw if available)
             try:
+                # Try to get config from either cfg or _external_negative_vocab
+                neg_vocab = None
+                if hasattr(self, "cfg") and isinstance(self.cfg, dict):
+                    neg_vocab = self.cfg.get("negative_vocabulary")
+                if neg_vocab is None and hasattr(self, "_external_negative_vocab"):
+                    neg_vocab = self._external_negative_vocab
+
                 best_match = _prefer_raw_stage1c(
                     core_class,
                     best_match,
                     raw_foundation,
-                    cfg=self._external_negative_vocab
+                    cfg=neg_vocab
                 )
             except Exception:
                 pass  # Safety: never fail Stage 1b due to raw preference
