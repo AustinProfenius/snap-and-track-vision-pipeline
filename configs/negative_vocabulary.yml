@@ -150,3 +150,31 @@ eggs_hard_blocks:
   - "toast"
   - "roll"
   - "bun"
+
+# Stage 1c: Raw-first preference processed penalties
+# Terms that indicate processed/wrong-for-raw candidates
+stage1c_processed_penalties:
+  - "frozen"
+  - "pickled"
+  - "canned"
+  - "brined"
+  - "cured"
+  - "stuffed"
+  - "powder"
+  - "powdered"
+  - "dehydrated"
+  - "dried"
+  - "in syrup"
+  - "in juice"
+  - "oil"
+  - "sauce"
+  - "soup"
+  - "cheese"
+
+# Stage 1c: Raw synonyms for preference matching
+# Terms that indicate raw/fresh candidates to prefer
+stage1c_raw_synonyms:
+  - "raw"
+  - "fresh"
+  - "uncooked"
+  - "unprocessed"

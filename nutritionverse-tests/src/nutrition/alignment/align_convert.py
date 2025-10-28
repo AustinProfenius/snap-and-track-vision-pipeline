@@ -91,6 +91,97 @@ def _contains_any(haystack: str, needles: List[str]) -> bool:
     return False
 
 
+# Stage 1c: Raw-first preference helpers
+_STAGE1C_PROCESSED_TERMS = [
+    "frozen", "pickled", "canned", "brined", "cured", "stuffed",
+    "powder", "powdered", "dehydrated", "dried",
+    "in syrup", "in juice", "oil", "sauce", "soup", "cheese"
+]
+
+_STAGE1C_RAW_SYNONYMS = ["raw", "fresh", "uncooked", "unprocessed"]
+
+
+def _normalized(text: str) -> str:
+    """Normalize text for Stage 1c comparison: lowercase, strip whitespace."""
+    return (text or "").lower().strip()
+
+
+def _label_bad_for_raw(label: str) -> bool:
+    """Check if label contains processed/wrong-for-raw terms."""
+    return _contains_any(label, _STAGE1C_PROCESSED_TERMS)
+
+
+def _label_good_for_raw(label: str) -> bool:
+    """Check if label contains raw/fresh synonyms."""
+    return _contains_any(label, _STAGE1C_RAW_SYNONYMS)
+
+
+def _prefer_raw_stage1c(
+    food_name: str,
+    picked: Any,
+    candidates: List[Any]
+) -> Any:
+    """
+    Stage 1c raw-first preference: if the picked candidate looks processed
+    (frozen/pickled/canned/soup/cheese/oil/etc.), switch to a clearly raw/fresh
+    candidate if one exists for the same ingredient concept.
+
+    This is non-destructive: if no raw candidate exists, keep the original pick.
+
+    Args:
+        food_name: Original predicted food name
+        picked: The currently selected candidate
+        candidates: Full list of candidates to consider
+
+    Returns:
+        Either the original picked candidate or a better raw/fresh alternative
+    """
+    if not picked or not candidates:
+        return picked
+
+    try:
+        # Extract label from picked candidate
+        if isinstance(picked, dict):
+            picked_label = picked.get("description") or picked.get("name") or ""
+        else:
+            picked_label = getattr(picked, "description", "") or getattr(picked, "name", "") or ""
+
+        picked_label_norm = _normalized(picked_label)
+
+        # If picked is NOT processed-looking, keep it
+        if not _label_bad_for_raw(picked_label_norm):
+            return picked
+
+        # Picked looks processed — try to find a raw/fresh alternative
+        raw_alternatives = []
+        for c in candidates:
+            if isinstance(c, dict):
+                c_label = c.get("description") or c.get("name") or ""
+            else:
+                c_label = getattr(c, "description", "") or getattr(c, "name", "") or ""
+
+            c_label_norm = _normalized(c_label)
+
+            # Skip if this candidate also looks processed
+            if _label_bad_for_raw(c_label_norm):
+                continue
+
+            # Prefer candidates explicitly labeled raw/fresh
+            if _label_good_for_raw(c_label_norm):
+                raw_alternatives.append(c)
+
+        # If we found raw/fresh alternatives, pick the first one
+        if raw_alternatives:
+            return raw_alternatives[0]
+
+        # No raw alternative found — keep original pick
+        return picked
+
+    except Exception:
+        # Safety: never fail Stage 1c due to this preference pass
+        return picked
+
+
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
     """
     Derive class intent from predicted food name.
@@ -1090,6 +1181,12 @@ class FDCAlignmentWithConversion:
                 best_match = entry
 
         if best_match:
+            # Stage 1c: Apply raw-first preference (switch processed → raw if available)
+            try:
+                best_match = _prefer_raw_stage1c(core_class, best_match, raw_foundation)
+            except Exception:
+                pass  # Safety: never fail Stage 1b due to raw preference
+
             return (best_match, best_score)
 
         return None
