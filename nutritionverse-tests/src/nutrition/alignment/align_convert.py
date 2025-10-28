@@ -77,6 +77,127 @@ def load_cook_conversions(cfg_path: Optional[Path] = None) -> Dict[str, Any]:
         return json.load(f)
 
 
+# Phase 7.3 Task 3: Intent derivation helpers
+def _derive_class_intent(predicted_name: str) -> Optional[str]:
+    """
+    Derive class intent from predicted food name.
+
+    Phase 7.3: Lightweight heuristics for cooking intent scoring.
+
+    Args:
+        predicted_name: Predicted food name
+
+    Returns:
+        Class intent string or None
+    """
+    name = (predicted_name or "").lower()
+
+    # Eggs intent
+    if "egg" in name:
+        if any(k in name for k in ["scrambled", "omelet", "omelette", "fried", "poached", "boiled"]):
+            return "eggs_scrambled"
+        return "eggs"
+
+    # Leafy greens / cruciferous vegetables
+    if any(k in name for k in ["broccoli", "spinach", "lettuce", "greens", "kale", "chard"]):
+        return "leafy_or_crucifer"
+
+    # Produce
+    if any(k in name for k in ["cucumber", "tomato", "pepper", "carrot", "celery", "avocado"]):
+        return "produce"
+
+    return None
+
+
+def _derive_form_intent(predicted_form: Optional[str]) -> Optional[str]:
+    """
+    Derive form intent from predicted form/method.
+
+    Phase 7.3: Determines if food should be raw vs cooked.
+
+    Args:
+        predicted_form: Predicted form/method
+
+    Returns:
+        Form intent: "raw", "cooked", or None
+    """
+    f = (predicted_form or "").lower()
+
+    # Raw intent
+    if "raw" in f or "fresh" in f:
+        return "raw"
+
+    # Cooked intent
+    if any(k in f for k in ["cooked", "steamed", "boiled", "sauté", "saute", "roasted",
+                            "grilled", "fried", "baked", "scrambled", "poached"]):
+        return "cooked"
+
+    return None
+
+
+def _apply_guardrails(
+    candidates: List[Any],
+    class_intent: Optional[str],
+    neg_vocab: Dict[str, Any],
+    predicted_name: str
+) -> List[Any]:
+    """
+    Apply guardrail filtering to candidates before scoring.
+
+    Phase 7.3 Task 3: Filters out processed/wrong forms based on produce/eggs hard blocks.
+
+    Args:
+        candidates: List of FDC candidate dicts
+        class_intent: Derived class intent
+        neg_vocab: Negative vocabulary config
+        predicted_name: Original predicted food name
+
+    Returns:
+        Filtered candidate list
+    """
+    # Extract text from candidate (handle both dict and object formats)
+    def text_key(c):
+        if isinstance(c, dict):
+            return (c.get("description") or c.get("name") or "").lower()
+        return (getattr(c, "description", "") or getattr(c, "name", "") or "").lower()
+
+    out = []
+
+    # Get hard block sets from config
+    produce_blocks = set(k.lower() for k in neg_vocab.get("produce_hard_blocks", []))
+    eggs_blocks = set(k.lower() for k in neg_vocab.get("eggs_hard_blocks", []))
+    oils_blocks = set(k.lower() for k in neg_vocab.get("oils_hard_blocks", []))
+    soup_blocks = set(k.lower() for k in neg_vocab.get("soup_hard_blocks", []))
+
+    pn = (predicted_name or "").lower()
+
+    for c in candidates:
+        t = text_key(c)
+        blocked = False
+
+        # Produce guardrails (apply if prediction looks like fresh produce)
+        if any(k in pn for k in ["lettuce", "spinach", "greens", "cucumber", "tomato",
+                                 "broccoli", "strawberr", "raspberr", "blackberr", "blueberr",
+                                 "carrot", "celery", "pepper", "avocado", "eggplant"]):
+            # Block unless explicitly predicted (e.g., "pickled cucumber" should allow pickled)
+            for b in produce_blocks | oils_blocks | soup_blocks:
+                if b in t and b not in pn:
+                    blocked = True
+                    break
+
+        # Egg guardrails
+        if "egg" in pn:
+            for b in eggs_blocks:
+                if b in t:
+                    blocked = True
+                    break
+
+        if not blocked:
+            out.append(c)
+
+    return out
+
+
 class FDCAlignmentWithConversion:
     """
     FDC database alignment with raw→cooked conversion support.
@@ -210,6 +331,10 @@ class FDCAlignmentWithConversion:
                     unique_tokens.append(token)
             predicted_form = ' '.join(unique_tokens).strip() if unique_tokens else predicted_form
 
+        # Phase 7.3 Task 3: Derive intents for cooking context and guardrails
+        class_intent = _derive_class_intent(predicted_name)
+        form_intent = _derive_form_intent(predicted_form)
+
         # Step 1: Normalize to core class
         core_class = self._normalize_to_core_class(predicted_name)
 
@@ -277,7 +402,9 @@ class FDCAlignmentWithConversion:
                         candidate_pool_total=len(fdc_entries),
                         candidate_pool_raw_foundation=len(raw_foundation),
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                        candidate_pool_branded=len(branded)
+                        candidate_pool_branded=len(branded),
+                        class_intent=class_intent,
+                        form_intent=form_intent
                     )
                     # Add Stage 1b score to telemetry
                     result.telemetry["stage1b_score"] = score
@@ -300,7 +427,9 @@ class FDCAlignmentWithConversion:
                         candidate_pool_total=len(fdc_entries),
                         candidate_pool_raw_foundation=len(raw_foundation),
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                        candidate_pool_branded=len(branded)
+                        candidate_pool_branded=len(branded),
+                        class_intent=class_intent,
+                        form_intent=form_intent
                     )
                     return result
 
@@ -319,7 +448,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_total=len(fdc_entries),
                     candidate_pool_raw_foundation=len(raw_foundation),
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                    candidate_pool_branded=len(branded)
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
                 )
 
             # Stage 2 failed, go directly to branded (skip Stage 1)
@@ -343,7 +474,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_total=len(fdc_entries),
                     candidate_pool_raw_foundation=len(raw_foundation),
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                    candidate_pool_branded=len(branded)
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
                 )
 
             # Stage 1 failed, try Stage 2 (raw + convert)
@@ -363,7 +496,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_total=len(fdc_entries),
                     candidate_pool_raw_foundation=len(raw_foundation),
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                    candidate_pool_branded=len(branded)
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
                 )
 
         # Stages 1+2 failed, try branded
@@ -384,7 +519,9 @@ class FDCAlignmentWithConversion:
                 candidate_pool_total=len(fdc_entries),
                 candidate_pool_raw_foundation=len(raw_foundation),
                 candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                candidate_pool_branded=len(branded)
+                candidate_pool_branded=len(branded),
+                class_intent=class_intent,
+                form_intent=form_intent
             )
 
         # Stage 4: Branded closest energy density
@@ -404,7 +541,9 @@ class FDCAlignmentWithConversion:
                 candidate_pool_total=len(fdc_entries),
                 candidate_pool_raw_foundation=len(raw_foundation),
                 candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                candidate_pool_branded=len(branded)
+                candidate_pool_branded=len(branded),
+                class_intent=class_intent,
+                form_intent=form_intent
             )
 
         # Stage 5: Proxy alignment (Phase 7: external rules first, then whitelist fallback)
@@ -427,7 +566,9 @@ class FDCAlignmentWithConversion:
                         candidate_pool_total=len(fdc_entries),
                         candidate_pool_raw_foundation=len(raw_foundation),
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                        candidate_pool_branded=len(branded)
+                        candidate_pool_branded=len(branded),
+                        class_intent=class_intent,
+                        form_intent=form_intent
                     )
 
             # Fall back to hardcoded whitelist proxy alignment
@@ -445,7 +586,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_total=len(fdc_entries),
                     candidate_pool_raw_foundation=len(raw_foundation),
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                    candidate_pool_branded=len(branded)
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
                 )
 
         # Stage Z: Energy-only last resort (STRICT eligibility)
@@ -491,7 +634,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_total=len(fdc_entries),
                     candidate_pool_raw_foundation=len(raw_foundation),
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-                    candidate_pool_branded=len(branded)
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
                 )
 
                 # Add Stage-Z telemetry
@@ -529,7 +674,9 @@ class FDCAlignmentWithConversion:
             candidate_pool_total=len(fdc_entries),
             candidate_pool_raw_foundation=len(raw_foundation),
             candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
-            candidate_pool_branded=len(branded)
+            candidate_pool_branded=len(branded),
+            class_intent=class_intent,
+            form_intent=form_intent
         )
 
     def _stage1_cooked_exact(
@@ -781,6 +928,36 @@ class FDCAlignmentWithConversion:
             # Combined score: 70% name match + 30% energy match
             score = 0.7 * jaccard + 0.3 * energy_sim
 
+            # Phase 7.3 Task 3: Apply intent-aware scoring nudges
+            # Derive intents from core_class and entry_name for this candidate
+            class_intent = _derive_class_intent(base_class)
+            entry_name_lower_check = entry_name_lower
+
+            # Eggs intent nudges (±0.25)
+            if class_intent == "eggs_scrambled":
+                if any(k in entry_name_lower_check for k in ["egg, whole, cooked, scrambled", "omelet", "omelette"]):
+                    score += 0.25
+                if any(k in entry_name_lower_check for k in ["yolk", "white", "pasteurized", "frozen", "mixture"]):
+                    score -= 0.25
+            elif class_intent == "eggs":
+                if any(k in entry_name_lower_check for k in ["whole", "cooked", "hard-boiled", "poached"]):
+                    score += 0.15
+                if any(k in entry_name_lower_check for k in ["yolk", "white", "pasteurized", "frozen"]):
+                    score -= 0.15
+
+            # Form intent nudges (±0.08)
+            form_intent = _derive_form_intent(base_class)  # Derive from the food name itself
+            if form_intent == "raw":
+                if any(k in entry_name_lower_check for k in ["raw", "fresh"]):
+                    score += 0.08
+                if "cooked" in entry_name_lower_check:
+                    score -= 0.08
+            elif form_intent == "cooked":
+                if any(k in entry_name_lower_check for k in ["cooked", "steamed", "boiled", "roasted"]):
+                    score += 0.08
+                if "raw" in entry_name_lower_check:
+                    score -= 0.08
+
             # Phase 7.2: Apply soft penalties from category allowlist (hard blocks already applied above)
             penalty_applied = False
             penalty_tokens = []
@@ -883,6 +1060,16 @@ class FDCAlignmentWithConversion:
 
         if not cooked_sr_pool:
             return None
+
+        # Phase 7.3 Task 3: Apply guardrails BEFORE candidate processing
+        # Derive class_intent from core_class for egg guardrails
+        class_intent = _derive_class_intent(core_class)
+        cooked_sr_pool = _apply_guardrails(
+            cooked_sr_pool,
+            class_intent,
+            self._external_negative_vocab or {},
+            core_class
+        )
 
         # Normalize token helper (reuse from Stage 1b)
         def _norm_token(t: str) -> str:
@@ -997,6 +1184,18 @@ class FDCAlignmentWithConversion:
         if not raw_candidates_all:
             return None
 
+        # Phase 7.3 Task 3: Apply guardrails BEFORE canonical filtering
+        class_intent = _derive_class_intent(core_class)
+        raw_candidates_all = _apply_guardrails(
+            raw_candidates_all,
+            class_intent,
+            self._external_negative_vocab or {},
+            core_class
+        )
+
+        if not raw_candidates_all:
+            return None
+
         # Filter to canonical bases (exclude "sweet potato leaves", "potato flour", etc.)
         canonical_pool = [e for e in raw_candidates_all if self._is_canonical_stage2(core_class, e.name)]
         pool = canonical_pool if canonical_pool else raw_candidates_all  # Fallback if no canonical
@@ -1050,6 +1249,15 @@ class FDCAlignmentWithConversion:
 
         Look for branded entries that are already cooked.
         """
+        # Phase 7.3 Task 3: Apply guardrails BEFORE candidate processing
+        class_intent = _derive_class_intent(core_class)
+        candidates = _apply_guardrails(
+            candidates,
+            class_intent,
+            self._external_negative_vocab or {},
+            core_class
+        )
+
         for entry in candidates:
             # Must be branded
             if entry.source != "branded":
@@ -1092,6 +1300,15 @@ class FDCAlignmentWithConversion:
 
         Find branded entry with closest energy match, regardless of form.
         """
+        # Phase 7.3 Task 3: Apply guardrails BEFORE candidate processing
+        class_intent = _derive_class_intent(core_class)
+        candidates = _apply_guardrails(
+            candidates,
+            class_intent,
+            self._external_negative_vocab or {},
+            core_class
+        )
+
         best_match = None
         best_diff = float('inf')
         best_score = 0.0
@@ -1226,6 +1443,18 @@ class FDCAlignmentWithConversion:
             try:
                 results = fdc_db.search(proxy_target)
                 if results:
+                    # Phase 7.3 Task 3: Apply guardrails to proxy results
+                    class_intent = _derive_class_intent(core_class)
+                    results = _apply_guardrails(
+                        results,
+                        class_intent,
+                        self._external_negative_vocab or {},
+                        core_class
+                    )
+
+                    if not results:
+                        return None
+
                     # Prefer Foundation/SR entries
                     for entry in results:
                         if entry.source in ("foundation", "sr_legacy"):
@@ -2158,7 +2387,9 @@ class FDCAlignmentWithConversion:
         candidate_pool_total: int = 0,
         candidate_pool_raw_foundation: int = 0,
         candidate_pool_cooked_sr_legacy: int = 0,
-        candidate_pool_branded: int = 0
+        candidate_pool_branded: int = 0,
+        class_intent: Optional[str] = None,  # Phase 7.3 Task 3
+        form_intent: Optional[str] = None   # Phase 7.3 Task 3
     ) -> AlignmentResult:
         """
         Build AlignmentResult with mandatory telemetry.
@@ -2290,6 +2521,11 @@ class FDCAlignmentWithConversion:
             "candidate_pool_raw_foundation": candidate_pool_raw_foundation,
             "candidate_pool_cooked_sr_legacy": candidate_pool_cooked_sr_legacy,
             "candidate_pool_branded": candidate_pool_branded,
+            # Phase 7.3 Task 3: Intent and guardrail telemetry
+            "class_intent": class_intent,
+            "form_intent": form_intent,
+            "guardrail_produce_applied": bool(class_intent in ["produce", "leafy_or_crucifer"]),
+            "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
         })
 
         # Compact proof line (behind ALIGN_VERBOSE)
