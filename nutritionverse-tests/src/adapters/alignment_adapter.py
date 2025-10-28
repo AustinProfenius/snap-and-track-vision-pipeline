@@ -26,22 +26,19 @@ class AlignmentEngineAdapter:
         """
         Initialize alignment engine adapter.
 
+        Phase 7.3: Removed double-init - alignment_engine and fdc_db are injected
+        by the pipeline (run.py) to avoid "hardcoded defaults" warning.
+
         Args:
             enable_conversion: Enable raw→cooked conversion (always True for new engine)
         """
         load_dotenv(override=True)
 
-        # Initialize new alignment engine
-        try:
-            self.alignment_engine = FDCAlignmentWithConversion()
-            self.fdc_db = FDCDatabase()
-            self.db_available = True
-            print("[ADAPTER] ✓ Initialized Stage 5 alignment engine (FDCAlignmentWithConversion)")
-        except Exception as e:
-            print(f"[ADAPTER] ❌ Failed to initialize: {e}")
-            self.alignment_engine = None
-            self.fdc_db = None
-            self.db_available = False
+        # Phase 7.3: Defer engine/db initialization to pipeline injection
+        # This avoids creating an unconfigured engine that triggers warnings
+        self.alignment_engine = None
+        self.fdc_db = None
+        self.db_available = False
 
     def align_prediction_batch(self, prediction: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -53,6 +50,12 @@ class AlignmentEngineAdapter:
         Returns:
             Dict with alignments and totals compatible with web app
         """
+        # Phase 7.3: Check if engine and DB were injected by pipeline
+        if self.alignment_engine is None or self.fdc_db is None:
+            self.db_available = False
+        else:
+            self.db_available = True
+
         print(f"[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====")
         print(f"[ADAPTER] DB Available: {self.db_available}")
 

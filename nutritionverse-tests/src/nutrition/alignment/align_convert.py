@@ -198,6 +198,18 @@ class FDCAlignmentWithConversion:
         """
         import os  # For ALIGN_VERBOSE env var
 
+        # Phase 7.3 Task 5: De-duplicate form tokens (e.g., "(raw) (raw)" → "raw")
+        if predicted_form:
+            # Remove parentheses and collapse duplicates
+            form_tokens = predicted_form.replace('(', '').replace(')', '').split()
+            unique_tokens = []
+            seen = set()
+            for token in form_tokens:
+                if token.lower() not in seen:
+                    seen.add(token.lower())
+                    unique_tokens.append(token)
+            predicted_form = ' '.join(unique_tokens).strip() if unique_tokens else predicted_form
+
         # Step 1: Normalize to core class
         core_class = self._normalize_to_core_class(predicted_name)
 
@@ -1579,6 +1591,8 @@ class FDCAlignmentWithConversion:
         """
         Match food name against salad decomposition recipe keys.
 
+        Phase 7.3 Task 4: Orderless token matching for better coverage.
+
         Args:
             name_lower: Lowercase food name
 
@@ -1589,13 +1603,27 @@ class FDCAlignmentWithConversion:
         if name_lower in self._external_salad_decomp:
             return name_lower
 
+        # Tokenize input and recipe keys for orderless matching
+        name_tokens = set(name_lower.split())
+
+        # Try orderless token matching (e.g., "salad caesar" → "caesar salad")
+        for key in self._external_salad_decomp.keys():
+            key_tokens = set(key.split())
+            # If all key tokens appear in name (orderless), match
+            if key_tokens.issubset(name_tokens):
+                return key
+
         # Substring match (handles "caesar side salad", "mixed green salad")
         for key in self._external_salad_decomp.keys():
             if key in name_lower or name_lower in key:
                 return key
 
+        # Fallback: "salad" alone → house salad (if exists)
+        if "salad" in name_tokens and "house salad" in self._external_salad_decomp:
+            return "house salad"
+
         # Fallback: if "salad" in name and we have mixed greens, use it
-        if "salad" in name_lower and "mixed greens" in self._external_salad_decomp:
+        if "salad" in name_tokens and "mixed greens" in self._external_salad_decomp:
             return "mixed greens"
 
         return None
