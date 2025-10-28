@@ -68,6 +68,7 @@ romaine_lettuce:
   - romaine
   - lettuce romaine
   - romaine lettuce
+  - lettuce romaine raw  # Phase 7.3 component matching
 
 mixed_greens:
   - mixed greens
@@ -89,6 +90,47 @@ salad:
   - romaine lettuce
   - salad mix
   - leafy greens
+
+# Phase 7.3: Salad component variants
+lettuce_romaine_raw:
+  - Lettuce, romaine, raw
+  - lettuce romaine raw
+  - romaine raw
+  - lettuce romaine
+  - romaine lettuce
+
+parmesan_cheese_grated:
+  - Cheese, parmesan, grated
+  - parmesan cheese grated
+  - parmesan grated
+  - grated parmesan
+  - parmesan
+
+croutons:
+  - Croutons, plain
+  - Croutons, seasoned
+  - croutons plain
+  - croutons
+  - bread cubes
+
+caesar_dressing:
+  - Salad dressing, caesar
+  - Salad dressing, caesar, regular
+  - caesar dressing
+  - dressing caesar
+  - caesar salad dressing
+
+tomatoes_raw:
+  - Tomatoes, raw
+  - tomatoes raw
+  - tomato raw
+  - fresh tomatoes
+
+cucumber_with_peel_raw:
+  - Cucumber, with peel, raw
+  - cucumber with peel raw
+  - cucumber raw
+  - cucumbers raw
 
 pizza:
   - pizza

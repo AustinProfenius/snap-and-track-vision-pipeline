@@ -7,10 +7,40 @@
 version: 1
 
 fallbacks:
-  croutons:
-    - "Croutons plain"
-    - "Croutons seasoned"
+  # Lettuce
+  lettuce romaine raw:
+    - "Lettuce, romaine, raw"
+    - "Romaine lettuce"
+    - "Lettuce romaine"
 
+  lettuce mixed greens:
+    - "Lettuce, green leaf, raw"
+    - "Lettuce, red leaf, raw"
+    - "Mixed greens"
+
+  # Cheese
+  parmesan cheese grated:
+    - "Cheese, parmesan, grated"
+    - "Parmesan cheese"
+    - "Grated parmesan"
+
+  # Croutons
+  croutons:
+    - "Croutons, plain"
+    - "Croutons, seasoned"
+    - "Croutons"
+
+  # Dressings
   caesar dressing:
-    - "Dressing caesar"
-    - "Caesar dressing light"
+    - "Salad dressing, caesar"
+    - "Salad dressing, caesar, regular"
+    - "Caesar dressing"
+
+  # Vegetables
+  tomatoes raw:
+    - "Tomatoes, raw"
+    - "Tomato, raw"
+
+  cucumber with peel raw:
+    - "Cucumber, with peel, raw"
+    - "Cucumber, raw"

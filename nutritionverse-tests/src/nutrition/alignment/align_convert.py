@@ -1629,17 +1629,31 @@ class FDCAlignmentWithConversion:
 
         if entries:
             entry = entries[0]  # Take best match
-            result = {
-                "name": canonical_name,
-                "form": canonical_form,
-                "fdc_id": entry.fdc_id if hasattr(entry, 'fdc_id') else None,
-                "fdc_name": entry.name if hasattr(entry, 'name') else canonical_name,
-                "alignment_stage": "stage1b_raw_foundation_direct",
-                "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
-                "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
-                "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
-                "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None
-            }
+            # Handle both dict and object entries
+            if isinstance(entry, dict):
+                result = {
+                    "name": canonical_name,
+                    "form": canonical_form,
+                    "fdc_id": entry.get('fdc_id'),
+                    "fdc_name": entry.get('description', entry.get('name', canonical_name)),
+                    "alignment_stage": "stage5b_salad_component",
+                    "kcal_100g": entry.get('energy_kcal'),
+                    "protein_100g": entry.get('protein_g'),
+                    "carbs_100g": entry.get('carb_g'),
+                    "fat_100g": entry.get('fat_g')
+                }
+            else:
+                result = {
+                    "name": canonical_name,
+                    "form": canonical_form,
+                    "fdc_id": entry.fdc_id if hasattr(entry, 'fdc_id') else None,
+                    "fdc_name": entry.name if hasattr(entry, 'name') else canonical_name,
+                    "alignment_stage": "stage5b_salad_component",
+                    "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
+                    "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
+                    "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
+                    "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None
+                }
             self._fdc_cache[cache_key] = result
             return result
 
@@ -1649,17 +1663,31 @@ class FDCAlignmentWithConversion:
 
         branded_entry = self._query_branded_fallback(canonical_name)
         if branded_entry:
-            result = {
-                "name": canonical_name,
-                "form": canonical_form,
-                "fdc_id": branded_entry.fdc_id if hasattr(branded_entry, 'fdc_id') else None,
-                "fdc_name": branded_entry.name if hasattr(branded_entry, 'name') else canonical_name,
-                "alignment_stage": "stage3_branded_cooked",
-                "kcal_100g": branded_entry.kcal_100g if hasattr(branded_entry, 'kcal_100g') else None,
-                "protein_100g": branded_entry.protein_100g if hasattr(branded_entry, 'protein_100g') else None,
-                "carbs_100g": branded_entry.carbs_100g if hasattr(branded_entry, 'carbs_100g') else None,
-                "fat_100g": branded_entry.fat_100g if hasattr(branded_entry, 'fat_100g') else None
-            }
+            # Handle dict format from search_foods
+            if isinstance(branded_entry, dict):
+                result = {
+                    "name": canonical_name,
+                    "form": canonical_form,
+                    "fdc_id": branded_entry.get('fdc_id'),
+                    "fdc_name": branded_entry.get('description', branded_entry.get('name', canonical_name)),
+                    "alignment_stage": "stage5b_salad_component",
+                    "kcal_100g": branded_entry.get('energy_kcal'),
+                    "protein_100g": branded_entry.get('protein_g'),
+                    "carbs_100g": branded_entry.get('carb_g'),
+                    "fat_100g": branded_entry.get('fat_g')
+                }
+            else:
+                result = {
+                    "name": canonical_name,
+                    "form": canonical_form,
+                    "fdc_id": branded_entry.fdc_id if hasattr(branded_entry, 'fdc_id') else None,
+                    "fdc_name": branded_entry.name if hasattr(branded_entry, 'name') else canonical_name,
+                    "alignment_stage": "stage5b_salad_component",
+                    "kcal_100g": branded_entry.kcal_100g if hasattr(branded_entry, 'kcal_100g') else None,
+                    "protein_100g": branded_entry.protein_100g if hasattr(branded_entry, 'protein_100g') else None,
+                    "carbs_100g": branded_entry.carbs_100g if hasattr(branded_entry, 'carbs_100g') else None,
+                    "fat_100g": branded_entry.fat_100g if hasattr(branded_entry, 'fat_100g') else None
+                }
             self._fdc_cache[cache_key] = result
             return result
 
@@ -1672,30 +1700,66 @@ class FDCAlignmentWithConversion:
 
     def _query_foundation_sr_for_component(self, canonical_name: str) -> List[Any]:
         """
-        Query Foundation/SR entries for salad component.
+        Query Foundation/SR entries for salad component with variant expansion.
+
+        Phase 7.3 Fix: Uses variants.yml expansion to handle normalization mismatches
+        between recipe component names and FDC titles.
 
         Args:
-            canonical_name: Component name to search
+            canonical_name: Component name to search (e.g., "lettuce romaine raw")
 
         Returns:
             List of matching FDC entries (may be empty)
         """
-        if not self._fdc_db or not hasattr(self._fdc_db, 'search'):
+        if not self._fdc_db or not hasattr(self._fdc_db, 'search_foods'):
             return []
 
-        try:
-            results = self._fdc_db.search(canonical_name)
-            if results:
-                # Filter to Foundation/SR only
-                foundation_sr = [
-                    e for e in results
-                    if hasattr(e, 'source') and e.source in ("foundation", "sr_legacy")
-                ]
-                return foundation_sr
-        except Exception as e:
-            import os
-            if os.getenv('ALIGN_VERBOSE', '0') == '1':
-                print(f"[STAGE5B] Query failed: {e}")
+        import os
+
+        # Generate query variants using variants config
+        query_variants = [canonical_name]
+
+        # If we have variants config, use it to expand queries
+        if self._external_variants:
+            # Try underscore-keyed lookup (lettuce_romaine_raw)
+            underscore_key = canonical_name.replace(' ', '_')
+            if underscore_key in self._external_variants:
+                query_variants.extend(self._external_variants[underscore_key])
+
+            # Try space-keyed lookup
+            if canonical_name in self._external_variants:
+                query_variants.extend(self._external_variants[canonical_name])
+
+        # Deduplicate while preserving order
+        seen = set()
+        unique_variants = []
+        for v in query_variants:
+            v_lower = v.lower()
+            if v_lower not in seen:
+                seen.add(v_lower)
+                unique_variants.append(v)
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5B]       Trying {len(unique_variants)} variants: {unique_variants[:3]}")
+
+        # Try each variant until we get Foundation/SR results
+        for variant in unique_variants:
+            try:
+                results = self._fdc_db.search_foods(variant, limit=10)
+                if results:
+                    # Filter to Foundation/SR only
+                    foundation_sr = [
+                        e for e in results
+                        if e.get('source', e.get('data_type', '')).lower() in ('foundation', 'sr_legacy', 'foundation_food', 'sr_legacy_food')
+                    ]
+                    if foundation_sr:
+                        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                            print(f"[STAGE5B]       ✓ Matched via variant '{variant}': {foundation_sr[0].get('description', foundation_sr[0].get('name', 'unknown'))}")
+                        return foundation_sr
+            except Exception as e:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5B]       Query failed for '{variant}': {e}")
+                continue
 
         return []
 
@@ -1715,30 +1779,32 @@ class FDCAlignmentWithConversion:
         fallback_cfg = getattr(self, '_external_branded_fallbacks', {})
         fallback_names = fallback_cfg.get("fallbacks", {}).get(canonical_name, [])
 
-        if not self._fdc_db or not hasattr(self._fdc_db, 'search'):
+        if not self._fdc_db or not hasattr(self._fdc_db, 'search_foods'):
             return None
+
+        import os
 
         # Try configured fallback names first
         for fallback_name in fallback_names:
             try:
-                results = self._fdc_db.search(fallback_name)
+                results = self._fdc_db.search_foods(fallback_name, limit=5)
                 if results:
-                    # Prefer branded entries
-                    for entry in results:
-                        if hasattr(entry, 'source') and entry.source == "branded":
-                            return entry
-                    # Fall back to any result
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[STAGE5B]       Branded fallback found for '{canonical_name}' via '{fallback_name}'")
+                    # Return first result (dict format)
                     return results[0]
-            except Exception:
+            except Exception as e:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5B]       Branded query failed for '{fallback_name}': {e}")
                 continue
 
-        # If no configured fallbacks, try direct branded search
+        # If no configured fallbacks, try direct search
         try:
-            results = self._fdc_db.search(canonical_name)
+            results = self._fdc_db.search_foods(canonical_name, limit=5)
             if results:
-                for entry in results:
-                    if hasattr(entry, 'source') and entry.source == "branded":
-                        return entry
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5B]       Branded fallback found for '{canonical_name}' via direct search")
+                return results[0]
         except Exception:
             pass
 
