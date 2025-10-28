@@ -134,6 +134,8 @@ produce_hard_blocks:
   - "pimiento"
   - "cured"
   - "brined"
+  - "soup"  # Blocks "Soup broccoli cheese", "Soup cream of celery"
+  - "cheese"  # Blocks "Soup broccoli cheese"
 
 # Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
 eggs_hard_blocks:

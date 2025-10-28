@@ -78,6 +78,19 @@ def load_cook_conversions(cfg_path: Optional[Path] = None) -> Dict[str, Any]:
 
 
 # Phase 7.3 Task 3: Intent derivation helpers
+def _contains_any(haystack: str, needles: List[str]) -> bool:
+    """
+    Case-insensitive substring check: return True if any needle appears in haystack.
+    """
+    if not haystack or not needles:
+        return False
+    h = haystack.lower()
+    for n in needles:
+        if n and n.lower() in h:
+            return True
+    return False
+
+
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
     """
     Derive class intent from predicted food name.
@@ -138,64 +151,89 @@ def _derive_form_intent(predicted_form: Optional[str]) -> Optional[str]:
 def _apply_guardrails(
     candidates: List[Any],
     class_intent: Optional[str],
-    neg_vocab: Dict[str, Any],
-    predicted_name: str
+    external_negative_vocab: Dict[str, Any],
+    core_class: str
 ) -> List[Any]:
     """
-    Apply guardrail filtering to candidates before scoring.
+    Apply intent-aware hard filters to the candidate list using the real config keys
+    present in negative_vocabulary.yml.
 
     Phase 7.3 Task 3: Filters out processed/wrong forms based on produce/eggs hard blocks.
+
+    Known config keys (present in negative_vocabulary.yml):
+      - produce_hard_blocks
+      - eggs_hard_blocks
 
     Args:
         candidates: List of FDC candidate dicts
         class_intent: Derived class intent
-        neg_vocab: Negative vocabulary config
-        predicted_name: Original predicted food name
+        external_negative_vocab: Negative vocabulary config
+        core_class: Core base class (e.g., 'olive', 'egg', 'broccoli')
 
     Returns:
         Filtered candidate list
     """
-    # Extract text from candidate (handle both dict and object formats)
-    def text_key(c):
-        if isinstance(c, dict):
-            return (c.get("description") or c.get("name") or "").lower()
-        return (getattr(c, "description", "") or getattr(c, "name", "") or "").lower()
+    cfg = external_negative_vocab or {}
 
-    out = []
+    # Pull existing lists from config (may be empty if not present)
+    produce_blocks = list(cfg.get("produce_hard_blocks", []))
+    eggs_blocks = list(cfg.get("eggs_hard_blocks", []))
 
-    # Get hard block sets from config
-    produce_blocks = set(k.lower() for k in neg_vocab.get("produce_hard_blocks", []))
-    eggs_blocks = set(k.lower() for k in neg_vocab.get("eggs_hard_blocks", []))
-    oils_blocks = set(k.lower() for k in neg_vocab.get("oils_hard_blocks", []))
-    soup_blocks = set(k.lower() for k in neg_vocab.get("soup_hard_blocks", []))
+    # Expand with problem substrings observed in validation logs
+    # (we add these to be safe even if not specified in config)
+    produce_extras = [
+        "oil", "soup", "cheese", "sea cucumber",
+        "frozen", "pickled", "canned", "brined", "cured",
+        "stuffed", "pimiento", "juice", "dried", "dehydrated",
+    ]
+    eggs_extras = [
+        "bread", "toast", "roll", "bun", "substitute", "powder", "frozen",
+    ]
 
-    pn = (predicted_name or "").lower()
+    # Merge & lower once
+    produce_blocklist = sorted({*(x.lower() for x in produce_blocks), *produce_extras})
+    eggs_blocklist = sorted({*(x.lower() for x in eggs_blocks), *eggs_extras})
 
+    pn = (core_class or "").lower()  # core base class (e.g., 'olive', 'egg', 'broccoli')
+    predicted_name_lower = pn
+
+    filtered: List[Any] = []
     for c in candidates:
-        t = text_key(c)
+        # Extract candidate name (handle both dict and object formats)
+        if isinstance(c, dict):
+            name = c.get("description") or c.get("name") or ""
+        else:
+            name = getattr(c, "description", "") or getattr(c, "name", "") or ""
+        name_l = name.lower()
         blocked = False
 
-        # Produce guardrails (apply if prediction looks like fresh produce)
-        if any(k in pn for k in ["lettuce", "spinach", "greens", "cucumber", "tomato",
-                                 "broccoli", "strawberr", "raspberr", "blackberr", "blueberr",
-                                 "carrot", "celery", "pepper", "avocado", "eggplant"]):
-            # Block unless explicitly predicted (e.g., "pickled cucumber" should allow pickled)
-            for b in produce_blocks | oils_blocks | soup_blocks:
-                if b in t and b not in pn:
-                    blocked = True
-                    break
+        # === Produce guardrails (raw produce shouldn't map to oil, soup, frozen, pickled, etc.)
+        if class_intent in ("produce", "leafy_or_crucifer"):
+            if _contains_any(name_l, produce_blocklist):
+                blocked = True
 
-        # Egg guardrails
-        if "egg" in pn:
-            for b in eggs_blocks:
-                if b in t:
+            # Special-case olives: force-block oils regardless of config
+            # (models often choose 'Oil olive salad or cooking')
+            if not blocked and ("olive" in predicted_name_lower or "olives" in predicted_name_lower):
+                if "oil" in name_l:
                     blocked = True
-                    break
+
+        # === Eggs guardrails (block bread/bakery & substitutes/powders/frozen)
+        if not blocked and class_intent and class_intent.startswith("eggs"):
+            if _contains_any(name_l, eggs_blocklist):
+                blocked = True
+
+        # === Generic produce-type intent fallback: if the predicted class looks like produce
+        # but the candidate smells like a soup/cheese/oil/seafood-impersonator, block it.
+        if not blocked and class_intent in ("produce", "leafy_or_crucifer"):
+            tricky = ["soup", "cheese", "sea cucumber", "oil"]
+            if _contains_any(name_l, tricky):
+                blocked = True
 
         if not blocked:
-            out.append(c)
+            filtered.append(c)
 
-    return out
+    return filtered
 
 
 class FDCAlignmentWithConversion:
