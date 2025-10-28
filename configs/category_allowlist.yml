@@ -161,5 +161,23 @@ eggs:
     - bread
     - toast
     - sandwich
+    - yolk
+    - white
+    - pasteurized
   hard_block_contains:
     - bread egg toasted
+
+# Phase 7.3 Task 3: Cooking intent preferences for scrambled eggs
+eggs_scrambled_intent:
+  prefer_contains:
+    - whole
+    - cooked
+    - scrambled
+    - omelet
+  avoid_contains:
+    - yolk
+    - white
+    - frozen
+    - pasteurized
+    - mixture
+    - substitute

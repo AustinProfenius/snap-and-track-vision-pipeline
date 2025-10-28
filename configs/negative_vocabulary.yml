@@ -117,3 +117,23 @@ avocado:
 broccoli:
   - soup  # Phase 7.2: prevent "Soup broccoli cheese canned condensed"
   - cheese  # Phase 7.2
+
+# Phase 7.3 Task 3: Universal produce hard blocks (apply to all produce unless explicitly predicted)
+produce_hard_blocks:
+  - "babyfood"
+  - "pickled"
+  - "canned"
+  - "frozen"
+  - "juice"
+  - "dried"
+  - "dehydrated"
+
+# Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
+eggs_hard_blocks:
+  - "yolk raw frozen"
+  - "white raw frozen"
+  - "mixture"
+  - "pasteurized"
+  - "frozen"
+  - "substitute"
+  - "powder"
