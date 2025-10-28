@@ -85,6 +85,8 @@ def run_once(
         variants=cfg.variants,
         proxy_rules=cfg.proxy_rules,
         category_allowlist=cfg.category_allowlist,  # Phase 7.1: Form-aware category gates
+        branded_fallbacks=cfg.branded_fallbacks,  # Phase 7.3: Branded fallbacks for components
+        unit_to_grams=cfg.unit_to_grams,  # Phase 7.3: Unit to gram conversions
         fdc_db=adapter.fdc_db  # Phase 7: Inject FDC database for Stage 5 proxy
     )
 

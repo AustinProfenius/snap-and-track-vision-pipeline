@@ -93,6 +93,8 @@ class FDCAlignmentWithConversion:
         variants: Optional[Dict[str, List[str]]] = None,
         proxy_rules: Optional[Dict[str, str]] = None,
         category_allowlist: Optional[Dict[str, Any]] = None,  # Phase 7.1: Form-aware category gates
+        branded_fallbacks: Optional[Dict[str, Any]] = None,  # Phase 7.3: Branded fallbacks for components
+        unit_to_grams: Optional[Dict[str, float]] = None,  # Phase 7.3: Unit to gram conversions
         fdc_db: Any = None  # Phase 7: FDC database instance for Stage 5 proxy search
     ):
         """
@@ -107,6 +109,8 @@ class FDCAlignmentWithConversion:
             variants: Food variant mappings for canonical query generation (Phase 7)
             proxy_rules: Stage 5 proxy alignment rules for prepared foods (Phase 7)
             category_allowlist: Form-aware category gates for raw produce (Phase 7.1)
+            branded_fallbacks: Branded fallbacks for salad components (Phase 7.3)
+            unit_to_grams: Unit to gram conversion table (Phase 7.3)
             fdc_db: FDC database instance for Stage 5 proxy search (Phase 7)
         """
         self.cook_cfg = load_cook_conversions(cook_cfg_path)
@@ -119,6 +123,8 @@ class FDCAlignmentWithConversion:
         self._external_variants = variants or {}
         self._external_proxy_rules = proxy_rules or {}
         self._external_category_allowlist = category_allowlist or {}  # Phase 7.1
+        self._external_branded_fallbacks = branded_fallbacks or {}  # Phase 7.3
+        self._external_unit_to_grams = unit_to_grams or {}  # Phase 7.3
         self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
         # Phase 7.3: Extract salad decomposition config and initialize component cache
@@ -129,7 +135,7 @@ class FDCAlignmentWithConversion:
 
         # Track config source for telemetry
         self.config_source = (
-            "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules, category_allowlist])
+            "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules, category_allowlist, branded_fallbacks, unit_to_grams])
             else "fallback"
         )
 
@@ -496,8 +502,8 @@ class FDCAlignmentWithConversion:
         decomp_result = self._try_stage5b_salad_decomposition(predicted_name, predicted_form)
         if decomp_result:
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
-                recipe_name = decomp_result.get("telemetry", {}).get("decomposition_recipe", "unknown")
-                comp_count = len(decomp_result.get("expanded_foods", []))
+                recipe_name = decomp_result.telemetry.get("decomposition_recipe", "unknown")
+                comp_count = len(decomp_result.telemetry.get("expanded_foods", []))
                 print(f"[ALIGN] ✓ Decomposed via Stage 5B: {recipe_name} ({comp_count} components)")
             return decomp_result
 
@@ -1706,7 +1712,7 @@ class FDCAlignmentWithConversion:
             First matching branded entry or None
         """
         # Check if branded_fallbacks config exists
-        fallback_cfg = getattr(self, '_branded_fallbacks', {})
+        fallback_cfg = getattr(self, '_external_branded_fallbacks', {})
         fallback_names = fallback_cfg.get("fallbacks", {}).get(canonical_name, [])
 
         if not self._fdc_db or not hasattr(self._fdc_db, 'search'):
@@ -2084,7 +2090,8 @@ class FDCAlignmentWithConversion:
             "stage3_branded_cooked",
             "stage4_branded_energy",
             "stage5_proxy_alignment",
-            "stage5b_salad_decomposition",  # Phase 7.3: Salad decomposition
+            "stage5b_salad_decomposition",  # Phase 7.3: Salad decomposition (parent)
+            "stage5b_salad_component",  # Phase 7.3: Individual salad components
             "stageZ_energy_only",  # NEW: Energy-only last resort
             "stageZ_branded_last_resort",
         }

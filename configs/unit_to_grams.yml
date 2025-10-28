@@ -1,0 +1,33 @@
+# Unit to Gram Conversions
+# Phase 7.3: Default conversions for common food units
+
+# Eggs
+egg_whole_large: 50
+egg_whole_medium: 44
+egg_whole_small: 38
+
+# Salad Components
+croutons_tbsp: 7
+dressing_caesar_tbsp: 15
+dressing_ranch_tbsp: 14
+dressing_italian_tbsp: 14
+romaine_cup_shredded: 47
+lettuce_cup_shredded: 55
+cucumber_cup_slices: 104
+tomato_cup_chopped: 180
+parmesan_grated_tbsp: 5
+
+# Common Produce
+apple_medium: 182
+banana_medium: 118
+orange_medium: 131
+avocado_half: 100
+
+# Starches
+rice_cooked_cup: 158
+pasta_cooked_cup: 140
+bread_slice: 28
+
+# Liquids
+milk_cup: 244
+juice_cup: 248

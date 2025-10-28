@@ -143,25 +143,10 @@ class AlignmentEngineAdapter:
             else:
                 fdc_candidates = []
 
+            # Phase 7.3 Fix: ALWAYS call align_food_item, even with empty candidates
+            # This allows Stage 5B salad decomposition to run
             if not fdc_candidates:
-                print(f"[ADAPTER]   No FDC candidates found (tried {variants_tried} variants)")
-                aligned_foods.append({
-                    "name": name,
-                    "form": form,
-                    "mass_g": mass_g,
-                    "calories": 0,
-                    "protein_g": 0,
-                    "carbs_g": 0,
-                    "fat_g": 0,
-                    "fdc_id": None,
-                    "fdc_name": "NO_MATCH",
-                    "match_score": 0.0,
-                    "alignment_stage": "stage0_no_candidates",
-                    "conversion_applied": False
-                })
-                telemetry["alignment_stages"]["stage0_no_candidates"] = \
-                    telemetry["alignment_stages"].get("stage0_no_candidates", 0) + 1
-                continue
+                print(f"[ADAPTER]   No FDC candidates found (tried {variants_tried} variants), trying Stage 5B...")
 
             # Run alignment using new engine
             try:
