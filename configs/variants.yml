@@ -53,6 +53,12 @@ spinach:
   - baby spinach
   - spinach raw
 
+spinach_raw:
+  - Spinach, raw
+  - spinach raw
+  - spinach leaves raw
+  - baby spinach raw
+
 tomato:
   - tomato
   - tomatoes

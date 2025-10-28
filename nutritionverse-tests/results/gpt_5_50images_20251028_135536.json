@@ -1,0 +1,4597 @@
+{
+  "timestamp": "20251028_135536",
+  "model": "gpt-5",
+  "include_micros": false,
+  "test_mode": "Batch Test",
+  "total_images": 50,
+  "successful": 50,
+  "failed": 0,
+  "average_accuracy": 0,
+  "results": [
+    {
+      "dish_id": "dish_1562170331",
+      "image_filename": "dish_1562170331.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562170331.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potato wedges",
+            "form": "roasted",
+            "mass_g": 75,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.82
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 120,
+            "count": 9,
+            "modifiers": [],
+            "confidence": 0.7
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 16,
+            "modifiers": [],
+            "confidence": 0.9
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.85
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 18,
+            "modifiers": [],
+            "confidence": 0.9
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.85
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2075
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562170331",
+        "image_filename": "dish_1562170331.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562170331.png",
+        "total_mass_g": 400.0,
+        "total_calories": 263.830017,
+        "total_fat_g": 5.293,
+        "total_carbs_g": 54.537998,
+        "total_protein_g": 3.476,
+        "foods": [
+          {
+            "name": "watermelon",
+            "mass_g": 48.0,
+            "calories": 14.4
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 67.0,
+            "calories": 94.47
+          },
+          {
+            "name": "berries",
+            "mass_g": 178.0,
+            "calories": 101.46
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 107.0,
+            "calories": 53.5
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562170356",
+      "image_filename": "dish_1562170356.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562170356.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potato wedges",
+            "form": "roasted",
+            "mass_g": 120,
+            "count": 1,
+            "confidence": 0.74
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 22,
+            "count": 2,
+            "confidence": 0.78
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 100,
+            "count": 1,
+            "confidence": 0.69
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 1,
+            "confidence": 0.76
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 1,
+            "confidence": 0.8
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 1,
+            "confidence": 0.79
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 1,
+            "confidence": 0.77
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2971
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562170356",
+        "image_filename": "dish_1562170356.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562170356.png",
+        "total_mass_g": 432.0,
+        "total_calories": 385.333984,
+        "total_fat_g": 14.285,
+        "total_carbs_g": 55.529999,
+        "total_protein_g": 12.788,
+        "foods": [
+          {
+            "name": "turkey bacon",
+            "mass_g": 32.0,
+            "calories": 121.504
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 107.0,
+            "calories": 53.5
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 48.0,
+            "calories": 14.4
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 67.0,
+            "calories": 94.47
+          },
+          {
+            "name": "berries",
+            "mass_g": 178.0,
+            "calories": 101.46
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562173175",
+      "image_filename": "dish_1562173175.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562173175.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 130,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "apple",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1510
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562173175",
+        "image_filename": "dish_1562173175.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562173175.png",
+        "total_mass_g": 163.0,
+        "total_calories": 165.366608,
+        "total_fat_g": 7.169495,
+        "total_carbs_g": 13.684191,
+        "total_protein_g": 12.646373,
+        "foods": [
+          {
+            "name": "milk",
+            "mass_g": 75.178337,
+            "calories": 38.34095187
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 17.613789,
+            "calories": 85.60301454
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 70.20787,
+            "calories": 41.4226433
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562173200",
+      "image_filename": "dish_1562173200.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562173200.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 120,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.88
+          },
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.72
+          },
+          {
+            "name": "banana",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 5,
+            "modifiers": [],
+            "confidence": 0.55
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2626
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562173200",
+        "image_filename": "dish_1562173200.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562173200.png",
+        "total_mass_g": 259.0,
+        "total_calories": 213.366608,
+        "total_fat_g": 7.265494,
+        "total_carbs_g": 26.16419,
+        "total_protein_g": 13.126373,
+        "foods": [
+          {
+            "name": "pineapple",
+            "mass_g": 96.0,
+            "calories": 48.0
+          },
+          {
+            "name": "milk",
+            "mass_g": 75.178337,
+            "calories": 38.34095187
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 17.613789,
+            "calories": 85.60301454
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 70.20787,
+            "calories": 41.4226433
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602803",
+      "image_filename": "dish_1562602803.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602803.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.58
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 15,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1703
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562602803",
+        "image_filename": "dish_1562602803.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602803.png",
+        "total_mass_g": 120.0,
+        "total_calories": 121.742279,
+        "total_fat_g": 5.278155,
+        "total_carbs_g": 10.074251,
+        "total_protein_g": 9.310214,
+        "foods": [
+          {
+            "name": "chia seeds",
+            "mass_g": 12.967206,
+            "calories": 63.02062116
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 51.686775,
+            "calories": 30.49519725
+          },
+          {
+            "name": "milk",
+            "mass_g": 55.346016,
+            "calories": 28.22646816
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602832",
+      "image_filename": "dish_1562602832.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602832.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 5,
+            "modifiers": [],
+            "confidence": 0.88
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 12,
+            "count": 5,
+            "modifiers": [],
+            "confidence": 0.84
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 16,
+            "count": 2,
+            "modifiers": [],
+            "confidence": 0.76
+          },
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.54
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2336
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562602832",
+        "image_filename": "dish_1562602832.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602832.png",
+        "total_mass_g": 188.0,
+        "total_calories": 144.182281,
+        "total_fat_g": 5.482155,
+        "total_carbs_g": 15.514251,
+        "total_protein_g": 9.786214,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 68.0,
+            "calories": 22.44
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 51.686775,
+            "calories": 30.49519725
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 12.967206,
+            "calories": 63.02062116
+          },
+          {
+            "name": "milk",
+            "mass_g": 55.346016,
+            "calories": 28.22646816
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602860",
+      "image_filename": "dish_1562602860.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602860.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 1,
+            "confidence": 0.53
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 1,
+            "confidence": 0.78
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 8,
+            "count": 1,
+            "confidence": 0.75
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 18,
+            "count": 1,
+            "confidence": 0.76
+          },
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 100,
+            "count": 1,
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2024
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562602860",
+        "image_filename": "dish_1562602860.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602860.png",
+        "total_mass_g": 258.0,
+        "total_calories": 165.182281,
+        "total_fat_g": 5.622155,
+        "total_carbs_g": 20.834251,
+        "total_protein_g": 10.206213,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 68.0,
+            "calories": 22.44
+          },
+          {
+            "name": "milk",
+            "mass_g": 55.346016,
+            "calories": 28.22646816
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 12.967206,
+            "calories": 63.02062116
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 51.686775,
+            "calories": 30.49519725
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 70.0,
+            "calories": 21.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562602888",
+      "image_filename": "dish_1562602888.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602888.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 85,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.86
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 10,
+            "count": 1,
+            "confidence": 0.58
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 15,
+            "count": 1,
+            "modifiers": [
+              "black"
+            ],
+            "confidence": 0.64
+          },
+          {
+            "name": "chia pudding",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 1,
+            "confidence": 0.7
+          },
+          {
+            "name": "egg whites",
+            "form": "boiled",
+            "mass_g": 70,
+            "count": 1,
+            "confidence": 0.62
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1973
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562602888",
+        "image_filename": "dish_1562602888.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562602888.png",
+        "total_mass_g": 343.0,
+        "total_calories": 209.382294,
+        "total_fat_g": 5.792155,
+        "total_carbs_g": 21.429251,
+        "total_protein_g": 18.706215,
+        "foods": [
+          {
+            "name": "strawberries",
+            "mass_g": 68.0,
+            "calories": 22.44
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 70.0,
+            "calories": 21.0
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 85.0,
+            "calories": 44.2
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 51.686775,
+            "calories": 30.49519725
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 12.967206,
+            "calories": 63.02062116
+          },
+          {
+            "name": "milk",
+            "mass_g": 55.346016,
+            "calories": 28.22646816
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562603569",
+      "image_filename": "dish_1562603569.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603569.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 18,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.79
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 40,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.65
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1771
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562603569",
+        "image_filename": "dish_1562603569.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603569.png",
+        "total_mass_g": 62.0,
+        "total_calories": 121.679504,
+        "total_fat_g": 7.050731,
+        "total_carbs_g": 8.625269,
+        "total_protein_g": 5.648293,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 14.0,
+            "calories": 75.74
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.170732,
+            "calories": 10.34927088
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 46.829269,
+            "calories": 35.59024444
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562603598",
+      "image_filename": "dish_1562603598.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603598.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 22,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.86
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 45,
+            "count": 3,
+            "confidence": 0.74
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 5,
+            "confidence": 0.78
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 7,
+            "count": 4,
+            "confidence": 0.78
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 18,
+            "count": 4,
+            "confidence": 0.75
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 14,
+            "count": 2,
+            "confidence": 0.76
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2313
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562603598",
+        "image_filename": "dish_1562603598.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603598.png",
+        "total_mass_g": 156.0,
+        "total_calories": 175.259506,
+        "total_fat_g": 7.332731,
+        "total_carbs_g": 21.785269,
+        "total_protein_g": 6.306293,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 94.0,
+            "calories": 53.58
+          },
+          {
+            "name": "bacon",
+            "mass_g": 14.0,
+            "calories": 75.74
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 46.829269,
+            "calories": 35.59024444
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.170732,
+            "calories": 10.34927088
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562603626",
+      "image_filename": "dish_1562603626.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603626.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 22,
+            "count": 2,
+            "modifiers": [],
+            "confidence": 0.84
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 75,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.67
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 55,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "strawberry",
+            "form": "raw",
+            "mass_g": 30,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.86
+          },
+          {
+            "name": "blueberry",
+            "form": "raw",
+            "mass_g": 5,
+            "count": 2,
+            "modifiers": [],
+            "confidence": 0.8
+          },
+          {
+            "name": "raspberry",
+            "form": "raw",
+            "mass_g": 14,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "blackberry",
+            "form": "raw",
+            "mass_g": 16,
+            "count": 2,
+            "modifiers": [],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2742
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562603626",
+        "image_filename": "dish_1562603626.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562603626.png",
+        "total_mass_g": 209.0,
+        "total_calories": 201.759506,
+        "total_fat_g": 7.385731,
+        "total_carbs_g": 28.675268,
+        "total_protein_g": 6.571293,
+        "foods": [
+          {
+            "name": "sweet potato",
+            "mass_g": 46.829269,
+            "calories": 35.59024444
+          },
+          {
+            "name": "bacon",
+            "mass_g": 14.0,
+            "calories": 75.74
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.170732,
+            "calories": 10.34927088
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 53.0,
+            "calories": 26.5
+          },
+          {
+            "name": "berries",
+            "mass_g": 94.0,
+            "calories": 53.58
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562605352",
+      "image_filename": "dish_1562605352.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605352.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 130,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "steamed",
+            "mass_g": 105,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1900
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562605352",
+        "image_filename": "dish_1562605352.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605352.png",
+        "total_mass_g": 195.0,
+        "total_calories": 242.068939,
+        "total_fat_g": 16.78414,
+        "total_carbs_g": 6.608414,
+        "total_protein_g": 16.307085,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 47.232475,
+            "calories": 20.30996425
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.472325,
+            "calories": 4.175353
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.059041,
+            "calories": 0.0236164
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.236162,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562605384",
+      "image_filename": "dish_1562605384.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605384.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 160,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.69
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "steamed",
+            "mass_g": 85,
+            "count": 1,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.66
+          },
+          {
+            "name": "potato wedges",
+            "form": "roasted",
+            "mass_g": 90,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.63
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1164
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562605384",
+        "image_filename": "dish_1562605384.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562605384.png",
+        "total_mass_g": 262.0,
+        "total_calories": 306.192841,
+        "total_fat_g": 18.418285,
+        "total_carbs_g": 18.374268,
+        "total_protein_g": 16.960743,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 47.232475,
+            "calories": 20.30996425
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.106471,
+            "calories": 18.62120364
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.059041,
+            "calories": 0.0236164
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 65.365852,
+            "calories": 49.67804752
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.236162,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562613045",
+      "image_filename": "dish_1562613045.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562613045.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "mixed salad greens",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.67
+          },
+          {
+            "name": "tofu",
+            "form": "grilled",
+            "mass_g": 60,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.56
+          },
+          {
+            "name": "corn kernels",
+            "form": "cooked",
+            "mass_g": 70,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1862
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562613045",
+        "image_filename": "dish_1562613045.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562613045.png",
+        "total_mass_g": 207.0,
+        "total_calories": 166.112,
+        "total_fat_g": 1.793,
+        "total_carbs_g": 18.285999,
+        "total_protein_g": 21.533998,
+        "foods": [
+          {
+            "name": "corn",
+            "mass_g": 79.0,
+            "calories": 75.84
+          },
+          {
+            "name": "mixed greens",
+            "mass_g": 32.0,
+            "calories": 8.96
+          },
+          {
+            "name": "cod",
+            "mass_g": 96.0,
+            "calories": 81.312
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562617416",
+      "image_filename": "dish_1562617416.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562617416.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pepperoni pizza slice",
+            "form": "baked",
+            "mass_g": 70,
+            "count": 1,
+            "confidence": 0.82
+          },
+          {
+            "name": "broccoli florets",
+            "form": "steamed",
+            "mass_g": 35,
+            "count": 4,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.7
+          },
+          {
+            "name": "salad",
+            "form": "raw",
+            "mass_g": 110,
+            "count": 1,
+            "modifiers": [
+              "romaine"
+            ],
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1995
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562617416",
+        "image_filename": "dish_1562617416.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562617416.png",
+        "total_mass_g": 168.0,
+        "total_calories": 200.949997,
+        "total_fat_g": 8.242,
+        "total_carbs_g": 23.620001,
+        "total_protein_g": 9.872,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 43.0,
+            "calories": 15.05
+          },
+          {
+            "name": "pepperoni pizza",
+            "mass_g": 55.0,
+            "calories": 155.1
+          },
+          {
+            "name": "caesar salad",
+            "mass_g": 70.0,
+            "calories": 30.8
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562617446",
+      "image_filename": "dish_1562617446.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562617446.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "steamed",
+            "mass_g": 40,
+            "count": 1,
+            "confidence": 0.86
+          },
+          {
+            "name": "pepperoni pizza",
+            "form": "baked",
+            "mass_g": 75,
+            "count": 1,
+            "confidence": 0.8
+          },
+          {
+            "name": "romaine lettuce",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 1,
+            "modifiers": [
+              "romaine",
+              "green"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "eggplant",
+            "form": "roasted",
+            "mass_g": 25,
+            "count": 1,
+            "confidence": 0.6
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 40,
+            "count": 1,
+            "confidence": 0.65
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2231
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562617446",
+        "image_filename": "dish_1562617446.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562617446.png",
+        "total_mass_g": 232.0,
+        "total_calories": 291.190002,
+        "total_fat_g": 12.594,
+        "total_carbs_g": 35.139999,
+        "total_protein_g": 11.216,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 43.0,
+            "calories": 15.05
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 64.0,
+            "calories": 90.24
+          },
+          {
+            "name": "caesar salad",
+            "mass_g": 70.0,
+            "calories": 30.8
+          },
+          {
+            "name": "pepperoni pizza",
+            "mass_g": 55.0,
+            "calories": 155.1
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562686548",
+      "image_filename": "dish_1562686548.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562686548.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 100,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.82
+          },
+          {
+            "name": "potatoes",
+            "form": "boiled",
+            "mass_g": 130,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "carrots",
+            "form": "roasted",
+            "mass_g": 35,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.55
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2184
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562686548",
+        "image_filename": "dish_1562686548.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562686548.png",
+        "total_mass_g": 280.0,
+        "total_calories": 413.493988,
+        "total_fat_g": 23.967999,
+        "total_carbs_g": 20.892,
+        "total_protein_g": 27.464001,
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "mass_g": 126.0,
+            "calories": 186.48
+          },
+          {
+            "name": "yam",
+            "mass_g": 54.0,
+            "calories": 67.014
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 100.0,
+            "calories": 160.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562688482",
+      "image_filename": "dish_1562688482.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688482.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 80,
+            "count": 16,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.83
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 45,
+            "count": 3,
+            "confidence": 0.64
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 45,
+            "count": 2,
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2624
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562688482",
+        "image_filename": "dish_1562688482.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688482.png",
+        "total_mass_g": 169.0,
+        "total_calories": 193.459991,
+        "total_fat_g": 8.417999,
+        "total_carbs_g": 19.77,
+        "total_protein_g": 10.864,
+        "foods": [
+          {
+            "name": "roasted potatoes",
+            "mass_g": 17.0,
+            "calories": 23.97
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 71.0,
+            "calories": 113.6
+          },
+          {
+            "name": "grapes",
+            "mass_g": 81.0,
+            "calories": 55.89
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562688524",
+      "image_filename": "dish_1562688524.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688524.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 120,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.87
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 95,
+            "count": 1,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.86
+          },
+          {
+            "name": "plantain",
+            "form": "pan_seared",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.62
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2057
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562688524",
+        "image_filename": "dish_1562688524.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688524.png",
+        "total_mass_g": 242.0,
+        "total_calories": 215.359985,
+        "total_fat_g": 8.564,
+        "total_carbs_g": 25.318001,
+        "total_protein_g": 11.302,
+        "foods": [
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 71.0,
+            "calories": 113.6
+          },
+          {
+            "name": "grapes",
+            "mass_g": 81.0,
+            "calories": 55.89
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 17.0,
+            "calories": 23.97
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 73.0,
+            "calories": 21.9
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562688552",
+      "image_filename": "dish_1562688552.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688552.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "grapes",
+            "form": "raw",
+            "mass_g": 110,
+            "count": 26,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.9
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.82
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 100,
+            "count": 5,
+            "modifiers": [],
+            "confidence": 0.86
+          },
+          {
+            "name": "meatballs",
+            "form": "cooked",
+            "mass_g": 80,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "cheese",
+            "form": "raw",
+            "mass_g": 10,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2496
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562688552",
+        "image_filename": "dish_1562688552.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562688552.png",
+        "total_mass_g": 304.0,
+        "total_calories": 235.820007,
+        "total_fat_g": 8.75,
+        "total_carbs_g": 30.278002,
+        "total_protein_g": 11.736,
+        "foods": [
+          {
+            "name": "grapes",
+            "mass_g": 81.0,
+            "calories": 55.89
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 17.0,
+            "calories": 23.97
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 73.0,
+            "calories": 21.9
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 62.0,
+            "calories": 20.46
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 71.0,
+            "calories": 113.6
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562689645",
+      "image_filename": "dish_1562689645.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562689645.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 95,
+            "count": 1,
+            "confidence": 0.77
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 18,
+            "count": 2,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.83
+          },
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 30,
+            "count": 2,
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1730
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562689645",
+        "image_filename": "dish_1562689645.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562689645.png",
+        "total_mass_g": 169.0,
+        "total_calories": 302.431702,
+        "total_fat_g": 22.386829,
+        "total_carbs_g": 4.59483,
+        "total_protein_g": 20.00634,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 22.0,
+            "calories": 119.02
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 110.0,
+            "calories": 162.8
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562690950",
+      "image_filename": "dish_1562690950.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562690950.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 40,
+            "count": 1,
+            "confidence": 0.78
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 20,
+            "count": 1,
+            "confidence": 0.82
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 18,
+            "count": 1,
+            "confidence": 0.83
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 65,
+            "count": 1,
+            "confidence": 0.74
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1809
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562690950",
+        "image_filename": "dish_1562690950.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562690950.png",
+        "total_mass_g": 202.0,
+        "total_calories": 109.061714,
+        "total_fat_g": 1.381829,
+        "total_carbs_g": 24.826828,
+        "total_protein_g": 1.861341,
+        "foods": [
+          {
+            "name": "pineapple",
+            "mass_g": 80.0,
+            "calories": 40.0
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          },
+          {
+            "name": "berries",
+            "mass_g": 85.0,
+            "calories": 48.45
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691000",
+      "image_filename": "dish_1562691000.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691000.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 150,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.79
+          },
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 55,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.68
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.83
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2111
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691000",
+        "image_filename": "dish_1562691000.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691000.png",
+        "total_mass_g": 349.0,
+        "total_calories": 326.621704,
+        "total_fat_g": 17.551828,
+        "total_carbs_g": 27.178827,
+        "total_protein_g": 16.56134,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 80.0,
+            "calories": 40.0
+          },
+          {
+            "name": "berries",
+            "mass_g": 85.0,
+            "calories": 48.45
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691032",
+      "image_filename": "dish_1562691032.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691032.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 120,
+            "count": 1,
+            "confidence": 0.79
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.74
+          },
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 60,
+            "count": 1,
+            "confidence": 0.72
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 1,
+            "confidence": 0.8
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 50,
+            "count": 1,
+            "confidence": 0.76
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 20,
+            "count": 1,
+            "confidence": 0.7
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1925
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691032",
+        "image_filename": "dish_1562691032.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691032.png",
+        "total_mass_g": 415.0,
+        "total_calories": 419.681702,
+        "total_fat_g": 22.039829,
+        "total_carbs_g": 39.058826,
+        "total_protein_g": 17.94734,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 85.0,
+            "calories": 48.45
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.902439,
+            "calories": 7.97756076
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 80.0,
+            "calories": 40.0
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 147.0,
+            "calories": 217.56
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 66.0,
+            "calories": 93.06
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 36.097561,
+            "calories": 12.63414635
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691441",
+      "image_filename": "dish_1562691441.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691441.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 120,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "sweet potatoes",
+            "form": "roasted",
+            "mass_g": 130,
+            "count": 1,
+            "modifiers": [
+              "orange"
+            ],
+            "confidence": 0.75
+          },
+          {
+            "name": "broccoli",
+            "form": "steamed",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1930
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691441",
+        "image_filename": "dish_1562691441.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691441.png",
+        "total_mass_g": 232.0,
+        "total_calories": 263.870972,
+        "total_fat_g": 12.403903,
+        "total_carbs_g": 26.727901,
+        "total_protein_g": 12.112195,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 66.341461,
+            "calories": 23.21951135
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 94.0,
+            "calories": 139.12
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.658537,
+            "calories": 14.66146708
+          },
+          {
+            "name": "yam",
+            "mass_g": 70.0,
+            "calories": 86.87
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691466",
+      "image_filename": "dish_1562691466.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691466.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "sweet potato",
+            "form": "roasted",
+            "mass_g": 130,
+            "count": 1,
+            "confidence": 0.78
+          },
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 110,
+            "count": 1,
+            "confidence": 0.8
+          },
+          {
+            "name": "broccoli",
+            "form": "steamed",
+            "mass_g": 90,
+            "count": 1,
+            "confidence": 0.75
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 50,
+            "count": 1,
+            "confidence": 0.73
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1685
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691466",
+        "image_filename": "dish_1562691466.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691466.png",
+        "total_mass_g": 267.0,
+        "total_calories": 319.870972,
+        "total_fat_g": 15.903902,
+        "total_carbs_g": 27.777901,
+        "total_protein_g": 17.012196,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 1.658537,
+            "calories": 14.66146708
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 66.341461,
+            "calories": 23.21951135
+          },
+          {
+            "name": "yam",
+            "mass_g": 70.0,
+            "calories": 86.87
+          },
+          {
+            "name": "chicken apple sausage",
+            "mass_g": 35.0,
+            "calories": 56.0
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 94.0,
+            "calories": 139.12
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691566",
+      "image_filename": "dish_1562691566.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691566.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 80,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.74
+          },
+          {
+            "name": "fish",
+            "form": "baked",
+            "mass_g": 70,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "garlic",
+            "form": "raw",
+            "mass_g": 3,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.85
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2180
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691566",
+        "image_filename": "dish_1562691566.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691566.png",
+        "total_mass_g": 187.0,
+        "total_calories": 100.613655,
+        "total_fat_g": 2.766634,
+        "total_carbs_g": 6.886634,
+        "total_protein_g": 11.730732,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 88.780487,
+            "calories": 31.07317045
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 2.219512,
+            "calories": 19.62048608
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 96.0,
+            "calories": 49.92
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562691613",
+      "image_filename": "dish_1562691613.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691613.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli",
+            "form": "roasted",
+            "mass_g": 90,
+            "count": 1,
+            "confidence": 0.86
+          },
+          {
+            "name": "cauliflower",
+            "form": "roasted",
+            "mass_g": 50,
+            "count": 1,
+            "confidence": 0.7
+          },
+          {
+            "name": "white fish",
+            "form": "poached",
+            "mass_g": 110,
+            "count": 1,
+            "modifiers": [
+              "white"
+            ],
+            "confidence": 0.62
+          },
+          {
+            "name": "sweet potato",
+            "form": "roasted",
+            "mass_g": 120,
+            "count": 1,
+            "confidence": 0.78
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 60,
+            "count": 1,
+            "confidence": 0.6
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2162
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562691613",
+        "image_filename": "dish_1562691613.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562691613.png",
+        "total_mass_g": 300.0,
+        "total_calories": 213.670166,
+        "total_fat_g": 2.879634,
+        "total_carbs_g": 33.667633,
+        "total_protein_g": 13.199732,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 2.219512,
+            "calories": 19.62048608
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 96.0,
+            "calories": 49.92
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 88.780487,
+            "calories": 31.07317045
+          },
+          {
+            "name": "yam",
+            "mass_g": 56.5,
+            "calories": 70.1165
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 56.5,
+            "calories": 42.94
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562774504",
+      "image_filename": "dish_1562774504.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774504.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 110,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.71
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 45,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.58
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 7,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1608
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562774504",
+        "image_filename": "dish_1562774504.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774504.png",
+        "total_mass_g": 176.0,
+        "total_calories": 335.363983,
+        "total_fat_g": 22.945,
+        "total_carbs_g": 17.166,
+        "total_protein_g": 14.844001,
+        "foods": [
+          {
+            "name": "sausage",
+            "mass_g": 69.0,
+            "calories": 237.774
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 59.0,
+            "calories": 83.19
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 48.0,
+            "calories": 14.4
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562774531",
+      "image_filename": "dish_1562774531.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774531.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 140,
+            "count": 8,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "watermelon",
+            "form": "raw",
+            "mass_g": 110,
+            "count": 8,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.82
+          },
+          {
+            "name": "strawberry",
+            "form": "raw",
+            "mass_g": 75,
+            "count": 6,
+            "modifiers": [
+              "red"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "blueberry",
+            "form": "raw",
+            "mass_g": 15,
+            "count": 9,
+            "modifiers": [
+              "blue"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2279
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562774531",
+        "image_filename": "dish_1562774531.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562774531.png",
+        "total_mass_g": 254.0,
+        "total_calories": 379.824005,
+        "total_fat_g": 23.179001,
+        "total_carbs_g": 28.085999,
+        "total_protein_g": 15.390001,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 78.0,
+            "calories": 44.46
+          },
+          {
+            "name": "sausage",
+            "mass_g": 69.0,
+            "calories": 237.774
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 59.0,
+            "calories": 83.19
+          },
+          {
+            "name": "watermelon",
+            "mass_g": 48.0,
+            "calories": 14.4
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562775275",
+      "image_filename": "dish_1562775275.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775275.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "oatmeal",
+            "form": "cooked",
+            "mass_g": 180,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.79
+          },
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 35,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.72
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 15,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.71
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1763
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562775275",
+        "image_filename": "dish_1562775275.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775275.png",
+        "total_mass_g": 318.0,
+        "total_calories": 173.680008,
+        "total_fat_g": 2.352,
+        "total_carbs_g": 35.919998,
+        "total_protein_g": 4.636,
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "mass_g": 98.0,
+            "calories": 33.32
+          },
+          {
+            "name": "oatmeal",
+            "mass_g": 136.0,
+            "calories": 92.48
+          },
+          {
+            "name": "berries",
+            "mass_g": 84.0,
+            "calories": 47.88
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562775510",
+      "image_filename": "dish_1562775510.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775510.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 120,
+            "count": 1,
+            "confidence": 0.74
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 80,
+            "count": 1,
+            "confidence": 0.76
+          },
+          {
+            "name": "white fish",
+            "form": "poached",
+            "mass_g": 90,
+            "count": 1,
+            "modifiers": [
+              "white"
+            ],
+            "confidence": 0.71
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2241
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562775510",
+        "image_filename": "dish_1562775510.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562775510.png",
+        "total_mass_g": 190.0,
+        "total_calories": 114.217117,
+        "total_fat_g": 0.733756,
+        "total_carbs_g": 16.423389,
+        "total_protein_g": 10.066643,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 0.442804,
+            "calories": 3.91438736
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 79.0,
+            "calories": 41.08
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.221402,
+            "calories": 0.0
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 66.0,
+            "calories": 50.16
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.055351,
+            "calories": 0.0221404
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 44.280445,
+            "calories": 19.04059135
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562776465",
+      "image_filename": "dish_1562776465.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776465.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 160,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.79
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 140,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1642
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562776465",
+        "image_filename": "dish_1562776465.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776465.png",
+        "total_mass_g": 212.0,
+        "total_calories": 173.432449,
+        "total_fat_g": 4.405418,
+        "total_carbs_g": 31.491592,
+        "total_protein_g": 3.634132,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.324723,
+            "calories": 0.0
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.081181,
+            "calories": 0.0324724
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 142.439026,
+            "calories": 108.25365976
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 4.210422,
+            "calories": 37.22013048
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.944649,
+            "calories": 27.92619907
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562776497",
+      "image_filename": "dish_1562776497.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776497.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 120,
+            "count": 8,
+            "confidence": 0.66
+          },
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 110,
+            "confidence": 0.62
+          },
+          {
+            "name": "potatoes, diced",
+            "form": "roasted",
+            "mass_g": 150,
+            "confidence": 0.64
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1974
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562776497",
+        "image_filename": "dish_1562776497.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562776497.png",
+        "total_mass_g": 292.0,
+        "total_calories": 291.832458,
+        "total_fat_g": 13.205418,
+        "total_carbs_g": 32.771591,
+        "total_protein_g": 11.634132,
+        "foods": [
+          {
+            "name": "pepper",
+            "mass_g": 0.081181,
+            "calories": 0.0324724
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 4.210422,
+            "calories": 37.22013048
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 64.944649,
+            "calories": 27.92619907
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 142.439026,
+            "calories": 108.25365976
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 80.0,
+            "calories": 118.4
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.324723,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562777037",
+      "image_filename": "dish_1562777037.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777037.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 120,
+            "count": 1,
+            "confidence": 0.72
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 90,
+            "count": 9,
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1828
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562777037",
+        "image_filename": "dish_1562777037.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777037.png",
+        "total_mass_g": 171.0,
+        "total_calories": 215.273514,
+        "total_fat_g": 15.01899,
+        "total_carbs_g": 5.570336,
+        "total_protein_g": 14.505756,
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "mass_g": 38.376385,
+            "calories": 16.50184555
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 132.0,
+            "calories": 195.36
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.383764,
+            "calories": 3.39247376
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.04797,
+            "calories": 0.019188
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.191882,
+            "calories": 0.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562777068",
+      "image_filename": "dish_1562777068.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777068.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 130,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.67
+          },
+          {
+            "name": "brussels sprouts",
+            "form": "cooked",
+            "mass_g": 80,
+            "count": 8,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.7
+          },
+          {
+            "name": "blueberry",
+            "form": "raw",
+            "mass_g": 2,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.6
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2276
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562777068",
+        "image_filename": "dish_1562777068.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562777068.png",
+        "total_mass_g": 236.0,
+        "total_calories": 236.723511,
+        "total_fat_g": 15.213988,
+        "total_carbs_g": 10.770336,
+        "total_protein_g": 14.960756,
+        "foods": [
+          {
+            "name": "olive oil",
+            "mass_g": 0.383764,
+            "calories": 3.39247376
+          },
+          {
+            "name": "brussels sprouts",
+            "mass_g": 38.376385,
+            "calories": 16.50184555
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.191882,
+            "calories": 0.0
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 65.0,
+            "calories": 21.45
+          },
+          {
+            "name": "pepper",
+            "mass_g": 0.04797,
+            "calories": 0.019188
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 132.0,
+            "calories": 195.36
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562784307",
+      "image_filename": "dish_1562784307.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562784307.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pizza",
+            "form": "baked",
+            "mass_g": 55,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "corn on the cob",
+            "form": "boiled",
+            "mass_g": 22,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.8
+          },
+          {
+            "name": "eggplant",
+            "form": "roasted",
+            "mass_g": 95,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.66
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2055
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562784307",
+        "image_filename": "dish_1562784307.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562784307.png",
+        "total_mass_g": 157.0,
+        "total_calories": 158.518127,
+        "total_fat_g": 5.112942,
+        "total_carbs_g": 24.925295,
+        "total_protein_g": 5.678117,
+        "foods": [
+          {
+            "name": "salt",
+            "mass_g": 0.794118,
+            "calories": 0.0
+          },
+          {
+            "name": "pizza",
+            "mass_g": 32.0,
+            "calories": 85.12
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.794118,
+            "calories": 7.02000312
+          },
+          {
+            "name": "eggplant",
+            "mass_g": 79.411766,
+            "calories": 19.694117968
+          },
+          {
+            "name": "corn on the cob",
+            "mass_g": 44.0,
+            "calories": 46.684
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562860073",
+      "image_filename": "dish_1562860073.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562860073.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 100,
+            "count": 2,
+            "modifiers": [],
+            "confidence": 0.86
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 24,
+            "count": 3,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.82
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 55,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.75
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2725
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562860073",
+        "image_filename": "dish_1562860073.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562860073.png",
+        "total_mass_g": 259.0,
+        "total_calories": 357.809998,
+        "total_fat_g": 21.688,
+        "total_carbs_g": 20.958,
+        "total_protein_g": 20.001999,
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "mass_g": 98.0,
+            "calories": 145.04
+          },
+          {
+            "name": "bacon",
+            "mass_g": 25.0,
+            "calories": 135.25
+          },
+          {
+            "name": "berries",
+            "mass_g": 136.0,
+            "calories": 77.52
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562862550",
+      "image_filename": "dish_1562862550.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562862550.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 150,
+            "confidence": 0.83
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 75,
+            "confidence": 0.82
+          },
+          {
+            "name": "bagel",
+            "form": "baked",
+            "mass_g": 60,
+            "confidence": 0.8
+          },
+          {
+            "name": "cream cheese",
+            "form": "raw",
+            "mass_g": 25,
+            "confidence": 0.78
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2051
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562862550",
+        "image_filename": "dish_1562862550.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562862550.png",
+        "total_mass_g": 257.0,
+        "total_calories": 364.52002,
+        "total_fat_g": 19.189999,
+        "total_carbs_g": 29.103001,
+        "total_protein_g": 18.829601,
+        "foods": [
+          {
+            "name": "cream cheese",
+            "mass_g": 10.6,
+            "calories": 37.1
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 134.0,
+            "calories": 198.32
+          },
+          {
+            "name": "strawberries",
+            "mass_g": 70.0,
+            "calories": 23.1
+          },
+          {
+            "name": "bagels",
+            "mass_g": 42.400002,
+            "calories": 106.000005
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562871408",
+      "image_filename": "dish_1562871408.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562871408.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pizza slice",
+            "form": "baked",
+            "mass_g": 70,
+            "count": 1,
+            "confidence": 0.73
+          },
+          {
+            "name": "white rice",
+            "form": "steamed",
+            "mass_g": 160,
+            "count": 1,
+            "modifiers": [
+              "white"
+            ],
+            "confidence": 0.72
+          },
+          {
+            "name": "zucchini and yellow squash",
+            "form": "cooked",
+            "mass_g": 110,
+            "count": 1,
+            "modifiers": [
+              "green",
+              "yellow"
+            ],
+            "confidence": 0.68
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1868
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562871408",
+        "image_filename": "dish_1562871408.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562871408.png",
+        "total_mass_g": 228.0,
+        "total_calories": 271.34198,
+        "total_fat_g": 5.825483,
+        "total_carbs_g": 44.73642,
+        "total_protein_g": 8.556257,
+        "foods": [
+          {
+            "name": "cheese pizza",
+            "mass_g": 47.0,
+            "calories": 124.973
+          },
+          {
+            "name": "salt",
+            "mass_g": 0.325524,
+            "calories": 0.0
+          },
+          {
+            "name": "squash",
+            "mass_g": 86.806412,
+            "calories": 17.79531446
+          },
+          {
+            "name": "white rice",
+            "mass_g": 93.0,
+            "calories": 120.9
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 0.868064,
+            "calories": 7.67368576
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562945186",
+      "image_filename": "dish_1562945186.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945186.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "broccoli florets",
+            "form": "steamed",
+            "mass_g": 60,
+            "count": 3,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.82
+          },
+          {
+            "name": "ground beef",
+            "form": "cooked",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [
+              "beef"
+            ],
+            "confidence": 0.4
+          },
+          {
+            "name": "banana slices",
+            "form": "raw",
+            "mass_g": 20,
+            "count": 2,
+            "confidence": 0.55
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2248
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562945186",
+        "image_filename": "dish_1562945186.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945186.png",
+        "total_mass_g": 219.0,
+        "total_calories": 191.530792,
+        "total_fat_g": 8.581273,
+        "total_carbs_g": 17.336327,
+        "total_protein_g": 13.361717,
+        "foods": [
+          {
+            "name": "broccoli",
+            "mass_g": 65.365852,
+            "calories": 22.8780482
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 65.469917,
+            "calories": 38.62725103
+          },
+          {
+            "name": "chia seeds",
+            "mass_g": 16.425127,
+            "calories": 79.82611722
+          },
+          {
+            "name": "milk",
+            "mass_g": 70.104958,
+            "calories": 35.75352858
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.634146,
+            "calories": 14.44585064
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562945332",
+      "image_filename": "dish_1562945332.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945332.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg whites",
+            "form": "boiled",
+            "mass_g": 70,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "ground beef",
+            "form": "pan_seared",
+            "mass_g": 80,
+            "count": 1,
+            "modifiers": [
+              "beef"
+            ],
+            "confidence": 0.6
+          },
+          {
+            "name": "mushrooms",
+            "form": "pan_seared",
+            "mass_g": 12,
+            "count": 3,
+            "modifiers": [],
+            "confidence": 0.55
+          },
+          {
+            "name": "broccoli",
+            "form": "steamed",
+            "mass_g": 50,
+            "count": 4,
+            "modifiers": [
+              "green"
+            ],
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2155
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562945332",
+        "image_filename": "dish_1562945332.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562945332.png",
+        "total_mass_g": 325.0,
+        "total_calories": 246.650803,
+        "total_fat_g": 8.793273,
+        "total_carbs_g": 18.078327,
+        "total_protein_g": 23.96172,
+        "foods": [
+          {
+            "name": "chia seeds",
+            "mass_g": 16.425127,
+            "calories": 79.82611722
+          },
+          {
+            "name": "broccoli",
+            "mass_g": 65.365852,
+            "calories": 22.8780482
+          },
+          {
+            "name": "greek yogurt",
+            "mass_g": 65.469917,
+            "calories": 38.62725103
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 106.0,
+            "calories": 55.12
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.634146,
+            "calories": 14.44585064
+          },
+          {
+            "name": "milk",
+            "mass_g": 70.104958,
+            "calories": 35.75352858
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562947436",
+      "image_filename": "dish_1562947436.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947436.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "sausage",
+            "form": "cooked",
+            "mass_g": 70,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.64
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 55,
+            "count": 8,
+            "modifiers": [],
+            "confidence": 0.66
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 45,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.65
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 12,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.67
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2849
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562947436",
+        "image_filename": "dish_1562947436.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947436.png",
+        "total_mass_g": 242.0,
+        "total_calories": 282.382019,
+        "total_fat_g": 14.62,
+        "total_carbs_g": 28.053999,
+        "total_protein_g": 11.22,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 117.0,
+            "calories": 66.69
+          },
+          {
+            "name": "sausage",
+            "mass_g": 52.0,
+            "calories": 179.192
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 73.0,
+            "calories": 36.5
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562947469",
+      "image_filename": "dish_1562947469.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947469.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 60,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.77
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 14,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.88
+          },
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 75,
+            "count": 8,
+            "modifiers": [],
+            "confidence": 0.76
+          },
+          {
+            "name": "apple",
+            "form": "raw",
+            "mass_g": 90,
+            "count": 7,
+            "modifiers": [],
+            "confidence": 0.62
+          },
+          {
+            "name": "sausage",
+            "form": "cooked",
+            "mass_g": 50,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.45
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 3004
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562947469",
+        "image_filename": "dish_1562947469.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947469.png",
+        "total_mass_g": 320.0,
+        "total_calories": 392.362,
+        "total_fat_g": 19.924,
+        "total_carbs_g": 42.094002,
+        "total_protein_g": 12.858,
+        "foods": [
+          {
+            "name": "berries",
+            "mass_g": 117.0,
+            "calories": 66.69
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 78.0,
+            "calories": 109.98
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 73.0,
+            "calories": 36.5
+          },
+          {
+            "name": "sausage",
+            "mass_g": 52.0,
+            "calories": 179.192
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562947503",
+      "image_filename": "dish_1562947503.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947503.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "pineapple",
+            "form": "raw",
+            "mass_g": 85,
+            "count": 10,
+            "modifiers": [],
+            "confidence": 0.7
+          },
+          {
+            "name": "strawberries",
+            "form": "raw",
+            "mass_g": 70,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.72
+          },
+          {
+            "name": "blueberries",
+            "form": "raw",
+            "mass_g": 16,
+            "count": 8,
+            "modifiers": [],
+            "confidence": 0.68
+          },
+          {
+            "name": "potatoes",
+            "form": "roasted",
+            "mass_g": 90,
+            "count": 6,
+            "modifiers": [],
+            "confidence": 0.63
+          },
+          {
+            "name": "sausage",
+            "form": "pan_seared",
+            "mass_g": 45,
+            "count": 4,
+            "modifiers": [],
+            "confidence": 0.56
+          },
+          {
+            "name": "scrambled egg whites",
+            "form": "cooked",
+            "mass_g": 100,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.52
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2590
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562947503",
+        "image_filename": "dish_1562947503.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562947503.png",
+        "total_mass_g": 408.0,
+        "total_calories": 438.122009,
+        "total_fat_g": 20.1,
+        "total_carbs_g": 42.709999,
+        "total_protein_g": 21.657999,
+        "foods": [
+          {
+            "name": "sausage",
+            "mass_g": 52.0,
+            "calories": 179.192
+          },
+          {
+            "name": "roasted potatoes",
+            "mass_g": 78.0,
+            "calories": 109.98
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 88.0,
+            "calories": 45.76
+          },
+          {
+            "name": "berries",
+            "mass_g": 117.0,
+            "calories": 66.69
+          },
+          {
+            "name": "pineapple",
+            "mass_g": 73.0,
+            "calories": 36.5
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562949242",
+      "image_filename": "dish_1562949242.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562949242.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "cantaloupe",
+            "form": "raw",
+            "mass_g": 95,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.7
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 15,
+            "count": 1,
+            "modifiers": [
+              "pork"
+            ],
+            "confidence": 0.6
+          },
+          {
+            "name": "potatoes",
+            "form": "fried",
+            "mass_g": 85,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.58
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1799
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562949242",
+        "image_filename": "dish_1562949242.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562949242.png",
+        "total_mass_g": 119.0,
+        "total_calories": 139.558533,
+        "total_fat_g": 6.642195,
+        "total_carbs_g": 14.655806,
+        "total_protein_g": 5.404878,
+        "foods": [
+          {
+            "name": "bacon",
+            "mass_g": 12.0,
+            "calories": 64.92
+          },
+          {
+            "name": "cantaloupe",
+            "mass_g": 45.0,
+            "calories": 15.3
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.512195,
+            "calories": 13.3678038
+          },
+          {
+            "name": "sweet potato",
+            "mass_g": 60.487808,
+            "calories": 45.97073408
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562949541",
+      "image_filename": "dish_1562949541.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562949541.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "scrambled eggs",
+            "form": "cooked",
+            "mass_g": 150,
+            "count": 1,
+            "confidence": 0.86
+          },
+          {
+            "name": "bacon",
+            "form": "fried",
+            "mass_g": 24,
+            "count": 2,
+            "confidence": 0.6
+          },
+          {
+            "name": "blackberries",
+            "form": "raw",
+            "mass_g": 40,
+            "count": 1,
+            "confidence": 0.88
+          },
+          {
+            "name": "raspberries",
+            "form": "raw",
+            "mass_g": 25,
+            "count": 1,
+            "confidence": 0.87
+          },
+          {
+            "name": "zucchini",
+            "form": "steamed",
+            "mass_g": 45,
+            "count": 1,
+            "confidence": 0.55
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2476
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562949541",
+        "image_filename": "dish_1562949541.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562949541.png",
+        "total_mass_g": 374.0,
+        "total_calories": 494.225647,
+        "total_fat_g": 33.717587,
+        "total_carbs_g": 16.525366,
+        "total_protein_g": 31.732658,
+        "foods": [
+          {
+            "name": "turkey bacon",
+            "mass_g": 40.0,
+            "calories": 151.88
+          },
+          {
+            "name": "bok choy",
+            "mass_g": 70.243904,
+            "calories": 9.13170752
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 1.756098,
+            "calories": 15.52390632
+          },
+          {
+            "name": "scrambled eggs",
+            "mass_g": 185.0,
+            "calories": 273.8
+          },
+          {
+            "name": "berries",
+            "mass_g": 77.0,
+            "calories": 43.89
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562950934",
+      "image_filename": "dish_1562950934.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562950934.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg whites",
+            "form": "pan_seared",
+            "mass_g": 100,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.78
+          },
+          {
+            "name": "potatoes",
+            "form": "pan_seared",
+            "mass_g": 180,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.72
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 1899
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562950934",
+        "image_filename": "dish_1562950934.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562950934.png",
+        "total_mass_g": 464.0,
+        "total_calories": 304.218536,
+        "total_fat_g": 4.152195,
+        "total_carbs_g": 27.527805,
+        "total_protein_g": 33.404877,
+        "foods": [
+          {
+            "name": "sweet potato",
+            "mass_g": 140.487808,
+            "calories": 106.77073408
+          },
+          {
+            "name": "olive oil",
+            "mass_g": 3.512195,
+            "calories": 31.0478038
+          },
+          {
+            "name": "egg whites",
+            "mass_g": 320.0,
+            "calories": 166.4
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562958603",
+      "image_filename": "dish_1562958603.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562958603.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "chickpeas",
+            "form": "boiled",
+            "mass_g": 30,
+            "count": 28,
+            "modifiers": [],
+            "confidence": 0.74
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 22,
+            "count": 6,
+            "modifiers": [
+              "kalamata",
+              "black"
+            ],
+            "confidence": 0.78
+          },
+          {
+            "name": "chicken salad",
+            "form": "cooked",
+            "mass_g": 55,
+            "count": 1,
+            "modifiers": [],
+            "confidence": 0.65
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2189
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562958603",
+        "image_filename": "dish_1562958603.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562958603.png",
+        "total_mass_g": 93.0,
+        "total_calories": 171.839996,
+        "total_fat_g": 10.417,
+        "total_carbs_g": 9.436001,
+        "total_protein_g": 10.408,
+        "foods": [
+          {
+            "name": "olives",
+            "mass_g": 21.0,
+            "calories": 24.15
+          },
+          {
+            "name": "chicken salad",
+            "mass_g": 47.0,
+            "calories": 106.69
+          },
+          {
+            "name": "chickpeas",
+            "mass_g": 25.0,
+            "calories": 41.0
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    },
+    {
+      "dish_id": "dish_1562958629",
+      "image_filename": "dish_1562958629.png",
+      "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562958629.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "artichoke hearts",
+            "form": "cooked",
+            "mass_g": 65,
+            "count": 4,
+            "confidence": 0.66
+          },
+          {
+            "name": "chickpeas",
+            "form": "cooked",
+            "mass_g": 55,
+            "confidence": 0.9
+          },
+          {
+            "name": "olives",
+            "form": "raw",
+            "mass_g": 28,
+            "count": 5,
+            "modifiers": [
+              "kalamata"
+            ],
+            "confidence": 0.95
+          },
+          {
+            "name": "chicken salad",
+            "form": "cooked",
+            "mass_g": 75,
+            "modifiers": [
+              "chicken"
+            ],
+            "confidence": 0.7
+          }
+        ],
+        "_metadata": {
+          "model": "gpt-5",
+          "tokens_input": 0,
+          "tokens_output": 0,
+          "tokens_total": 2525
+        }
+      },
+      "database_aligned": {
+        "available": false,
+        "foods": [],
+        "totals": {
+          "mass_g": 0,
+          "calories": 0,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0
+        }
+      },
+      "ground_truth": {
+        "dish_id": "dish_1562958629",
+        "image_filename": "dish_1562958629.png",
+        "image_path": "/Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1562958629.png",
+        "total_mass_g": 172.0,
+        "total_calories": 208.970001,
+        "total_fat_g": 10.575,
+        "total_carbs_g": 18.126001,
+        "total_protein_g": 13.015,
+        "foods": [
+          {
+            "name": "chicken salad",
+            "mass_g": 47.0,
+            "calories": 106.69
+          },
+          {
+            "name": "chickpeas",
+            "mass_g": 25.0,
+            "calories": 41.0
+          },
+          {
+            "name": "artichokes",
+            "mass_g": 79.0,
+            "calories": 37.13
+          },
+          {
+            "name": "olives",
+            "mass_g": 21.0,
+            "calories": 24.15
+          }
+        ]
+      },
+      "accuracy": null,
+      "error": null
+    }
+  ]
+}

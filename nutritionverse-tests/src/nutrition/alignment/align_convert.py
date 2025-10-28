@@ -774,6 +774,18 @@ class FDCAlignmentWithConversion:
         if not raw_foundation:
             return None
 
+        # Phase 7.3 Task 3: Apply guardrails BEFORE scoring (CRITICAL for blackberries/eggplant)
+        class_intent = _derive_class_intent(core_class)
+        raw_foundation = _apply_guardrails(
+            raw_foundation,
+            class_intent,
+            self._external_negative_vocab or {},
+            core_class
+        )
+
+        if not raw_foundation:
+            return None
+
         best_match = None
         best_score = 0.0
 

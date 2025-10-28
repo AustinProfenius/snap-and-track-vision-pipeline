@@ -127,6 +127,8 @@ produce_hard_blocks:
   - "juice"
   - "dried"
   - "dehydrated"
+  - "syrup"
+  - "sweetened"
 
 # Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
 eggs_hard_blocks:
