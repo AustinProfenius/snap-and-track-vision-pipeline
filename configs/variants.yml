@@ -51,6 +51,7 @@ spinach:
   - spinach
   - spinach leaves
   - baby spinach
+  - spinach raw
 
 tomato:
   - tomato
@@ -61,9 +62,31 @@ avocado:
   - avocado
   - avocados
 
-salad:
+# Phase 7.3: Enhanced salad/greens variants for decomposition
+
+romaine_lettuce:
+  - romaine
+  - lettuce romaine
   - romaine lettuce
+
+mixed_greens:
   - mixed greens
+  - lettuce mixed greens
+  - spring mix
+  - mesclun
+
+salad:
+  - salad
+  - house salad
+  - garden salad
+  - caesar salad
+  - caesar
+  - chef salad
+  - side salad
+  - romaine salad
+  - mixed green salad
+  - green salad
+  - romaine lettuce
   - salad mix
   - leafy greens
 

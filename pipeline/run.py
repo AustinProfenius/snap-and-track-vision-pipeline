@@ -183,6 +183,13 @@ def run_once(
                 except (ValueError, TypeError):
                     stagez_fdc_id_str = str(raw_fdc_id)
 
+        # Phase 7.3: Extract decomposition telemetry
+        _decomp_recipe = telemetry.get("decomposition_recipe")
+        _decomp_count = None
+        if food_result.get("alignment_stage") == "stage5b_salad_decomposition":
+            _expanded = telemetry.get("expanded_foods", [])
+            _decomp_count = len(_expanded) if _expanded else None
+
         telemetry_event = TelemetryEvent(
             image_id=request.image_id,
             food_idx=idx,
@@ -195,6 +202,9 @@ def run_once(
             stagez_tag=telemetry.get("stagez_tag"),
             stagez_energy_kcal=telemetry.get("stagez_energy_kcal"),
             stagez_category=telemetry.get("stagez_category"),
+            # Phase 7.3: Salad decomposition fields
+            decomposition_recipe=_decomp_recipe,
+            decomposition_count=_decomp_count,
             candidate_pool_size=telemetry.get("candidate_pool_size", 0),
             foundation_pool_count=telemetry.get("candidate_pool_raw_foundation", 0),
             search_variants_tried=search_variants,

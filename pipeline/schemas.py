@@ -53,6 +53,9 @@ class FoodAlignment(BaseModel):
     method_reason: Optional[str] = None
     variant_chosen: Optional[str] = None
 
+    # Phase 7.3: Expanded components for decomposed foods
+    expanded_foods: Optional[List["FoodAlignment"]] = None
+
 
 class Totals(BaseModel):
     """Aggregated nutrition totals for all foods in image."""
@@ -97,6 +100,10 @@ class TelemetryEvent(BaseModel):
     stagez_tag: Optional[str] = None  # e.g., "beef_steak"
     stagez_energy_kcal: Optional[float] = None  # Energy used for proxy
     stagez_category: Optional[str] = None  # e.g., "beef", "chicken"
+
+    # Phase 7.3: Salad decomposition fields
+    decomposition_recipe: Optional[str] = None  # e.g., "caesar salad"
+    decomposition_count: Optional[int] = None  # Number of expanded components
 
     # Candidate search
     candidate_pool_size: int

@@ -1,0 +1,16 @@
+# Branded Fallback Configuration
+# Phase 7.3: Used when Foundation/SR entries don't exist for salad components
+#
+# Applied only when _align_single_component finds no Foundation/SR match
+# Helps components like croutons and dressings align to generic branded entries
+
+version: 1
+
+fallbacks:
+  croutons:
+    - "Croutons plain"
+    - "Croutons seasoned"
+
+  caesar dressing:
+    - "Dressing caesar"
+    - "Caesar dressing light"

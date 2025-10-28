@@ -121,6 +121,12 @@ class FDCAlignmentWithConversion:
         self._external_category_allowlist = category_allowlist or {}  # Phase 7.1
         self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
+        # Phase 7.3: Extract salad decomposition config and initialize component cache
+        self._external_salad_decomp = {}
+        if isinstance(proxy_rules, dict) and "salad_decomposition" in proxy_rules:
+            self._external_salad_decomp = proxy_rules["salad_decomposition"]
+        self._fdc_cache = {}  # Simple name->entry cache to reduce query volume
+
         # Track config source for telemetry
         self.config_source = (
             "external" if any([class_thresholds, negative_vocab, feature_flags, variants, proxy_rules, category_allowlist])
@@ -481,6 +487,19 @@ class FDCAlignmentWithConversion:
             else:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] ✗ Stage-Z blocked (category={category}, raw_foundation={len(raw_foundation)})")
+
+        # Phase 7.3: Stage 5B salad decomposition BEFORE stage0_no_candidates
+        # Try decomposition when no FDC candidates found
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[ALIGN] No candidates matched, trying Stage 5B (salad decomposition)...")
+
+        decomp_result = self._try_stage5b_salad_decomposition(predicted_name, predicted_form)
+        if decomp_result:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                recipe_name = decomp_result.get("telemetry", {}).get("decomposition_recipe", "unknown")
+                comp_count = len(decomp_result.get("expanded_foods", []))
+                print(f"[ALIGN] ✓ Decomposed via Stage 5B: {recipe_name} ({comp_count} components)")
+            return decomp_result
 
         # No match found
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -1464,6 +1483,261 @@ class FDCAlignmentWithConversion:
         # Should never reach here due to whitelist check at top
         return None
 
+    # ========================================================================
+    # PHASE 7.3: Stage 5B Salad Decomposition
+    # ========================================================================
+
+    def _try_stage5b_salad_decomposition(
+        self,
+        predicted_name: str,
+        predicted_form: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Stage 5B (Phase 7.3): Salad decomposition into components.
+
+        Decomposes composite salads (caesar, house, mixed greens) into individual
+        FDC-aligned components with recipe-based ratio information.
+
+        Args:
+            predicted_name: Original predicted food name
+            predicted_form: Predicted form/method
+
+        Returns:
+            AlignmentResult dict with expanded_foods list, or None if no recipe match
+        """
+        import os
+
+        if not self._external_salad_decomp:
+            return None
+
+        # Normalize name for matching
+        name_lower = (predicted_name or "").strip().lower()
+
+        # Match against recipe keys
+        recipe_key = self._match_salad_key(name_lower)
+        if not recipe_key:
+            return None
+
+        recipe = self._external_salad_decomp.get(recipe_key)
+        if not recipe or not recipe.get("components"):
+            return None
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5B] Matched recipe: {recipe_key}")
+
+        # Align each component (without mass - ratios stored for later)
+        expanded_foods = []
+        for component in recipe["components"]:
+            comp_name = component["name"].strip().lower()
+            comp_ratio = float(component["ratio"])
+
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE5B]   Component: {comp_name} (ratio={comp_ratio})")
+
+            # Align single component
+            aligned_comp = self._align_single_component(comp_name, "raw")
+            if aligned_comp:
+                # Store ratio for later mass allocation in pipeline
+                aligned_comp["decomposition_ratio"] = comp_ratio
+                expanded_foods.append(aligned_comp)
+
+        if not expanded_foods:
+            return None
+
+        # Build AlignmentResult with decomposition info
+        result = AlignmentResult(
+            fdc_id=None,
+            fdc_name=None,
+            alignment_stage="stage5b_salad_decomposition",
+            confidence=0.75,  # Reasonable confidence for decomposed salads
+            method=predicted_form or "raw",
+            method_reason="salad_decomposition",
+            conversion_applied=False,
+            match_score=None,
+            telemetry={
+                "decomposition_recipe": recipe.get("recipe_name", recipe_key),
+                "decomposition_count": len(expanded_foods),
+                "expanded_foods": expanded_foods
+            }
+        )
+
+        return result
+
+    def _match_salad_key(self, name_lower: str) -> Optional[str]:
+        """
+        Match food name against salad decomposition recipe keys.
+
+        Args:
+            name_lower: Lowercase food name
+
+        Returns:
+            Matched recipe key or None
+        """
+        # Exact match first
+        if name_lower in self._external_salad_decomp:
+            return name_lower
+
+        # Substring match (handles "caesar side salad", "mixed green salad")
+        for key in self._external_salad_decomp.keys():
+            if key in name_lower or name_lower in key:
+                return key
+
+        # Fallback: if "salad" in name and we have mixed greens, use it
+        if "salad" in name_lower and "mixed greens" in self._external_salad_decomp:
+            return "mixed greens"
+
+        return None
+
+    def _align_single_component(
+        self,
+        canonical_name: str,
+        canonical_form: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Align a single salad component to FDC entry.
+
+        Uses caching to reduce query volume for repeated components.
+
+        Args:
+            canonical_name: Normalized component name (e.g., "lettuce romaine raw")
+            canonical_form: Form (usually "raw")
+
+        Returns:
+            Component alignment dict with FDC match info, or None if no match
+        """
+        import os
+
+        # Check cache first
+        cache_key = f"{canonical_name}_{canonical_form}"
+        if cache_key in self._fdc_cache:
+            cached = self._fdc_cache[cache_key]
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                if cached:
+                    print(f"[STAGE5B]     Cache hit: {canonical_name}")
+                else:
+                    print(f"[STAGE5B]     Cache hit (no match): {canonical_name}")
+            return cached
+
+        # Query Foundation/SR for component
+        entries = self._query_foundation_sr_for_component(canonical_name)
+
+        if entries:
+            entry = entries[0]  # Take best match
+            result = {
+                "name": canonical_name,
+                "form": canonical_form,
+                "fdc_id": entry.fdc_id if hasattr(entry, 'fdc_id') else None,
+                "fdc_name": entry.name if hasattr(entry, 'name') else canonical_name,
+                "alignment_stage": "stage1b_raw_foundation_direct",
+                "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
+                "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
+                "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
+                "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None
+            }
+            self._fdc_cache[cache_key] = result
+            return result
+
+        # No Foundation/SR match - try branded fallback
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5B]     No Foundation/SR, trying branded fallback...")
+
+        branded_entry = self._query_branded_fallback(canonical_name)
+        if branded_entry:
+            result = {
+                "name": canonical_name,
+                "form": canonical_form,
+                "fdc_id": branded_entry.fdc_id if hasattr(branded_entry, 'fdc_id') else None,
+                "fdc_name": branded_entry.name if hasattr(branded_entry, 'name') else canonical_name,
+                "alignment_stage": "stage3_branded_cooked",
+                "kcal_100g": branded_entry.kcal_100g if hasattr(branded_entry, 'kcal_100g') else None,
+                "protein_100g": branded_entry.protein_100g if hasattr(branded_entry, 'protein_100g') else None,
+                "carbs_100g": branded_entry.carbs_100g if hasattr(branded_entry, 'carbs_100g') else None,
+                "fat_100g": branded_entry.fat_100g if hasattr(branded_entry, 'fat_100g') else None
+            }
+            self._fdc_cache[cache_key] = result
+            return result
+
+        # No match found - return None and cache it
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5B]     ✗ No match for component: {canonical_name}")
+
+        self._fdc_cache[cache_key] = None
+        return None
+
+    def _query_foundation_sr_for_component(self, canonical_name: str) -> List[Any]:
+        """
+        Query Foundation/SR entries for salad component.
+
+        Args:
+            canonical_name: Component name to search
+
+        Returns:
+            List of matching FDC entries (may be empty)
+        """
+        if not self._fdc_db or not hasattr(self._fdc_db, 'search'):
+            return []
+
+        try:
+            results = self._fdc_db.search(canonical_name)
+            if results:
+                # Filter to Foundation/SR only
+                foundation_sr = [
+                    e for e in results
+                    if hasattr(e, 'source') and e.source in ("foundation", "sr_legacy")
+                ]
+                return foundation_sr
+        except Exception as e:
+            import os
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE5B] Query failed: {e}")
+
+        return []
+
+    def _query_branded_fallback(self, canonical_name: str) -> Optional[Any]:
+        """
+        Query branded entries as fallback for components without Foundation/SR matches.
+
+        Uses branded_fallbacks config if available.
+
+        Args:
+            canonical_name: Component name
+
+        Returns:
+            First matching branded entry or None
+        """
+        # Check if branded_fallbacks config exists
+        fallback_cfg = getattr(self, '_branded_fallbacks', {})
+        fallback_names = fallback_cfg.get("fallbacks", {}).get(canonical_name, [])
+
+        if not self._fdc_db or not hasattr(self._fdc_db, 'search'):
+            return None
+
+        # Try configured fallback names first
+        for fallback_name in fallback_names:
+            try:
+                results = self._fdc_db.search(fallback_name)
+                if results:
+                    # Prefer branded entries
+                    for entry in results:
+                        if hasattr(entry, 'source') and entry.source == "branded":
+                            return entry
+                    # Fall back to any result
+                    return results[0]
+            except Exception:
+                continue
+
+        # If no configured fallbacks, try direct branded search
+        try:
+            results = self._fdc_db.search(canonical_name)
+            if results:
+                for entry in results:
+                    if hasattr(entry, 'source') and entry.source == "branded":
+                        return entry
+        except Exception:
+            pass
+
+        return None
+
     def _stageZ_branded_last_resort(
         self,
         core_class: str,
@@ -1810,6 +2084,7 @@ class FDCAlignmentWithConversion:
             "stage3_branded_cooked",
             "stage4_branded_energy",
             "stage5_proxy_alignment",
+            "stage5b_salad_decomposition",  # Phase 7.3: Salad decomposition
             "stageZ_energy_only",  # NEW: Energy-only last resort
             "stageZ_branded_last_resort",
         }

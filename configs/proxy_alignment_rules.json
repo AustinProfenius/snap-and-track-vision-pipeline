@@ -2,18 +2,56 @@
   "_comment": "Stage 5 proxy alignment rules for prepared foods that fail Stage 1b/1c/2",
   "_usage": "Applied after Stages 1b/1c/2 fail, before Stage Z. Emits alignment_stage=stage5_proxy",
 
-  "pizza": "Pizza cheese regular crust",
-  "cheese pizza": "Pizza cheese regular crust",
-  "pizza slice": "Pizza cheese regular crust",
-  "bagel": "Bagels plain",
-  "bagels": "Bagels plain",
-  "meatballs": "Meatballs beef cooked",
-  "meatball": "Meatballs beef cooked",
-  "dumplings": "Dumpling meat/veg steamed",
-  "dumpling": "Dumpling meat/veg steamed",
-  "chicken salad": "Chicken salad mayonnaise-based",
-  "caesar salad": "Lettuce romaine raw",
-  "garden salad": "Lettuce iceberg raw",
-  "house salad": "Lettuce iceberg raw",
-  "shredded cheese": "Cheese cheddar"
+  "stage5_proxies": {
+    "pizza": "Pizza cheese regular crust",
+    "cheese pizza": "Pizza cheese regular crust",
+    "pizza slice": "Pizza cheese regular crust",
+    "bagel": "Bagels plain",
+    "bagels": "Bagels plain",
+    "meatballs": "Meatballs beef cooked",
+    "meatball": "Meatballs beef cooked",
+    "dumplings": "Dumpling meat/veg steamed",
+    "dumpling": "Dumpling meat/veg steamed",
+    "chicken salad": "Chicken salad mayonnaise-based",
+    "garden salad": "Lettuce iceberg raw",
+    "shredded cheese": "Cheese cheddar"
+  },
+
+  "salad_decomposition": {
+    "caesar salad": {
+      "recipe_name": "caesar salad",
+      "components": [
+        { "name": "lettuce romaine raw", "ratio": 0.70 },
+        { "name": "parmesan cheese grated", "ratio": 0.08 },
+        { "name": "croutons", "ratio": 0.15 },
+        { "name": "caesar dressing", "ratio": 0.07 }
+      ]
+    },
+    "house salad": {
+      "recipe_name": "house salad",
+      "components": [
+        { "name": "lettuce romaine raw", "ratio": 0.60 },
+        { "name": "tomatoes raw", "ratio": 0.20 },
+        { "name": "cucumber with peel raw", "ratio": 0.20 }
+      ]
+    },
+    "mixed greens": {
+      "recipe_name": "mixed greens",
+      "components": [
+        { "name": "lettuce mixed greens", "ratio": 1.0 }
+      ]
+    },
+    "spring mix": {
+      "recipe_name": "spring mix",
+      "components": [
+        { "name": "lettuce mixed greens", "ratio": 1.0 }
+      ]
+    },
+    "mesclun": {
+      "recipe_name": "mesclun",
+      "components": [
+        { "name": "lettuce mixed greens", "ratio": 1.0 }
+      ]
+    }
+  }
 }
