@@ -129,6 +129,11 @@ produce_hard_blocks:
   - "dehydrated"
   - "syrup"
   - "sweetened"
+  - "oil"  # Blocks "Oil olive", "Oil avocado"
+  - "stuffed"  # Blocks "Olives stuffed with pimiento"
+  - "pimiento"
+  - "cured"
+  - "brined"
 
 # Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
 eggs_hard_blocks:
@@ -139,3 +144,7 @@ eggs_hard_blocks:
   - "frozen"
   - "substitute"
   - "powder"
+  - "bread"  # Blocks "Bread egg toasted"
+  - "toast"
+  - "roll"
+  - "bun"

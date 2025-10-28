@@ -970,6 +970,15 @@ class FDCAlignmentWithConversion:
                 if "raw" in entry_name_lower_check:
                     score -= 0.08
 
+            # Phase 7.4: Olives special case scoring
+            if "olive" in base_class:
+                # Penalize blocked terms that made it through hard filter
+                if any(k in entry_name_lower_check for k in ["stuffed", "pimiento", "brined", "cured", "oil"]):
+                    score -= 0.25
+                # Boost preferred terms
+                if any(k in entry_name_lower_check for k in ["ripe", "whole", "table", "black"]):
+                    score += 0.15
+
             # Phase 7.2: Apply soft penalties from category allowlist (hard blocks already applied above)
             penalty_applied = False
             penalty_tokens = []
@@ -1965,6 +1974,46 @@ class FDCAlignmentWithConversion:
                 }
             self._fdc_cache[cache_key] = result
             return result
+
+        # Phase 7.4: Mixed greens targeted fallback
+        if "mixed greens" in canonical_name.lower():
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE5B]     Trying romaine proxy fallback for mixed greens...")
+
+            # Try romaine as proxy
+            romaine_entries = self._query_foundation_sr_for_component("lettuce romaine raw")
+            if romaine_entries:
+                entry = romaine_entries[0]
+                if isinstance(entry, dict):
+                    result = {
+                        "name": canonical_name,
+                        "form": canonical_form,
+                        "fdc_id": entry.get('fdc_id'),
+                        "fdc_name": entry.get('description', entry.get('name', 'Lettuce romaine raw (proxy)')),
+                        "alignment_stage": "stage5b_salad_component",
+                        "kcal_100g": entry.get('energy_kcal'),
+                        "protein_100g": entry.get('protein_g'),
+                        "carbs_100g": entry.get('carb_g'),
+                        "fat_100g": entry.get('fat_g'),
+                        "component_fallback_used": True
+                    }
+                else:
+                    result = {
+                        "name": canonical_name,
+                        "form": canonical_form,
+                        "fdc_id": entry.fdc_id if hasattr(entry, 'fdc_id') else None,
+                        "fdc_name": entry.name if hasattr(entry, 'name') else 'Lettuce romaine raw (proxy)',
+                        "alignment_stage": "stage5b_salad_component",
+                        "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
+                        "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
+                        "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
+                        "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None,
+                        "component_fallback_used": True
+                    }
+                self._fdc_cache[cache_key] = result
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5B]     ✓ Mixed greens → romaine proxy fallback")
+                return result
 
         # No match found - return None and cache it
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
