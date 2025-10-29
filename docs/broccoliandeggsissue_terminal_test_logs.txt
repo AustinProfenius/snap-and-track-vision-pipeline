@@ -1,0 +1,1688 @@
+(base) austinprofenius@Mac snapandtrack-model-testing % scripts/run_first_50.sh
+Running first-50 batch test...
+Loading pipeline configuration...
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+  Config version: configs@a65cd030a277
+Loading FDC index...
+[WARNING] Could not compute FDC version from database: 'energy_kcal'
+[WARNING] Using fallback FDC version
+[FDC INDEX] Loaded FDC database: fdc@unknown
+  FDC version: fdc@unknown
+  Code SHA: 00d6450ba878
+
+Loading metadata...
+Finding first 50 dishes (sorted by dish_id)...
+Selected 50 dishes
+First dish: dish_1556572657
+Last dish: dish_1558028057
+
+======================================================================
+BATCH TEST: First 50 Dishes (Sorted by ID)
+======================================================================
+
+[1/50] Processing dish_1556572657...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[2/50] Processing dish_1556573514...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[3/50] Processing dish_1556575014...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[4/50] Processing dish_1556575083...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[5/50] Processing dish_1556575124...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[6/50] Processing dish_1556575273...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[7/50] Processing dish_1556575327...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[8/50] Processing dish_1556575386...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[9/50] Processing dish_1556575446...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[10/50] Processing dish_1556575499...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[11/50] Processing dish_1556575558...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[12/50] Processing dish_1557853154...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[13/50] Processing dish_1557853229...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[14/50] Processing dish_1557853314...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[15/50] Processing dish_1557853429...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[16/50] Processing dish_1557861605...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[17/50] Processing dish_1557861697...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[18/50] Processing dish_1557861795...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[19/50] Processing dish_1557861837...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[20/50] Processing dish_1557862345...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[21/50] Processing dish_1557862696...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[22/50] Processing dish_1557862738...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[23/50] Processing dish_1557862783...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[24/50] Processing dish_1557862829...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[25/50] Processing dish_1557863012...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[26/50] Processing dish_1557863056...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[27/50] Processing dish_1557863104...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[28/50] Processing dish_1557863170...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[29/50] Processing dish_1557936555...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[30/50] Processing dish_1557936599...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[31/50] Processing dish_1557936645...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[32/50] Processing dish_1557937037...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[33/50] Processing dish_1557937079...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[34/50] Processing dish_1557937157...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[35/50] Processing dish_1557937335...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[36/50] Processing dish_1557937427...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[37/50] Processing dish_1557937574...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[38/50] Processing dish_1557937615...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[39/50] Processing dish_1557937715...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[40/50] Processing dish_1557937758...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[41/50] Processing dish_1558026623...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[42/50] Processing dish_1558026684...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[43/50] Processing dish_1558026714...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[44/50] Processing dish_1558026756...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[45/50] Processing dish_1558027001...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[46/50] Processing dish_1558027057...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[47/50] Processing dish_1558027164...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[48/50] Processing dish_1558027243...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[49/50] Processing dish_1558028007...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+[50/50] Processing dish_1558028057...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: False
+[ADAPTER] Database not available
+[PIPELINE] Artifacts saved to: runs/20251029_140827/
+  Foods: 0, Stages: {}
+
+======================================================================
+BATCH TEST COMPLETE
+======================================================================
+Processed: 50 dishes
+
+Stage distribution:
+
+Results saved to: runs/<timestamp>/results.jsonl
+Telemetry saved to: runs/<timestamp>/telemetry.jsonl
+
+Test complete. Check runs/ directory for results.
+(base) austinprofenius@Mac snapandtrack-model-testing % cd nutritionverse-tests
+(base) austinprofenius@Mac nutritionverse-tests % 
+(base) austinprofenius@Mac nutritionverse-tests % pytest tests/test_produce_alignment.py -v
+
+============================================================================================================================= test session starts =============================================================================================================================
+platform darwin -- Python 3.13.5, pytest-8.3.4, pluggy-1.5.0 -- /Users/austinprofenius/Anaconda/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/austinprofenius/snapandtrack-model-testing/nutritionverse-tests
+plugins: anyio-4.7.0
+collected 11 items                                                                                                                                                                                                                                                            
+
+tests/test_produce_alignment.py::test_produce_alignment_not_stage0[cherry tomatoes-raw-True] FAILED                                                                                                                                                                     [  9%]
+tests/test_produce_alignment.py::test_produce_alignment_not_stage0[grape tomatoes-raw-True] PASSED                                                                                                                                                                      [ 18%]
+tests/test_produce_alignment.py::test_produce_alignment_not_stage0[button mushrooms-raw-True] FAILED                                                                                                                                                                    [ 27%]
+tests/test_produce_alignment.py::test_produce_alignment_not_stage0[green beans-raw-True] PASSED                                                                                                                                                                         [ 36%]
+tests/test_produce_alignment.py::test_produce_alignment_not_stage0[broccoli florets-raw-True] FAILED                                                                                                                                                                    [ 45%]
+tests/test_produce_alignment.py::test_produce_no_dessert_leakage[apple-bad_tokens0] FAILED                                                                                                                                                                              [ 54%]
+tests/test_produce_alignment.py::test_produce_no_dessert_leakage[strawberry-bad_tokens1] FAILED                                                                                                                                                                         [ 63%]
+tests/test_produce_alignment.py::test_produce_no_dessert_leakage[cherry-bad_tokens2] PASSED                                                                                                                                                                             [ 72%]
+tests/test_produce_alignment.py::test_stage2_seed_guardrail PASSED                                                                                                                                                                                                      [ 81%]
+tests/test_produce_alignment.py::test_stage1c_telemetry_ids PASSED                                                                                                                                                                                                      [ 90%]
+tests/test_produce_alignment.py::test_config_version_stamped PASSED                                                                                                                                                                                                     [100%]
+
+================================================================================================================================== FAILURES ===================================================================================================================================
+_________________________________________________________________________________________________________ test_produce_alignment_not_stage0[cherry tomatoes-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'cherry tomatoes', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: cherry tomatoes: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x10d44e080>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x10d44e080> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+tests/test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: cherry tomatoes (raw)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+________________________________________________________________________________________________________ test_produce_alignment_not_stage0[button mushrooms-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'button mushrooms', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: button mushrooms: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x10d48df80>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x10d48df80> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+tests/test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: button mushrooms (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+________________________________________________________________________________________________________ test_produce_alignment_not_stage0[broccoli florets-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'broccoli florets', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: broccoli florets: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x10d48f100>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x10d48f100> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+tests/test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: broccoli florets (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+_____________________________________________________________________________________________________________ test_produce_no_dessert_leakage[apple-bad_tokens0] ______________________________________________________________________________________________________________
+
+food_name = 'apple', bad_tokens = ['croissant', 'pastry', 'ice cream']
+
+    @pytest.mark.parametrize("food_name,bad_tokens", [
+        ("apple", ["croissant", "pastry", "ice cream"]),
+        ("strawberry", ["ice cream", "cake"]),
+        ("cherry", ["pie"]),
+    ])
+    def test_produce_no_dessert_leakage(food_name, bad_tokens):
+        """Test that produce doesn't match desserts/pastries."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": "raw", "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if result["foods"]:
+            food = result["foods"][0]
+            fdc_name = food.get("fdc_name", "").lower()
+    
+            for bad_token in bad_tokens:
+>               assert bad_token.lower() not in fdc_name, \
+                    f"{food_name}: Incorrectly matched '{bad_token}' FDC"
+E               AssertionError: apple: Incorrectly matched 'croissant' FDC
+E               assert 'croissant' not in 'croissants apple'
+E                 
+E                 'croissant' is contained here:
+E                   croissants apple
+
+tests/test_produce_alignment.py:59: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+___________________________________________________________________________________________________________ test_produce_no_dessert_leakage[strawberry-bad_tokens1] ___________________________________________________________________________________________________________
+
+food_name = 'strawberry', bad_tokens = ['ice cream', 'cake']
+
+    @pytest.mark.parametrize("food_name,bad_tokens", [
+        ("apple", ["croissant", "pastry", "ice cream"]),
+        ("strawberry", ["ice cream", "cake"]),
+        ("cherry", ["pie"]),
+    ])
+    def test_produce_no_dessert_leakage(food_name, bad_tokens):
+        """Test that produce doesn't match desserts/pastries."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": "raw", "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if result["foods"]:
+            food = result["foods"][0]
+            fdc_name = food.get("fdc_name", "").lower()
+    
+            for bad_token in bad_tokens:
+>               assert bad_token.lower() not in fdc_name, \
+                    f"{food_name}: Incorrectly matched '{bad_token}' FDC"
+E               AssertionError: strawberry: Incorrectly matched 'ice cream' FDC
+E               assert 'ice cream' not in 'ice creams strawberry'
+E                 
+E                 'ice cream' is contained here:
+E                   ice creams strawberry
+
+tests/test_produce_alignment.py:59: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: strawberry (raw)
+[ADAPTER]   ✓ Matched: Ice creams strawberry (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+=========================================================================================================================== short test summary info ===========================================================================================================================
+FAILED tests/test_produce_alignment.py::test_produce_alignment_not_stage0[cherry tomatoes-raw-True] - AssertionError: cherry tomatoes: Still stage0 (no match found)
+FAILED tests/test_produce_alignment.py::test_produce_alignment_not_stage0[button mushrooms-raw-True] - AssertionError: button mushrooms: Still stage0 (no match found)
+FAILED tests/test_produce_alignment.py::test_produce_alignment_not_stage0[broccoli florets-raw-True] - AssertionError: broccoli florets: Still stage0 (no match found)
+FAILED tests/test_produce_alignment.py::test_produce_no_dessert_leakage[apple-bad_tokens0] - AssertionError: apple: Incorrectly matched 'croissant' FDC
+FAILED tests/test_produce_alignment.py::test_produce_no_dessert_leakage[strawberry-bad_tokens1] - AssertionError: strawberry: Incorrectly matched 'ice cream' FDC
+========================================================================================================================= 5 failed, 6 passed in 6.46s =========================================================================================================================
+(base) austinprofenius@Mac nutritionverse-tests % ./scripts/diagnose_batch.sh docs/archive/tempPipeline*/telemetry/gpt_5_50images_*.json
+
+zsh: no matches found: docs/archive/tempPipeline*/telemetry/gpt_5_50images_*.json
+(base) austinprofenius@Mac nutritionverse-tests % python test_egg_broccoli_fix.py 
+python: can't open file '/Users/austinprofenius/snapandtrack-model-testing/nutritionverse-tests/test_egg_broccoli_fix.py': [Errno 2] No such file or directory
+(base) austinprofenius@Mac nutritionverse-tests % cd ..
+(base) austinprofenius@Mac snapandtrack-model-testing % python test_egg_broccoli_fix.py 
+======================================================================
+Egg & Broccoli Alignment Fix - Test Suite
+======================================================================
+
+Initializing adapter...
+
+----------------------------------------------------------------------
+Test 1: Scrambled Eggs
+----------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: scrambled eggs (cooked)
+[ADAPTER]   Query variant matched: 'scrambled eggs' → 'egg scrambled' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+
+✓ Scrambled Eggs Aligned Successfully
+  FDC Match: NO_MATCH
+  Stage: stage0_no_candidates
+  Calories: 0.0
+  Protein: 0.0g
+
+----------------------------------------------------------------------
+Test 2: Broccoli Florets
+----------------------------------------------------------------------
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: broccoli florets (steamed)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+
+✓ Broccoli Florets Aligned Successfully
+  FDC Match: NO_MATCH
+  Stage: stage0_no_candidates
+  Calories: 0.0
+  Protein: 0.0g
+
+======================================================================
+Summary
+======================================================================
+
+Passed: 2/2
+  ✓ Scrambled Eggs
+  ✓ Broccoli Florets
+
+✓ ALL TESTS PASSED
+(base) austinprofenius@Mac snapandtrack-model-testing %  <30 image batch> OpenAI Adapter] Image filename: dish_1557937758.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 65884 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558116001.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558116001.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 107798 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558122740.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558122740.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 105813 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558376984.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558376984.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 90482 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558382263.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558382263.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 102506 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558459115.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558459115.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 81092 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558459664.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558459664.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 93072 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558468731.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558468731.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 107382 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558549214.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558549214.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 106324 bytes to base64
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1557937157
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: scrambled eggs (pan_seared)
+[ADAPTER]   Query variant matched: 'scrambled eggs' → 'egg scrambled' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/5] Aligning: bacon (fried)
+[ADAPTER]   ✓ Matched: Pork cured bacon cooked baked (stage=stage1c_cooked_sr_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: broccoli (steamed)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 2, 'stage1c_cooked_sr_direct': 1, 'stage1b_raw_foundation_direct': 2}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 7 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558122740
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 7 foods
+[ADAPTER] [1/7] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/7] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/7] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/7] Aligning: bacon (fried)
+[ADAPTER]   ✓ Matched: Pork cured bacon cooked baked (stage=stage1c_cooked_sr_direct, conversion=False)
+[ADAPTER] [5/7] Aligning: potatoes (roasted)
+[ADAPTER]   ✗ No match
+[ADAPTER] [6/7] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [7/7] Aligning: carrots (raw)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✓ Matched: Carrots raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5, 'stage1c_cooked_sr_direct': 1, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=7
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1557937758
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: sweet potato (roasted)
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/5] Aligning: scrambled eggs (cooked)
+[ADAPTER]   Query variant matched: 'scrambled eggs' → 'egg scrambled' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/5] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: blackberries (raw)
+[ADAPTER]   ✓ Matched: Blackberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 2, 'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 7 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558382263
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 7 foods
+[ADAPTER] [1/7] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/7] Aligning: chicken breast (grilled)
+[ADAPTER]   ✓ Matched: Chicken breast boneless skinless raw (grilled) (stage=stage2_raw_convert, conversion=True)
+[ADAPTER] [3/7] Aligning: avocado (raw)
+[ADAPTER]   ✓ Matched: Avocados raw Florida (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/7] Aligning: cherry tomatoes (raw)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/7] Aligning: broccoli florets (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [6/7] Aligning: green beans (steamed)
+[ADAPTER]   ✗ No match
+[ADAPTER] [7/7] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 14.3%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage2_raw_convert': 1, 'stage0_no_candidates': 3}
+[APP] Alignment result: available=True, foods=7
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558459664
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: rice (boiled)
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/5] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: cherry tomatoes (raw)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 2, 'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558468731
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: mixed greens (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✓ Decomposed 'mixed greens' via Stage 5B: mixed greens (1 components)
+[ADAPTER]     [1/1] lettuce mixed greens → Lettuce cos or romaine raw (80.0g)
+[ADAPTER] [2/5] Aligning: avocado (raw)
+[ADAPTER]   ✓ Matched: Avocados raw Florida (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: broccoli (raw)
+[ADAPTER]   ✓ Matched: Broccoli raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: mushrooms (raw)
+[ADAPTER]   Query variant matched: 'mushrooms' → 'mushroom' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Mushrooms morel raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: carrot (raw)
+[ADAPTER]   ✓ Matched: Carrots raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage5b_salad_component': 1, 'stage1b_raw_foundation_direct': 4}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 6 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558549214
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 6 foods
+[ADAPTER] [1/6] Aligning: white rice (cooked)
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/6] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/6] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [6/6] Aligning: potatoes (roasted)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 2, 'stage1b_raw_foundation_direct': 4}
+[APP] Alignment result: available=True, foods=6
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558376984
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: sausage (pan_seared)
+[ADAPTER]   ✓ Matched: Sausage beef fresh cooked (stage=stage1c_cooked_sr_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: spinach (cooked)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage1c_cooked_sr_direct': 1, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 6 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558459115
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 6 foods
+[ADAPTER] [1/6] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/6] Aligning: tomatoes (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/6] Aligning: rice (boiled)
+[ADAPTER]   ✗ No match
+[ADAPTER] [4/6] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [6/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=6
+[VISION] ✅ Mass-only validation passed: 6 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558116001
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 6 foods
+[ADAPTER] [1/6] Aligning: bacon (fried)
+[ADAPTER]   ✓ Matched: Pork cured bacon cooked baked (stage=stage1c_cooked_sr_direct, conversion=False)
+[ADAPTER] [2/6] Aligning: sausage (pan_seared)
+[ADAPTER]   ✓ Matched: Sausage beef fresh cooked (stage=stage1c_cooked_sr_direct, conversion=False)
+[ADAPTER] [3/6] Aligning: potato (roasted)
+[ADAPTER]   ✗ No match
+[ADAPTER] [4/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [6/6] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1c_cooked_sr_direct': 2, 'stage0_no_candidates': 1, 'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=6
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558633221.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558633221.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 102614 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558636980.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558636980.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 100811 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558639012.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558639012.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 90829 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558719514.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558719514.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 88844 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558722103.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558722103.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 76980 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558722780.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558722780.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 99996 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1558723568.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1558723568.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 97391 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559157454.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559157454.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 68382 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559157919.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559157919.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 83942 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559158263.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559158263.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 81374 bytes to base64
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559158263
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: arugula (raw)
+[ADAPTER]   ✓ Matched: Arugula raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: blueberries (raw)
+[ADAPTER]   ✓ Matched: Blueberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: red bell pepper (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 2, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 2 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559157454
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 2 foods
+[ADAPTER] [1/2] Aligning: mixed salad greens (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✓ Decomposed 'mixed salad greens' via Stage 5B: mixed greens (1 components)
+[ADAPTER]     [1/1] lettuce mixed greens → Lettuce cos or romaine raw (22.0g)
+[ADAPTER] [2/2] Aligning: blueberries (raw)
+[ADAPTER]   ✓ Matched: Blueberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage5b_salad_component': 1, 'stage1b_raw_foundation_direct': 1}
+[APP] Alignment result: available=True, foods=2
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558639012
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/5] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: corn on the cob slice (raw)
+[ADAPTER]   Query variant matched: 'corn on the cob slice' → 'corn raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558723568
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: cantaloupe (raw)
+[ADAPTER]   Query variant matched: 'cantaloupe' → 'melons cantaloupe raw' (3 candidates, 3 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons cantaloupe raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: carrots (steamed)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/5] Aligning: corn on the cob (boiled)
+[ADAPTER]   Query variant matched: 'corn on the cob' → 'corn raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage0_no_candidates': 2}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558722103
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: cherry tomatoes (raw)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/5] Aligning: persimmon (raw)
+[ADAPTER]   ✓ Matched: Persimmons japanese raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 4, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 4 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559157919
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 4 foods
+[ADAPTER] [1/4] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/4] Aligning: arugula (raw)
+[ADAPTER]   ✓ Matched: Arugula raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/4] Aligning: blueberries (raw)
+[ADAPTER]   ✓ Matched: Blueberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/4] Aligning: walnuts (raw)
+[ADAPTER]   Query variant matched: 'walnuts' → 'walnut' (8 candidates, 8 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts walnuts English halves raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 4}
+[APP] Alignment result: available=True, foods=4
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558633221
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/5] Aligning: cauliflower florets (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [4/5] Aligning: carrot slices (cooked)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/5] Aligning: corn on the cob slice (boiled)
+[ADAPTER]   Query variant matched: 'corn on the cob slice' → 'corn raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 2, 'stage0_no_candidates': 3}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 6 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558636980
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 6 foods
+[ADAPTER] [1/6] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/6] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/6] Aligning: grapes (raw)
+[ADAPTER]   Query variant matched: 'grapes' → 'grape' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/6] Aligning: grape (raw)
+[ADAPTER]   ✓ Matched: Grapes red or green (European type such as Thompson seedless) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/6] Aligning: carrot slices (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [6/6] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=6
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558719514
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [4/5] Aligning: cauliflower florets (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/5] Aligning: corn (raw)
+[ADAPTER]   ✓ Matched: Succotash (corn and limas) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 4, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=5
+[VISION] ✅ Mass-only validation passed: 5 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1558722780
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: cantaloupe (raw)
+[ADAPTER]   Query variant matched: 'cantaloupe' → 'melons cantaloupe raw' (3 candidates, 3 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons cantaloupe raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: grape tomatoes (raw)
+[ADAPTER]   Query variant matched: 'grape tomatoes' → 'tomatoes grape raw' (1 candidates, 1 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/5] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: carrots (boiled)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] [5/5] Aligning: corn on the cob (boiled)
+[ADAPTER]   Query variant matched: 'corn on the cob' → 'corn raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage0_no_candidates': 2}
+[APP] Alignment result: available=True, foods=5
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559172356.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559172356.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 72654 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559240089.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559240089.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 71487 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559240510.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559240510.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 92138 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559241099.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559241099.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 89355 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559243974.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559243974.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 87676 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559244305.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559244305.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 66352 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559244417.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559244417.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 84709 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559244546.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559244546.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 80003 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559244649.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559244649.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 105452 bytes to base64
+[VISION] Using MASS-ONLY mode (no calorie estimation from vision)
+[OpenAI Adapter] Reading image: /Users/austinprofenius/snapandtrack-model-testing/food-nutrients/test/dish_1559245697.png
+[OpenAI Adapter] Image file exists: True
+[OpenAI Adapter] Image filename: dish_1559245697.png
+[OpenAI Adapter] Preprocessing image (EXIF correction, resize to 1536px)
+[OpenAI Adapter] Preprocessed and encoded 94742 bytes to base64
+[OpenAI Adapter] WARNING: Mass-only validation failed: Vision model returned empty foods list
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559172356
+[VISION] ✅ Mass-only validation passed: 1 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559244417
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: mixed salad greens (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✓ Decomposed 'mixed salad greens' via Stage 5B: mixed greens (1 components)
+[ADAPTER]     [1/1] lettuce mixed greens → Lettuce cos or romaine raw (40.0g)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage5b_salad_component': 1}
+[APP] Alignment result: available=True, foods=1
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559244305
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: chickpeas (cooked)
+[ADAPTER]   Query variant matched: 'chickpeas' → 'chickpea' (10 candidates, 10 Foundation/SR)
+[ADAPTER]   ✓ Matched: Chickpeas (garbanzo beans bengal gram) dry (boiled) (stage=stage2_raw_convert, conversion=True)
+[ADAPTER] [2/3] Aligning: bell pepper (cooked)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/3] Aligning: onion (cooked)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 33.3%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage2_raw_convert': 1, 'stage0_no_candidates': 2}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559243974
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: almonds (raw)
+[ADAPTER]   Query variant matched: 'almonds' → 'almond' (49 candidates, 49 Foundation/SR)
+[ADAPTER]   ✓ Matched: Nuts almonds whole raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: carrots (cooked)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 2, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 4 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559244546
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 4 foods
+[ADAPTER] [1/4] Aligning: chicken breast (roasted)
+[ADAPTER]   ✓ Matched: Chicken breast boneless skinless raw (roasted_oven) (stage=stage2_raw_convert, conversion=True)
+[ADAPTER] [2/4] Aligning: spinach (cooked)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/4] Aligning: rice (boiled)
+[ADAPTER]   ✗ No match
+[ADAPTER] [4/4] Aligning: cherry tomato (cooked)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 25.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage2_raw_convert': 1, 'stage0_no_candidates': 3}
+[APP] Alignment result: available=True, foods=4
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559241099
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: mandarin orange (raw)
+[ADAPTER]   ✓ Matched: Tangerines (mandarin oranges) raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: pear (raw)
+[ADAPTER]   ✓ Matched: Pears raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: carrot (raw)
+[ADAPTER]   ✓ Matched: Carrots raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559245697
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: spinach (raw)
+[ADAPTER]   ✓ Matched: Spinach raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: carrots (raw)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✓ Matched: Carrots raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: pear (raw)
+[ADAPTER]   ✓ Matched: Pears raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 3 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559240089
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: carrot (raw)
+[ADAPTER]   ✓ Matched: Carrots raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: orange (raw)
+[ADAPTER]   ✓ Matched: Oranges raw with peel (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: pear (raw)
+[ADAPTER]   ✓ Matched: Pears raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[APP] Alignment result: available=True, foods=3
+[VISION] ✅ Mass-only validation passed: 6 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559244649
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 6 foods
+[ADAPTER] [1/6] Aligning: arugula (raw)
+[ADAPTER]   ✓ Matched: Arugula raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/6] Aligning: chickpeas with vegetables (cooked)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/6] Aligning: sausage patty (pan_seared)
+[ADAPTER]   ✓ Matched: StageZ energy proxy (sausage) (stage=stageZ_energy_only, conversion=False)
+[ADAPTER] [4/6] Aligning: chicken breast (roasted)
+[ADAPTER]   ✓ Matched: Chicken breast boneless skinless raw (roasted_oven) (stage=stage2_raw_convert, conversion=True)
+[ADAPTER] [5/6] Aligning: potatoes (roasted)
+[ADAPTER]   ✗ No match
+[ADAPTER] [6/6] Aligning: spinach (cooked)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 16.7%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1, 'stage0_no_candidates': 3, 'stageZ_energy_only': 1, 'stage2_raw_convert': 1}
+[APP] Alignment result: available=True, foods=6
+[VISION] ✅ Mass-only validation passed: 4 foods
+
+[APP] Creating FDC alignment engine (Stage 5 with conversion) for dish dish_1559240510
+[APP] Running database alignment...
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 4 foods
+[ADAPTER] [1/4] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/4] Aligning: broccoli (raw)
+[ADAPTER]   ✓ Matched: Broccoli raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/4] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/4] Aligning: carrots (cooked)
+[ADAPTER]   Query variant matched: 'carrots' → 'carrot' (31 candidates, 31 Foundation/SR)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage0_no_candidates': 1}
+[APP] Alignment result: available=True, foods=4
+<end>
