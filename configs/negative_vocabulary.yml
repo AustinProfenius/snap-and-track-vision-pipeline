@@ -128,6 +128,8 @@ produce_hard_blocks:
   - "dried"
   - "dehydrated"
   - "syrup"
+  - "in syrup"  # Added per task requirements
+  - "in juice"  # Added per task requirements
   - "sweetened"
   - "oil"  # Blocks "Oil olive", "Oil avocado"
   - "stuffed"  # Blocks "Olives stuffed with pimiento"
@@ -136,6 +138,7 @@ produce_hard_blocks:
   - "brined"
   - "soup"  # Blocks "Soup broccoli cheese", "Soup cream of celery"
   - "cheese"  # Blocks "Soup broccoli cheese"
+  - "sea cucumber"  # Added per task requirements
 
 # Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
 eggs_hard_blocks:
@@ -146,6 +149,7 @@ eggs_hard_blocks:
   - "frozen"
   - "substitute"
   - "powder"
+  - "powdered"  # Added per task requirements
   - "bread"  # Blocks "Bread egg toasted"
   - "toast"
   - "roll"

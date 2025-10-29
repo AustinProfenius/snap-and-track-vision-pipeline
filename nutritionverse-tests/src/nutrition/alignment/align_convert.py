@@ -508,7 +508,13 @@ class FDCAlignmentWithConversion:
                 )
 
                 if stage1b_result:
-                    match, score = stage1b_result
+                    # Handle optional telemetry tuple (match, score) or (match, score, telemetry)
+                    if len(stage1b_result) == 3:
+                        match, score, stage1c_telemetry = stage1b_result
+                    else:
+                        match, score = stage1b_result
+                        stage1c_telemetry = None
+
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         print(f"[ALIGN] ✓ Matched via stage1b_raw_foundation_direct: {match.name} (score={score:.3f})")
 
@@ -524,6 +530,11 @@ class FDCAlignmentWithConversion:
                     )
                     # Add Stage 1b score to telemetry
                     result.telemetry["stage1b_score"] = score
+
+                    # Add Stage 1c telemetry if present
+                    if stage1c_telemetry:
+                        result.telemetry["stage1c_switched"] = stage1c_telemetry
+
                     return result
 
             # NEW: Try Stage 1c (cooked SR direct) for cooked proteins BEFORE Stage 2
@@ -1169,7 +1180,12 @@ class FDCAlignmentWithConversion:
 
         if best_match:
             # Stage 1c: Apply raw-first preference (switch processed → raw if available)
+            # Track telemetry for switches
+            stage1c_telemetry = None
             try:
+                # Capture original name before Stage 1c
+                original_name = _cand_name(best_match)
+
                 # Try to get config from either cfg or _external_negative_vocab
                 neg_vocab = None
                 if hasattr(self, "cfg") and isinstance(self.cfg, dict):
@@ -1177,15 +1193,28 @@ class FDCAlignmentWithConversion:
                 if neg_vocab is None and hasattr(self, "_external_negative_vocab"):
                     neg_vocab = self._external_negative_vocab
 
-                best_match = _prefer_raw_stage1c(
+                best_match_after = _prefer_raw_stage1c(
                     core_class,
                     best_match,
                     raw_foundation,
                     cfg=neg_vocab
                 )
+
+                # Check if Stage 1c switched the match
+                final_name = _cand_name(best_match_after)
+                if final_name and final_name != original_name:
+                    stage1c_telemetry = {
+                        "from": original_name,
+                        "to": final_name
+                    }
+
+                best_match = best_match_after
             except Exception:
                 pass  # Safety: never fail Stage 1b due to raw preference
 
+            # Return match, score, and optional telemetry
+            if stage1c_telemetry:
+                return (best_match, best_score, stage1c_telemetry)
             return (best_match, best_score)
 
         return None
