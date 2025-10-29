@@ -122,6 +122,23 @@ spinach:
     - strained
   hard_block_contains: []
 
+# Broccoli - prefer fresh/cooked broccoli over baby food and processed forms
+broccoli:
+  allow_contains:
+    - broccoli raw
+    - broccoli cooked
+    - broccoli boiled
+    - broccoli steamed
+    - broccoli florets
+  penalize_contains:
+    - baby food
+    - babyfood
+    - puree
+    - soup
+    - condensed
+    - frozen chopped
+  hard_block_contains: []
+
 # Tomato - prefer fresh tomatoes over soups/sauces
 tomato:
   allow_contains:

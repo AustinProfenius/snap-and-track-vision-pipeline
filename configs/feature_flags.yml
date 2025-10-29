@@ -16,4 +16,5 @@ stageZ_branded_fallback: false
 vision_mass_only: true
 
 # Stage 1: Strict cooked exact match gate
-strict_cooked_exact_gate: true
+# Set to false to allow Stage 2 raw→cooked conversion when SR cooked not found
+strict_cooked_exact_gate: false

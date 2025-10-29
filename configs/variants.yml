@@ -9,6 +9,14 @@ egg:
   - egg fried
   - egg omelet
 
+scrambled_eggs:
+  - egg scrambled
+  - eggs scrambled
+  - egg, scrambled
+  - eggs, scrambled
+  - scrambled egg
+  - Egg, whole, cooked, scrambled
+
 egg_white:
   - egg white
   - egg white cooked
@@ -58,6 +66,24 @@ spinach_raw:
   - spinach raw
   - spinach leaves raw
   - baby spinach raw
+
+broccoli:
+  - broccoli
+  - broccoli raw
+  - broccoli cooked
+  - broccoli steamed
+  - Broccoli, raw
+  - Broccoli, cooked, boiled, drained, without salt
+
+broccoli_florets:
+  - broccoli florets
+  - broccoli floret
+  - broccoli pieces
+  - broccoli cuts
+  - broccoli
+  - broccoli raw
+  - broccoli steamed
+  - broccoli moist_heat
 
 tomato:
   - tomato

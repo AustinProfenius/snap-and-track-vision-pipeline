@@ -22,23 +22,95 @@ class AlignmentEngineAdapter:
     without changing the web app code.
     """
 
-    def __init__(self, enable_conversion: bool = True):
+    def __init__(self, enable_conversion: bool = True, alignment_engine=None, fdc_db=None):
         """
         Initialize alignment engine adapter.
 
         Phase 7.3: Removed double-init - alignment_engine and fdc_db are injected
         by the pipeline (run.py) to avoid "hardcoded defaults" warning.
 
+        For web app compatibility: If alignment_engine and fdc_db are not provided,
+        they will be auto-initialized on first use.
+
         Args:
             enable_conversion: Enable raw→cooked conversion (always True for new engine)
+            alignment_engine: Optional pre-initialized alignment engine
+            fdc_db: Optional pre-initialized FDC database
         """
         load_dotenv(override=True)
 
-        # Phase 7.3: Defer engine/db initialization to pipeline injection
-        # This avoids creating an unconfigured engine that triggers warnings
-        self.alignment_engine = None
-        self.fdc_db = None
+        # Phase 7.3: Support both injection (pipeline) and auto-init (web app)
+        self.alignment_engine = alignment_engine
+        self.fdc_db = fdc_db
         self.db_available = False
+        self._auto_init_attempted = False
+
+    def _auto_initialize(self):
+        """Auto-initialize engine and database if not provided (for web app compatibility)."""
+        if self._auto_init_attempted:
+            return
+
+        self._auto_init_attempted = True
+
+        try:
+            print("[ADAPTER] Auto-initializing alignment engine and database...")
+
+            # Check for database connection
+            neon_url = os.getenv("NEON_CONNECTION_URL")
+            if not neon_url:
+                print("[ADAPTER] ERROR: NEON_CONNECTION_URL not found in environment")
+                self.db_available = False
+                return
+
+            # Initialize FDC database
+            self.fdc_db = FDCDatabase()
+            print(f"[ADAPTER] FDC Database initialized")
+
+            # Load configs from pipeline/configs (single source of truth)
+            from pathlib import Path
+            import sys
+
+            # Find repo root (3 levels up from this file)
+            repo_root = Path(__file__).parent.parent.parent.parent
+            configs_path = repo_root / "configs"
+
+            if not configs_path.exists():
+                print(f"[ADAPTER] WARNING: Configs path not found: {configs_path}")
+                print(f"[ADAPTER] Falling back to hardcoded defaults")
+                # Initialize without configs (fallback to hardcoded)
+                self.alignment_engine = FDCAlignmentWithConversion(fdc_db=self.fdc_db)
+            else:
+                # Add pipeline to path to import config_loader
+                pipeline_path = str(repo_root / "pipeline")
+                if pipeline_path not in sys.path:
+                    sys.path.insert(0, pipeline_path)
+
+                from config_loader import load_pipeline_config
+                cfg = load_pipeline_config(root=str(configs_path))
+                print(f"[ADAPTER] Loaded configs from {configs_path}")
+                print(f"[ADAPTER] Config version: {cfg.config_version}")
+
+                # Initialize alignment engine with individual config parameters
+                self.alignment_engine = FDCAlignmentWithConversion(
+                    fdc_db=self.fdc_db,
+                    class_thresholds=cfg.thresholds,
+                    negative_vocab=cfg.neg_vocab,
+                    feature_flags=cfg.feature_flags,
+                    variants=cfg.variants,
+                    proxy_rules=cfg.proxy_rules,
+                    category_allowlist=cfg.category_allowlist,
+                    branded_fallbacks=cfg.branded_fallbacks,
+                    unit_to_grams=cfg.unit_to_grams
+                )
+            print(f"[ADAPTER] Alignment engine initialized with configs")
+
+            self.db_available = True
+
+        except Exception as e:
+            print(f"[ADAPTER] ERROR: Failed to auto-initialize: {e}")
+            import traceback
+            traceback.print_exc()
+            self.db_available = False
 
     def align_prediction_batch(self, prediction: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -50,11 +122,9 @@ class AlignmentEngineAdapter:
         Returns:
             Dict with alignments and totals compatible with web app
         """
-        # Phase 7.3: Check if engine and DB were injected by pipeline
+        # Phase 7.3: Check if engine and DB were injected by pipeline, or auto-initialize
         if self.alignment_engine is None or self.fdc_db is None:
-            self.db_available = False
-        else:
-            self.db_available = True
+            self._auto_initialize()
 
         print(f"[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====")
         print(f"[ADAPTER] DB Available: {self.db_available}")

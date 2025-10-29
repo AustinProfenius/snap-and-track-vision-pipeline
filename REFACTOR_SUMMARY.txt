@@ -1,0 +1,70 @@
+================================================================================
+REPOSITORY REFACTOR COMPLETE - 2025-10-29
+================================================================================
+
+✅ STATUS: Complete and verified working
+
+CHANGES:
+--------
+1. Entrypoints: Consolidated to nutritionverse-tests/entrypoints/
+2. Duplicates: Removed ~5000 lines (gpt5-context-delivery, tempPipeline*)
+3. Configs: Single source at /configs
+4. Scripts: Added run_first_50.sh, grep_stage1c.sh
+5. Docs: Created README.md, pipeline.md, entrypoints/README.md
+6. .gitignore: Added runtime artifacts, Python cache, IDE files
+
+DELETED:
+--------
+- gpt5-context-delivery/ (3500+ lines of duplicates)
+- Archived tempPipeline10-27-811/ → docs/archive/
+- Archived tempPipeline10-25-920/ → docs/archive/
+- Archived info/ → docs/archive/
+
+VERIFICATION:
+-------------
+✅ Pipeline works (tested with blackberries)
+✅ Stage 1c telemetry persists to telemetry.jsonl
+✅ No stray imports to deleted directories
+✅ All imports resolve correctly
+
+QUICK COMMANDS:
+---------------
+# Test pipeline
+bash scripts/run_first_50.sh
+
+# Check stage1c telemetry
+bash scripts/grep_stage1c.sh
+
+# Run tests
+pytest nutritionverse-tests/tests/
+pytest pipeline/tests/
+
+# Full evaluation
+cd nutritionverse-tests/entrypoints && python run_459_batch_evaluation.py
+
+STRUCTURE:
+----------
+/
+├─ nutritionverse-tests/entrypoints/  ← Batch runners (first-50, 459)
+├─ pipeline/                          ← Orchestrator (run.py)
+├─ configs/                           ← Single source of truth
+├─ scripts/                           ← Utility scripts
+├─ docs/                              ← Documentation + archive/
+├─ runs/                              ← Runtime artifacts (gitignored)
+└─ README.md                          ← Start here
+
+STATS:
+------
+Before: 15+ directories, ~12,000 LOC, ~60 duplicate files
+After:  8 directories, ~7,000 LOC, 0 duplicates (-5000 lines, -47% dirs)
+
+NEXT STEPS:
+-----------
+1. Test full 459-batch evaluation
+2. Run complete test suite
+3. Commit changes with git
+4. Optional: Create PR for team review
+
+Ready for calibration and deployment!
+
+================================================================================

@@ -1,1 +1,27 @@
+# Environment
 .env
+
+# Runtime artifacts
+runs/
+results/
+*.jsonl
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

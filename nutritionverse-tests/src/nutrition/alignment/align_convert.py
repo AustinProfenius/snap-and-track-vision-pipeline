@@ -129,7 +129,7 @@ def _prefer_raw_stage1c(
     candidates: List[Any],
     *,
     cfg: Optional[Dict[str, Any]] = None,
-) -> Any:
+) -> tuple:
     """
     If the current picked candidate looks processed (oil/soup/frozen/etc.),
     switch to a raw/fresh alternative from the same candidate set when available.
@@ -142,11 +142,12 @@ def _prefer_raw_stage1c(
         cfg: Optional config dict with negative_vocabulary settings
 
     Returns:
-        Either the original picked candidate or a better raw/fresh alternative
+        Tuple of (result_candidate, telemetry_dict or None)
+        Telemetry dict contains: {"from": name, "to": name, "from_id": fdc_id, "to_id": fdc_id}
     """
     try:
         if not picked:
-            return picked
+            return (picked, None)
 
         # Pull config-driven lists if present; else use defaults
         processed_terms = (cfg or {}).get("stage1c_processed_penalties") or _STAGE1C_PROCESSED_TERMS_DEFAULT
@@ -156,17 +157,24 @@ def _prefer_raw_stage1c(
         picked_name = _cand_name(picked)
 
         if not _label_bad_for_raw(picked_name, processed_terms):
-            return picked  # already raw-ish or acceptable
+            return (picked, None)  # already raw-ish or acceptable
 
         # Find a raw alt: must contain a raw synonym and NOT contain processed terms
         for cand in candidates or []:
             cname = _cand_name(cand)
             if _label_good_for_raw(cname, raw_synonyms) and not _label_bad_for_raw(cname, processed_terms):
-                return cand
-        return picked
+                # Build telemetry for the switch
+                telemetry = {
+                    "from": picked_name,
+                    "to": cname,
+                    "from_id": getattr(picked, 'fdc_id', None) or picked.get('fdc_id') if hasattr(picked, 'get') else None,
+                    "to_id": getattr(cand, 'fdc_id', None) or cand.get('fdc_id') if hasattr(cand, 'get') else None
+                }
+                return (cand, telemetry)
+        return (picked, None)
     except Exception:
         # Safety: never fail - return original pick on any error
-        return picked
+        return (picked, None)
 
 
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
@@ -454,10 +462,22 @@ class FDCAlignmentWithConversion:
         # Step 1: Normalize to core class
         core_class = self._normalize_to_core_class(predicted_name)
 
+        # Step 1.5: Extract method from name if form is generic "cooked"
+        # For foods like "scrambled eggs", "fried chicken", extract the method
+        method_from_name = predicted_form
+        if predicted_form and predicted_form.lower().strip() == "cooked":
+            name_lower = predicted_name.lower()
+            # Check for method keywords in the food name
+            method_keywords = ["scrambled", "fried", "grilled", "boiled", "steamed", "roasted", "baked", "sauteed", "poached"]
+            for keyword in method_keywords:
+                if keyword in name_lower:
+                    method_from_name = keyword
+                    break
+
         # Step 2: Resolve method FIRST (before any candidate processing)
         method, method_reason = resolve_method(
             core_class,
-            predicted_form,
+            method_from_name,
             self.cook_cfg
         )
         method_inferred = (method_reason != "explicit_match")
@@ -1194,20 +1214,16 @@ class FDCAlignmentWithConversion:
                 if neg_vocab is None and hasattr(self, "_external_negative_vocab"):
                     neg_vocab = self._external_negative_vocab
 
-                best_match_after = _prefer_raw_stage1c(
+                best_match_after, stage1c_tel = _prefer_raw_stage1c(
                     core_class,
                     best_match,
                     raw_foundation,
                     cfg=neg_vocab
                 )
 
-                # Check if Stage 1c switched the match
-                final_name = _cand_name(best_match_after)
-                if final_name and final_name != original_name:
-                    stage1c_telemetry = {
-                        "from": original_name,
-                        "to": final_name
-                    }
+                # Use telemetry from _prefer_raw_stage1c if a switch occurred
+                if stage1c_tel:
+                    stage1c_telemetry = stage1c_tel
 
                 best_match = best_match_after
             except Exception:
@@ -2552,6 +2568,14 @@ class FDCAlignmentWithConversion:
             return "honeydew"
         if "cantaloupe" in name_lower or "muskmelon" in name_lower:
             return "cantaloupe"
+
+        # Eggs (all variants map to egg_whole for cook conversion)
+        # Note: egg_white has its own profile, all others use egg_whole
+        if "egg" in name_lower:
+            if "white" in name_lower:
+                return "egg_white"
+            else:
+                return "egg_whole"  # All whole egg variants (scrambled, fried, boiled, etc.)
 
         # Default: use first word with underscores
         return name_lower.split()[0].replace(" ", "_")
