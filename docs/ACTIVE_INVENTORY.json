@@ -1,0 +1,222 @@
+{
+  "repo_root": "/Users/austinprofenius/snapandtrack-model-testing",
+  "generated": "2025-10-29",
+  "total_active_files": 45,
+  "scoring_criteria": {
+    "core": "≥80: On critical path, imported by entrypoints",
+    "support": "60-79: Used by core, helpers/adapters",
+    "nice_to_have": "40-59: Optional tooling",
+    "legacy": "≤39: Unused, superseded, duplicates"
+  },
+  "files": [
+    {
+      "path": "nutritionverse-tests/src/nutrition/alignment/align_convert.py",
+      "language": "Python",
+      "purpose_short": "Core alignment engine with Stage 1b/1c/2/5/Z logic",
+      "last_commit_date": "2025-10-29",
+      "active_score": 100,
+      "why_active": [
+        "Main pipeline logic (2000+ lines)",
+        "All stages implemented here",
+        "Called by all entrypoints via adapter",
+        "Recent Stage 1c raw-first preference (Phase 7.4)",
+        "Guardrails fix (Phase 7.4)"
+      ],
+      "deps": ["fdc_database", "cook_convert", "method_resolver", "energy_atwater"],
+      "referenced_by_tests": ["test_alignment_guards.py", "test_stage1c_unit.py"],
+      "referenced_by_configs": ["negative_vocabulary.yml", "class_thresholds.yml"]
+    },
+    {
+      "path": "pipeline/run.py",
+      "language": "Python",
+      "purpose_short": "Unified pipeline orchestrator (single source of truth)",
+      "last_commit_date": "2025-10-29",
+      "active_score": 100,
+      "why_active": [
+        "Entry point for all batch/web requests",
+        "Single source of truth (Phase 7.3)",
+        "Calls alignment engine via adapter",
+        "Writes telemetry to JSONL",
+        "Stage 1c telemetry persistence (Phase 7.4)"
+      ],
+      "deps": ["schemas", "config_loader", "fdc_index", "alignment_adapter", "align_convert"],
+      "referenced_by_tests": ["test_pipeline_e2e.py", "test_stage1c_telemetry.py"],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "pipeline/schemas.py",
+      "language": "Python",
+      "purpose_short": "Pydantic schemas for type-safe pipeline contracts",
+      "last_commit_date": "2025-10-29",
+      "active_score": 100,
+      "why_active": [
+        "Type safety for all pipeline I/O",
+        "TelemetryEvent schema with stage1c_switched",
+        "AlignmentRequest/Result/FoodAlignment schemas",
+        "Referenced by run.py and all entrypoints"
+      ],
+      "deps": ["pydantic"],
+      "referenced_by_tests": ["test_telemetry_schema.py", "test_stage1c_telemetry_persistence.py"],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "pipeline/config_loader.py",
+      "language": "Python",
+      "purpose_short": "Load and validate YAML configs from /configs",
+      "last_commit_date": "2025-10-27",
+      "active_score": 95,
+      "why_active": [
+        "Config externalization (Phase 7.3)",
+        "Loads all YAML configs at startup",
+        "Git version tracking for config changes",
+        "Used by run.py"
+      ],
+      "deps": ["yaml", "pathlib"],
+      "referenced_by_tests": ["test_config_loader.py"],
+      "referenced_by_configs": ["All /configs/*.yml files"]
+    },
+    {
+      "path": "nutritionverse-tests/src/adapters/alignment_adapter.py",
+      "language": "Python",
+      "purpose_short": "Adapter wrapping alignment engine for batch processing",
+      "last_commit_date": "2025-10-28",
+      "active_score": 95,
+      "why_active": [
+        "Bridge between pipeline and engine",
+        "Handles batch food alignment",
+        "Telemetry aggregation",
+        "Conversion toggle",
+        "Called by run.py"
+      ],
+      "deps": ["align_convert", "fdc_database"],
+      "referenced_by_tests": ["test_pipeline_e2e.py"],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "nutritionverse-tests/src/adapters/fdc_database.py",
+      "language": "Python",
+      "purpose_short": "FDC PostgreSQL database interface",
+      "last_commit_date": "2025-10-26",
+      "active_score": 95,
+      "why_active": [
+        "Critical for all FDC queries",
+        "search_foods(), get_food_by_id() methods",
+        "Connection pooling",
+        "Used by align_convert and fdc_index"
+      ],
+      "deps": ["psycopg2"],
+      "referenced_by_tests": [],
+      "referenced_by_configs": ["NEON_CONNECTION_URL env var"]
+    },
+    {
+      "path": "nutritionverse-tests/src/nutrition/conversions/cook_convert.py",
+      "language": "Python",
+      "purpose_short": "Stage 2: Raw→cooked conversion with retention factors",
+      "last_commit_date": "2025-10-25",
+      "active_score": 90,
+      "why_active": [
+        "Stage 2 conversion logic",
+        "Retention factor lookups",
+        "Oil uptake calculations",
+        "Called by align_convert when conversion_applied=True"
+      ],
+      "deps": ["method_resolver"],
+      "referenced_by_tests": ["test_cook_convert.py"],
+      "referenced_by_configs": ["cook_methods.yml"]
+    },
+    {
+      "path": "configs/negative_vocabulary.yml",
+      "language": "YAML",
+      "purpose_short": "Guardrails blocklists + Stage 1c raw-first preferences",
+      "last_commit_date": "2025-10-29",
+      "active_score": 100,
+      "why_active": [
+        "produce_hard_blocks, eggs_hard_blocks",
+        "stage1c_processed_penalties, stage1c_raw_synonyms",
+        "Phase 7.4 tightening (added terms)",
+        "Loaded by config_loader, used by align_convert"
+      ],
+      "deps": [],
+      "referenced_by_tests": ["test_negative_vocab.py", "test_stage1c_unit.py"],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "configs/class_thresholds.yml",
+      "language": "YAML",
+      "purpose_short": "Stage 1b scoring thresholds per food class",
+      "last_commit_date": "2025-10-27",
+      "active_score": 100,
+      "why_active": [
+        "Jaccard + energy similarity thresholds",
+        "Per-class tuning (eggs: 0.55, produce: 0.50, etc.)",
+        "Critical for Stage 1b match quality"
+      ],
+      "deps": [],
+      "referenced_by_tests": [],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "nutritionverse-tests/tests/test_stage1c_unit.py",
+      "language": "Python",
+      "purpose_short": "Unit tests for Stage 1c raw-first preference logic",
+      "last_commit_date": "2025-10-29",
+      "active_score": 90,
+      "why_active": [
+        "6 tests covering Stage 1c scenarios",
+        "Phase 7.4 implementation",
+        "Switches, keeps, dict handling, defaults, defensive",
+        "Passes: 6/6"
+      ],
+      "deps": ["align_convert"],
+      "referenced_by_tests": [],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "pipeline/tests/test_stage1c_telemetry_persistence.py",
+      "language": "Python",
+      "purpose_short": "Unit tests for stage1c_switched JSONL persistence",
+      "last_commit_date": "2025-10-29",
+      "active_score": 90,
+      "why_active": [
+        "4 tests for telemetry schema",
+        "Phase 7.4 telemetry fix",
+        "Schema validation, JSONL format, dict handling",
+        "Passes: 4/4"
+      ],
+      "deps": ["schemas"],
+      "referenced_by_tests": [],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "gpt5-context-delivery/entrypoints/run_first_50_by_dish_id.py",
+      "language": "Python",
+      "purpose_short": "First-50 batch test harness (sorted by dish_id)",
+      "last_commit_date": "2025-10-27",
+      "active_score": 85,
+      "why_active": [
+        "Active entrypoint for batch testing",
+        "Calls pipeline.run.run_once()",
+        "Used in Phase 7.3/7.4 verification",
+        "NEEDS MOVE to nutritionverse-tests/entrypoints/"
+      ],
+      "deps": ["pipeline.run", "pipeline.config_loader", "pipeline.fdc_index"],
+      "referenced_by_tests": [],
+      "referenced_by_configs": []
+    },
+    {
+      "path": "nutritionverse-tests/run_459_batch_evaluation.py",
+      "language": "Python",
+      "purpose_short": "Full batch evaluation entrypoint (300-image)",
+      "last_commit_date": "2025-10-27",
+      "active_score": 80,
+      "why_active": [
+        "300-image batch runs",
+        "Production validation",
+        "Calls pipeline.run.run_once()"
+      ],
+      "deps": ["pipeline.run"],
+      "referenced_by_tests": [],
+      "referenced_by_configs": []
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+// Dependency Graph for Snap & Track Vision Pipeline
+// Generated: 2025-10-29
+// Usage: dot -Tpng DEPENDENCY_GRAPH.dot -o dependency_graph.png
+
+digraph pipeline_dependencies {
+  // Graph styling
+  rankdir=LR;
+  node [shape=box, style=filled, fontname="Arial"];
+
+  // Define node categories with colors
+  node [fillcolor=lightblue];     // Entrypoints
+  run_first_50 [label="run_first_50_by_dish_id.py\n(entrypoint)"];
+  run_459 [label="run_459_batch_evaluation.py\n(entrypoint)"];
+  web_app [label="nutritionverse_app.py\n(Flask web app)"];
+
+  node [fillcolor=yellow];        // Core pipeline orchestrator
+  pipeline_run [label="pipeline/run.py\n(orchestrator)", shape=hexagon];
+
+  node [fillcolor=lightgreen];    // Core engine
+  align_convert [label="align_convert.py\n(alignment engine)"];
+  alignment_adapter [label="alignment_adapter.py\n(adapter)"];
+
+  node [fillcolor=wheat];         // Supporting modules
+  cook_convert [label="cook_convert.py\n(Stage 2)"];
+  fdc_database [label="fdc_database.py\n(DB interface)"];
+  method_resolver [label="method_resolver.py"];
+  energy_atwater [label="energy_atwater.py\n(Atwater validation)"];
+
+  node [fillcolor=lavender];      // Schemas & config
+  schemas [label="schemas.py\n(Pydantic types)"];
+  config_loader [label="config_loader.py"];
+  fdc_index [label="fdc_index.py"];
+
+  node [fillcolor=pink];          // Config files
+  neg_vocab [label="negative_vocabulary.yml", shape=note];
+  class_thresh [label="class_thresholds.yml", shape=note];
+  cook_methods [label="cook_methods.yml", shape=note];
+
+  node [fillcolor=lightcyan];     // Tests
+  test_stage1c_unit [label="test_stage1c_unit.py\n(unit test)"];
+  test_stage1c_telem [label="test_stage1c_telemetry_persistence.py\n(unit test)"];
+  test_pipeline [label="test_pipeline_e2e.py\n(integration test)"];
+
+  // Entrypoint → Pipeline
+  run_first_50 -> pipeline_run [label="calls"];
+  run_459 -> pipeline_run [label="calls"];
+  web_app -> pipeline_run [label="calls"];
+
+  // Pipeline → Core
+  pipeline_run -> alignment_adapter [label="uses"];
+  pipeline_run -> schemas [label="uses"];
+  pipeline_run -> config_loader [label="uses"];
+  pipeline_run -> fdc_index [label="uses"];
+
+  // Adapter → Engine
+  alignment_adapter -> align_convert [label="wraps"];
+  alignment_adapter -> fdc_database [label="uses"];
+
+  // Engine → Supporting Modules
+  align_convert -> cook_convert [label="Stage 2"];
+  align_convert -> fdc_database [label="queries"];
+  align_convert -> method_resolver [label="uses"];
+  align_convert -> energy_atwater [label="validates"];
+
+  // Supporting Module Dependencies
+  cook_convert -> method_resolver [label="uses"];
+
+  // Config Dependencies
+  config_loader -> neg_vocab [label="loads"];
+  config_loader -> class_thresh [label="loads"];
+  config_loader -> cook_methods [label="loads"];
+
+  align_convert -> neg_vocab [label="guardrails\n+ Stage 1c"];
+  align_convert -> class_thresh [label="thresholds"];
+  cook_convert -> cook_methods [label="retention factors"];
+
+  // FDC Index
+  fdc_index -> fdc_database [label="wraps"];
+
+  // Test Dependencies
+  test_stage1c_unit -> align_convert [label="tests"];
+  test_stage1c_telem -> schemas [label="tests"];
+  test_pipeline -> pipeline_run [label="tests"];
+
+  // Telemetry Output
+  node [fillcolor=lightyellow, shape=folder];
+  telemetry_jsonl [label="runs/<timestamp>/telemetry.jsonl\n(output)"];
+  pipeline_run -> telemetry_jsonl [label="writes", style=dashed];
+
+  // Subgraph for stages within align_convert
+  subgraph cluster_stages {
+    label="Stages in align_convert.py";
+    style=dashed;
+    node [fillcolor=lightgreen, shape=ellipse];
+
+    stage1b [label="Stage 1b:\nRaw Foundation Direct"];
+    stage1c [label="Stage 1c:\nRaw-first Preference"];
+    stage2 [label="Stage 2:\nRaw→Cooked Conversion"];
+    stage5 [label="Stage 5:\nProxy Search"];
+    stageZ [label="Stage Z:\nBranded Fallback"];
+
+    stage1b -> stage1c [label="prefer raw"];
+    stage1b -> stage2 [label="if cooked"];
+    stage1b -> stage5 [label="fallback"];
+    stage5 -> stageZ [label="fallback"];
+  }
+
+  align_convert -> stage1b [style=dotted, label="contains"];
+}

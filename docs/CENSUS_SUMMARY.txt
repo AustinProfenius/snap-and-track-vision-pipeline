@@ -1,0 +1,122 @@
+================================================================================
+SNAP & TRACK VISION PIPELINE - REPOSITORY CENSUS
+Generated: 2025-10-29
+================================================================================
+
+OVERVIEW
+--------
+Complete repository analysis identifying active code vs. duplicates/legacy.
+Goal: Consolidate to single source of truth, eliminate ~5000+ duplicate lines.
+
+KEY FINDINGS
+------------
+✓ Core pipeline is solid: /nutritionverse-tests + /pipeline are well-structured
+✗ Significant duplication in /gpt5-context-delivery (temporary delivery dir)
+✗ Old snapshot in /tempPipeline10-27-811 (from 2025-10-27)
+✗ Some superseded adapters in /nutritionverse-tests/src/adapters
+
+STATISTICS
+----------
+Total Code Files: 179 (Python + YAML + configs)
+Active Core: ~45 files (score ≥ 80)
+Support: ~30 files (score 60-79)
+Legacy/Duplicate: ~60 files (score ≤ 39)
+Duplicate Lines: ~5000+ (can be safely removed)
+
+DIRECTORIES ANALYZED
+--------------------
+1. /nutritionverse-tests  ⭐ CANONICAL - Main source code (KEEP)
+2. /pipeline              ⭐ ACTIVE - Unified orchestrator (KEEP)
+3. /configs               ⭐ ACTIVE - Production configs (KEEP)
+4. /gpt5-context-delivery ⚠️  TEMPORARY - Has duplicates (DELETE after moving entrypoints)
+5. /tempPipeline10-27-811 ❌ LEGACY - Old snapshot (DELETE)
+
+CLEANUP ACTIONS
+---------------
+DELETE (High Priority):
+  - /gpt5-context-delivery/alignment/ (duplicate, ~2000 lines)
+  - /gpt5-context-delivery/vision/ (duplicate, ~1500 lines)
+  - /gpt5-context-delivery/configs/ (duplicate)
+  - /tempPipeline10-27-811/ (old snapshot, ~3000 lines)
+  - nutritionverse-tests/src/adapters/fdc_alignment.py (superseded, ~800 lines)
+  - nutritionverse-tests/src/adapters/fdc_alignment_v2.py (superseded, ~1000 lines)
+
+MOVE (High Priority):
+  - gpt5-context-delivery/entrypoints/run_first_50_by_dish_id.py 
+    → nutritionverse-tests/entrypoints/
+
+ARCHIVE (Medium Priority):
+  - nutritionverse-tests/src/adapters/{ollama_llava.py, claude_.py, gemini_.py}
+    → .archived/experimental_adapters/
+
+POST-CLEANUP STRUCTURE
+----------------------
+snapandtrack-model-testing/
+├── pipeline/              # Orchestrator
+├── nutritionverse-tests/  # Main source
+│   ├── src/
+│   │   ├── nutrition/     # Alignment engine
+│   │   ├── adapters/      # DB, FDC
+│   │   └── core/          # Vision
+│   ├── tests/
+│   ├── entrypoints/       # ✅ Consolidated here
+│   └── results/
+├── configs/               # Production configs
+├── tests/                 # Pipeline E2E
+├── tools/                 # Validation
+└── docs/                  # Documentation
+
+DELETED:
+❌ /gpt5-context-delivery
+❌ /tempPipeline10-27-811
+
+DOCUMENTS CREATED
+-----------------
+1. DOCS/REPO_SNAPSHOT.md (PRIMARY) - Human-readable analysis
+2. DOCS/UNUSED_OR_DUPLICATE_REPORT.md - Deletion checklist
+3. DOCS/ACTIVE_INVENTORY.json - Machine-readable inventory
+4. DOCS/DEPENDENCY_GRAPH.dot - Visual dependency graph
+5. tools/scan_repo.py - Automated scanner script
+6. DOCS/README.md - Documentation index
+
+EXECUTION PLAN
+--------------
+1. Backup: tar -czf repo_backup_$(date +%Y%m%d).tar.gz gpt5-context-delivery tempPipeline10-27-811
+2. Move unique entrypoints to nutritionverse-tests/entrypoints/
+3. Delete duplicate directories (gpt5-context-delivery, tempPipeline10-27-811)
+4. Delete superseded adapters
+5. Archive experimental files
+6. Run tests to verify
+7. Commit with detailed message
+
+BENEFITS
+--------
+✓ ~5000+ fewer duplicate lines
+✓ Single source of truth (no confusion)
+✓ Faster grep/search operations
+✓ Clearer structure for new developers
+✓ Easier maintenance (no sync issues)
+
+RISK ASSESSMENT
+---------------
+Risk: LOW
+- Most deletions are exact duplicates
+- Backup created before any changes
+- Tests verify integrity after cleanup
+- Clear canonical sources identified
+
+ESTIMATED TIME: 2-4 hours (mostly verification)
+
+NEXT STEPS
+----------
+1. Read DOCS/REPO_SNAPSHOT.md for full analysis
+2. Follow DOCS/UNUSED_OR_DUPLICATE_REPORT.md execution plan
+3. Run tools/scan_repo.py to regenerate inventory after cleanup
+4. Generate dependency graph: dot -Tpng DOCS/DEPENDENCY_GRAPH.dot -o dependency_graph.png
+
+================================================================================
+For questions, refer to:
+- DOCS/REPO_SNAPSHOT.md (detailed analysis)
+- DOCS/UNUSED_OR_DUPLICATE_REPORT.md (execution steps)
+- DOCS/README.md (documentation index)
+================================================================================

@@ -192,6 +192,15 @@ def run_once(
             _expanded = telemetry.get("expanded_foods", [])
             _decomp_count = len(_expanded) if _expanded else None
 
+        # Phase 7.4: Extract stage1c_switched if present
+        stage1c_switched = telemetry.get("stage1c_switched")
+        # Ensure it's a dict with "from" and "to" keys, or None
+        if stage1c_switched and isinstance(stage1c_switched, dict):
+            if "from" not in stage1c_switched or "to" not in stage1c_switched:
+                stage1c_switched = None
+        else:
+            stage1c_switched = None
+
         telemetry_event = TelemetryEvent(
             image_id=request.image_id,
             food_idx=idx,
@@ -227,6 +236,8 @@ def run_once(
             atwater_ok=telemetry.get("atwater_ok"),
             atwater_deviation_pct=telemetry.get("atwater_deviation_pct"),
             oil_uptake_g_per_100g=telemetry.get("oil_uptake_g_per_100g"),
+            # Phase 7.4: Stage 1c raw-first preference tracking
+            stage1c_switched=stage1c_switched,
             code_git_sha=code_git_sha,
             config_version=cfg.config_version,
             fdc_index_version=fdc_index.version,

@@ -511,6 +511,7 @@ class FDCAlignmentWithConversion:
                     # Handle optional telemetry tuple (match, score) or (match, score, telemetry)
                     if len(stage1b_result) == 3:
                         match, score, stage1c_telemetry = stage1b_result
+                        print("[TELEMETRY] stage1c_switched:", stage1c_telemetry)
                     else:
                         match, score = stage1b_result
                         stage1c_telemetry = None

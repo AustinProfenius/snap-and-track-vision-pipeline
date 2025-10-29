@@ -135,6 +135,9 @@ class TelemetryEvent(BaseModel):
     atwater_deviation_pct: Optional[float] = None
     oil_uptake_g_per_100g: Optional[float] = None
 
+    # Phase 7.4: Stage 1c raw-first preference tracking
+    stage1c_switched: Optional[Dict[str, str]] = None  # {"from": "original_name", "to": "new_name"}
+
     # Version tracking (mandatory)
     code_git_sha: str
     config_version: str
