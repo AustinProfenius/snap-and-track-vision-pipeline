@@ -69,6 +69,7 @@ spinach_raw:
 
 broccoli:
   - broccoli
+  - broccoli florets
   - broccoli raw
   - broccoli cooked
   - broccoli steamed
@@ -77,6 +78,7 @@ broccoli:
 
 broccoli_florets:
   - broccoli florets
+  - Broccoli, raw
   - broccoli floret
   - broccoli pieces
   - broccoli cuts
@@ -90,23 +92,44 @@ tomato:
   - tomatoes
   - tomato vine-ripe
 
-# P1: Cherry/grape tomatoes (fix stage0 misses)
-cherry_tomatoes:
+# P1: Cherry/grape tomatoes (all normalized key variants)
+# NOTE: FDC database has "Tomatoes grape raw" but NO cherry tomato entries
+# So we map cherry→grape as best available match
+cherry_tomato:
   - cherry tomatoes
   - cherry tomato
-  - tomatoes cherry
-  - tomato cherry
-  - Tomatoes, cherry, raw
+  - tomatoes grape
+  - Tomatoes grape raw
 
-grape_tomatoes:
+cherry tomato:
+  - cherry tomatoes
+  - tomatoes grape
+  - Tomatoes grape raw
+
+cherry_tomatoes:
+  - cherry tomatoes
+  - tomatoes grape
+  - Tomatoes grape raw
+
+grape_tomato:
   - grape tomatoes
   - grape tomato
   - tomatoes grape
   - tomato grape
-  - Tomatoes, grape, raw
+  - Tomatoes grape raw
 
-# P1: Mushrooms (button/white/brown/cremini)
-mushrooms:
+grape tomato:
+  - grape tomatoes
+  - tomatoes grape
+  - Tomatoes grape raw
+
+grape_tomatoes:
+  - grape tomatoes
+  - tomatoes grape
+  - Tomatoes grape raw
+
+# P1: Mushrooms (button/white/brown/cremini + portobello)
+mushroom:
   - mushrooms
   - mushroom
   - button mushrooms
@@ -115,17 +138,35 @@ mushrooms:
   - cremini
   - cremini mushrooms
   - baby bella
+  - portobello
+  - portabella
   - Mushrooms, white, raw
 
-# P1: Green beans
-green_beans:
+mushrooms:
+  - mushrooms
+  - Mushrooms, white, raw
+
+# P1: Green beans (normalized singular)
+# NOTE: FDC uses "Beans snap green raw" format (no commas)
+green_bean:
   - green beans
   - string beans
-  - snap beans
+  - beans snap green
+  - snap beans green
   - haricot vert
   - green bean
-  - Beans, snap, green, raw
-  - Beans, snap, green, cooked, boiled, drained, without salt
+  - Beans snap green raw
+  - Beans snap green cooked boiled drained without salt
+
+green bean:
+  - green beans
+  - beans snap green
+  - Beans snap green raw
+
+green_beans:
+  - green beans
+  - beans snap green
+  - Beans snap green raw
 
 avocado:
   - avocado

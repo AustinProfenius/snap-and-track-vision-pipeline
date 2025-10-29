@@ -180,31 +180,69 @@ def _prefer_raw_stage1c(
 
 def _derive_class_intent(predicted_name: str) -> Optional[str]:
     """
-    Derive class intent from predicted food name.
+    Derive class intent from predicted food name using multi-intent flags.
 
-    Phase 7.3: Lightweight heuristics for cooking intent scoring.
+    Accumulates intent flags for complex queries (e.g., "chicken salad with grapes")
+    and resolves to primary intent via priority hierarchy.
 
     Args:
         predicted_name: Predicted food name
 
     Returns:
         Class intent string or None
+
+    Priority: eggs > leafy_or_crucifer > produce > protein
     """
     name = (predicted_name or "").lower()
 
-    # Eggs intent
+    # Intent flags (accumulate, don't early return)
+    is_produce = False
+    is_protein = False
+    is_eggs = False
+    has_scrambled_token = False
+    is_leafy = False
+
+    # Eggs
     if "egg" in name:
+        is_eggs = True
         if any(k in name for k in ["scrambled", "omelet", "omelette", "fried", "poached", "boiled"]):
-            return "eggs_scrambled"
+            has_scrambled_token = True
+
+    # Leafy greens / cruciferous vegetables (expanded)
+    if any(k in name for k in ["broccoli", "spinach", "lettuce", "greens", "kale", "chard",
+                                "romaine", "spring mix", "arugula", "mesclun"]):
+        is_leafy = True
+
+    # Fruits (expanded lexicon)
+    if any(k in name for k in ["apple", "strawberry", "raspberry", "blackberry",
+                                "grape", "melon", "watermelon", "cantaloupe", "orange",
+                                "banana", "pear", "peach", "plum", "cherry"]):
+        is_produce = True
+
+    # Vegetables
+    if any(k in name for k in ["cucumber", "tomato", "pepper", "carrot", "celery",
+                                "avocado", "mushroom"]):
+        is_produce = True
+
+    # Potatoes/tubers
+    if any(k in name for k in ["potato", "yam", "sweet potato"]):
+        is_produce = True
+
+    # Meat/protein (with synonyms)
+    meat_terms = ["chicken", "steak", "beef", "pork", "bacon", "fish", "salmon",
+                  "tuna", "sirloin", "chuck", "ribeye", "turkey"]
+    if any(k in name for k in meat_terms):
+        is_protein = True
+
+    # Resolve priority (eggs highest, protein lowest)
+    if is_eggs:
         return "eggs"
-
-    # Leafy greens / cruciferous vegetables
-    if any(k in name for k in ["broccoli", "spinach", "lettuce", "greens", "kale", "chard"]):
+    if is_leafy:
         return "leafy_or_crucifer"
-
-    # Produce
-    if any(k in name for k in ["cucumber", "tomato", "pepper", "carrot", "celery", "avocado"]):
+    if is_produce:
         return "produce"
+    if is_protein:
+        return "protein"
 
     return None
 
@@ -233,6 +271,98 @@ def _derive_form_intent(predicted_form: Optional[str]) -> Optional[str]:
         return "cooked"
 
     return None
+
+
+def _normalize_for_lookup(name: str) -> tuple:
+    """
+    Normalize food name for variant/allowlist key matching.
+
+    Performs safe transformations with whitelists to avoid edge-case bugs.
+    Extracts form/method BEFORE removing tokens to preserve information.
+
+    Args:
+        name: Food name to normalize
+
+    Returns:
+        (normalized_name, tokens, form, method) where:
+        - normalized_name: Cleaned string for key lookups
+        - tokens: List of word tokens after plural normalization
+        - form: Extracted form ("raw", "frozen", "cooked", None)
+        - method: Extracted cooking method if cooked (None otherwise)
+
+    Examples:
+        >>> _normalize_for_lookup("broccoli florets raw")
+        ("broccoli", ["broccoli"], "raw", None)
+
+        >>> _normalize_for_lookup("cherry tomatoes fresh")
+        ("cherry tomato", ["cherry", "tomato"], "raw", None)
+
+        >>> _normalize_for_lookup("scrambled eggs")
+        ("scramble egg", ["scramble", "egg"], "cooked", "scrambled")
+    """
+    import re
+
+    name = name.lower().strip()
+
+    # Extract form/method BEFORE removing tokens
+    form = None
+    method = None
+    has_fresh_hint = "fresh" in name
+
+    # Form extraction
+    form_tokens = ["raw", "cooked", "steamed", "boiled", "roasted",
+                   "fried", "grilled", "baked", "frozen"]
+    for token in form_tokens:
+        if token in name:
+            if token == "raw":
+                form = "raw"
+            elif token == "frozen":
+                form = "frozen"
+            else:
+                form = "cooked"
+                method = token
+            break
+
+    # Keep fresh as soft hint toward raw (don't override explicit form)
+    if not form and has_fresh_hint:
+        form = "raw"  # Soft hint
+
+    # Safe plural→singular with whitelist (prevents "glass"→"glas" bugs)
+    PLURAL_MAP = {
+        "tomatoes": "tomato",
+        "mushrooms": "mushroom",
+        "potatoes": "potato",
+        "yams": "yam",
+        "grapes": "grape",
+        "beans": "bean",
+        "strawberries": "strawberry",
+        "raspberries": "raspberry",
+        "blackberries": "blackberry",
+        "olives": "olive",
+        "eggs": "egg"
+    }
+
+    words = name.split()
+    words = [PLURAL_MAP.get(w, w) for w in words]
+    name = " ".join(words)
+    tokens = words  # Return for downstream use
+
+    # Remove harmless modifiers AFTER form extraction
+    drop_words = ["florets", "floret", "pieces", "cuts", "whole", "fresh"]
+    for word in drop_words:
+        name = name.replace(word, " ")
+
+    # Remove form/method tokens from surface string
+    for token in form_tokens:
+        name = name.replace(token, " ")
+
+    # Remove punctuation
+    name = re.sub(r'[^\w\s]', '', name)
+
+    # Collapse whitespace
+    name = re.sub(r'\s+', ' ', name).strip()
+
+    return (name, tokens, form, method)
 
 
 def _apply_guardrails(
@@ -940,6 +1070,37 @@ class FDCAlignmentWithConversion:
         if not raw_foundation:
             return None
 
+        # Scrambled eggs bypass: Token-based check BEFORE gates
+        # Applied early to prioritize valid SR scrambled eggs entries
+        base_class_lower = core_class.lower()
+        has_scrambled = any(tok in base_class_lower for tok in ["scrambled", "scramble"])
+        has_egg = any(tok in base_class_lower for tok in ["egg", "eggs"])
+
+        scrambled_bypass_candidates = []
+        if has_scrambled and has_egg:
+            for entry in raw_foundation:
+                entry_name_lower = entry.name.lower()
+
+                # Whitelist SR scrambled entries
+                scrambled_whitelist = ["egg, whole, cooked, scrambled", "egg, scrambled"]
+                is_scrambled_match = any(w in entry_name_lower for w in scrambled_whitelist)
+
+                # Hard block fast food
+                has_fast_food = "fast foods" in entry_name_lower or "fast food" in entry_name_lower
+
+                if is_scrambled_match and not has_fast_food:
+                    scrambled_bypass_candidates.append(entry)
+                elif has_fast_food:
+                    # Tag for penalty application in scoring loop
+                    entry._fast_food_penalty = True
+
+            # Prioritize bypass candidates (move to front of list)
+            if scrambled_bypass_candidates:
+                non_bypass = [e for e in raw_foundation if e not in scrambled_bypass_candidates]
+                raw_foundation = scrambled_bypass_candidates + non_bypass
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[SCRAMBLED_EGGS_BYPASS] Found {len(scrambled_bypass_candidates)} SR scrambled egg entries")
+
         best_match = None
         best_score = 0.0
 
@@ -1023,6 +1184,9 @@ class FDCAlignmentWithConversion:
                 "tomato": 0.35,       # Processing-heavy (cherry, grape, etc.)
             }
         threshold = CLASS_THRESHOLDS.get(base_class, threshold)
+
+        # Track all scored candidates for failure telemetry
+        scored_candidates = []
 
         for entry in raw_foundation:
             entry_name_lower = entry.name.lower()
@@ -1145,6 +1309,12 @@ class FDCAlignmentWithConversion:
                             print(f"    [PRODUCE_PENALTY] -{0.35} for '{token}' in produce query")
                         break  # Apply once per candidate
 
+            # Fast food penalty (from scrambled eggs bypass)
+            if hasattr(entry, '_fast_food_penalty') and entry._fast_food_penalty:
+                score -= 0.60  # Strong penalty for fast food entries
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"    [FAST_FOOD_PENALTY] -{0.60} for fast food entry")
+
             # Phase 7.2: Apply soft penalties from category allowlist (hard blocks already applied above)
             penalty_applied = False
             penalty_tokens = []
@@ -1201,6 +1371,17 @@ class FDCAlignmentWithConversion:
                     bonus_applied = True
                     bonus_reason = reason
                     break  # Apply bonus once per candidate
+
+            # Track this candidate for telemetry (before/after penalties)
+            pre_score = 0.7 * jaccard + 0.3 * energy_sim  # Pre-penalty score
+            scored_candidates.append({
+                "entry": entry,
+                "pre_score": pre_score,
+                "post_score": score,
+                "penalties": penalty_tokens if penalty_applied else [],
+                "applied_threshold": threshold,
+                "passed": score >= threshold
+            })
 
             # DEBUG: Log all scores in verbose mode
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -1262,12 +1443,34 @@ class FDCAlignmentWithConversion:
             return (best_match, best_score, None, stage1b_telemetry)
 
         # P0: Sentinel for logic bugs - pool exists but all rejected
+        # Get top 3 rejected candidates for failure telemetry
+        top3_rejected = sorted([c for c in scored_candidates if not c["passed"]],
+                               key=lambda x: x["post_score"], reverse=True)[:3]
+
+        rejected_telemetry = []
+        for cand_data in top3_rejected:
+            entry = cand_data["entry"]
+            reasons = []
+            if cand_data["penalties"]:
+                reasons.append(f"penalties={cand_data['penalties']}")
+            if cand_data["post_score"] < cand_data["applied_threshold"]:
+                reasons.append(f"{cand_data['post_score']:.3f} < thr {cand_data['applied_threshold']:.3f}")
+
+            rejected_telemetry.append({
+                "name": entry.name,
+                "fdc_id": entry.fdc_id,
+                "pre_score": round(cand_data["pre_score"], 3),
+                "post_score": round(cand_data["post_score"], 3),
+                "reason": "; ".join(reasons) or "other"
+            })
+
         stage1b_telemetry = {
             "candidate_pool_size": len(raw_foundation),
             "best_candidate_name": None,
             "best_candidate_id": None,
             "best_score": 0.0,
             "threshold": threshold,
+            "rejected_candidates": rejected_telemetry
         }
         if len(raw_foundation) > 0:
             stage1b_telemetry["stage1b_dropped_despite_pool"] = True
@@ -2312,14 +2515,21 @@ class FDCAlignmentWithConversion:
 
         # If we have variants config, use it to expand queries
         if self._external_variants:
-            # Try underscore-keyed lookup (lettuce_romaine_raw)
-            underscore_key = canonical_name.replace(' ', '_')
-            if underscore_key in self._external_variants:
-                query_variants.extend(self._external_variants[underscore_key])
+            # Apply normalization for better key matching
+            normalized_name, tokens, form, method = _normalize_for_lookup(canonical_name)
 
-            # Try space-keyed lookup
-            if canonical_name in self._external_variants:
-                query_variants.extend(self._external_variants[canonical_name])
+            # Try all key variants (underscore, space, normalized)
+            keys_to_try = [
+                canonical_name,  # Original
+                canonical_name.replace(' ', '_'),  # Underscore version
+                normalized_name,  # Normalized (e.g., "cherry tomato")
+                normalized_name.replace(' ', '_'),  # Normalized underscore
+                normalized_name.replace('_', ' ')  # Normalized with spaces
+            ]
+
+            for key in keys_to_try:
+                if key in self._external_variants:
+                    query_variants.extend(self._external_variants[key])
 
         # Deduplicate while preserving order
         seen = set()
