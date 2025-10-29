@@ -643,6 +643,9 @@ class FDCAlignmentWithConversion:
             print(f"[ALIGN] Candidates partitioned: raw_foundation={len(raw_foundation)}, "
                   f"cooked_sr_legacy={len(cooked_sr_legacy)}, branded={len(branded)}")
 
+        # Track attempted stages for telemetry (Option A: minimal tracking)
+        attempted_stages = []
+
         # Step 5: PROACTIVE Stage 1 gate - skip if raw Foundation exists
         stage1_blocked = False
         if FLAGS.prefer_raw_foundation_convert and len(raw_foundation) > 0:
@@ -653,6 +656,7 @@ class FDCAlignmentWithConversion:
 
             # NEW: Try Stage 1b FIRST if predicted form is raw/fresh/empty
             if predicted_form in {"raw", "fresh", "", None}:
+                attempted_stages.append("stage1b")
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] Trying Stage 1b (raw Foundation direct) for raw/fresh/empty form...")
 
@@ -685,7 +689,8 @@ class FDCAlignmentWithConversion:
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                         candidate_pool_branded=len(branded),
                         class_intent=class_intent,
-                        form_intent=form_intent
+                        form_intent=form_intent,
+                        attempted_stages=attempted_stages
                     )
                     # Add Stage 1b score to telemetry
                     result.telemetry["stage1b_score"] = score
@@ -698,6 +703,7 @@ class FDCAlignmentWithConversion:
 
             # NEW: Try Stage 1c (cooked SR direct) for cooked proteins BEFORE Stage 2
             if predicted_form in {"cooked", "fried", "grilled", "pan_seared", "boiled", "scrambled", "baked", "poached"}:
+                attempted_stages.append("stage1c")
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] Trying Stage 1c (cooked SR direct) for cooked protein...")
 
@@ -715,12 +721,14 @@ class FDCAlignmentWithConversion:
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                         candidate_pool_branded=len(branded),
                         class_intent=class_intent,
-                        form_intent=form_intent
+                        form_intent=form_intent,
+                        attempted_stages=attempted_stages
                     )
                     return result
 
             # Try Stage 2 (raw + convert) for cooked forms OR if Stage 1b/1c failed
             # IMPORTANT: Stage 2 runs even when Stage 1 blocked (allows cooked veg conversion)
+            attempted_stages.append("stage2")
             match = self._stage2_raw_convert(
                 core_class, method, predicted_kcal_100g, raw_foundation, predicted_form
             )
@@ -736,7 +744,8 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
             # Stage 2 failed, go directly to branded (skip Stage 1)
@@ -745,6 +754,7 @@ class FDCAlignmentWithConversion:
 
         else:
             # Normal flow: try Stage 1 first (cooked exact)
+            attempted_stages.append("stage1")
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Trying Stage 1 (cooked exact)...")
 
@@ -762,10 +772,12 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
             # Stage 1 failed, try Stage 2 (raw + convert)
+            attempted_stages.append("stage2")
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Stage 1 failed, trying Stage 2 (raw + convert)...")
 
@@ -784,10 +796,60 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
+        # Stages 1+2 failed, check for EGG EXCEPTION before trying branded stages
+        # EXCEPTION: Cooked eggs → try Stage Z before branded stages
+        is_cooked_egg = (
+            class_intent and 'egg' in class_intent.lower() and
+            predicted_form == 'cooked' and
+            any(token in predicted_name.lower() for token in ['scrambled', 'fried', 'omelet', 'poached', 'boiled'])
+        )
+
+        if is_cooked_egg and self._external_stageZ_branded_fallbacks and self._fdc_db:
+            attempted_stages.append("stageZ_egg_exception")
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[ALIGN] Cooked egg detected, trying Stage Z branded fallback...")
+
+            from .stageZ_branded_fallback import resolve_branded_fallback
+
+            # Try multiple egg key variants
+            egg_keys = ['egg_scrambled', 'scrambled_egg', 'egg cooked']
+            for egg_key in egg_keys:
+                branded_result = resolve_branded_fallback(
+                    normalized_name=egg_key,
+                    class_intent=class_intent,
+                    form=predicted_form,
+                    branded_fallbacks_config=self._external_stageZ_branded_fallbacks,
+                    fdc_database=self._fdc_db,
+                    feature_flags=self._external_feature_flags or {}
+                )
+
+                if branded_result:
+                    entry, branded_telemetry = branded_result
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[ALIGN] ✓ Matched via StageZ Branded Fallback (egg exception): {entry.name}")
+
+                    result = self._build_result(
+                        entry, "stageZ_branded_fallback", adjusted_confidence, method, method_reason,
+                        stage1_blocked=stage1_blocked,
+                        candidate_pool_total=len(fdc_entries),
+                        candidate_pool_raw_foundation=len(raw_foundation),
+                        candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
+                        candidate_pool_branded=len(branded),
+                        class_intent=class_intent,
+                        form_intent=form_intent,
+                        attempted_stages=attempted_stages
+                    )
+
+                    result.telemetry["stageZ_branded_fallback"] = branded_telemetry
+                    result.telemetry["egg_cooked_exception"] = True
+                    return result
+
         # Stages 1+2 failed, try branded
+        attempted_stages.append("stage3")
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Stages 1+2 failed, trying Stage 3 (branded cooked)...")
 
@@ -807,10 +869,12 @@ class FDCAlignmentWithConversion:
                 candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                 candidate_pool_branded=len(branded),
                 class_intent=class_intent,
-                form_intent=form_intent
+                form_intent=form_intent,
+                attempted_stages=attempted_stages
             )
 
         # Stage 4: Branded closest energy density
+        attempted_stages.append("stage4")
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Stage 3 failed, trying Stage 4 (branded energy)...")
 
@@ -829,11 +893,13 @@ class FDCAlignmentWithConversion:
                 candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                 candidate_pool_branded=len(branded),
                 class_intent=class_intent,
-                form_intent=form_intent
+                form_intent=form_intent,
+                attempted_stages=attempted_stages
             )
 
         # Stage 5: Proxy alignment (Phase 7: external rules first, then whitelist fallback)
         if FLAGS.enable_proxy_alignment:
+            attempted_stages.append("stage5")
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Stage 4 failed, trying Stage 5 (proxy alignment)...")
 
@@ -854,7 +920,8 @@ class FDCAlignmentWithConversion:
                         candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                         candidate_pool_branded=len(branded),
                         class_intent=class_intent,
-                        form_intent=form_intent
+                        form_intent=form_intent,
+                        attempted_stages=attempted_stages
                     )
 
             # Fall back to hardcoded whitelist proxy alignment
@@ -874,11 +941,13 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
         # Stage Z: Energy-only last resort (STRICT eligibility)
         if FLAGS.stageZ_branded_fallback:
+            attempted_stages.append("stageZ_energy_only")
             from .stage_z_guards import can_use_stageZ, build_energy_only_proxy, get_stagez_telemetry_fields, infer_category_from_class
 
             # Infer category for eligibility check
@@ -922,7 +991,8 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
                 # Add Stage-Z telemetry
@@ -939,7 +1009,33 @@ class FDCAlignmentWithConversion:
 
         # Phase 7.4: StageZ Deterministic Branded Fallback (BEFORE salad decomposition)
         # For foods that don't exist in Foundation/SR (cherry tomatoes, broccoli florets, etc.)
-        if self._external_stageZ_branded_fallbacks and self._fdc_db:
+
+        # Track rejection state for telemetry (using actual "no winner" signal)
+        candidate_pool_size = len(fdc_entries)
+        chosen = match if 'match' in locals() else None  # The selected candidate (None if no match)
+        had_candidates_to_score = (len(raw_foundation) + len(cooked_sr_legacy) + len(branded)) > 0
+
+        # All rejected = had candidates to score but no winner selected
+        all_candidates_rejected = had_candidates_to_score and (chosen is None)
+
+        # Determine if Stage Z should be attempted
+        should_try_stageZ = (
+            candidate_pool_size == 0 or  # No candidates at all
+            all_candidates_rejected or    # Had candidates but all rejected
+            (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False)
+        )
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[ALIGN] Stage Z eligibility: pool_size={candidate_pool_size}, "
+                  f"all_rejected={all_candidates_rejected}, had_candidates={had_candidates_to_score}, "
+                  f"chosen={chosen is not None}, should_try={should_try_stageZ}")
+
+        # Guard to prevent Stage Z from running twice
+        stageZ_attempted = False
+
+        if should_try_stageZ and not stageZ_attempted and self._external_stageZ_branded_fallbacks and self._fdc_db:
+            stageZ_attempted = True
+            attempted_stages.append("stageZ_branded_fallback")
             from .stageZ_branded_fallback import resolve_branded_fallback
 
             # Use normalized form of predicted_name
@@ -970,10 +1066,14 @@ class FDCAlignmentWithConversion:
                     candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
-                    form_intent=form_intent
+                    form_intent=form_intent,
+                    attempted_stages=attempted_stages
                 )
 
-                # Add branded fallback telemetry
+                # Add Stage 1 rejection telemetry
+                result.telemetry["candidate_pool_size"] = candidate_pool_size
+                result.telemetry["stage1_all_rejected"] = all_candidates_rejected
+                result.telemetry["had_candidates_to_score"] = had_candidates_to_score
                 result.telemetry["stageZ_branded_fallback"] = branded_telemetry
                 return result
 
@@ -2977,7 +3077,8 @@ class FDCAlignmentWithConversion:
         candidate_pool_cooked_sr_legacy: int = 0,
         candidate_pool_branded: int = 0,
         class_intent: Optional[str] = None,  # Phase 7.3 Task 3
-        form_intent: Optional[str] = None   # Phase 7.3 Task 3
+        form_intent: Optional[str] = None,   # Phase 7.3 Task 3
+        attempted_stages: Optional[List[str]] = None  # Track stages attempted
     ) -> AlignmentResult:
         """
         Build AlignmentResult with mandatory telemetry.
@@ -3035,6 +3136,7 @@ class FDCAlignmentWithConversion:
                 "candidate_pool_raw_foundation": candidate_pool_raw_foundation,
                 "candidate_pool_cooked_sr_legacy": candidate_pool_cooked_sr_legacy,
                 "candidate_pool_branded": candidate_pool_branded,
+                "attempted_stages": attempted_stages if attempted_stages else [],
             }
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -3115,6 +3217,8 @@ class FDCAlignmentWithConversion:
             "form_intent": form_intent,
             "guardrail_produce_applied": bool(class_intent in ["produce", "leafy_or_crucifer"]),
             "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
+            # Track attempted stages for debugging (Option A: minimal)
+            "attempted_stages": attempted_stages if attempted_stages else [],
         })
 
         # Compact proof line (behind ALIGN_VERBOSE)

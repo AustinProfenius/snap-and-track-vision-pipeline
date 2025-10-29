@@ -56,6 +56,7 @@ plausibility_guards:
 fallbacks:
   # Cherry tomatoes (no Foundation/SR entries)
   cherry_tomato:
+    synonyms: ["cherry tomatoes", "tomato cherry", "cherry_tomatoes"]
     primary:
       brand: "Generic"
       fdc_id: 383842
@@ -65,6 +66,7 @@ fallbacks:
 
   # Grape tomatoes (no Foundation/SR entries)
   grape_tomato:
+    synonyms: ["grape tomatoes", "tomato grape", "grape_tomatoes"]
     primary:
       brand: "Generic"
       fdc_id: 447986
@@ -74,6 +76,7 @@ fallbacks:
 
   # Broccoli (broccoli_florets → broccoli after normalization)
   broccoli:
+    synonyms: ["broccoli florets", "broccoli cuts", "broccoli pieces"]
     primary:
       brand: "Generic"
       fdc_id: 372976
@@ -83,6 +86,7 @@ fallbacks:
 
   # Scrambled eggs (only sr_legacy "Fast foods" version exists, rejected by Stage2)
   egg_scrambled:
+    synonyms: ["scrambled eggs", "scrambled egg", "egg scrambled", "eggs scrambled"]
     primary:
       brand: "Generic"
       fdc_id: 450876
@@ -91,6 +95,7 @@ fallbacks:
 
   # Alternate key for scrambled eggs (normalizer might produce either form)
   scrambled_egg:
+    synonyms: ["scrambled eggs", "egg scrambled"]
     primary:
       brand: "Generic"
       fdc_id: 450876
@@ -99,9 +104,30 @@ fallbacks:
 
   # Green beans (only baby food and veggie mixes in Foundation/SR)
   green_bean:
+    synonyms: ["green beans", "string beans", "haricot vert", "snap beans green"]
     primary:
       brand: "Generic"
       fdc_id: 359180
       kcal_per_100g: [20, 45]
     alternates:
       - { brand: "Generic", fdc_id: 394232, kcal_per_100g: [20, 45] }
+
+  # Button mushrooms (verified FDC IDs with plausible kcal values)
+  button_mushroom:
+    synonyms: ["button mushrooms", "white mushrooms", "white mushroom", "mushrooms white"]
+    primary:
+      brand: "Generic"
+      fdc_id: 565950
+      kcal_per_100g: [20, 35]
+    alternates:
+      - { brand: "Generic", fdc_id: 1360945, kcal_per_100g: [20, 35] }
+
+  # Alternate key for white mushrooms (normalizer might produce either form)
+  white_mushroom:
+    synonyms: ["white mushrooms", "button mushrooms"]
+    primary:
+      brand: "Generic"
+      fdc_id: 565950
+      kcal_per_100g: [20, 35]
+    alternates:
+      - { brand: "Generic", fdc_id: 1360945, kcal_per_100g: [20, 35] }

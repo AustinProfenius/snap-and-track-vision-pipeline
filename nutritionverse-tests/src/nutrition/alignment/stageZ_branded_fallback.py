@@ -62,11 +62,34 @@ class BrandedFallbackResolver:
         if not self.enabled:
             return None
 
-        # Check if we have a fallback for this normalized name
-        if normalized_name not in self.fallbacks:
+        # Generate key variants: singular/plural, space/underscore combinations
+        key_candidates = {
+            normalized_name,                                    # exact
+            normalized_name.rstrip('s'),                        # singular
+            normalized_name + 's',                              # plural
+            normalized_name.replace(' ', '_'),                  # underscore
+            normalized_name.replace('_', ' '),                  # space
+            normalized_name.rstrip('s').replace(' ', '_'),      # singular + underscore
+            normalized_name.rstrip('s').replace('_', ' '),      # singular + space
+        }
+
+        # Try each variant to find a matching config
+        fallback_config = None
+        canonical_key = None
+
+        for candidate_key in key_candidates:
+            if candidate_key in self.fallbacks:
+                fallback_config = self.fallbacks[candidate_key]
+                canonical_key = candidate_key
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[BRANDED_FALLBACK] Key match: '{normalized_name}' → '{canonical_key}'")
+                break
+
+        if not fallback_config:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[BRANDED_FALLBACK] No fallback config for '{normalized_name}' (tried {len(key_candidates)} variants)")
             return None
 
-        fallback_config = self.fallbacks[normalized_name]
         primary = fallback_config.get('primary', {})
 
         if not primary or 'fdc_id' not in primary:
@@ -98,9 +121,16 @@ class BrandedFallbackResolver:
             return None
 
         # Check reject patterns
-        food_name = food_data.get('name', '').lower()
+        food_name_lower = food_data.get('name', '').lower()
+
+        # CRITICAL: Explicitly reject fast food entries
+        if 'fast food' in food_name_lower:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[BRANDED_FALLBACK] ✗ FDC {fdc_id} rejected: fast food entry")
+            return None
+
         for pattern in self.reject_patterns:
-            if pattern.lower() in food_name:
+            if pattern.lower() in food_name_lower:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[BRANDED_FALLBACK] ✗ FDC {fdc_id} rejected: contains '{pattern}'")
                 return None
@@ -112,6 +142,7 @@ class BrandedFallbackResolver:
         telemetry = {
             "reason": "not_in_foundation_sr",
             "queries_tried": [normalized_name],
+            "canonical_key": canonical_key,  # NEW: Track which config key matched
             "brand": brand,
             "fdc_id": fdc_id,
             "kcal_per_100g": round(kcal, 1),
