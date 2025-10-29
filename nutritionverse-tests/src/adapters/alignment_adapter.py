@@ -44,6 +44,9 @@ class AlignmentEngineAdapter:
         self.fdc_db = fdc_db
         self.db_available = False
         self._auto_init_attempted = False
+        self.config_error = None  # P0: Track config load errors
+        self.config_version = None  # P0: Config version for telemetry
+        self.config_fingerprint = None  # P0: Config fingerprint for telemetry
 
     def _auto_initialize(self):
         """Auto-initialize engine and database if not provided (for web app compatibility)."""
@@ -75,33 +78,68 @@ class AlignmentEngineAdapter:
             configs_path = repo_root / "configs"
 
             if not configs_path.exists():
-                print(f"[ADAPTER] WARNING: Configs path not found: {configs_path}")
-                print(f"[ADAPTER] Falling back to hardcoded defaults")
-                # Initialize without configs (fallback to hardcoded)
-                self.alignment_engine = FDCAlignmentWithConversion(fdc_db=self.fdc_db)
-            else:
-                # Add pipeline to path to import config_loader
-                pipeline_path = str(repo_root / "pipeline")
-                if pipeline_path not in sys.path:
-                    sys.path.insert(0, pipeline_path)
+                error_msg = f"Config directory not found: {configs_path}"
+                print(f"[ADAPTER] ERROR: {error_msg}")
+                # Determine mode: pipeline (fail-fast) vs web app (graceful)
+                is_pipeline_mode = os.getenv("PIPELINE_MODE", "false").lower() == "true"
+                if is_pipeline_mode:
+                    raise FileNotFoundError(f"[ADAPTER] {error_msg}")
+                else:
+                    self.db_available = False
+                    self.config_error = error_msg
+                    return
 
-                from config_loader import load_pipeline_config
-                cfg = load_pipeline_config(root=str(configs_path))
-                print(f"[ADAPTER] Loaded configs from {configs_path}")
-                print(f"[ADAPTER] Config version: {cfg.config_version}")
+            # Add pipeline to path to import config_loader
+            pipeline_path = str(repo_root / "pipeline")
+            if pipeline_path not in sys.path:
+                sys.path.insert(0, pipeline_path)
 
-                # Initialize alignment engine with individual config parameters
-                self.alignment_engine = FDCAlignmentWithConversion(
-                    fdc_db=self.fdc_db,
-                    class_thresholds=cfg.thresholds,
-                    negative_vocab=cfg.neg_vocab,
-                    feature_flags=cfg.feature_flags,
-                    variants=cfg.variants,
-                    proxy_rules=cfg.proxy_rules,
-                    category_allowlist=cfg.category_allowlist,
-                    branded_fallbacks=cfg.branded_fallbacks,
-                    unit_to_grams=cfg.unit_to_grams
-                )
+            from config_loader import load_pipeline_config
+
+            # P0: Assert required config files exist
+            required_configs = [
+                "variants.yml",
+                "category_allowlist.yml",
+                "negative_vocabulary.yml",
+                "feature_flags.yml",
+                "unit_to_grams.yml"
+            ]
+            missing_configs = []
+            for config_file in required_configs:
+                if not (configs_path / config_file).exists():
+                    missing_configs.append(config_file)
+
+            if missing_configs:
+                error_msg = f"Missing required config files: {', '.join(missing_configs)}"
+                print(f"[ADAPTER] ERROR: {error_msg}")
+                is_pipeline_mode = os.getenv("PIPELINE_MODE", "false").lower() == "true"
+                if is_pipeline_mode:
+                    raise FileNotFoundError(f"[ADAPTER] {error_msg}")
+                else:
+                    self.db_available = False
+                    self.config_error = error_msg
+                    return
+
+            cfg = load_pipeline_config(root=str(configs_path))
+            print(f"[ADAPTER] Loaded configs from {configs_path}")
+            print(f"[ADAPTER] Config version: {cfg.config_version}")
+
+            # Store config version for telemetry stamping
+            self.config_version = cfg.config_version
+            self.config_fingerprint = cfg.config_fingerprint
+
+            # Initialize alignment engine with individual config parameters
+            self.alignment_engine = FDCAlignmentWithConversion(
+                fdc_db=self.fdc_db,
+                class_thresholds=cfg.thresholds,
+                negative_vocab=cfg.neg_vocab,
+                feature_flags=cfg.feature_flags,
+                variants=cfg.variants,
+                proxy_rules=cfg.proxy_rules,
+                category_allowlist=cfg.category_allowlist,
+                branded_fallbacks=cfg.branded_fallbacks,
+                unit_to_grams=cfg.unit_to_grams
+            )
             print(f"[ADAPTER] Alignment engine initialized with configs")
 
             self.db_available = True
@@ -131,11 +169,15 @@ class AlignmentEngineAdapter:
 
         if not self.db_available:
             print("[ADAPTER] Database not available")
-            return {
+            error_response = {
                 "available": False,
                 "foods": [],
                 "totals": {"mass_g": 0, "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0}
             }
+            # P0: Include config error in response if present
+            if self.config_error:
+                error_response["error"] = f"config_load_failed: {self.config_error}"
+            return error_response
 
         foods = prediction.get("foods", [])
         print(f"[ADAPTER] Processing {len(foods)} foods")
@@ -143,8 +185,10 @@ class AlignmentEngineAdapter:
         aligned_foods = []
         totals = {"mass_g": 0, "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0}
 
-        # Telemetry tracking
+        # Telemetry tracking (P0: add config version)
         telemetry = {
+            "config_version": self.config_version,
+            "config_fingerprint": self.config_fingerprint,
             "total_items": len(foods),
             "alignment_stages": {},
             "conversion_applied_count": 0,

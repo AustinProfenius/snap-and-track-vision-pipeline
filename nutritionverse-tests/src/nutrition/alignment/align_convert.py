@@ -32,6 +32,7 @@ Each stage returns AlignmentResult with full telemetry for debugging.
 """
 import json
 import datetime
+import os  # P0: For ALIGN_VERBOSE checks
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from ..types import FdcEntry, AlignmentResult, ConvertedEntry
@@ -528,13 +529,18 @@ class FDCAlignmentWithConversion:
                 )
 
                 if stage1b_result:
-                    # Handle optional telemetry tuple (match, score) or (match, score, telemetry)
-                    if len(stage1b_result) == 3:
+                    # P0: Handle telemetry tuple (match, score, stage1c_tel, stage1b_tel)
+                    if len(stage1b_result) == 4:
+                        match, score, stage1c_telemetry, stage1b_telemetry = stage1b_result
+                    elif len(stage1b_result) == 3:
+                        # Legacy: (match, score, stage1c_telemetry)
                         match, score, stage1c_telemetry = stage1b_result
-                        print("[TELEMETRY] stage1c_switched:", stage1c_telemetry)
+                        stage1b_telemetry = None
                     else:
+                        # Legacy: (match, score)
                         match, score = stage1b_result
                         stage1c_telemetry = None
+                        stage1b_telemetry = None
 
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         print(f"[ALIGN] ✓ Matched via stage1b_raw_foundation_direct: {match.name} (score={score:.3f})")
@@ -1127,6 +1133,18 @@ class FDCAlignmentWithConversion:
                 if any(k in entry_name_lower_check for k in ["ripe", "whole", "table", "black"]):
                     score += 0.15
 
+            # P1: Produce class-conditional penalties (prevent dessert/pastry/starchy leakage)
+            if class_intent in ["produce", "leafy_or_crucifer"]:
+                dessert_tokens = ["croissant", "ice cream", "cake", "cookie", "pastry", "muffin", "pie"]
+                starchy_processed = ["cracker", "pancake", "bread", "toast", "waffle"]
+
+                for token in dessert_tokens + starchy_processed:
+                    if token in entry_name_lower_check:
+                        score -= 0.35  # Strong penalty (apple→croissant killer)
+                        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                            print(f"    [PRODUCE_PENALTY] -{0.35} for '{token}' in produce query")
+                        break  # Apply once per candidate
+
             # Phase 7.2: Apply soft penalties from category allowlist (hard blocks already applied above)
             penalty_applied = False
             penalty_tokens = []
@@ -1229,12 +1247,32 @@ class FDCAlignmentWithConversion:
             except Exception:
                 pass  # Safety: never fail Stage 1b due to raw preference
 
-            # Return match, score, and optional telemetry
-            if stage1c_telemetry:
-                return (best_match, best_score, stage1c_telemetry)
-            return (best_match, best_score)
+            # P0: Add Stage1b transparency telemetry
+            stage1b_telemetry = {
+                "candidate_pool_size": len(raw_foundation),
+                "best_candidate_name": best_match.name if best_match else None,
+                "best_candidate_id": best_match.fdc_id if best_match else None,
+                "best_score": best_score,
+                "threshold": threshold,
+            }
 
-        return None
+            # Return match, score, stage1c telemetry, and stage1b telemetry
+            if stage1c_telemetry:
+                return (best_match, best_score, stage1c_telemetry, stage1b_telemetry)
+            return (best_match, best_score, None, stage1b_telemetry)
+
+        # P0: Sentinel for logic bugs - pool exists but all rejected
+        stage1b_telemetry = {
+            "candidate_pool_size": len(raw_foundation),
+            "best_candidate_name": None,
+            "best_candidate_id": None,
+            "best_score": 0.0,
+            "threshold": threshold,
+        }
+        if len(raw_foundation) > 0:
+            stage1b_telemetry["stage1b_dropped_despite_pool"] = True
+
+        return (None, None, None, stage1b_telemetry)
 
     def _stage1c_cooked_sr_direct(
         self,
@@ -1345,6 +1383,40 @@ class FDCAlignmentWithConversion:
         # Default: accept if not excluded
         return True
 
+    def _validate_stage2_seed(self, entry: FdcEntry) -> tuple:
+        """
+        P0: Validate that Stage2 seed is Foundation raw.
+
+        CRITICAL: Stage2 must NEVER convert from cooked/processed seeds.
+        This prevents using SR cooked/processed foods as "raw" seeds.
+
+        Args:
+            entry: Candidate FDC entry to validate
+
+        Returns:
+            (is_valid: bool, rejection_reason: str)
+        """
+        # Must be Foundation
+        if entry.source != "foundation":
+            return (False, f"source={entry.source} (must be foundation)")
+
+        # Must be raw form
+        if entry.form != "raw":
+            return (False, f"form={entry.form} (must be raw)")
+
+        # Block processed/cooked names (name-based sanity check)
+        blocked_tokens = [
+            "cooked", "fast foods", "pancake", "cracker", "ice cream",
+            "pastry", "soup", "puree", "babyfood", "frozen", "canned",
+            "fried", "baked", "roasted", "grilled"  # cooking methods
+        ]
+        name_lower = entry.name.lower()
+        for token in blocked_tokens:
+            if token in name_lower:
+                return (False, f"name contains '{token}'")
+
+        return (True, "passed")
+
     def _stage2_raw_convert(
         self,
         core_class: str,
@@ -1417,6 +1489,21 @@ class FDCAlignmentWithConversion:
 
         if not raw_candidate:
             return None
+
+        # P0: Validate Stage2 seed (CRITICAL guardrail)
+        is_valid, reason = self._validate_stage2_seed(raw_candidate)
+        if not is_valid:
+            # Log rejection + add to telemetry
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE2] Seed rejected: {raw_candidate.name} - {reason}")
+            # Attach telemetry to the candidate (will be picked up in align_food_item)
+            if not hasattr(raw_candidate, '_stage2_seed_guardrail'):
+                raw_candidate._stage2_seed_guardrail = {"status": "failed", "reason": reason}
+            return None
+
+        # Seed passed validation
+        if not hasattr(raw_candidate, '_stage2_seed_guardrail'):
+            raw_candidate._stage2_seed_guardrail = {"status": "passed"}
 
         # Convert raw → cooked
         converted = convert_from_raw(

@@ -154,6 +154,43 @@ tomato:
     - puree
   hard_block_contains: []
 
+# P1: Cherry/grape tomatoes
+tomatoes_cherry:
+  allow_contains:
+    - cherry
+    - tomato raw
+    - tomatoes cherry
+  penalize_contains:
+    - soup
+    - sauce
+    - paste
+  hard_block_contains: []
+
+# P1: Mushrooms
+mushrooms:
+  allow_contains:
+    - mushroom raw
+    - mushrooms white
+    - button
+    - cremini
+  penalize_contains:
+    - soup
+    - cream of
+    - canned
+  hard_block_contains: []
+
+# P1: Green beans
+green_beans:
+  allow_contains:
+    - beans snap
+    - green beans raw
+    - green beans cooked
+  penalize_contains:
+    - canned
+    - soup
+    - baby food
+  hard_block_contains: []
+
 # Avocado - prefer fresh avocado over oil
 avocado:
   allow_contains:

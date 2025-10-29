@@ -90,6 +90,43 @@ tomato:
   - tomatoes
   - tomato vine-ripe
 
+# P1: Cherry/grape tomatoes (fix stage0 misses)
+cherry_tomatoes:
+  - cherry tomatoes
+  - cherry tomato
+  - tomatoes cherry
+  - tomato cherry
+  - Tomatoes, cherry, raw
+
+grape_tomatoes:
+  - grape tomatoes
+  - grape tomato
+  - tomatoes grape
+  - tomato grape
+  - Tomatoes, grape, raw
+
+# P1: Mushrooms (button/white/brown/cremini)
+mushrooms:
+  - mushrooms
+  - mushroom
+  - button mushrooms
+  - white mushrooms
+  - brown mushrooms
+  - cremini
+  - cremini mushrooms
+  - baby bella
+  - Mushrooms, white, raw
+
+# P1: Green beans
+green_beans:
+  - green beans
+  - string beans
+  - snap beans
+  - haricot vert
+  - green bean
+  - Beans, snap, green, raw
+  - Beans, snap, green, cooked, boiled, drained, without salt
+
 avocado:
   - avocado
   - avocados
