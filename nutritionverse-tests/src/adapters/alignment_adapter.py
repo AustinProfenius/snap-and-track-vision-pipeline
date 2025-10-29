@@ -149,7 +149,8 @@ class AlignmentEngineAdapter:
                 proxy_rules=cfg.proxy_rules,
                 category_allowlist=cfg.category_allowlist,
                 branded_fallbacks=cfg.branded_fallbacks,
-                unit_to_grams=cfg.unit_to_grams
+                unit_to_grams=cfg.unit_to_grams,
+                stageZ_branded_fallbacks=cfg.stageZ_branded_fallbacks
             )
             print(f"[ADAPTER] Alignment engine initialized with configs")
 

@@ -12,6 +12,12 @@ enable_proxy_alignment: true
 # Set to false for reproducible testing, true for graceful end-user mode
 stageZ_branded_fallback: false
 
+# StageZ Deterministic Branded Fallback (NEW - Phase 7.4)
+# For foods that don't exist in Foundation/SR (cherry tomatoes, broccoli florets, etc.)
+# Uses hardcoded FDC IDs from stageZ_branded_fallbacks.yml
+# Only triggers when Stage1b/1c/2 fail AND class-intent matches target classes
+allow_branded_when_foundation_missing: true
+
 # Vision model mode
 vision_mass_only: true
 

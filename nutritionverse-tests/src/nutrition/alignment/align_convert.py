@@ -471,6 +471,7 @@ class FDCAlignmentWithConversion:
         category_allowlist: Optional[Dict[str, Any]] = None,  # Phase 7.1: Form-aware category gates
         branded_fallbacks: Optional[Dict[str, Any]] = None,  # Phase 7.3: Branded fallbacks for components
         unit_to_grams: Optional[Dict[str, float]] = None,  # Phase 7.3: Unit to gram conversions
+        stageZ_branded_fallbacks: Optional[Dict[str, Any]] = None,  # Phase 7.4: Deterministic branded FDC IDs
         fdc_db: Any = None  # Phase 7: FDC database instance for Stage 5 proxy search
     ):
         """
@@ -501,6 +502,7 @@ class FDCAlignmentWithConversion:
         self._external_category_allowlist = category_allowlist or {}  # Phase 7.1
         self._external_branded_fallbacks = branded_fallbacks or {}  # Phase 7.3
         self._external_unit_to_grams = unit_to_grams or {}  # Phase 7.3
+        self._external_stageZ_branded_fallbacks = stageZ_branded_fallbacks or {}  # Phase 7.4
         self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
         # Phase 7.3: Extract salad decomposition config and initialize component cache
@@ -934,6 +936,46 @@ class FDCAlignmentWithConversion:
             else:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] ✗ Stage-Z blocked (category={category}, raw_foundation={len(raw_foundation)})")
+
+        # Phase 7.4: StageZ Deterministic Branded Fallback (BEFORE salad decomposition)
+        # For foods that don't exist in Foundation/SR (cherry tomatoes, broccoli florets, etc.)
+        if self._external_stageZ_branded_fallbacks and self._fdc_db:
+            from .stageZ_branded_fallback import resolve_branded_fallback
+
+            # Use normalized form of predicted_name
+            normalized, _, _, _ = _normalize_for_lookup(predicted_name)
+
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[ALIGN] Trying StageZ Branded Fallback for '{normalized}'...")
+
+            branded_result = resolve_branded_fallback(
+                normalized_name=normalized,
+                class_intent=class_intent,
+                form=predicted_form,
+                branded_fallbacks_config=self._external_stageZ_branded_fallbacks,
+                fdc_database=self._fdc_db,
+                feature_flags=self._external_feature_flags or {}
+            )
+
+            if branded_result:
+                entry, branded_telemetry = branded_result
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[ALIGN] ✓ Matched via StageZ Branded Fallback: {entry.name} (FDC {entry.fdc_id})")
+
+                result = self._build_result(
+                    entry, "stageZ_branded_fallback", adjusted_confidence, method, method_reason,
+                    stage1_blocked=stage1_blocked,
+                    candidate_pool_total=len(fdc_entries),
+                    candidate_pool_raw_foundation=len(raw_foundation),
+                    candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
+                    candidate_pool_branded=len(branded),
+                    class_intent=class_intent,
+                    form_intent=form_intent
+                )
+
+                # Add branded fallback telemetry
+                result.telemetry["stageZ_branded_fallback"] = branded_telemetry
+                return result
 
         # Phase 7.3: Stage 5B salad decomposition BEFORE stage0_no_candidates
         # Try decomposition when no FDC candidates found
@@ -2970,6 +3012,7 @@ class FDCAlignmentWithConversion:
             "stage5b_salad_decomposition",  # Phase 7.3: Salad decomposition (parent)
             "stage5b_salad_component",  # Phase 7.3: Individual salad components
             "stageZ_energy_only",  # NEW: Energy-only last resort
+            "stageZ_branded_fallback",  # Phase 7.4: Deterministic branded fallback
             "stageZ_branded_last_resort",
         }
         assert stage in VALID_STAGES, \

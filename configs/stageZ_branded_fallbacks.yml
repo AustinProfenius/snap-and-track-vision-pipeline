@@ -1,0 +1,107 @@
+# StageZ Branded Fallback Configuration
+#
+# Deterministic branded FDC entries for foods that don't exist in Foundation/SR databases.
+# Used when Stage1b/1c/2 fail (empty pool or all rejected) and class-intent matches target classes.
+#
+# This prevents stage0_no_candidates for common foods that only exist as branded items:
+# - Cherry tomatoes, grape tomatoes: No Foundation/SR entries
+# - Broccoli florets: Only generic "broccoli" in Foundation/SR
+# - Scrambled eggs: Only "Fast foods egg scrambled" (sr_legacy, rejected by Stage2)
+# - Green beans: Only baby food and veggie mixes in Foundation/SR
+#
+# Structure:
+#   <normalized_key>:
+#     primary:
+#       brand: "<Brand Name>"  # For telemetry (from FDC brand_name field)
+#       fdc_id: <FDC ID>       # REQUIRED: Branded food FDC ID
+#       kcal_per_100g: [min, max]  # Plausibility guard range
+#     alternates:
+#       - { brand: "<Brand>", fdc_id: <ID>, kcal_per_100g: [min, max] }
+#
+# Canonical keys are normalized forms (lowercase, singular via whitelist, no descriptors).
+# The resolver will try multiple normalized forms (e.g., "cherry tomato" / "cherry_tomato").
+
+version: 1
+enabled: true  # Feature flag; controlled by feature_flags.yml
+
+# Selection rules
+selection_rules:
+  # Prefer raw/plain/unseasoned SKUs
+  preferred_descriptors:
+    - "raw"
+    - "plain"
+    - "unseasoned"
+
+  # Reject flavored/processed items (case-insensitive substring)
+  reject_patterns:
+    - "seasoned"
+    - "sauce"
+    - "flavored"
+    - "with oil"
+    - "with butter"
+    - "sweetened"
+    - "glazed"
+    - "candied"
+    - "fried"
+    - "fast food"
+    - "baby food"
+
+# Plausibility guards: kcal/100g ranges by food class
+plausibility_guards:
+  produce: [10, 100]   # Vegetables/fruits
+  eggs: [120, 200]     # Cooked eggs (plain)
+  protein: [100, 300]  # Most proteins
+
+# Branded fallback mappings (normalized keys → FDC IDs)
+fallbacks:
+  # Cherry tomatoes (no Foundation/SR entries)
+  cherry_tomato:
+    primary:
+      brand: "Generic"
+      fdc_id: 383842
+      kcal_per_100g: [15, 35]
+    alternates:
+      - { brand: "Generic", fdc_id: 531259, kcal_per_100g: [15, 35] }
+
+  # Grape tomatoes (no Foundation/SR entries)
+  grape_tomato:
+    primary:
+      brand: "Generic"
+      fdc_id: 447986
+      kcal_per_100g: [15, 35]
+    alternates:
+      - { brand: "Generic (Organic)", fdc_id: 523755, kcal_per_100g: [15, 35] }
+
+  # Broccoli (broccoli_florets → broccoli after normalization)
+  broccoli:
+    primary:
+      brand: "Generic"
+      fdc_id: 372976
+      kcal_per_100g: [20, 45]
+    alternates:
+      - { brand: "Generic", fdc_id: 448529, kcal_per_100g: [20, 45] }
+
+  # Scrambled eggs (only sr_legacy "Fast foods" version exists, rejected by Stage2)
+  egg_scrambled:
+    primary:
+      brand: "Generic"
+      fdc_id: 450876
+      kcal_per_100g: [130, 190]
+    alternates: []
+
+  # Alternate key for scrambled eggs (normalizer might produce either form)
+  scrambled_egg:
+    primary:
+      brand: "Generic"
+      fdc_id: 450876
+      kcal_per_100g: [130, 190]
+    alternates: []
+
+  # Green beans (only baby food and veggie mixes in Foundation/SR)
+  green_bean:
+    primary:
+      brand: "Generic"
+      fdc_id: 359180
+      kcal_per_100g: [20, 45]
+    alternates:
+      - { brand: "Generic", fdc_id: 394232, kcal_per_100g: [20, 45] }

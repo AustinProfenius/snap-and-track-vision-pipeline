@@ -27,6 +27,7 @@ class PipelineConfig:
     category_allowlist: Dict[str, Any]  # Phase 7.1: Form-aware category gates
     branded_fallbacks: Dict[str, Any]  # Phase 7.3: Branded fallbacks for salad components
     unit_to_grams: Dict[str, Any]  # Phase 7.3: Unit to gram conversions
+    stageZ_branded_fallbacks: Dict[str, Any]  # Phase 7.4: Deterministic branded FDC IDs
     config_version: str
     config_fingerprint: str
 
@@ -70,6 +71,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
         "category_allowlist": root_path / "category_allowlist.yml",  # Phase 7.1
         "branded_fallbacks": root_path / "branded_fallbacks.yml",  # Phase 7.3
         "unit_to_grams": root_path / "unit_to_grams.yml",  # Phase 7.3
+        "stageZ_branded_fallbacks": root_path / "stageZ_branded_fallbacks.yml",  # Phase 7.4
     }
 
     # Load configs (use empty dict if file doesn't exist)
@@ -84,7 +86,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
                 raise ValueError(f"Unknown config file type: {path}")
         else:
             # Optional configs default to empty dict
-            if key in ('energy_bands', 'proxy_rules', 'variants', 'category_allowlist', 'unit_to_grams'):
+            if key in ('energy_bands', 'proxy_rules', 'variants', 'category_allowlist', 'unit_to_grams', 'stageZ_branded_fallbacks'):
                 data[key] = {}
             else:
                 # Required configs must exist (including branded_fallbacks for Phase 7.3)
@@ -113,6 +115,7 @@ def load_pipeline_config(root: str = "configs") -> PipelineConfig:
         category_allowlist=data["category_allowlist"],  # Phase 7.1
         branded_fallbacks=data["branded_fallbacks"],  # Phase 7.3
         unit_to_grams=data["unit_to_grams"],  # Phase 7.3
+        stageZ_branded_fallbacks=data["stageZ_branded_fallbacks"],  # Phase 7.4
         config_version=config_version,
         config_fingerprint=fingerprint,
     )
