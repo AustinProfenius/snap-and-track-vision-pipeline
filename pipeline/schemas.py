@@ -7,6 +7,20 @@ from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 
 
+class Stage1cSwitch(BaseModel):
+    """
+    P0: Stage1c telemetry for raw-first preference switches.
+    Tracks when Stage1c replaces a non-raw candidate with a raw alternative.
+    """
+    from_name: str = Field(alias="from")  # Original candidate name
+    to_name: str = Field(alias="to")  # Switched candidate name
+    from_id: Optional[str] = None  # Original FDC ID (can be None if not found)
+    to_id: Optional[str] = None  # Switched FDC ID (can be None if not found)
+
+    class Config:
+        populate_by_name = True  # Allow both "from" and "from_name"
+
+
 class DetectedFood(BaseModel):
     """Food detected by vision model."""
     name: str
@@ -135,8 +149,8 @@ class TelemetryEvent(BaseModel):
     atwater_deviation_pct: Optional[float] = None
     oil_uptake_g_per_100g: Optional[float] = None
 
-    # Phase 7.4: Stage 1c raw-first preference tracking
-    stage1c_switched: Optional[Dict[str, str]] = None  # {"from": "original_name", "to": "new_name"}
+    # P0: Stage 1c raw-first preference tracking (with FDC IDs)
+    stage1c_switched: Optional[Stage1cSwitch] = None
 
     # Version tracking (mandatory)
     code_git_sha: str

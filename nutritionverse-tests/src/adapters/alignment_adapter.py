@@ -94,7 +94,18 @@ class AlignmentEngineAdapter:
             if pipeline_path not in sys.path:
                 sys.path.insert(0, pipeline_path)
 
-            from config_loader import load_pipeline_config
+            try:
+                from config_loader import load_pipeline_config
+            except ImportError:
+                error_msg = f"Could not import config_loader from {pipeline_path}"
+                print(f"[ADAPTER] ERROR: {error_msg}")
+                is_pipeline_mode = os.getenv("PIPELINE_MODE", "false").lower() == "true"
+                if is_pipeline_mode:
+                    raise ImportError(f"[ADAPTER] {error_msg}")
+                else:
+                    self.db_available = False
+                    self.config_error = error_msg
+                    return
 
             # P0: Assert required config files exist
             required_configs = [

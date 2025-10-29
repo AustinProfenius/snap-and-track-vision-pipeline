@@ -93,6 +93,13 @@ def run_once(
     # Inject our configured engine
     adapter.alignment_engine = alignment_engine
 
+    # P0: Mark DB as available after successful injection
+    adapter.db_available = True
+
+    # P0: Set config version for telemetry
+    adapter.config_version = cfg.config_version
+    adapter.config_fingerprint = cfg.config_fingerprint
+
     # Convert DetectedFood to dict format expected by adapter
     prediction = {
         "foods": [
@@ -192,14 +199,29 @@ def run_once(
             _expanded = telemetry.get("expanded_foods", [])
             _decomp_count = len(_expanded) if _expanded else None
 
-        # Phase 7.4: Extract stage1c_switched if present
-        stage1c_switched = telemetry.get("stage1c_switched")
-        # Ensure it's a dict with "from" and "to" keys, or None
-        if stage1c_switched and isinstance(stage1c_switched, dict):
-            if "from" not in stage1c_switched or "to" not in stage1c_switched:
-                stage1c_switched = None
-        else:
-            stage1c_switched = None
+        # P0: Extract and validate stage1c_switched telemetry
+        stage1c_switched_data = telemetry.get("stage1c_switched")
+        stage1c_switched = None
+        if stage1c_switched_data and isinstance(stage1c_switched_data, dict):
+            # Validate required fields
+            if "from" in stage1c_switched_data and "to" in stage1c_switched_data:
+                try:
+                    # Import Stage1cSwitch schema
+                    from pipeline.schemas import Stage1cSwitch
+                    # Convert IDs to strings (Pydantic expects string, not int)
+                    from_id = stage1c_switched_data.get("from_id")
+                    to_id = stage1c_switched_data.get("to_id")
+                    stage1c_switched = Stage1cSwitch(
+                        **{
+                            "from": stage1c_switched_data["from"],
+                            "to": stage1c_switched_data["to"],
+                            "from_id": str(from_id) if from_id is not None else None,
+                            "to_id": str(to_id) if to_id is not None else None
+                        }
+                    )
+                except Exception as e:
+                    print(f"[PIPELINE] Warning: Failed to parse stage1c_switched: {e}")
+                    stage1c_switched = None
 
         telemetry_event = TelemetryEvent(
             image_id=request.image_id,

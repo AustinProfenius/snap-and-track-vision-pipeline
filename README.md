@@ -193,4 +193,4 @@ See [docs/REPO_SNAPSHOT.md](docs/REPO_SNAPSHOT.md) for full analysis.
 
 ## License
 
-Proprietary - Snap & Track / NuVola
+Proprietary - Snap & Track

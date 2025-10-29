@@ -1,0 +1,1023 @@
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153256/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[5/50] Processing dish_1556575124...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153256/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[6/50] Processing dish_1556575273...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153256/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[7/50] Processing dish_1556575327...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153257/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[8/50] Processing dish_1556575386...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153257/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[9/50] Processing dish_1556575446...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153258/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[10/50] Processing dish_1556575499...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153258/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[11/50] Processing dish_1556575558...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: celery (raw)
+[ADAPTER]   ✓ Matched: Celery raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: brussels sprouts (raw)
+[ADAPTER]   ✓ Matched: Brussels sprouts raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153258/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[12/50] Processing dish_1557853154...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153259/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[13/50] Processing dish_1557853229...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153259/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[14/50] Processing dish_1557853314...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153259/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[15/50] Processing dish_1557853429...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153259/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[16/50] Processing dish_1557861605...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: fish (raw)
+[ADAPTER]   ✓ Matched: Fish pollock raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153300/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[17/50] Processing dish_1557861697...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: eggplant (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153300/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[18/50] Processing dish_1557861795...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: caesar salad (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✓ Decomposed 'caesar salad' via Stage 5B: caesar salad (4 components)
+[ADAPTER]     [1/4] lettuce romaine raw → Lettuce cos or romaine raw (21.7g)
+[ADAPTER]     [2/4] parmesan cheese grated → Cheese parmesan grated (2.5g)
+[ADAPTER]     [3/4] croutons → Croutons plain (4.6g)
+[ADAPTER]     [4/4] caesar dressing → Salad dressing caesar dressing regular (2.2g)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage5b_salad_component': 4}
+[PIPELINE] Artifacts saved to: runs/20251029_153300/
+  Foods: 4, Stages: {'stage5b_salad_component': 4}
+[19/50] Processing dish_1557861837...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: eggplant (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/3] Aligning: caesar salad (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✓ Decomposed 'caesar salad' via Stage 5B: caesar salad (4 components)
+[ADAPTER]     [1/4] lettuce romaine raw → Lettuce cos or romaine raw (21.7g)
+[ADAPTER]     [2/4] parmesan cheese grated → Cheese parmesan grated (2.5g)
+[ADAPTER]     [3/4] croutons → Croutons plain (4.6g)
+[ADAPTER]     [4/4] caesar dressing → Salad dressing caesar dressing regular (2.2g)
+[ADAPTER] [3/3] Aligning: fish (raw)
+[ADAPTER]   ✓ Matched: Fish pollock raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 2, 'stage5b_salad_component': 4}
+[PIPELINE] Artifacts saved to: runs/20251029_153301/
+  Foods: 6, Stages: {'stage1b_raw_foundation_direct': 2, 'stage5b_salad_component': 4}
+[20/50] Processing dish_1557862345...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: chicken (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153301/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[21/50] Processing dish_1557862696...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153301/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[22/50] Processing dish_1557862738...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: steak (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153301/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[23/50] Processing dish_1557862783...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: cauliflower (raw)
+[ADAPTER]   ✓ Matched: Cauliflower raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: steak (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/3] Aligning: chicken (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153302/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[24/50] Processing dish_1557862829...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: spinach (raw) (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153302/
+  Foods: 1, Stages: {'stage0_no_candidates': 1}
+[25/50] Processing dish_1557863012...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: cucumbers (raw)
+[ADAPTER]   Query variant matched: 'cucumbers' → 'cucumber' (11 candidates, 11 Foundation/SR)
+[ADAPTER]   ✓ Matched: Cucumber peeled raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153302/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[26/50] Processing dish_1557863056...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: avocado (raw)
+[ADAPTER]   ✓ Matched: Avocados raw Florida (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153302/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[27/50] Processing dish_1557863104...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153302/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[28/50] Processing dish_1557863170...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 4 foods
+[ADAPTER] [1/4] Aligning: avocado (raw)
+[ADAPTER]   ✓ Matched: Avocados raw Florida (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/4] Aligning: spinach (raw) (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [3/4] Aligning: cucumbers (raw)
+[ADAPTER]   Query variant matched: 'cucumbers' → 'cucumber' (11 candidates, 11 Foundation/SR)
+[ADAPTER]   ✓ Matched: Cucumber peeled raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/4] Aligning: olives (raw)
+[ADAPTER]   Query variant matched: 'olives' → 'olive' (13 candidates, 13 Foundation/SR)
+[ADAPTER]   ✓ Matched: Olives ripe canned (small-extra large) (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3, 'stage0_no_candidates': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153303/
+  Foods: 4, Stages: {'stage1b_raw_foundation_direct': 3, 'stage0_no_candidates': 1}
+[29/50] Processing dish_1557936555...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153303/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[30/50] Processing dish_1557936599...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: broccoli (raw)
+[ADAPTER]   ✓ Matched: Broccoli raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153303/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[31/50] Processing dish_1557936645...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153303/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[32/50] Processing dish_1557937037...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153304/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[33/50] Processing dish_1557937079...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153304/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[34/50] Processing dish_1557937157...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: broccoli (raw)
+[ADAPTER]   ✓ Matched: Broccoli raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5}
+[PIPELINE] Artifacts saved to: runs/20251029_153305/
+  Foods: 5, Stages: {'stage1b_raw_foundation_direct': 5}
+[35/50] Processing dish_1557937335...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153305/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[36/50] Processing dish_1557937427...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153305/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[37/50] Processing dish_1557937574...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: blackberries (raw)
+[ADAPTER]   ✓ Matched: Blackberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153305/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[38/50] Processing dish_1557937615...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153305/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[39/50] Processing dish_1557937715...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153306/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[40/50] Processing dish_1557937758...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 5 foods
+[ADAPTER] [1/5] Aligning: blackberries (raw)
+[ADAPTER]   ✓ Matched: Blackberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/5] Aligning: strawberries (raw)
+[ADAPTER]   ✓ Matched: Strawberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/5] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [4/5] Aligning: raspberries (raw)
+[ADAPTER]   ✓ Matched: Raspberries raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [5/5] Aligning: eggs (raw)
+[ADAPTER]   Query variant matched: 'eggs' → 'egg' (50 candidates, 50 Foundation/SR)
+[ADAPTER]   ✓ Matched: Egg whole raw fresh (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 5}
+[PIPELINE] Artifacts saved to: runs/20251029_153306/
+  Foods: 5, Stages: {'stage1b_raw_foundation_direct': 5}
+[41/50] Processing dish_1558026623...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: honeydew melons (raw)
+[ADAPTER]   Query variant matched: 'honeydew melons' → 'melons honeydew raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons honeydew raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153307/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[42/50] Processing dish_1558026684...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: cantaloupe (raw)
+[ADAPTER]   Query variant matched: 'cantaloupe' → 'melons cantaloupe raw' (3 candidates, 3 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons cantaloupe raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153307/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[43/50] Processing dish_1558026714...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153307/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[44/50] Processing dish_1558026756...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: honeydew melons (raw)
+[ADAPTER]   Query variant matched: 'honeydew melons' → 'melons honeydew raw' (2 candidates, 2 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons honeydew raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [2/3] Aligning: cantaloupe (raw)
+[ADAPTER]   Query variant matched: 'cantaloupe' → 'melons cantaloupe raw' (3 candidates, 3 Foundation/SR)
+[ADAPTER]   ✓ Matched: Melons cantaloupe raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 3}
+[PIPELINE] Artifacts saved to: runs/20251029_153308/
+  Foods: 3, Stages: {'stage1b_raw_foundation_direct': 3}
+[45/50] Processing dish_1558027001...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: deprecated (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153308/
+  Foods: 1, Stages: {'stage0_no_candidates': 1}
+[46/50] Processing dish_1558027057...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153308/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[47/50] Processing dish_1558027164...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153308/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[48/50] Processing dish_1558027243...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 3 foods
+[ADAPTER] [1/3] Aligning: deprecated (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] [2/3] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] [3/3] Aligning: yam (raw)
+[ADAPTER]   ✓ Matched: Yam raw (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1, 'stage1b_raw_foundation_direct': 2}
+[PIPELINE] Artifacts saved to: runs/20251029_153309/
+  Foods: 3, Stages: {'stage0_no_candidates': 1, 'stage1b_raw_foundation_direct': 2}
+[49/50] Processing dish_1558028007...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: potatoes (raw)
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153309/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+[50/50] Processing dish_1558028057...
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: bacon (raw)
+[ADAPTER]   ✓ Matched: Canadian bacon unprepared (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+[PIPELINE] Artifacts saved to: runs/20251029_153309/
+  Foods: 1, Stages: {'stage1b_raw_foundation_direct': 1}
+
+======================================================================
+BATCH TEST COMPLETE
+======================================================================
+Processed: 50 dishes
+
+Stage distribution:
+  stage0_no_candidates: 4 (4.5%)
+  stage1b_raw_foundation_direct: 76 (85.4%)
+  stage5b_salad_component: 9 (10.1%)
+
+Results saved to: runs/<timestamp>/results.jsonl
+Telemetry saved to: runs/<timestamp>/telemetry.jsonl
+
+Test complete. Check runs/ directory for results.
+
+==========================================
+  Test Complete
+==========================================
+(.venv) (base) austinprofenius@Mac snapandtrack-model-testing % ./run_tests.sh unit
+==========================================
+  Snap & Track Test Runner
+==========================================
+Repo root: /Users/austinprofenius/snapandtrack-model-testing
+
+PYTHONPATH set: /Users/austinprofenius/snapandtrack-model-testing/nutritionverse-tests:/Users/austinprofenius/snapandtrack-model-testing/pipeline:
+.env loaded from: /Users/austinprofenius/snapandtrack-model-testing/.env
+✓ NEON_CONNECTION_URL loaded
+✓ PIPELINE_MODE=true
+
+Running unit tests...
+============================================================================================================================= test session starts =============================================================================================================================
+platform darwin -- Python 3.11.2, pytest-8.4.2, pluggy-1.6.0 -- /Users/austinprofenius/snapandtrack-model-testing/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/austinprofenius/snapandtrack-model-testing/tests
+plugins: anyio-4.11.0
+collected 11 items                                                                                                                                                                                                                                                            
+
+test_produce_alignment.py::test_produce_alignment_not_stage0[cherry tomatoes-raw-True] FAILED                                                                                                                                                                           [  9%]
+test_produce_alignment.py::test_produce_alignment_not_stage0[grape tomatoes-raw-True] PASSED                                                                                                                                                                            [ 18%]
+test_produce_alignment.py::test_produce_alignment_not_stage0[button mushrooms-raw-True] FAILED                                                                                                                                                                          [ 27%]
+test_produce_alignment.py::test_produce_alignment_not_stage0[green beans-raw-True] PASSED                                                                                                                                                                               [ 36%]
+test_produce_alignment.py::test_produce_alignment_not_stage0[broccoli florets-raw-True] FAILED                                                                                                                                                                          [ 45%]
+test_produce_alignment.py::test_produce_no_dessert_leakage[apple-bad_tokens0] FAILED                                                                                                                                                                                    [ 54%]
+test_produce_alignment.py::test_produce_no_dessert_leakage[strawberry-bad_tokens1] FAILED                                                                                                                                                                               [ 63%]
+test_produce_alignment.py::test_produce_no_dessert_leakage[cherry-bad_tokens2] PASSED                                                                                                                                                                                   [ 72%]
+test_produce_alignment.py::test_stage2_seed_guardrail PASSED                                                                                                                                                                                                            [ 81%]
+test_produce_alignment.py::test_stage1c_telemetry_ids PASSED                                                                                                                                                                                                            [ 90%]
+test_produce_alignment.py::test_config_version_stamped PASSED                                                                                                                                                                                                           [100%]
+
+================================================================================================================================== FAILURES ===================================================================================================================================
+_________________________________________________________________________________________________________ test_produce_alignment_not_stage0[cherry tomatoes-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'cherry tomatoes', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: cherry tomatoes: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x12126ef80>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x12126ef80> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: cherry tomatoes (raw)
+[ADAPTER]   No FDC candidates found (tried 7 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+________________________________________________________________________________________________________ test_produce_alignment_not_stage0[button mushrooms-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'button mushrooms', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: button mushrooms: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x1218ee740>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x1218ee740> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: button mushrooms (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+________________________________________________________________________________________________________ test_produce_alignment_not_stage0[broccoli florets-raw-True] _________________________________________________________________________________________________________
+
+food_name = 'broccoli florets', form = 'raw', expected_not_stage0 = True
+
+    @pytest.mark.parametrize("food_name,form,expected_not_stage0", [
+        ("cherry tomatoes", "raw", True),
+        ("grape tomatoes", "raw", True),
+        ("button mushrooms", "raw", True),
+        ("green beans", "raw", True),
+        ("broccoli florets", "raw", True),
+    ])
+    def test_produce_alignment_not_stage0(food_name, form, expected_not_stage0):
+        """Test that produce items don't fall to stage0."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": form, "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if expected_not_stage0 and result["foods"]:
+            food = result["foods"][0]
+>           assert food.get("alignment_stage") != "stage0_no_candidates", \
+                f"{food_name}: Still stage0 (no match found)"
+E           AssertionError: broccoli florets: Still stage0 (no match found)
+E           assert 'stage0_no_candidates' != 'stage0_no_candidates'
+E            +  where 'stage0_no_candidates' = <built-in method get of dict object at 0x12126f5c0>('alignment_stage')
+E            +    where <built-in method get of dict object at 0x12126f5c0> = {'alignment_stage': 'stage0_no_candidates', 'calories': 0, 'carbs_g': 0, 'conversion_applied': False, ...}.get
+
+test_produce_alignment.py:37: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: broccoli florets (raw)
+[ADAPTER]   No FDC candidates found (tried 3 variants), trying Stage 5B...
+[ADAPTER]   ✗ No match
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage0_no_candidates': 1}
+_____________________________________________________________________________________________________________ test_produce_no_dessert_leakage[apple-bad_tokens0] ______________________________________________________________________________________________________________
+
+food_name = 'apple', bad_tokens = ['croissant', 'pastry', 'ice cream']
+
+    @pytest.mark.parametrize("food_name,bad_tokens", [
+        ("apple", ["croissant", "pastry", "ice cream"]),
+        ("strawberry", ["ice cream", "cake"]),
+        ("cherry", ["pie"]),
+    ])
+    def test_produce_no_dessert_leakage(food_name, bad_tokens):
+        """Test that produce doesn't match desserts/pastries."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": "raw", "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if result["foods"]:
+            food = result["foods"][0]
+            fdc_name = food.get("fdc_name", "").lower()
+    
+            for bad_token in bad_tokens:
+>               assert bad_token.lower() not in fdc_name, \
+                    f"{food_name}: Incorrectly matched '{bad_token}' FDC"
+E               AssertionError: apple: Incorrectly matched 'croissant' FDC
+E               assert 'croissant' not in 'croissants apple'
+E                 
+E                 'croissant' is contained here:
+E                   croissants apple
+
+test_produce_alignment.py:59: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+___________________________________________________________________________________________________________ test_produce_no_dessert_leakage[strawberry-bad_tokens1] ___________________________________________________________________________________________________________
+
+food_name = 'strawberry', bad_tokens = ['ice cream', 'cake']
+
+    @pytest.mark.parametrize("food_name,bad_tokens", [
+        ("apple", ["croissant", "pastry", "ice cream"]),
+        ("strawberry", ["ice cream", "cake"]),
+        ("cherry", ["pie"]),
+    ])
+    def test_produce_no_dessert_leakage(food_name, bad_tokens):
+        """Test that produce doesn't match desserts/pastries."""
+        adapter = AlignmentEngineAdapter()
+        prediction = {"foods": [{"name": food_name, "form": "raw", "mass_g": 100.0, "confidence": 0.8}]}
+        result = adapter.align_prediction_batch(prediction)
+    
+        assert result["available"], f"{food_name}: DB not available"
+    
+        if result["foods"]:
+            food = result["foods"][0]
+            fdc_name = food.get("fdc_name", "").lower()
+    
+            for bad_token in bad_tokens:
+>               assert bad_token.lower() not in fdc_name, \
+                    f"{food_name}: Incorrectly matched '{bad_token}' FDC"
+E               AssertionError: strawberry: Incorrectly matched 'ice cream' FDC
+E               assert 'ice cream' not in 'ice creams strawberry'
+E                 
+E                 'ice cream' is contained here:
+E                   ice creams strawberry
+
+test_produce_alignment.py:59: AssertionError
+---------------------------------------------------------------------------------------------------------------------------- Captured stdout call -----------------------------------------------------------------------------------------------------------------------------
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: strawberry (raw)
+[ADAPTER]   ✓ Matched: Ice creams strawberry (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+=========================================================================================================================== short test summary info ===========================================================================================================================
+FAILED test_produce_alignment.py::test_produce_alignment_not_stage0[cherry tomatoes-raw-True] - AssertionError: cherry tomatoes: Still stage0 (no match found)
+FAILED test_produce_alignment.py::test_produce_alignment_not_stage0[button mushrooms-raw-True] - AssertionError: button mushrooms: Still stage0 (no match found)
+FAILED test_produce_alignment.py::test_produce_alignment_not_stage0[broccoli florets-raw-True] - AssertionError: broccoli florets: Still stage0 (no match found)
+FAILED test_produce_alignment.py::test_produce_no_dessert_leakage[apple-bad_tokens0] - AssertionError: apple: Incorrectly matched 'croissant' FDC
+FAILED test_produce_alignment.py::test_produce_no_dessert_leakage[strawberry-bad_tokens1] - AssertionError: strawberry: Incorrectly matched 'ice cream' FDC
+========================================================================================================================= 5 failed, 6 passed in 6.28s =========================================================================================================================
+(.venv) (base) austinprofenius@Mac snapandtrack-model-testing % ./run_tests.sh diagnostic
+==========================================
+  Snap & Track Test Runner
+==========================================
+Repo root: /Users/austinprofenius/snapandtrack-model-testing
+
+PYTHONPATH set: /Users/austinprofenius/snapandtrack-model-testing/nutritionverse-tests:/Users/austinprofenius/snapandtrack-model-testing/pipeline:
+.env loaded from: /Users/austinprofenius/snapandtrack-model-testing/.env
+✓ NEON_CONNECTION_URL loaded
+✓ PIPELINE_MODE=true
+
+Running diagnostic test...
+======================================================================
+DIAGNOSTIC TEST: DB Connection & Import Paths
+======================================================================
+
+[1/6] Testing .env loading...
+  .env path: /Users/austinprofenius/snapandtrack-model-testing/tests/.env
+  .env exists: False
+  NEON_CONNECTION_URL loaded: ✓ YES
+  Connection string: postgresql:***@ep-crimson-scene-a58zqsct-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+[2/6] Testing Python paths...
+  nutritionverse-tests path: /Users/austinprofenius/snapandtrack-model-testing/tests/nutritionverse-tests
+  Exists: False
+  Added to sys.path: /Users/austinprofenius/snapandtrack-model-testing/tests/nutritionverse-tests
+
+[3/6] Testing FDCDatabase import...
+  ✓ FDCDatabase imported successfully
+
+[4/6] Testing FDCDatabase connection...
+  ✓ FDCDatabase instantiated
+  ✓ Search query succeeded: found 5 results
+    Sample: N/A
+
+[5/6] Testing config_loader import...
+  pipeline path: /Users/austinprofenius/snapandtrack-model-testing/tests/pipeline
+  Exists: False
+  Added to sys.path: /Users/austinprofenius/snapandtrack-model-testing/tests/pipeline
+  ✓ config_loader imported successfully
+  ✗ Config loading failed: Required config file not found: /Users/austinprofenius/snapandtrack-model-testing/tests/configs/class_thresholds.yml
+Run config externalization step first.
+
+[6/6] Testing AlignmentEngineAdapter...
+  ✓ AlignmentEngineAdapter imported successfully
+  ✓ AlignmentEngineAdapter instantiated
+[ADAPTER] Auto-initializing alignment engine and database...
+[ADAPTER] FDC Database initialized
+[CONFIG] Using configs at: /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Loaded configs from /Users/austinprofenius/snapandtrack-model-testing/configs
+[ADAPTER] Config version: configs@a65cd030a277
+[ADAPTER] Alignment engine initialized with configs
+[ADAPTER] ===== Starting batch alignment (Stage 5 Engine) =====
+[ADAPTER] DB Available: True
+[ADAPTER] Processing 1 foods
+[ADAPTER] [1/1] Aligning: apple (raw)
+[ADAPTER]   ✓ Matched: Croissants apple (stage=stage1b_raw_foundation_direct, conversion=False)
+[ADAPTER] ===== Batch alignment complete =====
+[ADAPTER] Conversion rate: 0.0%
+[ADAPTER] Stage 5 proxy count: 0
+[ADAPTER] Stage distribution: {'stage1b_raw_foundation_direct': 1}
+  ✓ Alignment succeeded
+    Matched: Croissants apple (stage=stage1b_raw_foundation_direct)
+
+======================================================================
+DIAGNOSTIC TEST COMPLETE
+======================================================================
+
+==========================================
+  Test Complete
+==========================================
+(.venv) (base) austinprofenius@Mac snapandtrack-model-testing % 
