@@ -458,3 +458,36 @@ class AlignmentEngineAdapter:
             "totals": totals,
             "telemetry": telemetry  # NEW: Include telemetry
         }
+
+    def run_from_prediction_dict(self, prediction: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Run alignment from a prediction dict (for replay functionality).
+
+        This method accepts a normalized prediction dict from the parser
+        and runs alignment without calling vision API.
+
+        Args:
+            prediction: Normalized prediction dict with:
+                - foods: List of food dicts
+                - prediction_id: Stable identifier
+                - prediction_hash: Hash of foods array
+                - metadata: Original metadata
+
+        Returns:
+            Alignment result dict with source tracking
+        """
+        # Extract foods from prediction
+        foods_list = prediction.get('foods', [])
+
+        # Run alignment using existing batch method
+        result = self.align_prediction_batch({"foods": foods_list})
+
+        # Add replay-specific metadata
+        result['prediction_id'] = prediction.get('prediction_id')
+        result['prediction_hash'] = prediction.get('prediction_hash')
+        result['input_schema_version'] = prediction.get('input_schema_version')
+
+        # Ensure source is set to prediction_replay
+        result['source'] = 'prediction_replay'
+
+        return result

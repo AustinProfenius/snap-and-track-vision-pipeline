@@ -44,84 +44,12 @@ class BatchResultsAnalyzer:
         self.metadata = self.data.get("metadata", {})
 
     def _load_results(self) -> Dict[str, Any]:
-        """
-        Load results from JSON file, JSONL file, or replay directory.
-
-        Supports three formats:
-        1. Regular batch JSON (legacy format with 'items' array)
-        2. JSONL file (one JSON object per line)
-        3. Replay directory with replay_manifest.json + results.jsonl
-
-        Returns:
-            Dict with 'items' array and 'metadata' dict
-        """
+        """Load results JSON file."""
         if not self.results_path.exists():
             raise FileNotFoundError(f"Results file not found: {self.results_path}")
 
-        # Case 1: Directory with replay_manifest.json (prediction replay output)
-        if self.results_path.is_dir():
-            manifest_file = self.results_path / "replay_manifest.json"
-            results_file = self.results_path / "results.jsonl"
-
-            if not manifest_file.exists():
-                raise FileNotFoundError(f"No replay_manifest.json found in {self.results_path}")
-            if not results_file.exists():
-                raise FileNotFoundError(f"No results.jsonl found in {self.results_path}")
-
-            # Load manifest
-            with open(manifest_file) as f:
-                self.manifest = json.load(f)
-                self.source = self.manifest.get("source", "prediction_replay")
-
-            # Load JSONL results
-            items = []
-            with open(results_file) as f:
-                for line in f:
-                    if line.strip():
-                        items.append(json.loads(line))
-
-            return {
-                "items": items,
-                "metadata": {
-                    "source": self.source,
-                    "manifest": self.manifest
-                }
-            }
-
-        # Case 2: JSONL file (one object per line)
-        if self.results_path.suffix == '.jsonl':
-            items = []
-            with open(self.results_path) as f:
-                for line in f:
-                    if line.strip():
-                        item = json.loads(line)
-                        items.append(item)
-                        # Detect source from first item
-                        if not self.source and 'source' in item:
-                            self.source = item['source']
-
-            return {
-                "items": items,
-                "metadata": {
-                    "source": self.source or "unknown"
-                }
-            }
-
-        # Case 3: Regular JSON file (legacy batch format)
         with open(self.results_path) as f:
-            data = json.load(f)
-
-            # Detect source
-            if 'items' in data and len(data['items']) > 0:
-                first_item = data['items'][0]
-                if 'source' in first_item:
-                    self.source = first_item['source']
-
-            # Set default source for legacy format
-            if not self.source:
-                self.source = "dataset_metadata"
-
-            return data
+            return json.load(f)
 
     def analyze_misses(self) -> Dict[str, Any]:
         """
