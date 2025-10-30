@@ -1094,6 +1094,33 @@ fallbacks:
       - 25
     alternates: []
   # Phase Z3: Additional verified fallbacks for proteins, starches, and vegetables
+  # Phase Z3.2: Roasted vegetable entries (base names for fallback resolver)
+  brussels_sprouts:
+    synonyms:
+    - brussels sprouts
+    - brussels sprout
+    - brussel sprouts
+    - brussel sprout
+    primary:
+      brand: Generic
+      fdc_id: 170379  # Brussels sprouts, cooked, boiled
+      kcal_per_100g:
+      - 25
+      - 65
+      db_verified: true
+    alternates: []
+  cauliflower:
+    synonyms:
+    - cauliflower
+    - cauliflower florets
+    primary:
+      brand: Generic
+      fdc_id: 170390  # Cauliflower, cooked, boiled
+      kcal_per_100g:
+      - 5
+      - 55
+      db_verified: true
+    alternates: []
   egg_white:
     synonyms:
     - egg white
@@ -1125,12 +1152,18 @@ fallbacks:
     - sweet potato roasted
     - roasted sweet potato
     - sweet potatoes roasted
+    - sweet potato baked
+    - baked sweet potato
+    - sweet potatoes baked
+    - sweet potato grilled
+    - grilled sweet potato
     primary:
       brand: Generic
       fdc_id: 168482  # Sweet potato, cooked, baked in skin
       kcal_per_100g:
       - 85
       - 120
+      db_verified: true
     alternates: []
   rice_white_cooked:
     synonyms:
@@ -1163,23 +1196,34 @@ fallbacks:
     - brussels sprouts roasted
     - roasted brussels sprouts
     - brussels sprout roasted
+    - brussels sprouts baked
+    - baked brussels sprouts
+    - brussels sprout baked
+    - brussels sprouts grilled
+    - grilled brussels sprouts
     primary:
       brand: Generic
       fdc_id: 170379  # Brussels sprouts, cooked, boiled
       kcal_per_100g:
       - 35
       - 60
+      db_verified: true
     alternates: []
   cauliflower_roasted:
     synonyms:
     - cauliflower roasted
     - roasted cauliflower
+    - cauliflower baked
+    - baked cauliflower
+    - cauliflower grilled
+    - grilled cauliflower
     primary:
       brand: Generic
       fdc_id: 170390  # Cauliflower, cooked, boiled
       kcal_per_100g:
       - 20
       - 50
+      db_verified: true
     alternates: []
   hash_browns:
     synonyms:

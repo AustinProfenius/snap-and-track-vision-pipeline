@@ -1129,19 +1129,32 @@ class FDCAlignmentWithConversion:
         # All rejected = had candidates to score but no winner selected
         all_candidates_rejected = had_candidates_to_score and (chosen is None)
 
+        # Phase Z3.2: Compute roasted vegetable intent
+        inferred_form = _infer_cooked_form_from_tokens(predicted_name)
+        roasted_tokens = ["roasted", "baked", "grilled", "air fried", "air-fried"]
+        is_roasted_veg = (
+            class_intent in ["leafy_or_crucifer", "produce"] and
+            inferred_form == "cooked" and
+            any(token in predicted_name.lower() for token in roasted_tokens)
+        )
+
         # Determine if Stage Z should be attempted
-        # Phase Z3: Added class_intent trigger to unblock produce vegetables
+        # Phase Z3.2: Updated eligibility - removed unconditional produce trigger
         should_try_stageZ = (
             candidate_pool_size == 0 or  # No candidates at all
             all_candidates_rejected or    # Had candidates but all rejected
-            (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False) or
-            class_intent in ["leafy_or_crucifer", "produce"]  # Phase Z3: Produce vegetables eligible for Stage Z
+            is_roasted_veg or             # Phase Z3.2: Roasted vegetable explicit gate
+            (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False)
         )
+
+        # Phase Z3.2: Verbose logging for roasted vegetable forcing
+        if is_roasted_veg and os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[ALIGN] Forcing Stage Z attempt for roasted vegetable: {predicted_name}")
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Stage Z eligibility: pool_size={candidate_pool_size}, "
                   f"all_rejected={all_candidates_rejected}, had_candidates={had_candidates_to_score}, "
-                  f"chosen={chosen is not None}, should_try={should_try_stageZ}")
+                  f"is_roasted_veg={is_roasted_veg}, chosen={chosen is not None}, should_try={should_try_stageZ}")
 
         # Guard to prevent Stage Z from running twice
         stageZ_attempted = False
@@ -1244,6 +1257,14 @@ class FDCAlignmentWithConversion:
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] ✗ No candidates matched")
 
+        # Phase Z3.2: CI-only defensive check for attempted_stages
+        if os.getenv("ALIGN_STRICT_ASSERTS", "0") == "1" and not attempted_stages:
+            raise AssertionError(
+                f"[Z3.2] No stages attempted for {predicted_name} "
+                f"(form={predicted_form}, pool={len(fdc_entries)}, "
+                f"raw_found={len(raw_foundation)}, cooked_found={len(cooked_sr_legacy)})"
+            )
+
         return self._build_result(
             None, "stage0_no_candidates", adjusted_confidence, method, method_reason,
             stage1_blocked=stage1_blocked,
@@ -1252,7 +1273,8 @@ class FDCAlignmentWithConversion:
             candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
             candidate_pool_branded=len(branded),
             class_intent=class_intent,
-            form_intent=form_intent
+            form_intent=form_intent,
+            attempted_stages=attempted_stages  # Phase Z3.2: Always attach attempted_stages
         )
 
     def _stage1_cooked_exact(
