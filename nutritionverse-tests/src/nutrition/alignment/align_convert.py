@@ -92,6 +92,66 @@ def _contains_any(haystack: str, needles: List[str]) -> bool:
     return False
 
 
+# Phase Z3: Advisory cooked/raw form inference
+def _infer_cooked_form_from_tokens(predicted_name: str) -> Optional[str]:
+    """
+    Phase Z3: Advisory form inference from cooking method tokens.
+
+    Returns "cooked", "raw", or None (ambiguous).
+    This is ADVISORY only - used for small score adjustments (+0.05/-0.10),
+    never to force alignment paths or bypass Stage 2.
+
+    Args:
+        predicted_name: Food name to analyze
+
+    Returns:
+        "cooked" if cooking method detected, "raw" if raw token present, None otherwise
+    """
+    if not predicted_name:
+        return None
+
+    name_lower = predicted_name.lower()
+
+    # Check for cooking method tokens (cooked form)
+    cooked_tokens = ["roast", "bake", "boil", "steam", "grill", "fry", "sauté", "pan", "fried"]
+    if any(token in name_lower for token in cooked_tokens):
+        return "cooked"
+
+    # Check for raw indicators
+    if "raw" in name_lower or "fresh" in name_lower:
+        return "raw"
+
+    return None  # Ambiguous
+
+
+# Phase Z3: Vegetable class intent for Stage Z eligibility
+_PRODUCE_VEGETABLES = [
+    "yellow squash", "zucchini", "asparagus", "pumpkin",
+    "bell pepper", "corn", "eggplant", "brussels sprouts",
+    "cauliflower", "broccoli"
+]
+
+
+def _is_produce_vegetable(predicted_name: str) -> bool:
+    """
+    Phase Z3: Check if food is a produce vegetable for Stage Z eligibility.
+
+    When Foundation/SR fails for these items, Stage Z becomes eligible
+    (subject to allow_stageZ_for_partial_pools flag).
+
+    Args:
+        predicted_name: Food name to check
+
+    Returns:
+        True if matches produce vegetable list
+    """
+    if not predicted_name:
+        return False
+
+    name_lower = predicted_name.lower()
+    return any(veg in name_lower for veg in _PRODUCE_VEGETABLES)
+
+
 # Stage 1c: Raw-first preference helpers
 # Default lists; can be overridden by config if present
 _STAGE1C_PROCESSED_TERMS_DEFAULT = [
@@ -213,6 +273,10 @@ def _derive_class_intent(predicted_name: str) -> Optional[str]:
                                 "romaine", "spring mix", "arugula", "mesclun"]):
         is_leafy = True
 
+    # Phase Z3: Additional cruciferous vegetables (brussels sprouts, cauliflower)
+    if any(k in name for k in ["brussels sprout", "cauliflower"]):
+        is_leafy = True
+
     # Fruits (expanded lexicon)
     if any(k in name for k in ["apple", "strawberry", "raspberry", "blackberry",
                                 "grape", "melon", "watermelon", "cantaloupe", "orange",
@@ -222,6 +286,11 @@ def _derive_class_intent(predicted_name: str) -> Optional[str]:
     # Vegetables
     if any(k in name for k in ["cucumber", "tomato", "pepper", "carrot", "celery",
                                 "avocado", "mushroom"]):
+        is_produce = True
+
+    # Phase Z3: Additional produce vegetables for Stage Z eligibility
+    if any(k in name for k in ["yellow squash", "zucchini", "asparagus", "pumpkin",
+                                "corn", "eggplant"]):
         is_produce = True
 
     # Potatoes/tubers
@@ -729,7 +798,8 @@ class FDCAlignmentWithConversion:
                     return result
 
             # NEW: Try Stage 1c (cooked SR direct) for cooked proteins BEFORE Stage 2
-            if predicted_form in {"cooked", "fried", "grilled", "pan_seared", "boiled", "scrambled", "baked", "poached"}:
+            # Phase Z3: Added "roasted" and "steamed" to trigger cooked flow
+            if predicted_form in {"cooked", "fried", "grilled", "pan_seared", "boiled", "scrambled", "baked", "poached", "roasted", "steamed"}:
                 attempted_stages.append("stage1c")
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] Trying Stage 1c (cooked SR direct) for cooked protein...")
@@ -1046,10 +1116,12 @@ class FDCAlignmentWithConversion:
         all_candidates_rejected = had_candidates_to_score and (chosen is None)
 
         # Determine if Stage Z should be attempted
+        # Phase Z3: Added class_intent trigger to unblock produce vegetables
         should_try_stageZ = (
             candidate_pool_size == 0 or  # No candidates at all
             all_candidates_rejected or    # Had candidates but all rejected
-            (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False)
+            (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False) or
+            class_intent in ["leafy_or_crucifer", "produce"]  # Phase Z3: Produce vegetables eligible for Stage Z
         )
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -3192,6 +3264,11 @@ class FDCAlignmentWithConversion:
                 "candidate_pool_cooked_sr_legacy": candidate_pool_cooked_sr_legacy,
                 "candidate_pool_branded": candidate_pool_branded,
                 "attempted_stages": attempted_stages if attempted_stages else [],
+                # Phase Z3: Add class_intent and form_intent to Stage 0 telemetry
+                "class_intent": class_intent,
+                "form_intent": form_intent,
+                "guardrail_produce_applied": bool(class_intent in ["produce", "leafy_or_crucifer"]),
+                "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
             }
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':

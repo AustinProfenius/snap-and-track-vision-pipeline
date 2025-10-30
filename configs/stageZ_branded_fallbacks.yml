@@ -1093,3 +1093,116 @@ fallbacks:
       - 10
       - 25
     alternates: []
+  # Phase Z3: Additional verified fallbacks for proteins, starches, and vegetables
+  egg_white:
+    synonyms:
+    - egg white
+    - egg whites
+    - whites
+    - egg white only
+    primary:
+      brand: Generic
+      fdc_id: 748967  # Egg white, raw, fresh
+      kcal_per_100g:
+      - 48
+      - 58
+    alternates: []
+  potato_roasted:
+    synonyms:
+    - potato roasted
+    - potatoes roasted
+    - roasted potato
+    - roasted potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170032  # Potatoes, baked, flesh and skin
+      kcal_per_100g:
+      - 85
+      - 135
+    alternates: []
+  sweet_potato_roasted:
+    synonyms:
+    - sweet potato roasted
+    - roasted sweet potato
+    - sweet potatoes roasted
+    primary:
+      brand: Generic
+      fdc_id: 168482  # Sweet potato, cooked, baked in skin
+      kcal_per_100g:
+      - 85
+      - 120
+    alternates: []
+  rice_white_cooked:
+    synonyms:
+    - rice cooked
+    - cooked rice
+    - white rice cooked
+    - cooked white rice
+    - rice
+    primary:
+      brand: Generic
+      fdc_id: 168878  # Rice, white, long-grain, regular, cooked
+      kcal_per_100g:
+      - 110
+      - 145
+    alternates: []
+  rice_brown_cooked:
+    synonyms:
+    - brown rice cooked
+    - cooked brown rice
+    - brown rice
+    primary:
+      brand: Generic
+      fdc_id: 168876  # Rice, brown, long-grain, cooked
+      kcal_per_100g:
+      - 108
+      - 130
+    alternates: []
+  brussels_sprouts_roasted:
+    synonyms:
+    - brussels sprouts roasted
+    - roasted brussels sprouts
+    - brussels sprout roasted
+    primary:
+      brand: Generic
+      fdc_id: 170379  # Brussels sprouts, cooked, boiled
+      kcal_per_100g:
+      - 35
+      - 60
+    alternates: []
+  cauliflower_roasted:
+    synonyms:
+    - cauliflower roasted
+    - roasted cauliflower
+    primary:
+      brand: Generic
+      fdc_id: 170390  # Cauliflower, cooked, boiled
+      kcal_per_100g:
+      - 20
+      - 50
+    alternates: []
+  hash_browns:
+    synonyms:
+    - hash browns
+    - hashbrowns
+    - hash brown potatoes
+    - hashbrown potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170033  # Potatoes, hash brown, home-prepared
+      kcal_per_100g:
+      - 140
+      - 230
+    alternates: []
+  bagel_plain:
+    synonyms:
+    - bagel
+    - plain bagel
+    - bagel plain
+    primary:
+      brand: Generic
+      fdc_id: 172676  # Bagels, plain, enriched
+      kcal_per_100g:
+      - 245
+      - 285
+    alternates: []
