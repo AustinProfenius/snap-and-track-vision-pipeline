@@ -154,6 +154,10 @@ class AlignmentEngineAdapter:
             )
             print(f"[ADAPTER] Alignment engine initialized with configs")
 
+            # Phase Z3.1: Feature flag enforcement - ensure flags are properly wired
+            assert self.alignment_engine._external_feature_flags is not None, \
+                "[Z3.1] Feature flags must be wired through adapter (got None)"
+
             self.db_available = True
 
         except Exception as e:

@@ -582,6 +582,107 @@ class BatchResultsAnalyzer:
 
         return "\n".join(report_lines)
 
+    def normalize_record(self, rec: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Normalize a single record to handle schema differences between old/new formats.
+
+        Phase Z3.1: Unify field names across schema versions for accurate delta comparison.
+
+        Args:
+            rec: Raw record from results file
+
+        Returns:
+            Normalized record with unified field names
+        """
+        normalized = rec.copy()
+        telemetry = rec.get("telemetry", {})
+
+        # Normalize alignment_stage (handle both direct and nested)
+        if "alignment_stage" not in normalized and "telemetry" in rec:
+            normalized["alignment_stage"] = telemetry.get("alignment_stage", "unknown")
+
+        # Normalize stageZ telemetry (handle both old and new structure)
+        if "stageZ_branded_fallback" in telemetry:
+            stagez_data = telemetry["stageZ_branded_fallback"]
+            # Ensure consistent structure
+            if isinstance(stagez_data, dict):
+                normalized["stageZ_info"] = {
+                    "source": stagez_data.get("source", stagez_data.get("fallback_source")),
+                    "coverage_class": stagez_data.get("coverage_class", "branded_generic"),
+                    "fdc_id": stagez_data.get("fdc_id"),
+                    "brand": stagez_data.get("brand")
+                }
+
+        # Normalize candidate pool fields (old format had separate counts)
+        if "candidate_pool_total" in telemetry and "candidate_pool_size" not in telemetry:
+            normalized["telemetry"]["candidate_pool_size"] = telemetry["candidate_pool_total"]
+
+        # Normalize method/form fields
+        if "method" not in normalized and "telemetry" in rec:
+            normalized["method"] = telemetry.get("method", telemetry.get("cooking_method"))
+
+        return normalized
+
+    def compare_with_baseline(self, baseline_path: str) -> Dict[str, Any]:
+        """
+        Compare current results with baseline using normalized records.
+
+        Phase Z3.1: Enhanced comparison with schema-aware normalization.
+
+        Args:
+            baseline_path: Path to baseline results
+
+        Returns:
+            Dict with comparison metrics and deltas
+        """
+        baseline_analyzer = BatchResultsAnalyzer(baseline_path, verbose=False)
+
+        # Normalize both datasets
+        current_items_normalized = [self.normalize_record(item) for item in self.items]
+        baseline_items_normalized = [self.normalize_record(item) for item in baseline_analyzer.items]
+
+        # Analyze both
+        current_misses = self.analyze_misses()
+        baseline_misses = baseline_analyzer.analyze_misses()
+
+        current_stage_dist = self.analyze_stage_distribution()
+        baseline_stage_dist = baseline_analyzer.analyze_stage_distribution()
+
+        # Calculate deltas
+        delta_unique_misses = current_misses["unique_foods"] - baseline_misses["unique_foods"]
+        delta_miss_rate = (current_misses["miss_rate"] - baseline_misses["miss_rate"]) * 100
+
+        # Stage Z comparison
+        current_stagez = sum(1 for item in current_items_normalized
+                            if item.get("alignment_stage") == "stageZ_branded_fallback")
+        baseline_stagez = sum(1 for item in baseline_items_normalized
+                             if item.get("alignment_stage") == "stageZ_branded_fallback")
+
+        delta_stagez = current_stagez - baseline_stagez
+        delta_stagez_pct = (current_stagez / len(current_items_normalized) * 100) - \
+                          (baseline_stagez / len(baseline_items_normalized) * 100)
+
+        return {
+            "baseline": {
+                "total_items": len(baseline_items_normalized),
+                "unique_misses": baseline_misses["unique_foods"],
+                "miss_rate": baseline_misses["miss_rate"] * 100,
+                "stagez_usage": baseline_stagez
+            },
+            "current": {
+                "total_items": len(current_items_normalized),
+                "unique_misses": current_misses["unique_foods"],
+                "miss_rate": current_misses["miss_rate"] * 100,
+                "stagez_usage": current_stagez
+            },
+            "deltas": {
+                "unique_misses": delta_unique_misses,
+                "miss_rate_pct": delta_miss_rate,
+                "stagez_usage": delta_stagez,
+                "stagez_pct": delta_stagez_pct
+            }
+        }
+
     def save_detailed_analysis(self, output_path: str):
         """
         Save detailed analysis to JSON.
@@ -647,27 +748,53 @@ def main():
     # Compare with baseline if provided
     if args.compare:
         print("\n" + "=" * 80)
-        print("COMPARISON WITH BASELINE")
+        print("COMPARISON WITH BASELINE (Phase Z3.1 Enhanced)")
         print("=" * 80)
 
-        baseline_analyzer = BatchResultsAnalyzer(args.compare, verbose=False)
+        comparison = analyzer.compare_with_baseline(args.compare)
 
-        current_misses = analyzer.analyze_misses()
-        baseline_misses = baseline_analyzer.analyze_misses()
+        baseline = comparison["baseline"]
+        current = comparison["current"]
+        deltas = comparison["deltas"]
 
-        current_unique = current_misses["unique_foods"]
-        baseline_unique = baseline_misses["unique_foods"]
+        print(f"Baseline:")
+        print(f"  Total items: {baseline['total_items']}")
+        print(f"  Unique misses: {baseline['unique_misses']}")
+        print(f"  Miss rate: {baseline['miss_rate']:.1f}%")
+        print(f"  Stage Z usage: {baseline['stagez_usage']}")
+        print()
 
-        print(f"Baseline unique misses: {baseline_unique}")
-        print(f"Current unique misses: {current_unique}")
-        print(f"Reduction: {baseline_unique - current_unique} ({((baseline_unique - current_unique) / baseline_unique * 100):.1f}%)")
+        print(f"Current:")
+        print(f"  Total items: {current['total_items']}")
+        print(f"  Unique misses: {current['unique_misses']}")
+        print(f"  Miss rate: {current['miss_rate']:.1f}%")
+        print(f"  Stage Z usage: {current['stagez_usage']}")
+        print()
 
-        if current_unique <= 10 and baseline_unique > 10:
-            print("\n✅ PHASE Z2 TARGET ACHIEVED!")
-        elif current_unique < baseline_unique:
-            print(f"\n✅ IMPROVEMENT: Reduced misses by {baseline_unique - current_unique}")
+        print(f"Deltas:")
+        delta_unique = deltas['unique_misses']
+        delta_miss = deltas['miss_rate_pct']
+        delta_stagez = deltas['stagez_usage']
+        delta_stagez_pct = deltas['stagez_pct']
+
+        # Color-coded deltas
+        unique_symbol = "✅" if delta_unique < 0 else ("⚠️" if delta_unique == 0 else "❌")
+        miss_symbol = "✅" if delta_miss < 0 else ("⚠️" if delta_miss == 0 else "❌")
+        stagez_symbol = "✅" if delta_stagez > 0 else ("⚠️" if delta_stagez == 0 else "❌")
+
+        print(f"  Unique misses: {delta_unique:+d} {unique_symbol}")
+        print(f"  Miss rate: {delta_miss:+.1f}% {miss_symbol}")
+        print(f"  Stage Z usage: {delta_stagez:+d} ({delta_stagez_pct:+.1f}%) {stagez_symbol}")
+
+        # Overall assessment
+        if delta_unique < 0 and delta_stagez > 0:
+            print("\n✅ IMPROVEMENT: Reduced misses and increased Stage Z coverage!")
+        elif delta_unique < 0:
+            print("\n✅ IMPROVEMENT: Reduced misses")
+        elif delta_stagez > 0:
+            print("\n⚠️ MIXED: Increased Stage Z but misses not reduced")
         else:
-            print(f"\n❌ NO IMPROVEMENT: Misses increased by {current_unique - baseline_unique}")
+            print(f"\n❌ REGRESSION: Misses increased or no improvement")
 
 
 if __name__ == "__main__":

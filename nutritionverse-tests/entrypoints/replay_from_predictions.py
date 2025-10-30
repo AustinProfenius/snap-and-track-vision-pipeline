@@ -33,6 +33,41 @@ class DecimalEncoder(json.JSONEncoder):
         return super().default(obj)
 
 
+def _compact_telemetry(telemetry_records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Phase Z3.1: Slim telemetry by removing redundant fields and limiting candidate snippets.
+
+    Removes:
+    - candidate_pool_raw_foundation (redundant with candidate_pool_size)
+    - candidate_pool_cooked_sr_legacy (redundant)
+    - candidate_pool_branded (redundant)
+
+    Limits:
+    - Top 3 candidate snippets only
+    - Deduplicate queries_tried
+    """
+    compacted = []
+    for record in telemetry_records:
+        slim_record = record.copy()
+
+        # Remove redundant candidate pool fields
+        slim_record.pop('candidate_pool_raw_foundation', None)
+        slim_record.pop('candidate_pool_cooked_sr_legacy', None)
+        slim_record.pop('candidate_pool_branded', None)
+
+        # Limit candidate snippets to top 3
+        if 'candidates' in slim_record and isinstance(slim_record['candidates'], list):
+            slim_record['candidates'] = slim_record['candidates'][:3]
+
+        # Deduplicate queries_tried
+        if 'queries_tried' in slim_record and isinstance(slim_record['queries_tried'], list):
+            slim_record['queries_tried'] = list(dict.fromkeys(slim_record['queries_tried']))
+
+        compacted.append(slim_record)
+
+    return compacted
+
+
 def load_config_yaml(file_path: Path) -> Dict[str, Any]:
     """Load YAML config file."""
     with open(file_path) as f:
@@ -88,7 +123,8 @@ def run_replay(
     output_dir: Path,
     schema: str = "auto",
     limit: int = None,
-    config_dir: Path = None
+    config_dir: Path = None,
+    compact_telemetry: bool = False
 ) -> Dict[str, Any]:
     """
     Run prediction replay.
@@ -99,6 +135,7 @@ def run_replay(
         schema: Schema version
         limit: Optional limit on number of predictions to process
         config_dir: Config directory path (optional, uses auto-detection if not provided)
+        compact_telemetry: Phase Z3.1: If True, slim telemetry output
 
     Returns:
         Replay manifest dict
@@ -196,6 +233,11 @@ def run_replay(
             f.write(json.dumps(result, cls=DecimalEncoder) + '\n')
     print(f"\n✓ Results written to: {results_file}")
 
+    # Phase Z3.1: Apply telemetry compaction if requested
+    if compact_telemetry:
+        telemetry_records = _compact_telemetry(telemetry_records)
+        print(f"[Z3.1] Applied telemetry compaction")
+
     # Write telemetry
     telemetry_file = output_dir / "telemetry.jsonl"
     with open(telemetry_file, 'w') as f:
@@ -287,6 +329,11 @@ def main():
         default=None,
         help="Config directory path (default: auto-detect from repo root)"
     )
+    parser.add_argument(
+        "--compact-telemetry",
+        action="store_true",
+        help="Phase Z3.1: Slim telemetry (remove redundant fields, limit candidate snippets)"
+    )
 
     args = parser.parse_args()
 
@@ -320,7 +367,8 @@ def main():
         output_dir=output_dir,
         schema=args.schema,
         limit=args.limit,
-        config_dir=args.config_dir
+        config_dir=args.config_dir,
+        compact_telemetry=args.compact_telemetry
     )
 
     print("\n" + "=" * 80)

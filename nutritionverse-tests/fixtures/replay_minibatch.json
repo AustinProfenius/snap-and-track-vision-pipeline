@@ -1,0 +1,138 @@
+{
+  "timestamp": "20251030_minibatch_test",
+  "model": "test",
+  "test_mode": "Phase Z3.1 Mini-Replay Fixture",
+  "total_images": 5,
+  "results": [
+    {
+      "dish_id": "minibatch_test_001",
+      "image_filename": "minibatch_test_001.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "brussels sprouts",
+            "form": "roasted",
+            "mass_g": 90,
+            "confidence": 0.8
+          },
+          {
+            "name": "scrambled eggs",
+            "form": "pan_seared",
+            "mass_g": 120,
+            "confidence": 0.85
+          },
+          {
+            "name": "broccoli florets",
+            "form": "steamed",
+            "mass_g": 80,
+            "confidence": 0.9
+          }
+        ]
+      }
+    },
+    {
+      "dish_id": "minibatch_test_002",
+      "image_filename": "minibatch_test_002.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "sweet potato",
+            "form": "roasted",
+            "mass_g": 150,
+            "confidence": 0.82
+          },
+          {
+            "name": "cauliflower",
+            "form": "roasted",
+            "mass_g": 75,
+            "confidence": 0.88
+          },
+          {
+            "name": "celery",
+            "form": "raw",
+            "mass_g": 50,
+            "confidence": 0.85
+          }
+        ]
+      }
+    },
+    {
+      "dish_id": "minibatch_test_003",
+      "image_filename": "minibatch_test_003.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "egg white",
+            "form": "cooked",
+            "mass_g": 60,
+            "confidence": 0.87
+          },
+          {
+            "name": "rice",
+            "form": "cooked",
+            "mass_g": 180,
+            "confidence": 0.9
+          },
+          {
+            "name": "bell pepper",
+            "form": "raw",
+            "mass_g": 65,
+            "confidence": 0.83
+          }
+        ]
+      }
+    },
+    {
+      "dish_id": "minibatch_test_004",
+      "image_filename": "minibatch_test_004.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "hash browns",
+            "form": "fried",
+            "mass_g": 110,
+            "confidence": 0.86
+          },
+          {
+            "name": "bagel",
+            "form": "plain",
+            "mass_g": 95,
+            "confidence": 0.91
+          },
+          {
+            "name": "carrot",
+            "form": "raw",
+            "mass_g": 70,
+            "confidence": 0.84
+          }
+        ]
+      }
+    },
+    {
+      "dish_id": "minibatch_test_005",
+      "image_filename": "minibatch_test_005.png",
+      "prediction": {
+        "foods": [
+          {
+            "name": "steak",
+            "form": "grilled",
+            "mass_g": 200,
+            "confidence": 0.89
+          },
+          {
+            "name": "asparagus",
+            "form": "roasted",
+            "mass_g": 85,
+            "confidence": 0.87
+          },
+          {
+            "name": "potato",
+            "form": "roasted",
+            "mass_g": 140,
+            "confidence": 0.88
+          }
+        ]
+      }
+    }
+  ]
+}

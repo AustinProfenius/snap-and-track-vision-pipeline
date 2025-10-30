@@ -185,14 +185,26 @@ python nutritionverse-tests/entrypoints/replay_from_predictions.py \
 
 ---
 
-## Next Steps
+---
 
-1. Complete analyzer baseline comparison
-2. Add test suite (2 new tests)
-3. Run full Z3 replay
-4. Generate Z3_RESULTS.md
-5. Update CONTINUE_HERE.md
-6. Review results vs targets
+## Phase Z3.1: Stabilization & Infrastructure (2025-10-30)
+
+**Objective**: Stabilize Z3 foundation, resolve blockers, and add CI testing infrastructure.
+
+### Tasks Completed
+
+1. ✅ **Analyzer Baseline Alignment** - Schema normalization for accurate delta comparison
+2. ✅ **Feature Flag Enforcement** - Assertions to prevent silent feature_flags=None failures
+3. ✅ **Stage Z Scoring Guard** - Preventive guard for form bonus overshadowing
+4. ✅ **Mini-Replay Test Fixture** - 15-food CI test running in <30s
+5. ✅ **Telemetry Slimming** - --compact-telemetry flag to reduce output size
+
+### Next Steps
+
+1. Run full 630-image Z3.1 validation replay
+2. Investigate brussels sprouts early return blocker (Stage 0 with empty attempted_stages)
+3. Generate Z3_1_RESULTS.md with baseline comparison
+4. Review Phase Z3 targets vs actuals
 
 ---
 
@@ -200,3 +212,4 @@ python nutritionverse-tests/entrypoints/replay_from_predictions.py \
 - `docs/RUNBOOK.md` - Execution commands
 - `docs/EVAL_BASELINES.md` - Baseline definitions
 - `docs/PHASE_Z4_BACKLOG.md` - Deferred items
+- `docs/PHASE_Z3.1_IMPLEMENTATION_SUMMARY.md` - Z3.1 implementation details

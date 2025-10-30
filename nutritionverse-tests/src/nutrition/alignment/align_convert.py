@@ -601,6 +601,11 @@ class FDCAlignmentWithConversion:
         self._external_stageZ_branded_fallbacks = stageZ_branded_fallbacks or {}  # Phase 7.4
         self._fdc_db = fdc_db  # Phase 7: Store DB reference for Stage 5 proxy
 
+        # Phase Z3.1: Warn if Stage Z for partial pools is disabled
+        if self._external_feature_flags:
+            if not self._external_feature_flags.get('allow_stageZ_for_partial_pools', False):
+                print("[WARN] Stage Z for partial pools disabled via feature flags")
+
         # Phase 7.3: Extract salad decomposition config and initialize component cache
         self._external_salad_decomp = {}
         if isinstance(proxy_rules, dict) and "salad_decomposition" in proxy_rules:
@@ -929,6 +934,15 @@ class FDCAlignmentWithConversion:
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         print(f"[ALIGN] ✓ Matched via StageZ Branded Fallback (egg exception): {entry.name}")
 
+                    # Phase Z3.1: Scoring guard for Stage Z entries
+                    # Prevent form bonus from overshadowing FDC similarity in Stage Z
+                    # NOTE: form_bonus not yet implemented, this guard will activate when added
+                    form_bonus = 0.0  # Placeholder for future form inference scoring
+                    if abs(form_bonus) > 0.06:
+                        form_bonus *= 0.5  # Halve form influence for Stage Z entries
+                        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                            print(f"[ALIGN] Stage Z scoring guard: halved form_bonus to {form_bonus:.3f}")
+
                     result = self._build_result(
                         entry, "stageZ_branded_fallback", adjusted_confidence, method, method_reason,
                         stage1_blocked=stage1_blocked,
@@ -1179,6 +1193,15 @@ class FDCAlignmentWithConversion:
                 entry, branded_telemetry = branded_result
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] ✓ Matched via StageZ Branded Fallback: {entry.name} (FDC {entry.fdc_id})")
+
+                # Phase Z3.1: Scoring guard for Stage Z entries
+                # Prevent form bonus from overshadowing FDC similarity in Stage Z
+                # NOTE: form_bonus not yet implemented, this guard will activate when added
+                form_bonus = 0.0  # Placeholder for future form inference scoring
+                if abs(form_bonus) > 0.06:
+                    form_bonus *= 0.5  # Halve form influence for Stage Z entries
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[ALIGN] Stage Z scoring guard: halved form_bonus to {form_bonus:.3f}")
 
                 result = self._build_result(
                     entry, "stageZ_branded_fallback", adjusted_confidence, method, method_reason,

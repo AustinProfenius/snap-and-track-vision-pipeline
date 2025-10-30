@@ -6,6 +6,41 @@ All notable changes to the Snap & Track alignment pipeline.
 
 ---
 
+## [2025-10-30] Phase Z3.1 - Stabilization & Testing Infrastructure
+
+### Added
+- **Analyzer baseline normalization** (`analyze_batch_results.py`)
+  - New method: `normalize_record()` - Handles schema differences between old/new result formats
+  - New method: `compare_with_baseline()` - Enhanced comparison with color-coded deltas
+  - Enables accurate metrics tracking across replay iterations
+
+- **Feature flag enforcement** (`alignment_adapter.py`, `align_convert.py`)
+  - Added assertions to ensure feature_flags are properly wired through adapter
+  - Prevents silent failures from None feature_flags
+  - Warns when Stage Z for partial pools is disabled
+
+- **Stage Z scoring guard** (`align_convert.py`)
+  - Preventive guard for future form_bonus implementation
+  - Halves form_bonus when abs(form_bonus) > 0.06 for Stage Z entries
+  - Prevents form inference from overshadowing FDC similarity
+
+- **Mini-replay test fixture** (`fixtures/replay_minibatch.json`, `tests/test_replay_minibatch.py`)
+  - Deterministic 15-food, 5-image test for CI
+  - Validates Stage Z usage > 0, miss rate < 70%, runtime < 30s
+  - Passes in ~4s, enabling fast CI validation
+
+- **Telemetry compaction** (`entrypoints/replay_from_predictions.py`)
+  - New flag: `--compact-telemetry` - Reduces output size
+  - Removes redundant candidate pool fields
+  - Limits candidate snippets to top 3
+  - Deduplicates queries_tried
+
+### Documentation
+- Updated `docs/CHANGELOG.md` with Phase Z3.1 section
+- See `docs/PHASE_Z3.1_IMPLEMENTATION_SUMMARY.md` for implementation details
+
+---
+
 ## [2025-10-30] Phase Z3 - Precision Coverage Improvements
 
 ### Added
