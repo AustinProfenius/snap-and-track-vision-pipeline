@@ -56,7 +56,7 @@ def get_first_50_dishes_sorted(test_dir):
     """Get first 50 dish IDs sorted alphabetically."""
     dish_images = list(Path(test_dir).glob("dish_*.png"))
     dish_ids = sorted([img.stem for img in dish_images])
-    return dish_ids[:3000]  # Return exactly 50
+    return dish_ids[:400]  # Return exactly 50
 
 
 def run_batch_test():

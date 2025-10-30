@@ -1,0 +1,104 @@
+,#,fdc_id,name,data_type,brand,food_category_id,protein_value,total_fat_value,carbohydrates_value,calories_value,serving_size
+,cod,2684444,Fish cod Atlantic wild caught raw,foundation_food,,Frozen Fish & Seafood,16.0688,0.6675,0.0000,0.0000,100.00
+,Baby carrots,2258587,Carrots baby raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.8050,0.1375,9.0787,0.0000,100.00
+,Banana,1105314,Bananas ripe and slightly ripe raw,foundation_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",0.8510,0.3335,26.4500,111.5500,115.00
+,steak,2727574,Beef top sirloin steak raw,foundation_food,,Other Meats,21.9750,5.7080,0.2180,0.0000,100.00
+,steak,2727573,Beef tenderloin steak raw,foundation_food,,Other Meats,21.0938,6.4560,0.1803,0.0000,100.00
+,steak,2727572,Beef short loin (NY strip steak) raw,foundation_food,,Other Meats,21.3250,11.5400,0.2212,0.0000,100.00
+,steak,2646174,Beef chuck roast boneless choice raw,foundation_food,,Other Meats,18.4000,17.8000,0.0000,0.0000,100.00
+,steak,2646173,Beef round top round boneless choice raw,foundation_food,,Other Meats,21.4750,5.7030,0.8520,0.0000,100.00
+,Beef,2514743,Beef ground 90 lean meat 10 fat raw,foundation_food,,Other Meats,18.1563,12.8500,0.0000,0.0000,100.00
+,Beef,2514744,Beef ground 80 lean meat 20 fat raw,foundation_food,,Other Meats,17.5313,19.4400,0.0000,0.0000,100.00
+,steak,2646172,Beef ribeye steak boneless choice raw,foundation_food,,Other Meats,18.7438,20.0400,0.0000,0.0000,100.00
+,steak,2646175,Beef flank steak boneless choice raw,foundation_food,,Other Meats,20.1313,9.3990,0.0000,0.0000,100.00
+,Bell pepper,2258590,Peppers bell red raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.8956,0.1256,6.6532,0.0000,100.00
+,Bell pepper,2258588,Peppers bell green raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.7150,0.1063,4.7781,0.0000,100.00
+,Bell pepper,2258589,Peppers bell yellow raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.8194,0.1211,6.6017,0.0000,100.00
+,Bell pepper,2258591,Peppers bell orange raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.8819,0.1556,6.7031,0.0000,100.00
+,Blue cheese,2665477,BLUE CHEESE BLUE,branded_food,MARKETSIDE,Cheese,21.4300,28.5700,3.5700,357.0000,100.00
+,Blue cheese,2495613,BLUE CHEESE BLUE,branded_food,THE CHEESE GUY,Cheese,25.0000,28.5700,0.0000,357.0000,100.00
+,Blue cheese,2175013,BLUE CHEESE BLUE,branded_food,TOPS,Cheese,6.0004,8.9992,0.9996,110.0400,28.00
+,Brown rice raw,2512380,Rice brown long grain unenriched raw,foundation_food,,Rice,7.2530,3.3060,76.6880,0.0000,100.00
+,Celery root,2346405,Celery raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.4922,0.1625,3.3165,0.0000,100.00
+,Chayote squash,170402,Chayote fruit raw,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,1.0824,0.1716,5.9532,25.0800,132.00
+Cherry tomatoes(use grape branded is unreliable here),Cherry tomato,321360,Tomatoes grape raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.4125,0.3131,2.7385,13.4190,49.70
+If prediction is just “chicken” always use chicken breast and add cooked conversion,Chicken,2646170,Chicken breast boneless skinless raw,foundation_food,,"Poultry, Chicken & Turkey",22.5250,1.9340,0.0000,0.0000,100.00
+,Chicken thigh with skin,2727567,Chicken thigh meat and skin raw,foundation_food,,"Poultry, Chicken & Turkey",17.1063,13.3500,0.0000,0.0000,100.00
+,Chicken thigh boneless skinless,2646171,Chicken thigh boneless skinless raw,foundation_food,,"Poultry, Chicken & Turkey",18.6125,7.9160,0.0000,0.0000,100.00
+,Chicken breast with skin,2727569,Chicken breast meat and skin raw,foundation_food,,"Poultry, Chicken & Turkey",21.4063,4.7770,0.0000,0.0000,100.00
+Not sure if this is a good match for chilaquiles since it is chips.,CHILAQUILES,2438561,CHILAQUILES CHIPS,branded_food,TORTILLERIA EL CHIQUIHUITE,"Chips, Pretzels & Snacks",1.9992,7.0000,16.9988,140.0000,28.00
+,Corn on the cob,2633373,CORN ON THE COB,branded_food,PUBLIX,Frozen Vegetables,3.1800,0.9600,22.9300,108.0000,100.00
+,Cottage cheese,2346384,Cottage cheese full fat large or small curd,foundation_food,,Dairy/Egg Based Products / Meals,11.6244,4.2250,4.5996,0.0000,100.00
+,Eggplant,2685577,Eggplant raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.8519,0.1200,5.3993,0.0000,100.00
+,Eggplant,169228,Eggplant raw,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,0.8036,0.1476,4.8216,20.5000,82.00
+,Feta cheese,173420,Cheese feta,sr_legacy_food,,Dairy/Egg Based Products / Meals,21.3150,32.2350,5.8200,397.5000,150.00
+,Rozen yogurtf,168104,Frozen yogurts chocolate,sr_legacy_food,,Candy,5.2200,6.2640,37.5840,227.9400,174.00
+,Frozen yogurt,168815,Frozen yogurts vanilla soft-serve,sr_legacy_food,,Candy,2.8800,4.0320,17.4240,114.4800,72.00
+,Goat cheese,173435,Cheese goat soft type,sr_legacy_food,,Dairy/Egg Based Products / Meals,5.2504,5.9762,0.0000,74.8440,28.35
+,Goat cheese,172197,Cheese goat hard type,sr_legacy_food,,Dairy/Egg Based Products / Meals,8.6524,10.0898,0.6152,128.1420,28.35
+,Goat cheese,173433,Cheese goat semisoft type,sr_legacy_food,,Dairy/Egg Based Products / Meals,6.1179,8.4596,0.0340,103.1940,28.35
+,1Grapefruit juice,325287,Grapefruit juice white canned or bottled unsweetened,foundation_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",1.4135,1.7990,19.5063,95.0900,257.00
+,Grapefruit juice,167774,Grapefruit juice pink raw,sr_legacy_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",1.2350,0.2470,22.7240,96.3300,247.00
+,Grapefruit juice,174679,Grapefruit juice white canned sweetened,sr_legacy_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",1.4500,0.2250,27.8250,115.0000,250.00
+,Greek yogurt,330137,Yogurt Greek plain nonfat,foundation_food,,Dairy/Egg Based Products / Meals,16.0680,0.5772,5.6784,95.1600,156.00
+,Greek yogurt,2259794,Yogurt Greek plain whole milk,foundation_food,,Dairy/Egg Based Products / Meals,8.7789,4.3940,4.7540,0.0000,100.00
+,Greek yogurt,330415,Yogurt Greek strawberry nonfat,foundation_food,,Dairy/Egg Based Products / Meals,12.0900,0.2250,18.3000,124.5000,150.00
+,Greek yogurt,170903,Yogurt Greek plain lowfat,sr_legacy_food,,Dairy/Egg Based Products / Meals,19.9000,3.8400,7.8800,146.0000,200.00
+,Greek yogurt,170902,Yogurt Greek vanilla nonfat,sr_legacy_food,,Dairy/Egg Based Products / Meals,12.9600,0.2700,15.5550,117.0000,150.00
+,Greek yogurt,170907,Yogurt Greek vanilla lowfat,sr_legacy_food,,Dairy/Egg Based Products / Meals,8.6400,2.5000,9.5400,95.0000,100.00
+,Greek yogurt,171304,Yogurt Greek plain whole milk,sr_legacy_food,,Dairy/Egg Based Products / Meals,9.0000,5.0000,3.9800,97.0000,100.00
+,Greek yogurt,170905,Yogurt Greek fruit whole milk,sr_legacy_food,,Dairy/Egg Based Products / Meals,7.3300,3.0000,12.2900,106.0000,100.00
+,Green beans,2346400,Beans snap green raw,foundation_food,,Pre-Packaged Fruit & Vegetables,1.9688,0.2750,7.4125,0.0000,100.00
+,ground turkey raw,2514747,Turkey ground 93 lean 7 fat raw,foundation_food,,"Poultry, Chicken & Turkey",17.3438,9.5910,0.0000,0.0000,100.00
+,Ground turkey raw,171505,Turkey Ground raw,sr_legacy_food,,"Poultry, Chicken & Turkey",22.2158,8.6558,0.0000,167.2400,113.00
+,Ground turkey,171506,Turkey Ground cooked,sr_legacy_food,,"Poultry, Chicken & Turkey",23.2645,8.8400,0.0000,172.5500,85.00
+,Ground turkey fat free raw,172847,Turkey ground fat free raw,sr_legacy_food,,"Poultry, Chicken & Turkey",26.6341,2.2035,0.0000,126.5600,113.00
+,Olive oil,171413,Oil olive salad or cooking,sr_legacy_food,,Vegetable & Cooking Oils,0.0000,13.5000,0.0000,119.3400,13.50
+,Orange juice,2108058,JUICE ORANGE,branded_food,SIMPLY ORANGE,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",1.9920,0.0000,25.9920,110.4000,240.00
+,Orange juice,173178,Beverages Orange juice light No pulp,sr_legacy_food,,Non Alcoholic Beverages - Ready to Drink,0.5040,0.0000,13.0080,50.4000,240.00
+,Orange with peel,169919,Oranges raw with peel,sr_legacy_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",2.2100,0.5100,26.3500,107.1000,170.00
+,Oranges,746771,Oranges raw navels,foundation_food,,"Fruit & Vegetable Juice, Nectars & Fruit Drinks",1.5015,0.2475,19.4700,77.5500,165.00
+,Oregano,171328,Spices oregano dried,sr_legacy_food,,Herbs & Spices,0.0900,0.0428,0.6892,2.6500,1.00
+,Pepperoni,174575,Pepperoni beef and pork sliced,sr_legacy_food,,"Sausages, Hotdogs & Brats",16.3625,39.3380,1.0030,428.4000,85.00
+,Pepperoni pizza generic,172096,Pizza pepperoni topping regular crust frozen cooked,sr_legacy_food,,Frozen Dinners & Entrees,18.2626,16.6751,31.3563,347.9800,127.00
+,Rice pilaf,1305722,RICE PILAF,branded_food,HARRIS TEETER,Rice,3.0015,0.4995,35.0010,160.2000,45.00
+,Potatoes raw,170032,Potatoes raw skin,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,0.9766,0.0380,4.7272,22.0400,38.00
+,Rice noodles raw,169768,Potatoes mashed ready-to-eat,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,4.5113,11.4729,30.4341,242.7400,229.00
+,Rice noodles cooked,168914,Rice noodles cooked,sr_legacy_food,,Rice,3.1504,0.3520,42.2576,190.0800,176.00
+,Salmon,175138,Fish salmon pink raw,sr_legacy_food,,Frozen Fish & Seafood,17.4250,3.7400,0.0000,107.9500,85.00
+,Salmon,173691,Fish salmon sockeye raw,sr_legacy_food,,Frozen Fish & Seafood,6.3079,1.3296,0.0000,37.1385,28.35
+,Club sandwich,521713,CLUB SANDWICH,branded_food,,Prepared Subs & Sandwiches,40.9968,36.0036,59.0132,709.5600,292.00
+,Chicken sandwich,170295,Fast foods chicken fillet sandwich plain with pickles,sr_legacy_food,,Frozen Dinners & Entrees,30.4436,20.9253,39.0643,467.5000,187.00
+,Generic sandwich,507441,SANDWICH,branded_food,,Prepared Subs & Sandwiches,11.0050,17.9955,40.0055,399.9000,155.00
+,Chicken sandwich fast food,170790,CHICK-FIL-A chicken sandwich,sr_legacy_food,,Frozen Dinners & Entrees,30.4436,20.9253,39.0643,465.6300,187.00
+,Sandwich ice crea,172226,Ice cream sandwich,sr_legacy_food,,Dairy/Egg Based Products / Meals,3.0030,5.9990,25.9980,165.9000,70.00
+,Scrambled eggs,172187,Egg whole cooked scrambled,sr_legacy_food,,Dairy/Egg Based Products / Meals,6.0939,6.6978,0.9821,90.8900,61.00
+,Fried egg,173423,Egg whole cooked fried,sr_legacy_food,,Dairy/Egg Based Products / Meals,6.2606,6.8264,0.3818,90.1600,46.00
+,Snow peas,1124930,SNOW PEAS,branded_food,,Pre-Packaged Fruit & Vegetables,1.9975,0.0000,6.0010,34.8500,85.00
+,Spinach baby raw,1750352,Spinach baby,foundation_food,,Pre-Packaged Fruit & Vegetables,2.8519,0.6188,2.4063,0.0000,100.00
+,Spinach raw,1999633,Spinach mature,foundation_food,,Pre-Packaged Fruit & Vegetables,2.9063,0.6044,2.6414,0.0000,100.00
+,Spinach cooked,170531,Spinach cooked boiled drained with salt,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,5.3460,0.4680,6.7500,41.4000,180.00
+,sun dried tomatoes,168567,Tomatoes sun-dried,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,7.6194,1.6038,30.1104,139.3200,54.00
+,sun dried tomatoes,169384,Tomatoes sun-dried packed in oil drained,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,5.5660,15.4880,25.6630,234.3000,110.00
+,Sweet potato,1749244,SWEET POTATO,branded_food,BAKO SWEET,Pre-Packaged Fruit & Vegetables,2.0020,0.0000,26.0000,110.5000,130.00
+,Sweet potato baked,170542,Sweet potato frozen cooked baked with salt,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,3.0096,0.2112,41.1840,176.0000,176.00
+,Sweet potato boiled,168484,Sweet potato cooked boiled without skin,sr_legacy_food,,Pre-Packaged Fruit & Vegetables,4.4936,0.4592,58.1216,249.2800,328.00
+,Tofu fried,172451,Tofu fried,sr_legacy_food,,Canned & Bottled Beans,5.3355,5.7210,2.5118,76.5450,28.35
+,Tofu yogurt,167722,Tofu yogurt,sr_legacy_food,,Canned & Bottled Beans,9.1700,4.7160,41.8152,246.2800,262.00
+,Tofu,2443060,TOFU,branded_food,MANNA PROTEIN,Other Meats,9.0015,1.9975,3.0005,69.7000,85.00
+,Grape tomatoes,321360,Tomatoes grape raw,foundation_food,,Pre-Packaged Fruit & Vegetables,0.4125,0.3131,2.7385,13.4190,49.70
+,tomatoes,1750354,Tomato roma,foundation_food,,Pre-Packaged Fruit & Vegetables,0.6956,0.4250,3.8375,0.0000,100.00
+,Tuna salad,175160,Fish tuna salad,sr_legacy_food,,Frozen Fish & Seafood,13.6340,7.8710,7.9985,158.9500,85.00
+,tuna,1561552,TUNA,branded_food,WICKED TUNA,Frozen Fish & Seafood,5.9996,3.9962,11.0028,99.6400,106.00
+,Vinaigrette,1364853,VINAIGRETTE,branded_food,NEWMANS OWN,Salad Dressing & Mayonnaise,0.0000,9.0000,3.0000,90.0000,30.00
+,Wheat berry,575301,WHEAT BERRY BREAD,branded_food,,Bread,3.9990,1.5007,21.9988,110.0800,43.00
+,Wheat bread,335240,Bread whole-wheat commercially prepared,foundation_food,,Cookies & Biscuits,3.9483,1.1396,13.8351,81.5340,32.10
+,Wheat bread,172686,Bread wheat,sr_legacy_food,,Cookies & Biscuits,3.0943,1.3137,13.7866,79.4600,29.00
+,White beans,167532,Bread white wheat,sr_legacy_food,,Cookies & Biscuits,2.9848,0.6020,12.2948,66.6400,28.00
+,White beans,175204,Beans white mature seeds canned,sr_legacy_food,,Canned & Bottled Beans,19.0212,0.7598,55.5440,298.6800,262.00
+,White beans,1641808,WHITE BEANS,branded_food,GRANORO,Canned & Bottled Beans,4.0000,0.2000,7.5000,58.0000,100.00
+,White rice,2512381,Rice white long grain unenriched raw,foundation_food,,Rice,7.0389,1.0330,80.3132,0.0000,100.00
+,White rice,168879,Rice white medium-grain raw enriched,sr_legacy_food,,Rice,12.8895,1.1310,154.7130,702.0000,195.00
+,Wild rice,2710821,Wild rice dry raw,foundation_food,,Rice,12.7875,1.7040,75.6695,0.0000,100.00
+,Wild rice,169726,Wild rice raw,sr_legacy_food,,Rice,23.5680,1.7280,119.8400,571.2000,160.00
+,Wild rice,168897,Wild rice cooked,sr_legacy_food,,Rice,6.5436,0.5576,34.9976,165.6400,164.00

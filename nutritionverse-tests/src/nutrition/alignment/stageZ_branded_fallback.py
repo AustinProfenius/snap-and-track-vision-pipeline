@@ -138,6 +138,10 @@ class BrandedFallbackResolver:
         # Build FdcEntry
         entry = self._build_fdc_entry(food_data, normalized_name, form)
 
+        # Phase Z2: Determine source (verified CSV or existing config)
+        metadata = fallback_config.get('_metadata', {})
+        source = "manual_verified_csv" if metadata.get('db_verified') is True else "existing_config"
+
         # Build telemetry
         telemetry = {
             "reason": "not_in_foundation_sr",
@@ -147,7 +151,10 @@ class BrandedFallbackResolver:
             "fdc_id": fdc_id,
             "kcal_per_100g": round(kcal, 1),
             "kcal_range": kcal_range,
-            "fallback_key": normalized_name
+            "fallback_key": normalized_name,
+            "source": source,  # Phase Z2: Track source
+            "fdc_id_missing_in_db": False,  # Phase Z2: DB validation status
+            "coverage_class": "branded_verified_csv" if source == "manual_verified_csv" else "branded_generic"  # Phase Z2
         }
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':

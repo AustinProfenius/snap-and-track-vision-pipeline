@@ -284,25 +284,52 @@ def _normalize_for_lookup(name: str) -> tuple:
         name: Food name to normalize
 
     Returns:
-        (normalized_name, tokens, form, method) where:
+        (normalized_name, tokens, form, method, hints) where:
         - normalized_name: Cleaned string for key lookups
         - tokens: List of word tokens after plural normalization
         - form: Extracted form ("raw", "frozen", "cooked", None)
         - method: Extracted cooking method if cooked (None otherwise)
+        - hints: Dict with peel_hint, ignored_class, etc. (Phase Z2)
 
     Examples:
         >>> _normalize_for_lookup("broccoli florets raw")
-        ("broccoli", ["broccoli"], "raw", None)
+        ("broccoli", ["broccoli"], "raw", None, {})
 
         >>> _normalize_for_lookup("cherry tomatoes fresh")
-        ("cherry tomato", ["cherry", "tomato"], "raw", None)
+        ("cherry tomato", ["cherry", "tomato"], "raw", None, {})
 
         >>> _normalize_for_lookup("scrambled eggs")
-        ("scramble egg", ["scramble", "egg"], "cooked", "scrambled")
+        ("scramble egg", ["scramble", "egg"], "cooked", "scrambled", {})
+
+        >>> _normalize_for_lookup("orange with peel")
+        ("orange", ["orange"], "raw", None, {"peel": True})
+
+        >>> _normalize_for_lookup("deprecated")
+        (None, [], None, None, {"ignored_class": "deprecated"})
     """
     import re
 
     name = name.lower().strip()
+    hints = {}  # Phase Z2: Initialize hints dict
+
+    # Phase Z2 Fix 1: Handle literal "deprecated" → return ignored
+    if name == 'deprecated':
+        hints['ignored_class'] = 'deprecated'
+        return (None, [], None, None, hints)
+
+    # Phase Z2 Fix 2: Collapse duplicate parentheticals
+    # Example: "spinach (raw) (raw)" → "spinach (raw)"
+    name = re.sub(r'\(([^)]+)\)\s*\(?\1\)?', r'(\1)', name)
+
+    # Phase Z2 Fix 3: Normalize "sun dried" / "sun-dried" → "sun_dried"
+    name = re.sub(r'sun[\s-]dried', 'sun_dried', name, flags=re.IGNORECASE)
+
+    # Phase Z2 Fix 4: Peel qualifiers → telemetry hint only (don't block alignment)
+    peel_match = re.search(r'\b(with|without)\s+peel\b', name, re.IGNORECASE)
+    if peel_match:
+        hints['peel'] = True if 'with' in peel_match.group(0).lower() else False
+        # Strip peel qualifier from name
+        name = re.sub(r'\b(with|without)\s+peel\b', '', name, flags=re.IGNORECASE).strip()
 
     # Extract form/method BEFORE removing tokens
     form = None
@@ -362,7 +389,7 @@ def _normalize_for_lookup(name: str) -> tuple:
     # Collapse whitespace
     name = re.sub(r'\s+', ' ', name).strip()
 
-    return (name, tokens, form, method)
+    return (name, tokens, form, method, hints)
 
 
 def _apply_guardrails(
@@ -1039,7 +1066,30 @@ class FDCAlignmentWithConversion:
             from .stageZ_branded_fallback import resolve_branded_fallback
 
             # Use normalized form of predicted_name
-            normalized, _, _, _ = _normalize_for_lookup(predicted_name)
+            normalized, _, _, _, hints = _normalize_for_lookup(predicted_name)
+
+            # Phase Z2: Check if normalization detected an ignore pattern
+            if hints.get('ignored_class'):
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[ALIGN] Normalization detected ignored class: {hints['ignored_class']}")
+                # Return early with ignored result
+                result = AlignmentResult(
+                    available=False,
+                    fdc_name=None,
+                    fdc_id=None,
+                    kcal_per_100g=0,
+                    protein_g_per_100g=0,
+                    carbs_g_per_100g=0,
+                    fat_g_per_100g=0,
+                    confidence=0.0,
+                    method="normalization_ignored",
+                    method_reason=f"Normalization detected ignore pattern: {hints['ignored_class']}",
+                    telemetry={
+                        "ignored_class": hints['ignored_class'],
+                        "attempted_stages": attempted_stages
+                    }
+                )
+                return result
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Trying StageZ Branded Fallback for '{normalized}'...")
@@ -1075,6 +1125,11 @@ class FDCAlignmentWithConversion:
                 result.telemetry["stage1_all_rejected"] = all_candidates_rejected
                 result.telemetry["had_candidates_to_score"] = had_candidates_to_score
                 result.telemetry["stageZ_branded_fallback"] = branded_telemetry
+
+                # Phase Z2: Propagate normalization hints to telemetry
+                if hints.get('peel') is not None:
+                    result.telemetry["form_hint"] = {"peel": hints['peel']}
+
                 return result
 
         # Phase 7.3: Stage 5B salad decomposition BEFORE stage0_no_candidates
@@ -2658,7 +2713,7 @@ class FDCAlignmentWithConversion:
         # If we have variants config, use it to expand queries
         if self._external_variants:
             # Apply normalization for better key matching
-            normalized_name, tokens, form, method = _normalize_for_lookup(canonical_name)
+            normalized_name, tokens, form, method, hints = _normalize_for_lookup(canonical_name)
 
             # Try all key variants (underscore, space, normalized)
             keys_to_try = [

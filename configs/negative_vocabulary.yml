@@ -1,184 +1,159 @@
-# Negative vocabulary for hard filtering BEFORE scoring
-#
-# Filters are applied to raw FDC entry names (case-insensitive substring match)
-# If any negative term found in entry name, candidate is skipped entirely
-
 apple:
-  - strudel
-  - pie
-  - juice
-  - sauce
-  - chip
-  - dried
-
+- strudel
+- pie
+- juice
+- sauce
+- chip
+- dried
 grape:
-  - juice
-  - jam
-  - jelly
-  - raisin
-
+- juice
+- jam
+- jelly
+- raisin
 almond:
-  - oil
-  - butter
-  - flour
-  - meal
-  - paste
-
-# Cucumber safeguard: prevent matching "Sea cucumber yane (Alaska Native)"
+- oil
+- butter
+- flour
+- meal
+- paste
 cucumber:
-  - sea cucumber
-  - yane
-  - alaska native
-  - pickled  # Phase 7.1: unless method indicates pickled
-
-# Olive safeguard: prevent matching "Oil olive salad or cooking"
+- sea cucumber
+- yane
+- alaska native
+- pickled
 olive:
-  - oil
-  - extra virgin
-  - light tasting
-  - salad or cooking
-  - loaf  # Phase 7.1: prevent "Olive loaf pork"
-  - spread  # Phase 7.1
-
+- oil
+- extra virgin
+- light tasting
+- salad or cooking
+- loaf
+- spread
 potato:
-  - bread
-  - flour
-  - starch
-  - powder
-
+- bread
+- flour
+- starch
+- powder
 sweet_potato:
-  - leave
-  - leaf
-  - flour
-  - starch
-  - powder
-
-# Carrot safeguard: prevent matching juice/puree when form=raw
+- leave
+- leaf
+- flour
+- starch
+- powder
 carrot:
-  - juice
-  - puree
-  - baby-food
-  - canned
-
-# Pineapple safeguard: prefer fresh/raw over canned/syrup for raw forms
+- juice
+- puree
+- baby-food
+- canned
 pineapple:
-  - canned
-  - syrup
-
-# Blueberry safeguard: prevent matching muffins/baked goods
+- canned
+- syrup
 blueberry:
-  - muffin
-
-# Strawberry safeguard: prevent matching toppings/syrups
+- muffin
 strawberry:
-  - topping
-
-# Salad safeguard: prefer leafy greens over dressings
+- topping
 salad:
-  - dressing
-
-# Phase 7.1: Additional safeguards from 370-image batch analysis
-
-# Celery safeguard: prevent matching soups and tomato products
+- dressing
 celery:
-  - cream of
-  - soup
-  - condensed
-  - tomato products  # Phase 7.2: prevent "Celery flakes dried sauce with onions tomato products"
-  - sauce with onions  # Phase 7.2
-
-# Spinach safeguard: prevent matching baby food
+- cream of
+- soup
+- condensed
+- tomato products
+- sauce with onions
 spinach:
-  - baby food
-  - babyfood
-  - puree
-  - creamed
-  - strained
-
-# Tomato safeguard: prevent matching soups
+- baby food
+- babyfood
+- puree
+- creamed
+- strained
 tomato:
-  - soup
-  - condensed
-
-# Eggs safeguard: prevent matching bread/composite products
+- soup
+- condensed
 egg:
-  - bread egg
-  - toast
-  - sandwich
-  - roll  # Phase 7.2: prevent "Bread egg toasted dinner rolls egg"
-  - bun  # Phase 7.2
-
-# Avocado safeguard: prevent matching oil
+- bread egg
+- toast
+- sandwich
+- roll
+- bun
 avocado:
-  - oil
-  - spread
-
-# Broccoli safeguard: prevent matching soups and cheese products
+- oil
+- spread
 broccoli:
-  - soup  # Phase 7.2: prevent "Soup broccoli cheese canned condensed"
-  - cheese  # Phase 7.2
-
-# Phase 7.3 Task 3: Universal produce hard blocks (apply to all produce unless explicitly predicted)
+- soup
+- cheese
 produce_hard_blocks:
-  - "babyfood"
-  - "pickled"
-  - "canned"
-  - "frozen"
-  - "juice"
-  - "dried"
-  - "dehydrated"
-  - "syrup"
-  - "in syrup"  # Added per task requirements
-  - "in juice"  # Added per task requirements
-  - "sweetened"
-  - "oil"  # Blocks "Oil olive", "Oil avocado"
-  - "stuffed"  # Blocks "Olives stuffed with pimiento"
-  - "pimiento"
-  - "cured"
-  - "brined"
-  - "soup"  # Blocks "Soup broccoli cheese", "Soup cream of celery"
-  - "cheese"  # Blocks "Soup broccoli cheese"
-  - "sea cucumber"  # Added per task requirements
-
-# Phase 7.3 Task 3: Eggs hard blocks (prevent alignment to partial/processed egg products)
+- babyfood
+- pickled
+- canned
+- frozen
+- juice
+- dried
+- dehydrated
+- syrup
+- in syrup
+- in juice
+- sweetened
+- oil
+- stuffed
+- pimiento
+- cured
+- brined
+- soup
+- cheese
+- sea cucumber
 eggs_hard_blocks:
-  - "yolk raw frozen"
-  - "white raw frozen"
-  - "mixture"
-  - "pasteurized"
-  - "frozen"
-  - "substitute"
-  - "powder"
-  - "powdered"  # Added per task requirements
-  - "bread"  # Blocks "Bread egg toasted"
-  - "toast"
-  - "roll"
-  - "bun"
-
-# Stage 1c: Raw-first preference processed penalties
-# Terms that indicate processed/wrong-for-raw candidates
+- yolk raw frozen
+- white raw frozen
+- mixture
+- pasteurized
+- frozen
+- substitute
+- powder
+- powdered
+- bread
+- toast
+- roll
+- bun
 stage1c_processed_penalties:
-  - "frozen"
-  - "pickled"
-  - "canned"
-  - "brined"
-  - "cured"
-  - "stuffed"
-  - "powder"
-  - "powdered"
-  - "dehydrated"
-  - "dried"
-  - "in syrup"
-  - "in juice"
-  - "oil"
-  - "sauce"
-  - "soup"
-  - "cheese"
-
-# Stage 1c: Raw synonyms for preference matching
-# Terms that indicate raw/fresh candidates to prefer
+- frozen
+- pickled
+- canned
+- brined
+- cured
+- stuffed
+- powder
+- powdered
+- dehydrated
+- dried
+- in syrup
+- in juice
+- oil
+- sauce
+- soup
+- cheese
 stage1c_raw_synonyms:
-  - "raw"
-  - "fresh"
-  - "uncooked"
-  - "unprocessed"
+- raw
+- fresh
+- uncooked
+- unprocessed
+tatsoi:
+- all
+deprecated:
+- all
+white_wine:
+- all
+red_wine:
+- all
+beer:
+- all
+wine:
+- all
+vodka:
+- all
+whiskey:
+- all
+rum:
+- all
+tequila:
+- all
+sake:
+- all

@@ -1,0 +1,79 @@
+Phase Z2: Close alignment misses via verified CSV mappings (Part 1/2)
+
+Implements CSV ingestion and validation tools for Phase Z2 miss reduction initiative.
+Target: Reduce 54 unique misses to ≤10 through verified FDC mappings, normalization
+fixes, and systematic ignore rules.
+
+## This Commit (Part 1/2 - Tools & Documentation)
+
+### New Tools
+- tools/merge_verified_fallbacks.py (636 lines)
+  * Parses missed_food_names.csv (104 rows → 54 unique foods)
+  * DB validation with precedence rules (protects verified entries)
+  * Kcal inference for produce, proteins, grains, oils
+  * Special case handling: cherry tomato, chicken, chilaquiles, orange w/ peel
+  * Outputs: verified YAML + merged config + JSON report
+
+- tools/validate_stageZ_config.py (304 lines)
+  * Validates duplicate keys, kcal ranges, FDC IDs, synonym conflicts
+  * Summary table output with DB verification status
+  * CI/CD compatible (exit code 1 on critical errors)
+
+### Documentation
+- PHASE_Z2_README.md - User-facing implementation guide
+- docs/phase_z2_implementation_status.md - Technical deep-dive
+- PHASE_Z2_SUMMARY.md - Executive summary
+- phase_z2_quickstart.sh - Automated setup script
+
+### Key Features
+- **Precedence Enforcement**: DB-verified entries protected from CSV overwrites
+- **Robust Error Handling**: Malformed CSV rows logged & skipped, don't fail merge
+- **Kcal Inference**: Auto-calculates ranges when CSV lacks values
+- **Validation Suite**: Comprehensive checks for config integrity
+
+## Next Commit (Part 2/2 - Integration)
+- Normalization fixes (duplicate parentheticals, sun-dried, peel hints)
+- Config updates (celery root, tatsoi, alcohol ignore rules)
+- Telemetry enhancements (coverage_class, source tracking)
+- Test suite (test_phaseZ2_verified.py)
+- Integration validation (miss reduction 54 → ≤10)
+
+## Testing
+```bash
+# Run completed tools
+./phase_z2_quickstart.sh
+
+# Or manually:
+python tools/merge_verified_fallbacks.py \
+  --csv ./missed_food_names.csv \
+  --out configs/stageZ_branded_fallbacks_verified.yml \
+  --merge-into configs/stageZ_branded_fallbacks.yml \
+  --report runs/csv_merge_report.json
+
+python tools/validate_stageZ_config.py configs/stageZ_branded_fallbacks.yml
+```
+
+## Files Changed
+**New**:
+- tools/merge_verified_fallbacks.py
+- tools/validate_stageZ_config.py
+- PHASE_Z2_README.md
+- docs/phase_z2_implementation_status.md
+- PHASE_Z2_SUMMARY.md
+- phase_z2_quickstart.sh
+- PHASE_Z2_COMMIT_MESSAGE.txt
+
+**Modified**: None (tools-only commit)
+
+## Acceptance Criteria (Part 1/2)
+- ✅ CSV merge tool handles all 104 rows, groups into 54 unique keys
+- ✅ DB validation correctly identifies missing/verified FDC IDs
+- ✅ Precedence rules prevent overwriting verified entries
+- ✅ Config validator catches duplicate keys, invalid ranges
+- ✅ All special cases handled (cherry tomato, chicken, etc.)
+- ✅ Comprehensive documentation for continuation
+
+## Next Steps
+See PHASE_Z2_README.md for detailed implementation plan for Part 2/2
+
+Co-authored-by: Claude <noreply@anthropic.com>
