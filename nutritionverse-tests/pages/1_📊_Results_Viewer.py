@@ -23,6 +23,15 @@ import plotly.express as px
 from collections import defaultdict, Counter
 from PIL import Image
 import os
+from decimal import Decimal
+
+
+# Custom JSON encoder to handle Decimal types
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return super(DecimalEncoder, self).default(obj)
 
 st.set_page_config(
     page_title="Mass & Alignment Analytics",
@@ -126,7 +135,7 @@ def load_results(file_path):
 # Function to save modified data back to JSON
 def save_results(file_path, data):
     with open(file_path, 'w') as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, cls=DecimalEncoder)
     st.session_state.data_modified = False
 
 # Initialize session state for tracking changes

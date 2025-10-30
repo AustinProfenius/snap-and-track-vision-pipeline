@@ -14,9 +14,18 @@ from dotenv import load_dotenv
 import os
 import json
 from datetime import datetime
+from decimal import Decimal
 
 # Load environment variables from .env file
 load_dotenv()
+
+
+# Custom JSON encoder to handle Decimal types
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return super(DecimalEncoder, self).default(obj)
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -379,7 +388,7 @@ def save_batch_results(results: list, model: str, include_micros: bool, test_mod
     model_name = model.replace('/', '_').replace('-', '_')
     filename = results_dir / f"{model_name}_{len(results)}images_{timestamp}.json"
     with open(filename, "w") as f:
-        json.dump(summary, f, indent=2)
+        json.dump(summary, f, indent=2, cls=DecimalEncoder)
 
     return filename, summary
 
@@ -410,7 +419,7 @@ def save_single_result(result_entry: dict, model: str, include_micros: bool):
     dish_id = result_entry.get("dish_id", "unknown")
     filename = results_dir / f"{model_name}_single_{dish_id}_{timestamp}.json"
     with open(filename, "w") as f:
-        json.dump(summary, f, indent=2)
+        json.dump(summary, f, indent=2, cls=DecimalEncoder)
 
     return filename, summary
 

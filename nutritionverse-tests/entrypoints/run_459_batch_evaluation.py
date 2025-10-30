@@ -27,6 +27,15 @@ from pathlib import Path
 from typing import Dict, List, Any
 from collections import defaultdict
 from dotenv import load_dotenv
+from decimal import Decimal
+
+
+# Custom JSON encoder to handle Decimal types
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return super(DecimalEncoder, self).default(obj)
 
 # Load environment variables
 load_dotenv()
@@ -433,7 +442,7 @@ def run_batch_evaluation(batch: List[Dict[str, Any]], output_dir: Path):
             "stage_distribution": dict(stage_distribution),
             "method_distribution": dict(method_distribution),
             "items": results
-        }, f, indent=2)
+        }, f, indent=2, cls=DecimalEncoder)
 
     print(f"\n✓ Results saved to: {results_file}")
 

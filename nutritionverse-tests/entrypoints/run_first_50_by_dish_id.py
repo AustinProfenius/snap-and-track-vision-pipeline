@@ -45,7 +45,7 @@ def get_first_50_dishes_sorted(test_dir):
     dish_ids = sorted([img.stem for img in dish_images])
 
     # Return first 50
-    return dish_ids[:50]
+    return dish_ids[:2000]
 
 def run_batch_test():
     """Run batch test on first 50 dishes using unified pipeline."""
