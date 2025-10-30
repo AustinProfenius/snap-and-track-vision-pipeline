@@ -24,3 +24,8 @@ vision_mass_only: true
 # Stage 1: Strict cooked exact match gate
 # Set to false to allow Stage 2 raw→cooked conversion when SR cooked not found
 strict_cooked_exact_gate: false
+
+# Stage Z: Allow Stage Z for partial candidate pools (Phase Z2)
+# When true, Stage Z can trigger even when some candidates exist but all rejected
+# This enables Stage Z to fill gaps when Foundation/SR have poor matches
+allow_stageZ_for_partial_pools: true
