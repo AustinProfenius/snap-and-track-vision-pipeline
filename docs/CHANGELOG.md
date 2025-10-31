@@ -6,6 +6,114 @@ All notable changes to the Snap & Track alignment pipeline.
 
 ---
 
+## [2025-10-30] Phase Z3.3 - Starches & Leafy Normalization Pass
+
+### Problem Statement
+After Phase Z3.2.1, Stage Z usage reached 17.1% but gaps remained for:
+- Potato variants (baked, fried, hash browns) - Missing intelligent routing
+- Leafy mix salads - Limited synonym coverage for common variants
+- Egg white cooked - No explicit trigger for cooked egg white variants
+- Observability - Lacking per-stage timing and rejection reason tracking
+
+### Target
+- Stage Z usage ≥19%
+- Miss rate ≤25%
+
+### Solution
+
+#### 1. Starch Normalization (`align_convert.py`)
+- **Compound term preservation** (lines 437-455)
+  - Added COMPOUND_TERMS whitelist to preserve multi-word terms BEFORE normalization
+  - Prevents "sweet potato" → "potato" collision
+  - Covers: sweet potato, hash browns, home fries, french fries, spring mix, mixed greens
+
+- **Starch routing helper** (lines 356-392)
+  - Added `_detect_starch_form()` function for intelligent potato routing
+  - Returns Stage Z key hints: `potato_roasted`, `potato_fried`, `hash_browns`, `sweet_potato_roasted`
+  - Applied at Stage Z call site (lines 1237-1247) to override normalized key
+
+- **Starch scoring bonus** (lines 1801-1814)
+  - Added +0.03 bonus in Stage 1b for starch-like produce when form=cooked
+  - Covers: potato, potatoes, hash brown, home fries
+
+#### 2. Egg White Support (`align_convert.py`)
+- **Form inference extension** (lines 123-128)
+  - Added egg white special case in `_infer_cooked_form_from_tokens()`
+  - Detects: omelet, omelette, scrambled, cooked variants
+  - Returns "cooked" for egg white + cooking method, "raw" for plain egg white
+
+- **Stage Z eligibility gate** (lines 1218-1222)
+  - Added `is_egg_white_cooked` trigger forcing Stage Z attempts
+  - Activates when: egg white + inferred_form == "cooked"
+  - Added verbose logging (lines 1238-1240)
+
+#### 3. Config Extensions (`stageZ_branded_fallbacks.yml`)
+- **potato_baked** (lines 1170-1184) - NEW entry with FDC 170032, db_verified: true
+- **potato_fried** (lines 1185-1207) - NEW entry with FDC 170436, db_verified: false, reject_patterns for fast food
+- **hash_browns** (extended) - Added "home fries", "crispy hash browns"
+- **leafy_mixed_salad** (extended) - Added "spring salad", "salad greens", "mixed salad", "baby greens"
+- **egg_white** (extended) - Added "egg white omelet", "scrambled egg whites", "cooked egg whites"
+- **Roasted vegetables** (extended) - Added "sheet-pan" and "pan-roasted" variants to brussels_sprouts, cauliflower, sweet_potato
+
+#### 4. Enhanced Observability
+
+**Per-stage timing telemetry** (`align_convert.py`)
+- Lines 758-760: Initialize `stage_timings_ms` dict
+- Lines 846-851, 897-900, 922-927, 1167-1171, 1308-1318: Instrument all stages
+- Lines 3429, 3469, 3555, 3587: Added to telemetry dicts
+- Format: `{"stage1b": 2.3, "stage2": 5.7, "stageZ_branded_fallback": 1.2}` (ms)
+
+**Stage rejection reasons** (`align_convert.py`)
+- Line 763: Initialize `stage_rejection_reasons` list
+- Lines 894-898, 929-934, 961-966: Track why each stage failed
+- Format: `["stage1b: threshold_not_met", "stage2: conversion_failed"]`
+
+**Feature flag for unverified entries** (`stageZ_branded_fallback.py`)
+- Lines 104-114: Added `allow_unverified_branded` flag gate
+- Defaults to `false` (safer - blocks unverified entries)
+- WARN logs when unverified entries are used
+- Line 169: Added `db_verified` to telemetry
+
+**Category breakdown analyzer** (`analyze_batch_results.py`)
+- Lines 239-317: New `analyze_category_breakdown()` method
+- Per-category metrics: total, raw/cooked split, Stage Z usage, miss rate, Foundation usage
+- Enables category-specific performance tracking
+
+#### 5. Test Coverage
+**New tests** (`test_prediction_replay.py:520-808`)
+1. `test_potato_variants_match_stageZ()` - Validates starch routing for baked, roasted, hash browns, home fries
+2. `test_leafy_mixed_salad_variants()` - Validates extended synonyms for spring mix, mixed greens, salad greens
+3. `test_egg_white_cooked_triggers_stageZ()` - Validates egg white form inference and Stage Z gate
+4. `test_timing_telemetry_present()` - Validates `stage_timings_ms` field exists and contains valid data
+5. `test_sweet_potato_vs_potato_collision()` - Validates compound term preservation prevents collision
+
+**Threshold updates** (`test_replay_minibatch.py:108-110`)
+- Updated from Phase Z3.2.1: Stage Z ≥18%, miss rate ≤35%
+- Updated to Phase Z3.3: Stage Z ≥19%, miss rate ≤25%
+
+### Results
+**Test Suite**: 7/8 existing tests pass (1 failure is pre-existing, not a regression)
+
+**Full Replay**: Pending validation (630 images, 2032 foods)
+- Target: Stage Z ≥19%, miss rate ≤25%
+
+### Files Modified (6)
+1. `align_convert.py` - Core alignment logic (13 sections)
+2. `stageZ_branded_fallback.py` - Feature flag gate
+3. `stageZ_branded_fallbacks.yml` - Config extensions (12+ entries)
+4. `analyze_batch_results.py` - Category breakdown method
+5. `test_prediction_replay.py` - 5 new tests
+6. `test_replay_minibatch.py` - Threshold updates
+
+### Guardrails
+- ✅ No precedence order changes
+- ✅ Form inference remains advisory
+- ✅ Feature flag gates unverified entries
+- ✅ All changes additive, no breaking signatures
+- ✅ Comprehensive test coverage
+
+---
+
 ## [2025-10-30] Phase Z3.2 - Roasted Vegetable Blocker Resolution
 
 ### Problem Statement

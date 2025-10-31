@@ -101,6 +101,17 @@ class BrandedFallbackResolver:
         fdc_id = primary['fdc_id']
         brand = primary.get('brand', 'Unknown')
         kcal_range = primary.get('kcal_per_100g', [0, 1000])
+        db_verified = primary.get('db_verified', False)  # Phase Z3.3: Check DB verification status
+
+        # Phase Z3.3: Gate unverified entries with feature flag
+        if not db_verified and not feature_flags.get('allow_unverified_branded', False):
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[BRANDED_FALLBACK] ✗ FDC {fdc_id} rejected: db_verified=false (enable allow_unverified_branded flag)")
+            return None
+
+        # Phase Z3.3: Log warning for unverified entries
+        if not db_verified and os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[BRANDED_FALLBACK] ⚠️ WARN: Using unverified entry FDC {fdc_id} (db_verified=false)")
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[BRANDED_FALLBACK] Trying primary: {brand} FDC {fdc_id} for '{normalized_name}'")
@@ -154,7 +165,8 @@ class BrandedFallbackResolver:
             "fallback_key": normalized_name,
             "source": source,  # Phase Z2: Track source
             "fdc_id_missing_in_db": False,  # Phase Z2: DB validation status
-            "coverage_class": "branded_verified_csv" if source == "manual_verified_csv" else "branded_generic"  # Phase Z2
+            "coverage_class": "branded_verified_csv" if source == "manual_verified_csv" else "branded_generic",  # Phase Z2
+            "db_verified": db_verified  # Phase Z3.3: Track DB verification status
         }
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':

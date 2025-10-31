@@ -1128,6 +1128,12 @@ fallbacks:
     - whites
     - egg white only
     - liquid egg whites
+    - egg white omelet  # Phase Z3.3: cooked variants
+    - egg white omelette  # Phase Z3.3
+    - scrambled egg whites  # Phase Z3.3
+    - egg whites scrambled  # Phase Z3.3
+    - cooked egg whites  # Phase Z3.3
+    - egg white cooked  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 748967  # Egg white, raw, fresh
@@ -1167,6 +1173,44 @@ fallbacks:
       - 135
       db_verified: true
     alternates: []
+  # Phase Z3.3: Additional potato variants
+  potato_baked:
+    synonyms:
+    - potato baked
+    - baked potato
+    - potatoes baked
+    - baked potatoes
+    - oven potato
+    - oven potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170032  # Potatoes, baked, flesh and skin
+      kcal_per_100g:
+      - 70
+      - 140
+      db_verified: true  # Verified FDC ID
+    alternates: []
+  potato_fried:
+    synonyms:
+    - potato fried
+    - fried potatoes
+    - fried potato
+    - pan fried potatoes
+    - crispy potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170436  # Potatoes, french fried, all types
+      kcal_per_100g:
+      - 150
+      - 320
+      db_verified: false  # Verify FDC ID, wide kcal range due to oil variation
+    _metadata:
+      reject_patterns:
+      - fast food
+      - seasoned
+      - flavored
+      _notes: Wide kcal range due to variable oil content in frying
+    alternates: []
   leafy_mixed_salad:
     synonyms:
     - spring mix
@@ -1174,6 +1218,10 @@ fallbacks:
     - mixed greens
     - salad mix
     - leafy greens mix
+    - spring salad  # Phase Z3.3
+    - salad greens  # Phase Z3.3
+    - mixed salad  # Phase Z3.3
+    - baby greens  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 2346411  # Lettuce, green leaf, raw (generic leafy green)
@@ -1209,6 +1257,10 @@ fallbacks:
     - sweet potato air-fried
     - air-fried sweet potato
     - sweet potato charred
+    - sweet potato sheet-pan  # Phase Z3.3
+    - sheet-pan sweet potato  # Phase Z3.3
+    - sweet potato pan-roasted  # Phase Z3.3
+    - pan-roasted sweet potato  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 168482  # Sweet potato, cooked, baked in skin
@@ -1265,6 +1317,10 @@ fallbacks:
     - brussels sprouts air-fried
     - air-fried brussels sprouts
     - brussels sprouts charred
+    - brussels sprouts sheet-pan  # Phase Z3.3
+    - sheet-pan brussels sprouts  # Phase Z3.3
+    - brussels sprouts pan-roasted  # Phase Z3.3
+    - pan-roasted brussels sprouts  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 170379  # Brussels sprouts, cooked, boiled
@@ -1286,6 +1342,10 @@ fallbacks:
     - cauliflower air-fried
     - air-fried cauliflower
     - cauliflower charred
+    - cauliflower sheet-pan  # Phase Z3.3
+    - sheet-pan cauliflower  # Phase Z3.3
+    - cauliflower pan-roasted  # Phase Z3.3
+    - pan-roasted cauliflower  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 170390  # Cauliflower, cooked, boiled
@@ -1303,6 +1363,8 @@ fallbacks:
     - hashbrown
     - shredded potatoes
     - breakfast potatoes
+    - home fries  # Phase Z3.3
+    - crispy hash browns  # Phase Z3.3
     primary:
       brand: Generic
       fdc_id: 170033  # Potatoes, hash brown, home-prepared

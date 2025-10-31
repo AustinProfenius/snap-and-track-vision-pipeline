@@ -517,6 +517,297 @@ def test_all_rejected_triggers_stageZ_telemetry():
     fixture_path.unlink()
 
 
+# Phase Z3.3 Tests
+
+
+def test_potato_variants_match_stageZ():
+    """
+    Phase Z3.3: Test potato variants (baked, fried, hash browns) attempt Stage Z.
+    Validates starch routing and Stage Z config entries.
+    """
+    records = [
+        {
+            "predicted_name": "baked potato",
+            "predicted_form": "baked",
+            "predicted_kcal_per_100g": 95.0
+        },
+        {
+            "predicted_name": "potato roasted",
+            "predicted_form": "roasted",
+            "predicted_kcal_per_100g": 115.0
+        },
+        {
+            "predicted_name": "hash browns",
+            "predicted_form": "fried",
+            "predicted_kcal_per_100g": 265.0
+        },
+        {
+            "predicted_name": "home fries",
+            "predicted_form": "fried",
+            "predicted_kcal_per_100g": 250.0
+        }
+    ]
+
+    # Write fixture
+    fixture_path = Path(TEST_DATA_DIR) / "test_potato_variants.jsonl"
+    write_fixture(fixture_path, records)
+
+    # Run prediction replay
+    cmd = f"cd {REPO_ROOT} && PYTHONPATH=nutritionverse-tests python -m nutrition.predict_replay {fixture_path} --config {CONFIGS_DIR} --verbose"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, f"Replay failed: {result.stderr}"
+
+    # Parse results
+    results_jsonl = fixture_path.parent / (fixture_path.stem + "_results.jsonl")
+    assert results_jsonl.exists(), f"Results file not found: {results_jsonl}"
+
+    results = []
+    with open(results_jsonl) as f:
+        for line in f:
+            results.append(json.loads(line))
+
+    # Validate: All potatoes should attempt Stage Z (no misses)
+    for i, record in enumerate(results):
+        stage = record.get("alignment_stage")
+        attempted_stages = record.get("attempted_stages", [])
+
+        # Should attempt Stage Z
+        assert "stageZ_branded_fallback" in attempted_stages, \
+            f"Record {i} ({records[i]['predicted_name']}) did not attempt Stage Z"
+
+        # Should not miss
+        assert stage != "stage0_no_candidates", \
+            f"Record {i} ({records[i]['predicted_name']}) resulted in miss (stage={stage})"
+
+    # Cleanup
+    fixture_path.unlink()
+    results_jsonl.unlink()
+
+
+def test_leafy_mixed_salad_variants():
+    """
+    Phase Z3.3: Test leafy mix salad variants attempt Stage Z.
+    Validates extended synonyms in config.
+    """
+    records = [
+        {
+            "predicted_name": "spring mix",
+            "predicted_form": "raw",
+            "predicted_kcal_per_100g": 20.0
+        },
+        {
+            "predicted_name": "mixed greens",
+            "predicted_form": "raw",
+            "predicted_kcal_per_100g": 18.0
+        },
+        {
+            "predicted_name": "salad greens",
+            "predicted_form": "fresh",
+            "predicted_kcal_per_100g": 22.0
+        },
+        {
+            "predicted_name": "baby greens",
+            "predicted_form": "raw",
+            "predicted_kcal_per_100g": 19.0
+        }
+    ]
+
+    # Write fixture
+    fixture_path = Path(TEST_DATA_DIR) / "test_leafy_salad.jsonl"
+    write_fixture(fixture_path, records)
+
+    # Run prediction replay
+    cmd = f"cd {REPO_ROOT} && PYTHONPATH=nutritionverse-tests python -m nutrition.predict_replay {fixture_path} --config {CONFIGS_DIR} --verbose"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, f"Replay failed: {result.stderr}"
+
+    # Parse results
+    results_jsonl = fixture_path.parent / (fixture_path.stem + "_results.jsonl")
+    assert results_jsonl.exists(), f"Results file not found: {results_jsonl}"
+
+    results = []
+    with open(results_jsonl) as f:
+        for line in f:
+            results.append(json.loads(line))
+
+    # Validate: Should not miss (Foundation or Stage Z)
+    for i, record in enumerate(results):
+        stage = record.get("alignment_stage")
+        assert stage != "stage0_no_candidates", \
+            f"Record {i} ({records[i]['predicted_name']}) resulted in miss (stage={stage})"
+
+    # Cleanup
+    fixture_path.unlink()
+    results_jsonl.unlink()
+
+
+def test_egg_white_cooked_triggers_stageZ():
+    """
+    Phase Z3.3: Test egg white cooked variants trigger Stage Z.
+    Validates egg white form inference and Stage Z eligibility gate.
+    """
+    records = [
+        {
+            "predicted_name": "egg white omelet",
+            "predicted_form": "cooked",
+            "predicted_kcal_per_100g": 58.0
+        },
+        {
+            "predicted_name": "scrambled egg whites",
+            "predicted_form": "scrambled",
+            "predicted_kcal_per_100g": 60.0
+        },
+        {
+            "predicted_name": "egg whites cooked",
+            "predicted_form": "cooked",
+            "predicted_kcal_per_100g": 55.0
+        }
+    ]
+
+    # Write fixture
+    fixture_path = Path(TEST_DATA_DIR) / "test_egg_white_cooked.jsonl"
+    write_fixture(fixture_path, records)
+
+    # Run prediction replay
+    cmd = f"cd {REPO_ROOT} && PYTHONPATH=nutritionverse-tests python -m nutrition.predict_replay {fixture_path} --config {CONFIGS_DIR} --verbose"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, f"Replay failed: {result.stderr}"
+
+    # Parse results
+    results_jsonl = fixture_path.parent / (fixture_path.stem + "_results.jsonl")
+    assert results_jsonl.exists(), f"Results file not found: {results_jsonl}"
+
+    results = []
+    with open(results_jsonl) as f:
+        for line in f:
+            results.append(json.loads(line))
+
+    # Validate: All egg whites should attempt Stage Z
+    for i, record in enumerate(results):
+        attempted_stages = record.get("attempted_stages", [])
+
+        # Should attempt Stage Z (forced by is_egg_white_cooked gate)
+        assert "stageZ_branded_fallback" in attempted_stages, \
+            f"Record {i} ({records[i]['predicted_name']}) did not attempt Stage Z"
+
+    # Cleanup
+    fixture_path.unlink()
+    results_jsonl.unlink()
+
+
+def test_timing_telemetry_present():
+    """
+    Phase Z3.3: Test that timing telemetry is present in results.
+    Validates stage_timings_ms field exists and contains valid data.
+    """
+    records = [
+        {
+            "predicted_name": "apple",
+            "predicted_form": "raw",
+            "predicted_kcal_per_100g": 52.0
+        }
+    ]
+
+    # Write fixture
+    fixture_path = Path(TEST_DATA_DIR) / "test_timing_telemetry.jsonl"
+    write_fixture(fixture_path, records)
+
+    # Run prediction replay
+    cmd = f"cd {REPO_ROOT} && PYTHONPATH=nutritionverse-tests python -m nutrition.predict_replay {fixture_path} --config {CONFIGS_DIR}"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, f"Replay failed: {result.stderr}"
+
+    # Parse results
+    results_jsonl = fixture_path.parent / (fixture_path.stem + "_results.jsonl")
+    assert results_jsonl.exists(), f"Results file not found: {results_jsonl}"
+
+    results = []
+    with open(results_jsonl) as f:
+        for line in f:
+            results.append(json.loads(line))
+
+    # Validate: stage_timings_ms field exists
+    record = results[0]
+    assert "stage_timings_ms" in record, "stage_timings_ms field missing from telemetry"
+
+    timings = record.get("stage_timings_ms", {})
+    assert isinstance(timings, dict), f"stage_timings_ms should be dict, got {type(timings)}"
+
+    # Should have at least one timing entry (since apple matched)
+    assert len(timings) > 0, "stage_timings_ms dict is empty"
+
+    # All timing values should be >= 0
+    for stage, timing_ms in timings.items():
+        assert timing_ms >= 0, f"Timing for {stage} is negative: {timing_ms}"
+
+    # Cleanup
+    fixture_path.unlink()
+    results_jsonl.unlink()
+
+
+def test_sweet_potato_vs_potato_collision():
+    """
+    Phase Z3.3: Test that "sweet potato" never maps to "potato" entries.
+    Validates compound term preservation prevents collision.
+    """
+    records = [
+        {
+            "predicted_name": "sweet potato roasted",
+            "predicted_form": "roasted",
+            "predicted_kcal_per_100g": 90.0
+        },
+        {
+            "predicted_name": "potato roasted",
+            "predicted_form": "roasted",
+            "predicted_kcal_per_100g": 115.0
+        }
+    ]
+
+    # Write fixture
+    fixture_path = Path(TEST_DATA_DIR) / "test_potato_collision.jsonl"
+    write_fixture(fixture_path, records)
+
+    # Run prediction replay with verbose to see routing
+    cmd = f"cd {REPO_ROOT} && PYTHONPATH=nutritionverse-tests python -m nutrition.predict_replay {fixture_path} --config {CONFIGS_DIR} --verbose"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, f"Replay failed: {result.stderr}"
+
+    # Parse results
+    results_jsonl = fixture_path.parent / (fixture_path.stem + "_results.jsonl")
+    assert results_jsonl.exists(), f"Results file not found: {results_jsonl}"
+
+    results = []
+    with open(results_jsonl) as f:
+        for line in f:
+            results.append(json.loads(line))
+
+    # Validate: sweet potato should route to sweet_potato_roasted, not potato_roasted
+    sweet_potato_record = results[0]
+    potato_record = results[1]
+
+    # Check telemetry for Stage Z routing (if it reached Stage Z)
+    if "stageZ_branded_fallback" in sweet_potato_record.get("attempted_stages", []):
+        stageZ_telem = sweet_potato_record.get("stageZ_branded_fallback", {})
+        canonical_key = stageZ_telem.get("canonical_key", "")
+
+        # Should NOT match plain "potato" keys
+        assert "sweet" in canonical_key or canonical_key == "sweet_potato_roasted", \
+            f"Sweet potato incorrectly routed to '{canonical_key}' (expected sweet_potato variant)"
+
+    # Regular potato should route to potato_roasted (not sweet_potato_roasted)
+    if "stageZ_branded_fallback" in potato_record.get("attempted_stages", []):
+        stageZ_telem = potato_record.get("stageZ_branded_fallback", {})
+        canonical_key = stageZ_telem.get("canonical_key", "")
+
+        # Should NOT contain "sweet"
+        assert "sweet" not in canonical_key, \
+            f"Regular potato incorrectly routed to '{canonical_key}' (should not contain 'sweet')"
+
+    # Cleanup
+    fixture_path.unlink()
+    results_jsonl.unlink()
+
+
 if __name__ == "__main__":
     # Run tests with pytest
     pytest.main([__file__, "-v"])

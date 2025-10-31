@@ -120,6 +120,13 @@ def _infer_cooked_form_from_tokens(predicted_name: str) -> Optional[str]:
 
     name_lower = predicted_name.lower()
 
+    # Phase Z3.3: Egg white special handling
+    if "egg white" in name_lower or "egg whites" in name_lower:
+        if any(tok in name_lower for tok in ["omelet", "omelette", "scrambled", "cooked"]):
+            return "cooked"
+        # Default to raw for plain "egg white"
+        return "raw"
+
     # Phase Z3.2.1: Check for roasted/cooked tokens (uses ROASTED_TOKENS)
     if any(token in name_lower for token in ROASTED_TOKENS):
         return "cooked"
@@ -353,6 +360,45 @@ def _derive_form_intent(predicted_form: Optional[str]) -> Optional[str]:
     return None
 
 
+# Phase Z3.3: Starch form routing helper
+def _detect_starch_form(predicted_name: str) -> Optional[str]:
+    """
+    Phase Z3.3: Detect starch cooking form for Stage Z key routing.
+
+    Returns suggested key suffix for potato-based starches based on cooking method.
+    This helps route "baked potato", "fried potatoes", etc. to correct Stage Z entries.
+
+    Args:
+        predicted_name: Original predicted food name
+
+    Returns:
+        Suggested Stage Z key (e.g., "potato_roasted", "hash_browns") or None
+    """
+    if not predicted_name:
+        return None
+
+    name_lower = predicted_name.lower()
+
+    # Potato-based starches (exclude sweet potato)
+    if "potato" in name_lower and "sweet" not in name_lower:
+        # Roasted/baked forms
+        if any(tok in name_lower for tok in ["roasted", "baked", "oven", "air fried", "air-fried"]):
+            return "potato_roasted"
+        # Fried forms
+        elif any(tok in name_lower for tok in ["fried", "fries", "crispy"]) and "hash" not in name_lower:
+            return "potato_fried"
+        # Hash browns / home fries
+        elif any(tok in name_lower for tok in ["hash", "home fries"]):
+            return "hash_browns"
+
+    # Sweet potato (separate handling)
+    elif "sweet" in name_lower and "potato" in name_lower:
+        if any(tok in name_lower for tok in ["roasted", "baked", "oven", "air fried", "air-fried"]):
+            return "sweet_potato_roasted"
+
+    return None
+
+
 def _normalize_for_lookup(name: str) -> tuple:
     """
     Normalize food name for variant/allowlist key matching.
@@ -433,6 +479,26 @@ def _normalize_for_lookup(name: str) -> tuple:
     # Keep fresh as soft hint toward raw (don't override explicit form)
     if not form and has_fresh_hint:
         form = "raw"  # Soft hint
+
+    # Phase Z3.3: Preserve compound terms BEFORE normalization (prevents sweet potato → potato collision)
+    COMPOUND_TERMS = {
+        "sweet potato": "sweet_potato",
+        "sweet potatoes": "sweet_potato",
+        "hash browns": "hash_browns",
+        "hash brown": "hash_browns",
+        "home fries": "home_fries",
+        "french fries": "french_fries",
+        "spring mix": "spring_mix",
+        "mixed greens": "mixed_greens",
+        "salad greens": "salad_greens",
+    }
+
+    # Check compound terms FIRST (before plural normalization)
+    name_lower = name.lower()
+    for compound, replacement in COMPOUND_TERMS.items():
+        if compound in name_lower:
+            name = name_lower.replace(compound, replacement)
+            break  # Only apply first match
 
     # Safe plural→singular with whitelist (prevents "glass"→"glas" bugs)
     PLURAL_MAP = {
@@ -687,6 +753,14 @@ class FDCAlignmentWithConversion:
             AlignmentResult with best match and telemetry
         """
         import os  # For ALIGN_VERBOSE env var
+        import time  # Phase Z3.3: For per-stage timing
+
+        # Phase Z3.3: Initialize timing dict (ms per stage)
+        stage_timings_ms = {}
+        alignment_start_time = time.perf_counter()
+
+        # Phase Z3.3: Initialize stage rejection reasons tracking
+        stage_rejection_reasons = []
 
         # Phase 7.3 Task 5: De-duplicate form tokens (e.g., "(raw) (raw)" → "raw")
         if predicted_form:
@@ -772,9 +846,12 @@ class FDCAlignmentWithConversion:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] Trying Stage 1b (raw Foundation direct) for raw/fresh/empty form...")
 
+                # Phase Z3.3: Start timing Stage 1b
+                stage1b_start = time.perf_counter()
                 stage1b_result = self._stage1b_raw_foundation_direct(
                     core_class, predicted_kcal_100g, raw_foundation, predicted_name
                 )
+                stage_timings_ms["stage1b"] = (time.perf_counter() - stage1b_start) * 1000
 
                 if stage1b_result:
                     # P0: Handle telemetry tuple (match, score, stage1c_tel, stage1b_tel)
@@ -802,7 +879,9 @@ class FDCAlignmentWithConversion:
                         candidate_pool_branded=len(branded),
                         class_intent=class_intent,
                         form_intent=form_intent,
-                        attempted_stages=attempted_stages
+                        attempted_stages=attempted_stages,
+                        stage_timings_ms=stage_timings_ms,
+                        stage_rejection_reasons=stage_rejection_reasons
                     )
                     # Add Stage 1b score to telemetry
                     result.telemetry["stage1b_score"] = score
@@ -812,6 +891,12 @@ class FDCAlignmentWithConversion:
                         result.telemetry["stage1c_switched"] = stage1c_telemetry
 
                     return result
+                else:
+                    # Phase Z3.3: Track rejection reason
+                    if len(raw_foundation) == 0:
+                        stage_rejection_reasons.append("stage1b: no_raw_foundation_candidates")
+                    else:
+                        stage_rejection_reasons.append("stage1b: threshold_not_met")
 
             # NEW: Try Stage 1c (cooked SR direct) for cooked proteins BEFORE Stage 2
             # Phase Z3: Added "roasted" and "steamed" to trigger cooked flow
@@ -820,7 +905,10 @@ class FDCAlignmentWithConversion:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] Trying Stage 1c (cooked SR direct) for cooked protein...")
 
+                # Phase Z3.3: Start timing Stage 1c
+                stage1c_start = time.perf_counter()
                 stage1c_result = self._stage1c_cooked_sr_direct(core_class, cooked_sr_legacy)
+                stage_timings_ms["stage1c"] = (time.perf_counter() - stage1c_start) * 1000
 
                 if stage1c_result:
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -835,16 +923,27 @@ class FDCAlignmentWithConversion:
                         candidate_pool_branded=len(branded),
                         class_intent=class_intent,
                         form_intent=form_intent,
-                        attempted_stages=attempted_stages
+                        attempted_stages=attempted_stages,
+                        stage_timings_ms=stage_timings_ms,
+                        stage_rejection_reasons=stage_rejection_reasons
                     )
                     return result
+                else:
+                    # Phase Z3.3: Track rejection reason
+                    if len(cooked_sr_legacy) == 0:
+                        stage_rejection_reasons.append("stage1c: no_cooked_sr_candidates")
+                    else:
+                        stage_rejection_reasons.append("stage1c: no_match_found")
 
             # Try Stage 2 (raw + convert) for cooked forms OR if Stage 1b/1c failed
             # IMPORTANT: Stage 2 runs even when Stage 1 blocked (allows cooked veg conversion)
             attempted_stages.append("stage2")
+            # Phase Z3.3: Start timing Stage 2
+            stage2_start = time.perf_counter()
             match = self._stage2_raw_convert(
                 core_class, method, predicted_kcal_100g, raw_foundation, predicted_form
             )
+            stage_timings_ms["stage2"] = (time.perf_counter() - stage2_start) * 1000
             if match:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     match_name = match.name if hasattr(match, 'name') else match.original.name
@@ -858,8 +957,16 @@ class FDCAlignmentWithConversion:
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
                     form_intent=form_intent,
-                    attempted_stages=attempted_stages
+                    attempted_stages=attempted_stages,
+                    stage_timings_ms=stage_timings_ms,
+                    stage_rejection_reasons=stage_rejection_reasons
                 )
+            else:
+                # Phase Z3.3: Track rejection reason
+                if len(raw_foundation) == 0:
+                    stage_rejection_reasons.append("stage2: no_raw_foundation_for_conversion")
+                else:
+                    stage_rejection_reasons.append("stage2: conversion_failed")
 
             # Stage 2 failed, go directly to branded (skip Stage 1)
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -1084,8 +1191,11 @@ class FDCAlignmentWithConversion:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[ALIGN] ✓ Stage-Z eligible, building energy-only proxy...")
 
+                # Phase Z3.3: Start timing Stage Z energy-only
+                stageZ_energy_start = time.perf_counter()
                 # Build energy-only proxy with plausibility clamping
                 proxy = build_energy_only_proxy(core_class, category, predicted_kcal_100g)
+                stage_timings_ms["stageZ_energy_only"] = (time.perf_counter() - stageZ_energy_start) * 1000
 
                 # Create synthetic FDC entry from proxy
                 from ..types import FdcEntry
@@ -1114,7 +1224,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
                     form_intent=form_intent,
-                    attempted_stages=attempted_stages
+                    attempted_stages=attempted_stages,
+                    stage_timings_ms=stage_timings_ms,
+                    stage_rejection_reasons=stage_rejection_reasons
                 )
 
                 # Add Stage-Z telemetry
@@ -1149,12 +1261,19 @@ class FDCAlignmentWithConversion:
             any(token in predicted_name.lower() for token in ROASTED_TOKENS)
         )
 
+        # Phase Z3.3: Compute egg white cooked intent
+        is_egg_white_cooked = (
+            ("egg white" in predicted_name.lower() or "egg whites" in predicted_name.lower()) and
+            inferred_form == "cooked"
+        )
+
         # Determine if Stage Z should be attempted
         # Phase Z3.2: Updated eligibility - removed unconditional produce trigger
         should_try_stageZ = (
             candidate_pool_size == 0 or  # No candidates at all
             all_candidates_rejected or    # Had candidates but all rejected
             is_roasted_veg or             # Phase Z3.2: Roasted vegetable explicit gate
+            is_egg_white_cooked or        # Phase Z3.3: Egg white cooked variant gate
             (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False)
         )
 
@@ -1162,10 +1281,15 @@ class FDCAlignmentWithConversion:
         if is_roasted_veg and os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Forcing Stage Z for roasted produce: {predicted_name} (class={class_intent}, form={inferred_form})")
 
+        # Phase Z3.3: Verbose logging for egg white cooked forcing
+        if is_egg_white_cooked and os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[ALIGN] Forcing Stage Z for cooked egg white: {predicted_name} (form={inferred_form})")
+
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Stage Z eligibility: pool_size={candidate_pool_size}, "
                   f"all_rejected={all_candidates_rejected}, had_candidates={had_candidates_to_score}, "
-                  f"is_roasted_veg={is_roasted_veg}, chosen={chosen is not None}, should_try={should_try_stageZ}")
+                  f"is_roasted_veg={is_roasted_veg}, is_egg_white_cooked={is_egg_white_cooked}, "
+                  f"chosen={chosen is not None}, should_try={should_try_stageZ}")
 
         # Guard to prevent Stage Z from running twice
         stageZ_attempted = False
@@ -1175,8 +1299,17 @@ class FDCAlignmentWithConversion:
             attempted_stages.append("stageZ_branded_fallback")
             from .stageZ_branded_fallback import resolve_branded_fallback
 
+            # Phase Z3.3: Check for starch form routing hint
+            starch_key_hint = _detect_starch_form(predicted_name)
+
             # Use normalized form of predicted_name
             normalized, _, _, _, hints = _normalize_for_lookup(predicted_name)
+
+            # Phase Z3.3: Override normalized key if starch hint detected
+            if starch_key_hint:
+                normalized = starch_key_hint
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[ALIGN] Starch routing: using key '{starch_key_hint}' for '{predicted_name}'")
 
             # Phase Z2: Check if normalization detected an ignore pattern
             if hints.get('ignored_class'):
@@ -1204,6 +1337,8 @@ class FDCAlignmentWithConversion:
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[ALIGN] Trying StageZ Branded Fallback for '{normalized}'...")
 
+            # Phase Z3.3: Start timing Stage Z
+            stageZ_start = time.perf_counter()
             branded_result = resolve_branded_fallback(
                 normalized_name=normalized,
                 class_intent=class_intent,
@@ -1212,6 +1347,7 @@ class FDCAlignmentWithConversion:
                 fdc_database=self._fdc_db,
                 feature_flags=self._external_feature_flags or {}
             )
+            stage_timings_ms["stageZ_branded_fallback"] = (time.perf_counter() - stageZ_start) * 1000
 
             if branded_result:
                 entry, branded_telemetry = branded_result
@@ -1236,7 +1372,9 @@ class FDCAlignmentWithConversion:
                     candidate_pool_branded=len(branded),
                     class_intent=class_intent,
                     form_intent=form_intent,
-                    attempted_stages=attempted_stages
+                    attempted_stages=attempted_stages,
+                    stage_timings_ms=stage_timings_ms,
+                    stage_rejection_reasons=stage_rejection_reasons
                 )
 
                 # Add Stage 1 rejection telemetry
@@ -1286,7 +1424,9 @@ class FDCAlignmentWithConversion:
             class_intent=class_intent,
             form_intent=form_intent,
             attempted_stages=attempted_stages,  # Phase Z3.2: Always attach attempted_stages
-            stage1_all_rejected=all_candidates_rejected  # Phase Z3.2.1: All-rejected telemetry
+            stage1_all_rejected=all_candidates_rejected,  # Phase Z3.2.1: All-rejected telemetry
+            stage_timings_ms=stage_timings_ms,  # Phase Z3.3: Per-stage timing
+            stage_rejection_reasons=stage_rejection_reasons  # Phase Z3.3: Stage rejection reasons
         )
 
     def _stage1_cooked_exact(
@@ -1710,6 +1850,21 @@ class FDCAlignmentWithConversion:
                     score += 0.02  # Tiny nudge only
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         print(f"    [ROASTED_PRODUCE_BONUS] +0.02 for roasted produce tie-breaker")
+
+            # Phase Z3.3: Starch-like produce scoring bonus (+0.03)
+            # Applied when: class_intent is produce, inferred_form is cooked,
+            # and predicted_name contains starch-like food (potato, sweet potato)
+            if predicted_name:
+                inferred_form = _infer_cooked_form_from_tokens(predicted_name)
+                name_lower = predicted_name.lower()
+                is_starch_like = any(token in name_lower for token in ["potato", "potatoes", "hash brown", "home fries"])
+
+                if (class_intent == "produce" and
+                    inferred_form == "cooked" and
+                    is_starch_like):
+                    score += 0.03  # Moderate nudge for starch-like produce
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"    [STARCH_PRODUCE_BONUS] +0.03 for cooked starch-like produce")
 
             # Track this candidate for telemetry (before/after penalties)
             pre_score = 0.7 * jaccard + 0.3 * energy_sim  # Pre-penalty score
@@ -3276,7 +3431,9 @@ class FDCAlignmentWithConversion:
         class_intent: Optional[str] = None,  # Phase 7.3 Task 3
         form_intent: Optional[str] = None,   # Phase 7.3 Task 3
         attempted_stages: Optional[List[str]] = None,  # Track stages attempted
-        stage1_all_rejected: bool = False  # Phase Z3.2.1: All Stage 1 candidates rejected
+        stage1_all_rejected: bool = False,  # Phase Z3.2.1: All Stage 1 candidates rejected
+        stage_timings_ms: Optional[Dict[str, float]] = None,  # Phase Z3.3: Per-stage timing (ms)
+        stage_rejection_reasons: Optional[List[str]] = None  # Phase Z3.3: Why stages failed
     ) -> AlignmentResult:
         """
         Build AlignmentResult with mandatory telemetry.
@@ -3342,6 +3499,10 @@ class FDCAlignmentWithConversion:
                 "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
                 # Phase Z3.2.1: All-rejected telemetry
                 "stage1_all_rejected": stage1_all_rejected,
+                # Phase Z3.3: Per-stage timing (ms)
+                "stage_timings_ms": stage_timings_ms if stage_timings_ms else {},
+                # Phase Z3.3: Stage rejection reasons
+                "stage_rejection_reasons": stage_rejection_reasons if stage_rejection_reasons else [],
             }
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -3426,6 +3587,10 @@ class FDCAlignmentWithConversion:
             "attempted_stages": attempted_stages if attempted_stages else [],
             # Phase Z3.2.1: All-rejected telemetry
             "stage1_all_rejected": stage1_all_rejected,
+            # Phase Z3.3: Per-stage timing (ms)
+            "stage_timings_ms": stage_timings_ms if stage_timings_ms else {},
+            # Phase Z3.3: Stage rejection reasons
+            "stage_rejection_reasons": stage_rejection_reasons if stage_rejection_reasons else [],
         })
 
         # Compact proof line (behind ALIGN_VERBOSE)

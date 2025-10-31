@@ -236,6 +236,86 @@ class BatchResultsAnalyzer:
             "class_counts": dict(coverage_counts)
         }
 
+    def analyze_category_breakdown(self) -> Dict[str, Any]:
+        """
+        Phase Z3.3: Analyze foods by class_intent category with raw/cooked split.
+
+        Returns:
+            Dict with category breakdown including:
+            - Total count per category
+            - Raw vs cooked split
+            - Stage Z usage per category
+            - Miss rate per category
+        """
+        category_data = defaultdict(lambda: {
+            "total": 0,
+            "raw": 0,
+            "cooked": 0,
+            "stage_z": 0,
+            "misses": 0,
+            "foundation": 0,
+            "converted": 0
+        })
+
+        for item in self.items:
+            telemetry = item.get("telemetry", {})
+            class_intent = telemetry.get("class_intent", "unknown")
+            form_intent = telemetry.get("form_intent", "unknown")
+            stage = telemetry.get("alignment_stage", "unknown")
+
+            # Increment category counts
+            category_data[class_intent]["total"] += 1
+
+            # Track raw vs cooked
+            if form_intent in ["raw", "fresh"]:
+                category_data[class_intent]["raw"] += 1
+            elif form_intent in ["cooked", "fried", "grilled", "roasted", "baked"]:
+                category_data[class_intent]["cooked"] += 1
+
+            # Track Stage Z usage
+            if stage in ["stageZ_branded_fallback", "stageZ_energy_only"]:
+                category_data[class_intent]["stage_z"] += 1
+
+            # Track misses
+            if stage == "stage0_no_candidates":
+                category_data[class_intent]["misses"] += 1
+
+            # Track Foundation usage
+            if stage in ["stage1b_raw_foundation_direct", "stage1c_cooked_sr_direct"]:
+                category_data[class_intent]["foundation"] += 1
+
+            # Track conversion usage
+            if stage == "stage2_raw_convert":
+                category_data[class_intent]["converted"] += 1
+
+        # Convert to percentage format
+        category_stats = {}
+        for category, stats in category_data.items():
+            total = stats["total"]
+            if total == 0:
+                continue
+
+            category_stats[category] = {
+                "count": total,
+                "raw_count": stats["raw"],
+                "raw_pct": round((stats["raw"] / total * 100), 1),
+                "cooked_count": stats["cooked"],
+                "cooked_pct": round((stats["cooked"] / total * 100), 1),
+                "stage_z_count": stats["stage_z"],
+                "stage_z_pct": round((stats["stage_z"] / total * 100), 1),
+                "miss_count": stats["misses"],
+                "miss_pct": round((stats["misses"] / total * 100), 1),
+                "foundation_count": stats["foundation"],
+                "foundation_pct": round((stats["foundation"] / total * 100), 1),
+                "converted_count": stats["converted"],
+                "converted_pct": round((stats["converted"] / total * 100), 1)
+            }
+
+        return {
+            "total_items": len(self.items),
+            "categories": category_stats
+        }
+
     def analyze_special_cases(self) -> Dict[str, Any]:
         """
         Analyze Phase Z2 special cases.

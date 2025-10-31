@@ -105,9 +105,9 @@ def test_replay_minibatch():
     stagez_usage = (stagez_count / total) * 100 if total > 0 else 0
     miss_rate = (miss_count / total) * 100 if total > 0 else 0
 
-    # Assertions - Phase Z3.2.1: Tightened thresholds after roasted veg resolution
-    assert stagez_usage >= 18.0, f"Stage Z usage {stagez_usage:.1f}% below 18% target"
-    assert miss_rate <= 35.0, f"Miss rate {miss_rate:.1f}% exceeds 35% threshold"
+    # Assertions - Phase Z3.3: Tightened thresholds after starch normalization and leafy coverage
+    assert stagez_usage >= 19.0, f"Stage Z usage {stagez_usage:.1f}% below 19% target"
+    assert miss_rate <= 25.0, f"Miss rate {miss_rate:.1f}% exceeds 25% threshold"
 
     # Print results
     print(f"✓ Mini-replay validation passed:")
