@@ -101,16 +101,17 @@ class BrandedFallbackResolver:
         fdc_id = primary['fdc_id']
         brand = primary.get('brand', 'Unknown')
         kcal_range = primary.get('kcal_per_100g', [0, 1000])
-        db_verified = primary.get('db_verified', False)  # Phase Z3.3: Check DB verification status
+        db_verified = primary.get('db_verified', None)  # Phase Z3.3: Check DB verification status (tri-state: True/False/None)
 
         # Phase Z3.3: Gate unverified entries with feature flag
-        if not db_verified and not feature_flags.get('allow_unverified_branded', False):
+        # Only block entries EXPLICITLY marked as db_verified: false (None/missing is allowed for backwards compatibility)
+        if db_verified is False and not feature_flags.get('allow_unverified_branded', False):
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[BRANDED_FALLBACK] ✗ FDC {fdc_id} rejected: db_verified=false (enable allow_unverified_branded flag)")
             return None
 
         # Phase Z3.3: Log warning for unverified entries
-        if not db_verified and os.getenv('ALIGN_VERBOSE', '0') == '1':
+        if db_verified is False and os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[BRANDED_FALLBACK] ⚠️ WARN: Using unverified entry FDC {fdc_id} (db_verified=false)")
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':

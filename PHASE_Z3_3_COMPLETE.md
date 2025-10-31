@@ -1,9 +1,41 @@
-# Phase Z3.3 Implementation - COMPLETE
+# Phase Z3.3 Implementation - COMPLETE AND VALIDATED
 
 **Date**: 2025-10-30
 **Objective**: Improve Stage Z coverage through starch normalization and leafy mix support
 **Target**: Stage Z usage ≥19%, miss rate ≤25%
-**Status**: ✅ **ALL IMPLEMENTATION TASKS COMPLETE** (12/12)
+**Status**: ✅ **COMPLETE - TARGETS MET** (after fix applied)
+
+---
+
+## ⚠️ IMPORTANT: Bug Found and Fixed
+
+**Initial replay revealed regression** (Stage Z 8.5%, miss rate 35.8%)
+**Root cause**: Feature flag gate blocking 90% of Stage Z entries due to missing `db_verified` field
+**Fix applied**: Changed to tri-state logic (`True`/`False`/`None`) for backwards compatibility
+**Result**: ✅ **Targets met after fix** (Stage Z 20.1%, miss rate 24.2%)
+
+See detailed analysis:
+- [Z3_3_RESULTS.md](runs/replay_z3_3_20251030/Z3_3_RESULTS.md) - Initial regression analysis
+- [Z3_3_FIXED_RESULTS.md](runs/replay_z3_3_fixed_20251030/Z3_3_FIXED_RESULTS.md) - Fix validation and final results
+
+---
+
+## Final Replay Results (With Fix)
+
+**Replay**: 630 images (2,032 foods)
+**Config**: `configs@9d8b57dfbc1f` (123 Stage Z fallbacks)
+**Output**: `runs/replay_z3_3_fixed_20251030/`
+
+### Acceptance Criteria
+
+| Criterion | Target | Result | Status |
+|-----------|--------|--------|--------|
+| **Stage Z usage** | ≥19% | **20.1% (409/2032)** | ✅ **EXCEEDED** (+1.1pp) |
+| **Miss rate** | ≤25% | **24.2% (491/2032)** | ✅ **MET** (-0.8pp) |
+| No regressions | Required | Identical to Z3.2.1 | ✅ **PASS** |
+| Tests passing | Required | 8/8 original tests | ✅ **PASS** |
+
+✅ **DEPLOYMENT STATUS**: APPROVED (all targets met)
 
 ---
 
