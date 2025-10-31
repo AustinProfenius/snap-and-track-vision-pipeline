@@ -6,7 +6,71 @@
 
 ---
 
-## Current Baseline: 630-Image Replay with Configs (Pre-Z3)
+## Current Baseline: Phase Z3.3 - Starches & Leafy Normalization
+
+**Date**: 2025-10-30
+**Path**: `runs/replay_z3_3_fixed_20251030/`
+**Description**: Phase Z3.3 with feature flag fix - starch normalization and leafy mix support
+
+**Metrics**:
+| Metric | Value |
+|--------|-------|
+| Total foods | 2,032 |
+| **Stage Z usage** | **409 (20.1%)** ✅ |
+| **Miss rate (Stage 0)** | **491 (24.2%)** ✅ |
+| stageZ_branded_fallback | 348 (17.1%) |
+| stageZ_energy_only | 61 (3.0%) |
+| Config version | configs@9d8b57dfbc1f |
+| Fallbacks loaded | 123 |
+| Feature flags | `allow_stageZ_for_partial_pools=True` |
+
+**Why this baseline**:
+- ✅ **Targets met**: Stage Z 20.1% (≥19%), miss rate 24.2% (≤25%)
+- Phase Z3.3 features: Starch normalization, compound terms, egg white cooked support
+- Feature flag fix applied (tri-state `db_verified` logic)
+- Enhanced telemetry: Per-stage timing, rejection reasons, category breakdown
+- All 630 predictions processed successfully
+- Zero vision API calls ($0 cost)
+- Validated against Z3.2.1 baseline (metrics identical)
+
+**Phase Z3.3 Features**:
+- Compound term preservation (sweet potato vs potato)
+- Starch routing helper for potato variants
+- 12+ Stage Z entries extended with synonyms
+- Egg white form inference and cooked trigger
+- +0.03 scoring bonus for starch-like produce
+- Category breakdown analyzer
+
+**File locations**:
+```
+runs/replay_z3_3_fixed_20251030/
+├── results.jsonl        # 2.9MB, 630 predictions → 2,032 foods
+├── telemetry.jsonl      # 2.2MB, detailed per-food telemetry
+├── replay_manifest.json # 258B, run metadata
+└── Z3_3_FIXED_RESULTS.md # Comprehensive analysis
+```
+
+**Documentation**:
+- `PHASE_Z3_3_COMPLETE.md` - Implementation details
+- `runs/replay_z3_3_20251030/Z3_3_RESULTS.md` - Initial regression analysis
+- `runs/replay_z3_3_fixed_20251030/Z3_3_FIXED_RESULTS.md` - Fix validation
+
+---
+
+## Previous Baselines
+
+### Phase Z3.2.1 - Surgical Stage Z Improvements
+**Date**: 2025-10-30
+**Path**: `runs/replay_z3_2_1_20251030/`
+**Metrics**:
+- Total foods: 2,032
+- Stage Z usage: 409 (20.1%)
+- Miss rate: 491 (24.2%)
+- Config version: configs@9d8b57dfbc1f
+
+**Note**: Metrics identical to Z3.3 (Z3.3 maintained improvements without regression)
+
+### 630-Image Replay with Configs (Pre-Z3)
 
 **Date**: 2025-10-30
 **Path**: `runs/replay_630_withconfigs/`
@@ -36,10 +100,6 @@ runs/replay_630_withconfigs/
 ├── telemetry.jsonl      # 1.8MB, detailed per-food telemetry
 └── replay_manifest.json # 256B, run metadata
 ```
-
----
-
-## Previous Baselines
 
 ### Initial Replay (Pre-Config Wiring)
 **Date**: 2025-10-30
