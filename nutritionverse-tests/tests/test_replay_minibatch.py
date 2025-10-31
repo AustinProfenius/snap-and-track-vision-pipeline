@@ -105,11 +105,9 @@ def test_replay_minibatch():
     stagez_usage = (stagez_count / total) * 100 if total > 0 else 0
     miss_rate = (miss_count / total) * 100 if total > 0 else 0
 
-    # Assertions
-    assert stagez_count > 0, f"Stage Z usage is 0 (expected > 0). Found {stagez_count} Stage Z matches out of {total} foods."
-    # Note: Miss rate threshold is relaxed (70%) due to known Phase Z3 blocker (brussels sprouts early return)
-    # This will be tightened once blocker is resolved. Test purpose is CI stability, not coverage.
-    assert miss_rate < 70, f"Miss rate {miss_rate:.1f}% exceeds 70%"
+    # Assertions - Phase Z3.2.1: Tightened thresholds after roasted veg resolution
+    assert stagez_usage >= 18.0, f"Stage Z usage {stagez_usage:.1f}% below 18% target"
+    assert miss_rate <= 35.0, f"Miss rate {miss_rate:.1f}% exceeds 35% threshold"
 
     # Print results
     print(f"✓ Mini-replay validation passed:")

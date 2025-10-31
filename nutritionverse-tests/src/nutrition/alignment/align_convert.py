@@ -92,6 +92,14 @@ def _contains_any(haystack: str, needles: List[str]) -> bool:
     return False
 
 
+# Phase Z3.2.1: Roasted/cooked token detection (single source of truth)
+ROASTED_TOKENS = [
+    "roast", "roasted", "oven-roasted", "oven roasted", "baked",
+    "grilled", "air-fried", "air fried", "charred", "sheet-pan",
+    "pan-roasted", "pan roasted"
+]
+
+
 # Phase Z3: Advisory cooked/raw form inference
 def _infer_cooked_form_from_tokens(predicted_name: str) -> Optional[str]:
     """
@@ -112,9 +120,12 @@ def _infer_cooked_form_from_tokens(predicted_name: str) -> Optional[str]:
 
     name_lower = predicted_name.lower()
 
-    # Check for cooking method tokens (cooked form)
-    cooked_tokens = ["roast", "bake", "boil", "steam", "grill", "fry", "sauté", "pan", "fried"]
-    if any(token in name_lower for token in cooked_tokens):
+    # Phase Z3.2.1: Check for roasted/cooked tokens (uses ROASTED_TOKENS)
+    if any(token in name_lower for token in ROASTED_TOKENS):
+        return "cooked"
+
+    # Check for other cooking methods
+    if any(token in name_lower for token in ["boil", "steam", "fry", "sauté", "fried"]):
         return "cooked"
 
     # Check for raw indicators
@@ -762,7 +773,7 @@ class FDCAlignmentWithConversion:
                     print(f"[ALIGN] Trying Stage 1b (raw Foundation direct) for raw/fresh/empty form...")
 
                 stage1b_result = self._stage1b_raw_foundation_direct(
-                    core_class, predicted_kcal_100g, raw_foundation
+                    core_class, predicted_kcal_100g, raw_foundation, predicted_name
                 )
 
                 if stage1b_result:
@@ -1130,12 +1141,12 @@ class FDCAlignmentWithConversion:
         all_candidates_rejected = had_candidates_to_score and (chosen is None)
 
         # Phase Z3.2: Compute roasted vegetable intent
+        # Phase Z3.2.1: Use ROASTED_TOKENS (single source of truth)
         inferred_form = _infer_cooked_form_from_tokens(predicted_name)
-        roasted_tokens = ["roasted", "baked", "grilled", "air fried", "air-fried"]
         is_roasted_veg = (
             class_intent in ["leafy_or_crucifer", "produce"] and
             inferred_form == "cooked" and
-            any(token in predicted_name.lower() for token in roasted_tokens)
+            any(token in predicted_name.lower() for token in ROASTED_TOKENS)
         )
 
         # Determine if Stage Z should be attempted
@@ -1147,9 +1158,9 @@ class FDCAlignmentWithConversion:
             (self._external_feature_flags or {}).get('allow_stageZ_for_partial_pools', False)
         )
 
-        # Phase Z3.2: Verbose logging for roasted vegetable forcing
+        # Phase Z3.2.1: Verbose logging for roasted produce forcing
         if is_roasted_veg and os.getenv('ALIGN_VERBOSE', '0') == '1':
-            print(f"[ALIGN] Forcing Stage Z attempt for roasted vegetable: {predicted_name}")
+            print(f"[ALIGN] Forcing Stage Z for roasted produce: {predicted_name} (class={class_intent}, form={inferred_form})")
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[ALIGN] Stage Z eligibility: pool_size={candidate_pool_size}, "
@@ -1274,7 +1285,8 @@ class FDCAlignmentWithConversion:
             candidate_pool_branded=len(branded),
             class_intent=class_intent,
             form_intent=form_intent,
-            attempted_stages=attempted_stages  # Phase Z3.2: Always attach attempted_stages
+            attempted_stages=attempted_stages,  # Phase Z3.2: Always attach attempted_stages
+            stage1_all_rejected=all_candidates_rejected  # Phase Z3.2.1: All-rejected telemetry
         )
 
     def _stage1_cooked_exact(
@@ -1342,7 +1354,8 @@ class FDCAlignmentWithConversion:
         self,
         core_class: str,
         predicted_kcal: float,
-        raw_foundation: List[FdcEntry]
+        raw_foundation: List[FdcEntry],
+        predicted_name: str = ""
     ) -> Optional[Tuple[FdcEntry, float]]:
         """
         Stage 1b: Raw Foundation direct match.
@@ -1685,6 +1698,18 @@ class FDCAlignmentWithConversion:
                     bonus_applied = True
                     bonus_reason = reason
                     break  # Apply bonus once per candidate
+
+            # Phase Z3.2.1: Tiny roasted-produce tie-breaker (+0.02)
+            # Only applies when: class_intent is produce/leafy_or_crucifer,
+            # inferred_form is cooked, and predicted_name contains roasted tokens
+            if predicted_name:
+                inferred_form = _infer_cooked_form_from_tokens(predicted_name)
+                if (class_intent in ["leafy_or_crucifer", "produce"] and
+                    inferred_form == "cooked" and
+                    any(t in predicted_name.lower() for t in ROASTED_TOKENS)):
+                    score += 0.02  # Tiny nudge only
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"    [ROASTED_PRODUCE_BONUS] +0.02 for roasted produce tie-breaker")
 
             # Track this candidate for telemetry (before/after penalties)
             pre_score = 0.7 * jaccard + 0.3 * energy_sim  # Pre-penalty score
@@ -3250,7 +3275,8 @@ class FDCAlignmentWithConversion:
         candidate_pool_branded: int = 0,
         class_intent: Optional[str] = None,  # Phase 7.3 Task 3
         form_intent: Optional[str] = None,   # Phase 7.3 Task 3
-        attempted_stages: Optional[List[str]] = None  # Track stages attempted
+        attempted_stages: Optional[List[str]] = None,  # Track stages attempted
+        stage1_all_rejected: bool = False  # Phase Z3.2.1: All Stage 1 candidates rejected
     ) -> AlignmentResult:
         """
         Build AlignmentResult with mandatory telemetry.
@@ -3314,6 +3340,8 @@ class FDCAlignmentWithConversion:
                 "form_intent": form_intent,
                 "guardrail_produce_applied": bool(class_intent in ["produce", "leafy_or_crucifer"]),
                 "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
+                # Phase Z3.2.1: All-rejected telemetry
+                "stage1_all_rejected": stage1_all_rejected,
             }
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -3396,6 +3424,8 @@ class FDCAlignmentWithConversion:
             "guardrail_eggs_applied": bool(class_intent and "egg" in class_intent),
             # Track attempted stages for debugging (Option A: minimal)
             "attempted_stages": attempted_stages if attempted_stages else [],
+            # Phase Z3.2.1: All-rejected telemetry
+            "stage1_all_rejected": stage1_all_rejected,
         })
 
         # Compact proof line (behind ALIGN_VERBOSE)

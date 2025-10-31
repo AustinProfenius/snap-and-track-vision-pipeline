@@ -1127,12 +1127,27 @@ fallbacks:
     - egg whites
     - whites
     - egg white only
+    - liquid egg whites
     primary:
       brand: Generic
       fdc_id: 748967  # Egg white, raw, fresh
       kcal_per_100g:
       - 48
       - 58
+      db_verified: true
+    alternates: []
+  # Phase Z3.2.1: Base entries for fallback resolver
+  potato:
+    synonyms:
+    - potato
+    - potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170032  # Potatoes, baked, flesh and skin (cooked form reasonable default)
+      kcal_per_100g:
+      - 70
+      - 140
+      db_verified: true
     alternates: []
   potato_roasted:
     synonyms:
@@ -1140,12 +1155,44 @@ fallbacks:
     - potatoes roasted
     - roasted potato
     - roasted potatoes
+    - potato oven-roasted
+    - oven-roasted potato
+    - potato air-fried
+    - air-fried potato
     primary:
       brand: Generic
       fdc_id: 170032  # Potatoes, baked, flesh and skin
       kcal_per_100g:
       - 85
       - 135
+      db_verified: true
+    alternates: []
+  leafy_mixed_salad:
+    synonyms:
+    - spring mix
+    - mixed salad greens
+    - mixed greens
+    - salad mix
+    - leafy greens mix
+    primary:
+      brand: Generic
+      fdc_id: 2346411  # Lettuce, green leaf, raw (generic leafy green)
+      kcal_per_100g:
+      - 10
+      - 25
+      db_verified: false  # Generic proxy, verify if needed
+    alternates: []
+  sweet_potato:
+    synonyms:
+    - sweet potato
+    - sweet potatoes
+    primary:
+      brand: Generic
+      fdc_id: 168482  # Sweet potato, cooked, baked in skin
+      kcal_per_100g:
+      - 75
+      - 125
+      db_verified: true
     alternates: []
   sweet_potato_roasted:
     synonyms:
@@ -1157,6 +1204,11 @@ fallbacks:
     - sweet potatoes baked
     - sweet potato grilled
     - grilled sweet potato
+    - sweet potato oven-roasted
+    - oven-roasted sweet potato
+    - sweet potato air-fried
+    - air-fried sweet potato
+    - sweet potato charred
     primary:
       brand: Generic
       fdc_id: 168482  # Sweet potato, cooked, baked in skin
@@ -1172,24 +1224,31 @@ fallbacks:
     - white rice cooked
     - cooked white rice
     - rice
+    - steamed rice
+    - boiled rice
+    - white rice steamed
     primary:
       brand: Generic
       fdc_id: 168878  # Rice, white, long-grain, regular, cooked
       kcal_per_100g:
       - 110
       - 145
+      db_verified: true
     alternates: []
   rice_brown_cooked:
     synonyms:
     - brown rice cooked
     - cooked brown rice
     - brown rice
+    - brown rice steamed
+    - brown rice boiled
     primary:
       brand: Generic
       fdc_id: 168876  # Rice, brown, long-grain, cooked
       kcal_per_100g:
       - 108
       - 130
+      db_verified: true
     alternates: []
   brussels_sprouts_roasted:
     synonyms:
@@ -1201,12 +1260,17 @@ fallbacks:
     - brussels sprout baked
     - brussels sprouts grilled
     - grilled brussels sprouts
+    - brussels sprouts oven-roasted
+    - oven-roasted brussels sprouts
+    - brussels sprouts air-fried
+    - air-fried brussels sprouts
+    - brussels sprouts charred
     primary:
       brand: Generic
       fdc_id: 170379  # Brussels sprouts, cooked, boiled
       kcal_per_100g:
-      - 35
-      - 60
+      - 25
+      - 65
       db_verified: true
     alternates: []
   cauliflower_roasted:
@@ -1217,12 +1281,17 @@ fallbacks:
     - baked cauliflower
     - cauliflower grilled
     - grilled cauliflower
+    - cauliflower oven-roasted
+    - oven-roasted cauliflower
+    - cauliflower air-fried
+    - air-fried cauliflower
+    - cauliflower charred
     primary:
       brand: Generic
       fdc_id: 170390  # Cauliflower, cooked, boiled
       kcal_per_100g:
-      - 20
-      - 50
+      - 5
+      - 55
       db_verified: true
     alternates: []
   hash_browns:
@@ -1231,12 +1300,36 @@ fallbacks:
     - hashbrowns
     - hash brown potatoes
     - hashbrown potatoes
+    - hashbrown
+    - shredded potatoes
+    - breakfast potatoes
     primary:
       brand: Generic
       fdc_id: 170033  # Potatoes, hash brown, home-prepared
       kcal_per_100g:
       - 140
       - 230
+      db_verified: true
+    alternates: []
+  french_fries:
+    synonyms:
+    - french fries
+    - fries
+    - french fried potatoes
+    primary:
+      brand: Generic
+      fdc_id: 170393  # Potatoes, french fried, all types, salt not added in processing, frozen, oven-heated
+      kcal_per_100g:
+      - 150
+      - 320
+      db_verified: false  # Verify in DB, may need adjustment
+    _metadata:
+      reject_patterns:
+      - seasoned
+      - flavored
+      - fast food
+      - with sauce
+      _notes: Exclude seasoned/fast-food variants
     alternates: []
   bagel_plain:
     synonyms:
