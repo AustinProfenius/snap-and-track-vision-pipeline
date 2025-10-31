@@ -20,5 +20,10 @@ plotly>=5.18.0
 # Database
 psycopg2-binary>=2.9.9  # PostgreSQL adapter for FDC database
 
+# Phase Z4 & E1: Recipe decomposition and semantic search
+pydantic>=2.0.0  # For recipe framework validation
+sentence-transformers>=2.2.0  # For semantic embeddings (E1 prototype)
+hnswlib>=0.7.0  # For fast approximate nearest neighbor search (E1 prototype)
+
 # Optional: for advanced features
 # inflect>=7.0.0  # for better name normalization

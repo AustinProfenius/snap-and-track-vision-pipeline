@@ -1,0 +1,95 @@
+# Phase Z4: Sandwich Recipe Templates
+#
+# Two sandwich variants with ratio-based component decomposition.
+# Ratios based on typical sandwich composition.
+#
+# Triggers match: "sandwich", "turkey sandwich", "chicken sandwich"
+# Components use Stage Z keys (prefer) for alignment.
+
+sandwich_turkey:
+  triggers:
+    - "turkey sandwich"
+    - "sandwich with turkey"
+  notes: "Turkey sandwich: bread + turkey + lettuce + tomato + mayo"
+  components:
+    - key: "bread"
+      ratio: 0.40
+      prefer:
+        - "bread_whole"
+        - "bread_white"
+      kcal_per_100g: [230, 280]
+      notes: "Sandwich bread (2 slices)"
+
+    - key: "turkey"
+      ratio: 0.35
+      prefer:
+        - "turkey_breast"
+        - "turkey_deli"
+      kcal_per_100g: [100, 150]
+      notes: "Turkey breast slices"
+
+    - key: "lettuce"
+      ratio: 0.10
+      prefer:
+        - "lettuce_romaine"
+        - "lettuce_iceberg"
+      kcal_per_100g: [10, 20]
+      notes: "Lettuce leaves"
+
+    - key: "tomato"
+      ratio: 0.10
+      prefer:
+        - "tomato"
+      kcal_per_100g: [15, 25]
+      notes: "Tomato slices"
+
+    - key: "mayo"
+      ratio: 0.05
+      prefer:
+        - "mayonnaise"
+      kcal_per_100g: [600, 750]
+      notes: "Mayonnaise spread"
+
+sandwich_chicken:
+  triggers:
+    - "chicken sandwich"
+    - "sandwich with chicken"
+    - "grilled chicken sandwich"
+  notes: "Chicken sandwich: bread + chicken + lettuce + tomato + mayo"
+  components:
+    - key: "bread"
+      ratio: 0.40
+      prefer:
+        - "bread_whole"
+        - "bread_white"
+      kcal_per_100g: [230, 280]
+      notes: "Sandwich bread (2 slices)"
+
+    - key: "chicken"
+      ratio: 0.35
+      prefer:
+        - "chicken_breast"
+      kcal_per_100g: [120, 200]
+      notes: "Grilled or cooked chicken breast"
+
+    - key: "lettuce"
+      ratio: 0.10
+      prefer:
+        - "lettuce_romaine"
+        - "lettuce_iceberg"
+      kcal_per_100g: [10, 20]
+      notes: "Lettuce leaves"
+
+    - key: "tomato"
+      ratio: 0.10
+      prefer:
+        - "tomato"
+      kcal_per_100g: [15, 25]
+      notes: "Tomato slices"
+
+    - key: "mayo"
+      ratio: 0.05
+      prefer:
+        - "mayonnaise"
+      kcal_per_100g: [600, 750]
+      notes: "Mayonnaise spread"

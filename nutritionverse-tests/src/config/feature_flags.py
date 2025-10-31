@@ -80,6 +80,18 @@ class FeatureFlags:
     # Prevents Stage 5 from masking alignment bugs
     enable_proxy_alignment: bool = os.getenv("ENABLE_PROXY_ALIGNMENT", "true").lower() == "true"
 
+    # Phase Z4: Enable Stage 5C Recipe Decomposition
+    # When enabled, decompose complex dishes (pizza, sandwich, chia pudding) into components
+    # Uses ratio-based mass allocation with pinned FDC IDs or Stage Z fallbacks
+    # Runs after Stage 5B (salad) but before Stage Z in precedence order
+    enable_recipe_decomposition: bool = os.getenv("ENABLE_RECIPE_DECOMPOSITION", "true").lower() == "true"
+
+    # Phase E1: Enable Semantic Retrieval Prototype (OFF BY DEFAULT)
+    # When enabled, use sentence-transformer embeddings + HNSW for semantic search
+    # Foundation/SR only (8,350 entries, not 1.8M branded). Runs after Stage 1c, before Stage 2
+    # Prototype feature - requires semantic index to be built first
+    enable_semantic_search: bool = os.getenv("ENABLE_SEMANTIC_SEARCH", "false").lower() == "true"
+
     @classmethod
     def print_status(cls):
         """Print current flag status for debugging."""
@@ -96,6 +108,8 @@ class FeatureFlags:
         print(f"[FLAGS]   mass_brand_last_resort: {cls.mass_brand_last_resort}")
         print(f"[FLAGS]   prefer_raw_foundation_convert: {cls.prefer_raw_foundation_convert}")
         print(f"[FLAGS]   enable_proxy_alignment: {cls.enable_proxy_alignment}")
+        print(f"[FLAGS]   enable_recipe_decomposition: {cls.enable_recipe_decomposition}")
+        print(f"[FLAGS]   enable_semantic_search: {cls.enable_semantic_search}")
         print(f"[FLAGS] =====================================\n")
 
     @classmethod

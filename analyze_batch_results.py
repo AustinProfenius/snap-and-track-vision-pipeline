@@ -316,6 +316,155 @@ class BatchResultsAnalyzer:
             "categories": category_stats
         }
 
+    def analyze_decomposition_report(self) -> Dict[str, Any]:
+        """
+        Phase Z4: Analyze recipe decomposition statistics.
+
+        Returns:
+            Dict with decomposition breakdown including:
+            - Count of decomposed vs non-decomposed foods
+            - Breakdown by recipe type (pizza, sandwich, chia pudding)
+            - Component alignment success rates
+            - Average decomposition rate (aligned/total components)
+        """
+        decomposition_data = {
+            "total_decomposed": 0,
+            "by_recipe_type": defaultdict(lambda: {
+                "count": 0,
+                "avg_components": 0.0,
+                "avg_alignment_rate": 0.0,
+                "component_counts": []
+            }),
+            "component_stages": Counter(),
+            "aborted_decompositions": 0,
+            "total_components": 0,
+            "aligned_components": 0
+        }
+
+        for item in self.items:
+            telemetry = item.get("telemetry", {})
+            stage = telemetry.get("alignment_stage", "")
+
+            # Track Stage 5C decomposition
+            if stage == "stage5c_recipe_decomposition":
+                decomposition_data["total_decomposed"] += 1
+
+                # Extract recipe template name if available
+                stage5c_data = telemetry.get("stage5c_recipe_decomposition", {})
+                recipe_template = stage5c_data.get("recipe_template", "unknown")
+
+                # Track by recipe type (extract base type from template name)
+                recipe_type = recipe_template.split("_")[0] if "_" in recipe_template else recipe_template
+                recipe_data = decomposition_data["by_recipe_type"][recipe_type]
+                recipe_data["count"] += 1
+
+                # Track component counts and alignment rates
+                expanded_foods = item.get("expanded_foods", [])
+                num_components = len(expanded_foods)
+                decomposition_data["total_components"] += num_components
+
+                if num_components > 0:
+                    recipe_data["component_counts"].append(num_components)
+
+                    # Count aligned components (those that got FDC matches)
+                    aligned_count = sum(1 for comp in expanded_foods if comp.get("fdc_id"))
+                    decomposition_data["aligned_components"] += aligned_count
+
+                    # Track component alignment stages
+                    for comp in expanded_foods:
+                        comp_stage = comp.get("telemetry", {}).get("alignment_stage", "unknown")
+                        decomposition_data["component_stages"][comp_stage] += 1
+
+            # Track aborted decompositions (partial matches below threshold)
+            if stage in ["stageZ_branded_fallback", "stage0_no_candidates"]:
+                rejection_reasons = telemetry.get("rejection_reasons", [])
+                if "stage5c_partial_decomposition" in rejection_reasons:
+                    decomposition_data["aborted_decompositions"] += 1
+
+        # Calculate averages for each recipe type
+        for recipe_type, data in decomposition_data["by_recipe_type"].items():
+            if data["component_counts"]:
+                data["avg_components"] = sum(data["component_counts"]) / len(data["component_counts"])
+
+        # Calculate overall alignment rate
+        if decomposition_data["total_components"] > 0:
+            decomposition_data["overall_alignment_rate"] = (
+                decomposition_data["aligned_components"] / decomposition_data["total_components"]
+            )
+        else:
+            decomposition_data["overall_alignment_rate"] = 0.0
+
+        # Convert defaultdict to regular dict for JSON serialization
+        decomposition_data["by_recipe_type"] = dict(decomposition_data["by_recipe_type"])
+        decomposition_data["component_stages"] = dict(decomposition_data["component_stages"])
+
+        return decomposition_data
+
+    def analyze_semantic_stats(self) -> Dict[str, Any]:
+        """
+        Phase E1: Analyze semantic search usage and performance.
+
+        Returns:
+            Dict with semantic search statistics including:
+            - Count of semantic matches (Stage 1S)
+            - Average similarity scores
+            - Energy filter statistics
+            - Comparison with other stages
+        """
+        semantic_data = {
+            "total_semantic_matches": 0,
+            "similarity_scores": [],
+            "energy_filtered_count": 0,
+            "avg_similarity": 0.0,
+            "min_similarity": 1.0,
+            "max_similarity": 0.0,
+            "foods_matched": []
+        }
+
+        for item in self.items:
+            telemetry = item.get("telemetry", {})
+            stage = telemetry.get("alignment_stage", "")
+
+            # Track Stage 1S semantic search
+            if stage == "stage1s_semantic_search":
+                semantic_data["total_semantic_matches"] += 1
+
+                # Extract semantic similarity score from entry metadata
+                fdc_entry = item.get("fdc_entry", {})
+                similarity = fdc_entry.get("semantic_similarity")
+
+                if similarity is not None:
+                    semantic_data["similarity_scores"].append(similarity)
+                    semantic_data["min_similarity"] = min(semantic_data["min_similarity"], similarity)
+                    semantic_data["max_similarity"] = max(semantic_data["max_similarity"], similarity)
+
+                # Track which foods got semantic matches
+                semantic_data["foods_matched"].append({
+                    "predicted_name": item.get("predicted_name"),
+                    "fdc_name": item.get("fdc_name"),
+                    "similarity": similarity,
+                    "predicted_kcal": item.get("predicted_kcal_100g"),
+                    "fdc_kcal": fdc_entry.get("energy_kcal")
+                })
+
+                # Check if energy filter was applied
+                stage1s_data = telemetry.get("stage1s_semantic_search", {})
+                if stage1s_data.get("energy_filter_applied"):
+                    semantic_data["energy_filtered_count"] += 1
+
+        # Calculate average similarity
+        if semantic_data["similarity_scores"]:
+            semantic_data["avg_similarity"] = sum(semantic_data["similarity_scores"]) / len(semantic_data["similarity_scores"])
+        else:
+            semantic_data["min_similarity"] = 0.0
+
+        # Calculate percentage of total items
+        semantic_data["semantic_match_rate"] = (
+            semantic_data["total_semantic_matches"] / len(self.items) * 100
+        ) if self.items else 0.0
+
+        return semantic_data
+
     def analyze_special_cases(self) -> Dict[str, Any]:
         """
         Analyze Phase Z2 special cases.
@@ -811,6 +960,16 @@ def main():
         "--compare",
         help="Compare with baseline results file"
     )
+    parser.add_argument(
+        "--decomposition-report",
+        action="store_true",
+        help="Show Phase Z4 recipe decomposition analysis"
+    )
+    parser.add_argument(
+        "--semantic-stats",
+        action="store_true",
+        help="Show Phase E1 semantic search statistics"
+    )
 
     args = parser.parse_args()
 
@@ -820,6 +979,62 @@ def main():
     # Generate and print report
     report = analyzer.generate_report()
     print(report)
+
+    # Phase Z4: Decomposition report if requested
+    if args.decomposition_report:
+        print("\n" + "=" * 80)
+        print("PHASE Z4: RECIPE DECOMPOSITION ANALYSIS")
+        print("=" * 80)
+        decomp_stats = analyzer.analyze_decomposition_report()
+
+        print(f"Total decomposed items: {decomp_stats['total_decomposed']}")
+        print(f"Aborted decompositions (<50% threshold): {decomp_stats['aborted_decompositions']}")
+        print(f"Total components: {decomp_stats['total_components']}")
+        print(f"Aligned components: {decomp_stats['aligned_components']}")
+        print(f"Overall alignment rate: {decomp_stats['overall_alignment_rate']:.1%}")
+        print()
+
+        if decomp_stats['by_recipe_type']:
+            print("Breakdown by recipe type:")
+            for recipe_type, data in sorted(decomp_stats['by_recipe_type'].items()):
+                print(f"  {recipe_type}:")
+                print(f"    Count: {data['count']}")
+                print(f"    Avg components: {data['avg_components']:.1f}")
+            print()
+
+        if decomp_stats['component_stages']:
+            print("Component alignment stages:")
+            for stage, count in sorted(decomp_stats['component_stages'].items(),
+                                      key=lambda x: x[1], reverse=True):
+                print(f"  {stage}: {count}")
+        print()
+
+    # Phase E1: Semantic stats if requested
+    if args.semantic_stats:
+        print("\n" + "=" * 80)
+        print("PHASE E1: SEMANTIC SEARCH ANALYSIS")
+        print("=" * 80)
+        semantic_stats = analyzer.analyze_semantic_stats()
+
+        print(f"Total semantic matches (Stage 1S): {semantic_stats['total_semantic_matches']}")
+        print(f"Semantic match rate: {semantic_stats['semantic_match_rate']:.1f}%")
+
+        if semantic_stats['similarity_scores']:
+            print(f"Similarity scores:")
+            print(f"  Average: {semantic_stats['avg_similarity']:.3f}")
+            print(f"  Min: {semantic_stats['min_similarity']:.3f}")
+            print(f"  Max: {semantic_stats['max_similarity']:.3f}")
+            print(f"Energy filter applied: {semantic_stats['energy_filtered_count']} items")
+            print()
+
+            if args.verbose and semantic_stats['foods_matched']:
+                print("Top 10 semantic matches:")
+                for idx, match in enumerate(semantic_stats['foods_matched'][:10], 1):
+                    sim = match['similarity']
+                    print(f"  {idx:2d}. {match['predicted_name']:30s} → {match['fdc_name']:30s} (sim: {sim:.3f})")
+        else:
+            print("No semantic matches found (feature may be disabled)")
+        print()
 
     # Save detailed analysis if requested
     if args.output:

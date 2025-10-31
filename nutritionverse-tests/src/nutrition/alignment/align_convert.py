@@ -645,7 +645,9 @@ class FDCAlignmentWithConversion:
         branded_fallbacks: Optional[Dict[str, Any]] = None,  # Phase 7.3: Branded fallbacks for components
         unit_to_grams: Optional[Dict[str, float]] = None,  # Phase 7.3: Unit to gram conversions
         stageZ_branded_fallbacks: Optional[Dict[str, Any]] = None,  # Phase 7.4: Deterministic branded FDC IDs
-        fdc_db: Any = None  # Phase 7: FDC database instance for Stage 5 proxy search
+        fdc_db: Any = None,  # Phase 7: FDC database instance for Stage 5 proxy search
+        recipe_loader: Any = None,  # Phase Z4: Recipe loader for Stage 5C decomposition
+        semantic_searcher: Any = None  # Phase E1: Semantic searcher for Stage 1S
     ):
         """
         Initialize alignment engine.
@@ -662,6 +664,8 @@ class FDCAlignmentWithConversion:
             branded_fallbacks: Branded fallbacks for salad components (Phase 7.3)
             unit_to_grams: Unit to gram conversion table (Phase 7.3)
             fdc_db: FDC database instance for Stage 5 proxy search (Phase 7)
+            recipe_loader: RecipeLoader instance for Stage 5C decomposition (Phase Z4)
+            semantic_searcher: SemanticSearcher instance for Stage 1S (Phase E1)
         """
         self.cook_cfg = load_cook_conversions(cook_cfg_path)
         self.energy_bands = load_energy_bands(energy_bands_path)
@@ -688,6 +692,12 @@ class FDCAlignmentWithConversion:
         if isinstance(proxy_rules, dict) and "salad_decomposition" in proxy_rules:
             self._external_salad_decomp = proxy_rules["salad_decomposition"]
         self._fdc_cache = {}  # Simple name->entry cache to reduce query volume
+
+        # Phase Z4: Store recipe loader for Stage 5C decomposition
+        self._recipe_loader = recipe_loader
+
+        # Phase E1: Store semantic searcher for Stage 1S
+        self._semantic_searcher = semantic_searcher
 
         # Track config source for telemetry
         self.config_source = (
@@ -934,6 +944,34 @@ class FDCAlignmentWithConversion:
                         stage_rejection_reasons.append("stage1c: no_cooked_sr_candidates")
                     else:
                         stage_rejection_reasons.append("stage1c: no_match_found")
+
+            # Phase E1: Try Stage 1S (semantic search) - prototype feature (OFF by default)
+            if self._external_feature_flags and self._external_feature_flags.get('enable_semantic_search', False):
+                attempted_stages.append("stage1s")
+                stage1s_start = time.perf_counter()
+                semantic_match = self._try_stage1s_semantic_search(
+                    predicted_name, predicted_form, predicted_kcal_100g
+                )
+                stage_timings_ms["stage1s"] = (time.perf_counter() - stage1s_start) * 1000
+                if semantic_match:
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        match_name = semantic_match.name if hasattr(semantic_match, 'name') else str(semantic_match)
+                        print(f"[ALIGN] ✓ Matched via stage1s_semantic_search: {match_name}")
+                    return self._build_result(
+                        semantic_match, "stage1s_semantic_search", adjusted_confidence, method, method_reason,
+                        stage1_blocked=stage1_blocked,
+                        candidate_pool_total=len(fdc_entries),
+                        candidate_pool_raw_foundation=len(raw_foundation),
+                        candidate_pool_cooked_sr_legacy=len(cooked_sr_legacy),
+                        candidate_pool_branded=len(branded),
+                        class_intent=class_intent,
+                        form_intent=form_intent,
+                        attempted_stages=attempted_stages,
+                        stage_timings_ms=stage_timings_ms,
+                        stage_rejection_reasons=stage_rejection_reasons
+                    )
+                else:
+                    stage_rejection_reasons.append("stage1s: no_semantic_match")
 
             # Try Stage 2 (raw + convert) for cooked forms OR if Stage 1b/1c failed
             # IMPORTANT: Stage 2 runs even when Stage 1 blocked (allows cooked veg conversion)
@@ -1401,6 +1439,19 @@ class FDCAlignmentWithConversion:
                 comp_count = len(decomp_result.telemetry.get("expanded_foods", []))
                 print(f"[ALIGN] ✓ Decomposed via Stage 5B: {recipe_name} ({comp_count} components)")
             return decomp_result
+
+        # Phase Z4: Stage 5C recipe decomposition (pizza, sandwich, chia pudding)
+        # Try decomposition when no FDC candidates found (after Stage 5B, before Stage Z)
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[ALIGN] Trying Stage 5C (recipe decomposition)...")
+
+        recipe_result = self._try_stage5c_recipe_decomposition(predicted_name, predicted_form)
+        if recipe_result:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                recipe_name = recipe_result.telemetry.get("decomposition_recipe", "unknown")
+                comp_count = len(recipe_result.telemetry.get("expanded_foods", []))
+                print(f"[ALIGN] ✓ Decomposed via Stage 5C: {recipe_name} ({comp_count} components)")
+            return recipe_result
 
         # No match found
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -2113,6 +2164,90 @@ class FDCAlignmentWithConversion:
                 return (False, f"name contains '{token}'")
 
         return (True, "passed")
+
+    # ========================================================================
+    # PHASE E1: Stage 1S Semantic Search
+    # ========================================================================
+
+    def _try_stage1s_semantic_search(
+        self,
+        predicted_name: str,
+        predicted_form: str,
+        predicted_kcal_100g: float
+    ) -> Optional[Any]:
+        """
+        Stage 1S (Phase E1): Semantic similarity search using embeddings.
+
+        Prototype feature for semantic retrieval from Foundation/SR entries.
+        Uses sentence-transformers + HNSW for fast approximate nearest neighbor search.
+
+        Args:
+            predicted_name: Original predicted food name
+            predicted_form: Predicted form/method
+            predicted_kcal_100g: Predicted energy density
+
+        Returns:
+            FDC entry if semantic match found, else None
+        """
+        import os
+
+        if not self._semantic_searcher:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE1S] Semantic searcher not initialized")
+            return None
+
+        # Energy filter: ±30% band around predicted energy
+        energy_min = predicted_kcal_100g * 0.7 if predicted_kcal_100g else 0
+        energy_max = predicted_kcal_100g * 1.3 if predicted_kcal_100g else 999
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE1S] Query: '{predicted_name}' (energy filter: {energy_min:.0f}-{energy_max:.0f} kcal/100g)")
+
+        try:
+            # Search semantic index (top 10 results, energy filtered)
+            results = self._semantic_searcher.search(
+                query=predicted_name,
+                top_k=10,
+                energy_filter=(energy_min, energy_max) if predicted_kcal_100g else None
+            )
+
+            if not results:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE1S] No semantic matches found")
+                return None
+
+            # Take top result (highest similarity)
+            fdc_id, similarity, description, energy = results[0]
+
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE1S] Top match: {description} (FDC {fdc_id}, sim={similarity:.3f}, energy={energy} kcal/100g)")
+
+            # Fetch full FDC entry
+            if self._fdc_db and hasattr(self._fdc_db, 'get_entry_by_id'):
+                entry = self._fdc_db.get_entry_by_id(fdc_id)
+                if entry:
+                    # Add semantic metadata to entry
+                    if hasattr(entry, '__dict__'):
+                        entry.semantic_similarity = similarity
+                    elif isinstance(entry, dict):
+                        entry['semantic_similarity'] = similarity
+
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[STAGE1S] ✓ Retrieved FDC entry {fdc_id}")
+
+                    return entry
+                else:
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[STAGE1S] ✗ FDC entry {fdc_id} not found in database")
+            else:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE1S] FDC database not available")
+
+        except Exception as e:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE1S] Error during semantic search: {e}")
+
+        return None
 
     def _stage2_raw_convert(
         self,
@@ -3105,6 +3240,224 @@ class FDCAlignmentWithConversion:
 
         return None
 
+    # ========================================================================
+    # PHASE Z4: Stage 5C Recipe Decomposition
+    # ========================================================================
+
+    def _try_stage5c_recipe_decomposition(
+        self,
+        predicted_name: str,
+        predicted_form: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Stage 5C (Phase Z4): Recipe decomposition for complex dishes.
+
+        Decomposes recipes (pizza, sandwich, chia pudding) into individual
+        FDC-aligned components with ratio-based mass allocation.
+
+        Runs after Stage 5B (salad decomposition) but before Stage Z.
+
+        Args:
+            predicted_name: Original predicted food name
+            predicted_form: Predicted form/method
+
+        Returns:
+            AlignmentResult dict with expanded_foods list, or None if no recipe match
+        """
+        import os
+
+        # Check feature flag
+        if self._external_feature_flags:
+            if not self._external_feature_flags.get('enable_recipe_decomposition', True):
+                return None
+
+        if not self._recipe_loader:
+            return None
+
+        # Match recipe template
+        template = self._recipe_loader.match_recipe(predicted_name)
+        if not template:
+            return None
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5C] Matched recipe: {template.name} ({len(template.components)} components)")
+
+        # Align each component
+        expanded_foods = []
+        aligned_count = 0
+
+        for component in template.components:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE5C]   Component: {component.key} (ratio={component.ratio})")
+
+            # Try alignment strategies in order:
+            # 1. Pinned FDC IDs (if provided)
+            # 2. Preferred Stage Z keys (if provided)
+            # 3. Normal component search (reuse _align_single_component from Stage 5B)
+
+            aligned_comp = None
+
+            # Strategy 1: Try pinned FDC IDs
+            if component.fdc_ids:
+                aligned_comp = self._align_component_by_fdc_id(component)
+
+            # Strategy 2: Try Stage Z keys
+            if not aligned_comp and component.prefer:
+                aligned_comp = self._align_component_by_stagez_keys(component)
+
+            # Strategy 3: Normal search (like Stage 5B)
+            if not aligned_comp:
+                # Construct canonical name from component key
+                canonical_name = component.key.replace('_', ' ')
+                aligned_comp = self._align_single_component(canonical_name, predicted_form or "cooked")
+
+            if aligned_comp:
+                # Store ratio for later mass allocation in pipeline
+                aligned_comp["decomposition_ratio"] = component.ratio
+                aligned_comp["component_key"] = component.key
+                expanded_foods.append(aligned_comp)
+                aligned_count += 1
+            else:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5C]     ✗ Component '{component.key}' failed to align")
+
+        # Abort if <50% components aligned (per user requirement)
+        threshold = 0.5
+        alignment_rate = aligned_count / len(template.components) if template.components else 0.0
+
+        if alignment_rate < threshold:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[STAGE5C] ✗ Aborting: only {aligned_count}/{len(template.components)} "
+                      f"components aligned ({alignment_rate:.1%} < {threshold:.0%} threshold)")
+            return None
+
+        if not expanded_foods:
+            return None
+
+        # Build AlignmentResult with decomposition info
+        # Phase Z4: For decomposed recipes, return dummy nutrition (components have real values)
+        result = AlignmentResult(
+            fdc_id=None,
+            name=predicted_name or template.name,
+            source="decomposed",
+            protein_100g=0.0,
+            carbs_100g=0.0,
+            fat_100g=0.0,
+            kcal_100g=0.0,
+            match_score=0.0,
+            confidence=0.70,  # Reasonable confidence for decomposed recipes
+            alignment_stage="stage5c_recipe_decomposition",
+            method=predicted_form or "cooked",
+            method_reason="recipe_decomposition",
+            conversion_applied=False,
+            telemetry={
+                "decomposition_recipe": template.name,
+                "decomposition_count": len(expanded_foods),
+                "decomposition_threshold": threshold,
+                "decomposition_rate": alignment_rate,
+                "expanded_foods": expanded_foods
+            }
+        )
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5C] ✓ Decomposed via Stage 5C: {template.name} "
+                  f"({len(expanded_foods)} components, {alignment_rate:.0%} aligned)")
+
+        return result
+
+    def _align_component_by_fdc_id(self, component) -> Optional[Dict[str, Any]]:
+        """
+        Align recipe component using pinned FDC ID.
+
+        Args:
+            component: RecipeComponent with fdc_ids list
+
+        Returns:
+            Component alignment dict or None
+        """
+        import os
+
+        if not self._fdc_db or not component.fdc_ids:
+            return None
+
+        for fdc_id in component.fdc_ids:
+            try:
+                entry = self._fdc_db.get_entry_by_id(fdc_id)
+                if entry:
+                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                        print(f"[STAGE5C]     ✓ Pinned FDC ID {fdc_id}")
+
+                    # Handle both dict and object formats
+                    if isinstance(entry, dict):
+                        return {
+                            "name": component.key.replace('_', ' '),
+                            "form": "cooked",  # Assume cooked for recipe components
+                            "fdc_id": entry.get('fdc_id'),
+                            "fdc_name": entry.get('description', entry.get('name', component.key)),
+                            "alignment_stage": "stage5c_recipe_component",
+                            "kcal_100g": entry.get('energy_kcal'),
+                            "protein_100g": entry.get('protein_g'),
+                            "carbs_100g": entry.get('carb_g'),
+                            "fat_100g": entry.get('fat_g'),
+                            "pinned_fdc_id": True
+                        }
+                    else:
+                        return {
+                            "name": component.key.replace('_', ' '),
+                            "form": "cooked",
+                            "fdc_id": entry.fdc_id if hasattr(entry, 'fdc_id') else None,
+                            "fdc_name": entry.name if hasattr(entry, 'name') else component.key,
+                            "alignment_stage": "stage5c_recipe_component",
+                            "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
+                            "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
+                            "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
+                            "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None,
+                            "pinned_fdc_id": True
+                        }
+            except Exception as e:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5C]     ✗ FDC ID {fdc_id} lookup failed: {e}")
+                continue
+
+        return None
+
+    def _align_component_by_stagez_keys(self, component) -> Optional[Dict[str, Any]]:
+        """
+        Align recipe component using preferred Stage Z keys.
+
+        Args:
+            component: RecipeComponent with prefer list
+
+        Returns:
+            Component alignment dict or None
+        """
+        import os
+
+        if not component.prefer:
+            return None
+
+        # Try each preferred key
+        for key in component.prefer:
+            # Normalize key for lookup
+            canonical_name = key.replace('_', ' ')
+
+            # Try _align_single_component (Foundation/SR/branded search)
+            aligned_comp = self._align_single_component(canonical_name, "cooked")
+
+            if aligned_comp:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE5C]     ✓ Matched via prefer key: {key}")
+
+                # Update alignment stage to stage5c
+                aligned_comp["alignment_stage"] = "stage5c_recipe_component"
+                aligned_comp["prefer_key_used"] = key
+                return aligned_comp
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[STAGE5C]     ✗ No match for prefer keys: {component.prefer}")
+
+        return None
+
     def _stageZ_branded_last_resort(
         self,
         core_class: str,
@@ -3461,12 +3814,15 @@ class FDCAlignmentWithConversion:
             "stage1_cooked_exact",
             "stage1b_raw_foundation_direct",  # NEW: Raw Foundation direct match
             "stage1c_cooked_sr_direct",  # NEW: Cooked SR direct (proteins only)
+            "stage1s_semantic_search",  # Phase E1: Semantic similarity search (prototype)
             "stage2_raw_convert",
             "stage3_branded_cooked",
             "stage4_branded_energy",
             "stage5_proxy_alignment",
             "stage5b_salad_decomposition",  # Phase 7.3: Salad decomposition (parent)
             "stage5b_salad_component",  # Phase 7.3: Individual salad components
+            "stage5c_recipe_decomposition",  # Phase Z4: Recipe decomposition (parent)
+            "stage5c_recipe_component",  # Phase Z4: Individual recipe components
             "stageZ_energy_only",  # NEW: Energy-only last resort
             "stageZ_branded_fallback",  # Phase 7.4: Deterministic branded fallback
             "stageZ_branded_last_resort",

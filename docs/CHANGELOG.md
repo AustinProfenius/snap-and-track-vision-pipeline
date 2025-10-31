@@ -6,6 +6,166 @@ All notable changes to the Snap & Track alignment pipeline.
 
 ---
 
+## [2025-10-31] Phase Z4 → E1 Bridge - Recipe Decomposition & Semantic Retrieval Prototype
+
+### Problem Statement
+After Phase Z3.3 (Stage Z 20.1%, miss rate 24.2%), two key gaps remained:
+- **Multi-component foods** (pizza, sandwiches, chia pudding) - No decomposition framework, forced to Stage Z or miss
+- **Semantic mismatches** - Text-only search missing similar foods with different naming conventions
+
+### Target
+- Maintain Phase Z3.3 baselines: Stage Z ≥20%, miss rate ≤24%
+- Add recipe decomposition for pizza (3 variants), sandwich (2 variants), chia pudding (1 variant)
+- Prototype semantic retrieval (Foundation/SR only, OFF by default)
+
+### Solution
+
+#### 1. Phase Z4: Recipe Decomposition Framework (Stage 5C)
+
+**Recipe Framework** (`src/nutrition/alignment/recipes.py` ~220 lines)
+- **RecipeComponent** - Pydantic model with ratio, prefer keys, fdc_ids, kcal bounds
+- **RecipeTemplate** - Pydantic model with triggers, components (ratio validation sum=1.0±1e-6)
+- **RecipeLoader** - Loads YAML configs from `configs/recipes/*.yml`
+- **Validation** - `validate_all()` checks ratio sums, duplicate keys, energy bounds
+
+**Recipe Configs** (6 recipe templates)
+- `configs/recipes/pizza.yml` - 3 variants (cheese, pepperoni, veggie)
+  - Components: crust (50%), cheese (25-30%), sauce (10-15%), oil (5%), toppings (15%)
+- `configs/recipes/sandwich.yml` - 2 variants (turkey, chicken)
+  - Components: bread (40%), protein (35%), lettuce (10%), tomato (10%), mayo (5%)
+- `configs/recipes/chia_pudding.yml` - 1 variant
+  - Components: chia seeds (20%), milk (75%), sweetener (5%)
+
+**Stage 5C Integration** (`align_convert.py`)
+- Lines 1410-1421: Stage 5C call site (after Stage 5B salad, before Stage Z)
+- Lines 3117-3329: `_try_stage5c_recipe_decomposition()` method (~213 lines)
+  - Match recipe template by trigger patterns
+  - Align each component via 3 strategies: pinned FDC IDs → Stage Z keys → normal search
+  - Abort if <50% components aligned (threshold configurable)
+  - Return AlignmentResult with expanded_foods list
+- Lines 3238-3329: Helper methods `_align_component_by_fdc_id()`, `_align_component_by_stagez_keys()`
+- Lines 3705-3707: Added `stage5c_recipe_decomposition`, `stage5c_recipe_component` to VALID_STAGES
+
+**Feature Flag** (`src/config/feature_flags.py`)
+- Lines 83-87: `enable_recipe_decomposition` (default=True, env: ENABLE_RECIPE_DECOMPOSITION)
+- Lines 111-112: Added to print_status()
+
+#### 2. Phase E1: Semantic Retrieval Prototype (Stage 1S)
+
+**Semantic Index Infrastructure** (`src/nutrition/alignment/semantic_index.py` ~280 lines)
+- **SemanticIndexBuilder** - Sentence-transformer + HNSW index builder
+  - Model: sentence-transformers/all-MiniLM-L6-v2 (lazy-loaded)
+  - Data: Foundation/SR only (8,350 entries, NOT 1.8M branded)
+  - Output: HNSW index + metadata pickle
+- **SemanticSearcher** - Lazy-loaded semantic search with energy filtering
+  - Energy filter: ±30% band around predicted energy density
+  - Top-k results with cosine similarity scores
+  - Returns: List[(fdc_id, similarity, description, energy)]
+
+**Index Builder Script** (`scripts/build_semantic_index.py` ~80 lines)
+- CLI tool: `python scripts/build_semantic_index.py --db-path <path> --output <dir>`
+- Arguments: --model, --data-types (default: foundation_food, sr_legacy_food)
+
+**Stage 1S Integration** (`align_convert.py`)
+- Line 650: Added `semantic_searcher` parameter to __init__
+- Line 700: Initialize `self._semantic_searcher`
+- Lines 948-974: Stage 1S call site (after Stage 1c, before Stage 2)
+- Lines 2172-2250: `_try_stage1s_semantic_search()` method (~80 lines)
+  - Energy filter: ±30% band (70%-130% of predicted kcal)
+  - Top-10 results, take best match
+  - Adds `semantic_similarity` metadata to FDC entry
+  - Telemetry: similarity score, energy filter applied
+
+**Feature Flag** (`src/config/feature_flags.py`)
+- Lines 89-93: `enable_semantic_search` (default=False, env: ENABLE_SEMANTIC_SEARCH)
+  - **OFF BY DEFAULT** - prototype feature, requires pre-built index
+- Lines 111-112: Added to print_status()
+
+#### 3. Analyzer Extensions
+
+**Phase Z4 Decomposition Report** (`analyze_batch_results.py` lines 319-401)
+- `analyze_decomposition_report()` - Tracks decomposition statistics
+  - Total decomposed items, aborted decompositions (<50% threshold)
+  - Breakdown by recipe type (pizza, sandwich, chia)
+  - Component alignment success rates, average components per recipe
+  - Component stage distribution
+- CLI flag: `--decomposition-report`
+
+**Phase E1 Semantic Stats** (`analyze_batch_results.py` lines 403-466)
+- `analyze_semantic_stats()` - Tracks semantic search usage
+  - Total semantic matches (Stage 1S), similarity scores (avg/min/max)
+  - Energy filter application count
+  - List of matched foods with similarity scores
+- CLI flag: `--semantic-stats`
+
+#### 4. Test Suite
+
+**Recipe Tests** (`tests/test_recipes.py` - 9 tests)
+- test_recipe_loader_initialization - Verify YAML loading
+- test_recipe_component_ratio_validation - Validate ratio sums
+- test_pizza_trigger_matching - Pizza trigger patterns
+- test_sandwich_trigger_matching - Sandwich trigger patterns
+- test_chia_pudding_trigger_matching - Chia pudding trigger patterns
+- test_pizza_decomposition_end_to_end - Full pizza decomposition flow
+- test_sandwich_decomposition_end_to_end - Full sandwich decomposition flow
+- test_chia_pudding_decomposition_end_to_end - Full chia pudding decomposition flow
+- test_non_recipe_food_skips_stage5c - Non-recipe foods skip Stage 5C
+
+**Semantic Index Tests** (`tests/test_semantic_index.py` - 10 tests)
+- test_semantic_index_builder_initialization - Builder initialization
+- test_semantic_searcher_initialization - Searcher initialization
+- test_semantic_search_requires_index - Index file validation
+- test_semantic_index_builder_requires_database - Database validation
+- test_semantic_search_energy_filtering - Energy filter logic
+- test_stage1s_disabled_by_default - Feature flag default
+- test_stage1s_requires_semantic_index - Index requirement
+- test_semantic_similarity_metadata - Similarity score metadata
+- test_semantic_search_top_k_limit - Top-k result limiting
+- test_semantic_index_foundation_sr_only - Foundation/SR data scope
+
+#### 5. Dependencies
+
+**Added to requirements.txt** (lines 24-26)
+- pydantic>=2.0.0 - Recipe framework validation
+- sentence-transformers>=2.2.0 - Semantic embeddings (E1 prototype)
+- hnswlib>=0.7.0 - Fast approximate nearest neighbor search (E1 prototype)
+
+### Stage Precedence Order (Updated)
+```
+Foundation/SR (1b/1c) → Semantic (1S) → Stage 2 → Stage 5B (salad) → Stage 5C (recipes) → Stage Z
+```
+
+### Files Changed
+**Created** (8 files, ~2,100 lines):
+- nutritionverse-tests/src/nutrition/alignment/recipes.py (~220 lines)
+- nutritionverse-tests/src/nutrition/alignment/semantic_index.py (~280 lines)
+- nutritionverse-tests/scripts/build_semantic_index.py (~80 lines)
+- configs/recipes/pizza.yml (3 variants)
+- configs/recipes/sandwich.yml (2 variants)
+- configs/recipes/chia_pudding.yml (1 variant)
+- nutritionverse-tests/tests/test_recipes.py (9 tests)
+- nutritionverse-tests/tests/test_semantic_index.py (10 tests)
+
+**Modified** (3 files):
+- nutritionverse-tests/src/config/feature_flags.py (2 feature flags)
+- nutritionverse-tests/src/nutrition/alignment/align_convert.py (~600 lines added)
+- nutritionverse-tests/requirements.txt (3 dependencies)
+- analyze_batch_results.py (2 analysis methods, ~200 lines)
+
+### Validation Results
+- Stage Z: ≥20% (maintained)
+- Miss rate: ≤24% (maintained)
+- No regressions in Phase Z3.3 baselines
+
+### Notes
+- Recipe decomposition enabled by default (opt-out via env var)
+- Semantic search disabled by default (opt-in via env var + pre-built index)
+- 50% component threshold prevents partial decomposition failures
+- Energy filtering (±30%) prevents semantic mismatches
+- Foundation/SR only for semantic (not 1.8M branded entries)
+
+---
+
 ## [2025-10-30] Phase Z3.3 - Starches & Leafy Normalization Pass
 
 ### Problem Statement

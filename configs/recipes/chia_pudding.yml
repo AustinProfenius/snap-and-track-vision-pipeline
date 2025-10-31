@@ -1,0 +1,41 @@
+# Phase Z4: Chia Pudding Recipe Template
+#
+# Single chia pudding variant with ratio-based component decomposition.
+# Ratios based on typical chia pudding recipe (chia seeds soaked in milk/liquid).
+#
+# Triggers match: "chia pudding", "chia seed pudding"
+# Components use Stage Z keys (prefer) for alignment.
+
+chia_pudding:
+  triggers:
+    - "chia pudding"
+    - "chia seed pudding"
+    - "pudding with chia"
+  notes: "Chia pudding: chia seeds + milk/liquid + optional sweetener"
+  components:
+    - key: "chia_seeds"
+      ratio: 0.20
+      prefer:
+        - "chia_seeds"
+        - "seeds_chia"
+      kcal_per_100g: [450, 550]
+      notes: "Chia seeds (dry weight)"
+
+    - key: "milk"
+      ratio: 0.75
+      prefer:
+        - "milk_almond"
+        - "milk_coconut"
+        - "milk_whole"
+        - "milk_skim"
+      kcal_per_100g: [20, 150]
+      notes: "Liquid base (almond milk, coconut milk, or dairy milk)"
+
+    - key: "sweetener"
+      ratio: 0.05
+      prefer:
+        - "honey"
+        - "maple_syrup"
+        - "sugar"
+      kcal_per_100g: [250, 400]
+      notes: "Optional sweetener (honey, maple syrup, sugar)"

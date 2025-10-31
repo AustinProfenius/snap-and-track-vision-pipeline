@@ -1,0 +1,132 @@
+# Phase Z4: Pizza Recipe Templates
+#
+# Three pizza variants with ratio-based component decomposition.
+# Ratios based on typical pizza composition (crust ~50%, cheese ~30%, sauce ~15%, oil ~5%).
+#
+# Triggers match: "pizza", "cheese pizza", "pepperoni pizza", "veggie pizza"
+# Components use Stage Z keys (prefer) or FDC IDs (fdc_ids) for alignment.
+
+pizza_cheese:
+  triggers:
+    - "pizza"
+    - "cheese pizza"
+    - "plain pizza"
+  notes: "Basic cheese pizza: crust + mozzarella + tomato sauce + oil"
+  components:
+    - key: "crust"
+      ratio: 0.50
+      prefer:
+        - "bread_whole"
+        - "bread_white"
+      kcal_per_100g: [250, 300]
+      notes: "Pizza dough/crust - prefer whole wheat or white bread as proxy"
+
+    - key: "cheese"
+      ratio: 0.30
+      prefer:
+        - "cheese_mozzarella"
+      kcal_per_100g: [250, 350]
+      notes: "Mozzarella cheese"
+
+    - key: "tomato_sauce"
+      ratio: 0.15
+      prefer:
+        - "tomato_sauce_plain"
+      kcal_per_100g: [30, 80]
+      notes: "Plain tomato/pizza sauce"
+      reject_patterns:
+        - "with meat"
+        - "with cheese"
+        - "alfredo"
+
+    - key: "oil"
+      ratio: 0.05
+      prefer:
+        - "olive_oil"
+      kcal_per_100g: [800, 900]
+      notes: "Olive oil for crust"
+
+pizza_pepperoni:
+  triggers:
+    - "pepperoni pizza"
+    - "pizza with pepperoni"
+  notes: "Pepperoni pizza: crust + mozzarella + pepperoni + sauce + oil"
+  components:
+    - key: "crust"
+      ratio: 0.45
+      prefer:
+        - "bread_whole"
+        - "bread_white"
+      kcal_per_100g: [250, 300]
+
+    - key: "cheese"
+      ratio: 0.25
+      prefer:
+        - "cheese_mozzarella"
+      kcal_per_100g: [250, 350]
+
+    - key: "pepperoni"
+      ratio: 0.15
+      prefer:
+        - "pepperoni"
+      kcal_per_100g: [400, 550]
+      notes: "Pepperoni slices"
+
+    - key: "tomato_sauce"
+      ratio: 0.10
+      prefer:
+        - "tomato_sauce_plain"
+      kcal_per_100g: [30, 80]
+      reject_patterns:
+        - "with meat"
+        - "alfredo"
+
+    - key: "oil"
+      ratio: 0.05
+      prefer:
+        - "olive_oil"
+      kcal_per_100g: [800, 900]
+
+pizza_veggie:
+  triggers:
+    - "veggie pizza"
+    - "vegetable pizza"
+    - "pizza with vegetables"
+  notes: "Veggie pizza: crust + mozzarella + mixed vegetables + sauce + oil"
+  components:
+    - key: "crust"
+      ratio: 0.45
+      prefer:
+        - "bread_whole"
+        - "bread_white"
+      kcal_per_100g: [250, 300]
+
+    - key: "cheese"
+      ratio: 0.25
+      prefer:
+        - "cheese_mozzarella"
+      kcal_per_100g: [250, 350]
+
+    - key: "vegetables"
+      ratio: 0.15
+      prefer:
+        - "bell_pepper"
+        - "mushroom"
+        - "onion"
+      kcal_per_100g: [20, 50]
+      notes: "Mixed vegetables (peppers, mushrooms, onions, etc.)"
+
+    - key: "tomato_sauce"
+      ratio: 0.10
+      prefer:
+        - "tomato_sauce_plain"
+      kcal_per_100g: [30, 80]
+      reject_patterns:
+        - "with meat"
+        - "alfredo"
+
+    - key: "oil"
+      ratio: 0.05
+      prefer:
+        - "olive_oil"
+      kcal_per_100g: [800, 900]

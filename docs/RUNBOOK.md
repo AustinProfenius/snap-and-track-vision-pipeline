@@ -2,7 +2,7 @@
 
 **Purpose**: Step-by-step commands for running prediction replays and analyzing results
 
-**Last Updated**: 2025-10-30
+**Last Updated**: 2025-10-31
 
 ---
 
@@ -12,6 +12,69 @@
 2. **Database**: NEON_CONNECTION_URL set in `.env`
 3. **Configs**: `configs/` directory with all YAML files
 4. **Baseline**: 630-image prediction file at `nutritionverse-tests/results/gpt_5_630images_20251027_151930.json`
+5. **Phase Z4 Dependencies**: `pip install pydantic>=2.0.0`
+6. **Phase E1 Dependencies** (optional): `pip install sentence-transformers>=2.2.0 hnswlib>=0.7.0`
+
+---
+
+## Quick Start: Run Phase Z4 → E1 Replay
+
+```bash
+# From repo root
+cd /Users/austinprofenius/snapandtrack-model-testing
+
+# Run full 630-image replay with Z4 → E1 (recipe decomposition ON, semantic search OFF)
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/replay_z4_e1_$(date +%Y%m%d_%H%M%S) \
+  --config-dir configs/ \
+  --schema auto \
+  --limit 630
+
+# Expected: ~13 minutes, zero vision API calls
+# Output: results.jsonl, telemetry.jsonl, replay_manifest.json
+
+# Analyze results with decomposition report
+python analyze_batch_results.py runs/replay_z4_e1_*/ --decomposition-report
+
+# Compare with Phase Z3.3 baseline
+python analyze_batch_results.py \
+  runs/replay_z4_e1_*/ \
+  --compare runs/replay_z3_3_fixed_20251030/ \
+  --decomposition-report
+```
+
+**Phase Z4 Features**:
+- ✅ Recipe decomposition (pizza, sandwich, chia pudding) - **ON by default**
+- ❌ Semantic search (Foundation/SR) - **OFF by default**
+
+**To disable recipe decomposition**:
+```bash
+export ENABLE_RECIPE_DECOMPOSITION=false
+```
+
+**To enable semantic search** (requires pre-built index):
+```bash
+# Build semantic index first (one-time setup)
+python nutritionverse-tests/scripts/build_semantic_index.py \
+  --db-path /path/to/fdc.db \
+  --output semantic_indices/foundation_sr_v1
+
+# Enable semantic search
+export ENABLE_SEMANTIC_SEARCH=true
+
+# Run replay with semantic search enabled
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/replay_z4_e1_semantic_$(date +%Y%m%d_%H%M%S) \
+  --semantic-index semantic_indices/foundation_sr_v1
+
+# Analyze with semantic stats
+python analyze_batch_results.py runs/replay_z4_e1_semantic_*/ \
+  --decomposition-report \
+  --semantic-stats \
+  --verbose
+```
 
 ---
 
