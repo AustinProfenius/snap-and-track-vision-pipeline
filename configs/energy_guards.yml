@@ -1,0 +1,149 @@
+# Phase E1: Adaptive Energy & Macro Guards Configuration
+#
+# Class-level energy band adjustments and macro tolerance thresholds
+# for Stage 1S semantic search and Stage Z branded fallback validation.
+#
+# Purpose:
+# - Prevent mismatches caused by rigid ±30% energy bands
+# - Apply tighter bands for high-energy-density foods (nuts, oils, sweets)
+# - Apply looser bands for produce (apples, peppers, lettuce)
+# - Add macro validation gates (protein, carbs, fat) with tolerance thresholds
+
+# =============================================================================
+# ENERGY BANDS (±% tolerance from predicted energy)
+# =============================================================================
+# Adjusts energy filter bands based on food class characteristics
+
+energy_bands:
+  # High-energy-density classes (nuts, seeds, oils, sweets, dairy)
+  # Tighter bands (±20%) to prevent chocolate → carob powder mismatches
+  high_energy:
+    tolerance_pct: 20
+    classes:
+      - almond
+      - walnut
+      - cashew
+      - peanut
+      - pecan
+      - chia_seed
+      - sunflower_seed
+      - pumpkin_seed
+      - tahini
+      - peanut_butter
+      - almond_butter
+      - olive_oil
+      - coconut_oil
+      - avocado_oil
+      - butter
+      - chocolate
+      - cocoa_powder
+      - cheese
+      - cream_cheese
+      - cheddar
+      - parmesan
+      - mozzarella
+
+  # Produce classes (fruits, vegetables, leafy greens)
+  # Looser bands (±40%) due to ripeness/variety variation
+  # Apple varieties: 45-85 kcal/100g, Pepper varieties: 20-40 kcal/100g
+  produce:
+    tolerance_pct: 40
+    classes:
+      - apple
+      - banana
+      - grape
+      - orange
+      - strawberry
+      - blueberry
+      - raspberry
+      - watermelon
+      - cantaloupe
+      - honeydew
+      - mango
+      - pineapple
+      - peach
+      - pear
+      - plum
+      - cherry
+      - kiwi
+      - tomato
+      - cucumber
+      - lettuce
+      - spinach
+      - kale
+      - arugula
+      - mixed_greens
+      - bell_pepper
+      - red_pepper
+      - green_pepper
+      - yellow_pepper
+      - orange_pepper
+      - jalapeno
+      - carrot
+      - celery
+      - zucchini
+      - broccoli
+      - cauliflower
+      - onion
+      - garlic
+      - mushroom
+      - eggplant
+      - cabbage
+
+  # Default energy band for all other classes (±30%)
+  default:
+    tolerance_pct: 30
+
+# =============================================================================
+# MACRO GUARDS (protein, carbs, fat validation)
+# =============================================================================
+# Prevents mismatches with implausible macronutrient profiles
+# Applied to semantic search (Stage 1S) and branded fallback (Stage Z)
+
+macro_guards:
+  # Protein validation (g/100g)
+  # Flags candidates with protein ≥2x or ≤0.5x predicted value
+  protein:
+    enabled: true
+    tolerance_multiplier: 2.0  # Accept ±2x variation (chicken breast 20-40g OK)
+    min_absolute_diff: 5.0      # Ignore deviations <5g/100g (low-protein foods)
+
+  # Carbohydrate validation (g/100g)
+  # Flags candidates with carbs ≥2.5x or ≤0.4x predicted value
+  carbs:
+    enabled: true
+    tolerance_multiplier: 2.5  # Accept ±2.5x variation (rice 25-65g OK)
+    min_absolute_diff: 10.0     # Ignore deviations <10g/100g (low-carb foods)
+
+  # Fat validation (g/100g)
+  # Flags candidates with fat ≥3x or ≤0.33x predicted value
+  fat:
+    enabled: true
+    tolerance_multiplier: 3.0  # Accept ±3x variation (salmon 5-15g OK)
+    min_absolute_diff: 3.0      # Ignore deviations <3g/100g (low-fat foods)
+
+# =============================================================================
+# GUARD TELEMETRY
+# =============================================================================
+# Track guard application and rejection rates for analysis
+
+telemetry:
+  # Emit verbose guard logs in ALIGN_VERBOSE mode
+  verbose_logging: true
+
+  # Track per-guard rejection counts
+  track_rejections:
+    - energy_band_violation
+    - protein_implausible
+    - carbs_implausible
+    - fat_implausible
+
+  # Summary fields to include in telemetry output
+  summary_fields:
+    - total_candidates_checked
+    - energy_band_rejections
+    - macro_guard_rejections
+    - protein_failures
+    - carbs_failures
+    - fat_failures
+    - accepted_candidates

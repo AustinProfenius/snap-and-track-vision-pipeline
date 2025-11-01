@@ -1,0 +1,70 @@
+# Phase E1: Grain Bowl Recipe Template
+#
+# Single grain bowl variant with ratio-based component decomposition.
+# Ratios based on typical grain bowl composition (grain base + protein + vegetables + dressing).
+#
+# Triggers match: "grain bowl", "buddha bowl", "quinoa bowl", "rice bowl"
+# Components use Stage Z keys (prefer) for alignment.
+
+grain_bowl:
+  triggers:
+    - "grain bowl"
+    - "buddha bowl"
+    - "quinoa bowl"
+    - "rice bowl"
+    - "farro bowl"
+    - "power bowl"
+    - "harvest bowl"
+  notes: "Grain bowl: grain base + protein + roasted vegetables + greens + dressing"
+  components:
+    - key: "grains"
+      ratio: 0.35
+      prefer:
+        - "quinoa"
+        - "rice_brown"
+        - "farro"
+        - "rice_white"
+      kcal_per_100g: [110, 150]
+      notes: "Grain base (quinoa, brown rice, farro, or white rice)"
+
+    - key: "protein"
+      ratio: 0.25
+      prefer:
+        - "chicken_breast"
+        - "tofu"
+        - "chickpeas"
+        - "salmon"
+        - "tempeh"
+      kcal_per_100g: [100, 200]
+      notes: "Protein topping (chicken, tofu, chickpeas, salmon, or tempeh)"
+
+    - key: "roasted_vegetables"
+      ratio: 0.20
+      prefer:
+        - "sweet_potato"
+        - "broccoli"
+        - "brussels_sprouts"
+        - "cauliflower"
+        - "butternut_squash"
+      kcal_per_100g: [40, 90]
+      notes: "Roasted vegetables (sweet potato, broccoli, Brussels sprouts, cauliflower, or squash)"
+
+    - key: "greens"
+      ratio: 0.10
+      prefer:
+        - "kale"
+        - "spinach"
+        - "arugula"
+        - "mixed_greens"
+      kcal_per_100g: [20, 35]
+      notes: "Fresh greens (kale, spinach, arugula, or mixed greens)"
+
+    - key: "dressing"
+      ratio: 0.10
+      prefer:
+        - "tahini"
+        - "olive_oil"
+        - "vinaigrette"
+        - "lemon_juice"
+      kcal_per_100g: [300, 600]
+      notes: "Dressing or sauce (tahini, olive oil, vinaigrette, or lemon juice)"

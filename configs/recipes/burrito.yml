@@ -1,0 +1,64 @@
+# Phase E1: Burrito Recipe Template
+#
+# Single burrito variant with ratio-based component decomposition.
+# Ratios based on typical burrito composition (tortilla + protein + rice + beans + toppings).
+#
+# Triggers match: "burrito", "chicken burrito", "beef burrito", "bean burrito"
+# Components use Stage Z keys (prefer) for alignment.
+
+burrito:
+  triggers:
+    - "burrito"
+    - "chicken burrito"
+    - "beef burrito"
+    - "bean burrito"
+    - "steak burrito"
+    - "veggie burrito"
+    - "breakfast burrito"
+  notes: "Burrito: tortilla + protein + rice + beans + cheese"
+  components:
+    - key: "tortilla"
+      ratio: 0.30
+      prefer:
+        - "tortilla_flour"
+        - "tortilla_whole_wheat"
+        - "wrap"
+      kcal_per_100g: [280, 320]
+      notes: "Flour or whole wheat tortilla wrap"
+
+    - key: "protein"
+      ratio: 0.25
+      prefer:
+        - "chicken_breast"
+        - "beef_ground"
+        - "pork"
+        - "tofu"
+      kcal_per_100g: [120, 250]
+      notes: "Protein filling (chicken, beef, pork, or tofu)"
+
+    - key: "rice"
+      ratio: 0.20
+      prefer:
+        - "rice_white"
+        - "rice_brown"
+        - "rice_cilantro_lime"
+      kcal_per_100g: [120, 150]
+      notes: "Cooked rice (white, brown, or cilantro-lime)"
+
+    - key: "beans"
+      ratio: 0.15
+      prefer:
+        - "beans_black"
+        - "beans_pinto"
+        - "beans_refried"
+      kcal_per_100g: [80, 130]
+      notes: "Black beans, pinto beans, or refried beans"
+
+    - key: "cheese"
+      ratio: 0.10
+      prefer:
+        - "cheese_cheddar"
+        - "cheese_mexican_blend"
+        - "cheese_monterey_jack"
+      kcal_per_100g: [350, 420]
+      notes: "Shredded cheese (cheddar, Mexican blend, or Monterey Jack)"

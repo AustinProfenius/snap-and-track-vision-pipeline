@@ -9,10 +9,13 @@ mass allocation. Each recipe specifies:
 - Energy bounds and reject patterns for plausibility
 
 Runs as Stage 5C (after Stage 5B salad decomposition, before Stage Z).
+
+Phase E1: Added SHA256 config hash validation for drift detection.
 """
 import os
 import re
 import yaml
+import hashlib
 from pathlib import Path
 from typing import Optional, Dict, Any, List, Tuple
 from pydantic import BaseModel, field_validator
@@ -108,6 +111,7 @@ class RecipeLoader:
         self.config_dir = Path(config_dir)
         self.recipes_dir = self.config_dir / "recipes"
         self.templates: Dict[str, RecipeTemplate] = {}
+        self.config_hashes: Dict[str, str] = {}  # Phase E1: SHA256 hashes for drift detection
 
         if not self.recipes_dir.exists():
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -122,6 +126,10 @@ class RecipeLoader:
 
         for yml_file in sorted(self.recipes_dir.glob("*.yml")):
             try:
+                # Phase E1: Compute SHA256 hash for config drift detection
+                file_hash = hashlib.sha256(yml_file.read_bytes()).hexdigest()
+                self.config_hashes[yml_file.name] = file_hash
+
                 with open(yml_file, 'r') as f:
                     data = yaml.safe_load(f)
 
@@ -165,6 +173,9 @@ class RecipeLoader:
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[RECIPE_LOADER] Loaded {len(self.templates)} recipe templates")
+            print(f"[RECIPE_LOADER] Recipe config hashes: {len(self.config_hashes)} files")
+            for filename, file_hash in sorted(self.config_hashes.items()):
+                print(f"[RECIPE_LOADER]   {filename}: {file_hash[:16]}...")
 
     def match_recipe(self, predicted_name: str) -> Optional[RecipeTemplate]:
         """

@@ -157,6 +157,116 @@ Foundation/SR (1b/1c) → Semantic (1S) → Stage 2 → Stage 5B (salad) → Sta
 - Miss rate: ≤24% (maintained)
 - No regressions in Phase Z3.3 baselines
 
+---
+
+## [2025-10-31] Phase E1 Validation & Expansion - Performance, Guards, & Recipe Coverage
+
+### Problem Statement
+Phase Z4 → E1 Bridge established foundation, but needed:
+- **Performance optimization** - LRU caching for repeated FDC lookups (~40% hit rate target)
+- **Adaptive energy guards** - Class-aware bands to prevent mismatches (chocolate→carob, apple variety confusion)
+- **Macro validation** - Protein/carbs/fat plausibility checks for semantic/branded candidates
+- **Recipe coverage expansion** - Add yogurt parfait, burrito, grain bowl templates
+- **Enhanced telemetry** - Semantic similarity tracking, adaptive band logging
+
+### Target
+- Maintain Phase Z4 baselines: Stage Z ≥20%, miss rate ≤24%
+- Add performance caching (~30-40% throughput improvement expected)
+- Implement adaptive energy guards (±20% nuts/oils, ±40% produce, ±30% default)
+- Expand recipe library from 6 to 9 templates
+
+### Solution
+
+#### 1. Performance Optimization (Phase E1)
+
+**LRU Caching** (`align_convert.py` lines 737-774)
+- `_create_cached_fdc_lookup()` - functools.lru_cache wrapper (maxsize=512)
+- `_get_fdc_entry()` - Unified FDC lookup with cache fallback
+- Updated 2 call sites: Stage 1S semantic search (line 2310), Stage 5C component alignment (line 3471)
+- Feature flag: `ENABLE_ALIGNMENT_CACHES` (default=True)
+- Expected impact: ~40% cache hit rate, ~30-40% throughput improvement
+
+#### 2. Adaptive Energy Guards (Phase E1)
+
+**Energy Guards Configuration** (`configs/energy_guards.yml` ~140 lines)
+- **High-energy classes** (±20% tolerance): 23 classes (almonds, walnuts, cashews, peanuts, chia seeds, tahini, peanut butter, oils, chocolate, cocoa, cheese, cream cheese, cheddar, parmesan, mozzarella)
+- **Produce classes** (±40% tolerance): 42 classes (apples, bananas, grapes, oranges, strawberries, blueberries, melons, bell peppers, leafy greens, tomatoes, cucumbers, carrots, broccoli, mushrooms, etc.)
+- **Default** (±30% tolerance): All other classes
+- **Macro Guards**: Protein (±2x, min 5g diff), Carbs (±2.5x, min 10g diff), Fat (±3x, min 3g diff)
+
+**Guard Implementation** (`align_convert.py` lines 777-907)
+- `_load_energy_guards_config()` - YAML loader with graceful fallback to defaults
+- `_get_default_energy_guards()` - Hardcoded fallback if YAML missing
+- `_get_energy_band_tolerance()` - Class-aware tolerance lookup (lines 817-845)
+- `_validate_macro_guards()` - Protein/carbs/fat validation (lines 847-907)
+
+**Stage 1S Integration** (`align_convert.py` lines 2354-2422)
+- Updated `_try_stage1s_semantic_search()` to accept `core_class` parameter
+- Replaced fixed ±30% energy band with adaptive tolerance via `_get_energy_band_tolerance()`
+- Added telemetry fields: `energy_band_tolerance_pct`, `energy_band_core_class`
+- Example: Almond query uses ±20% (180-220 kcal for 200 kcal predicted), apple query uses ±40% (30-70 kcal for 50 kcal predicted)
+
+#### 3. Enhanced Telemetry (Phase E1)
+
+**Stage 1S Semantic Search** (`align_convert.py` lines 2411-2422)
+- Added `semantic_top_k`, `semantic_min_sim`, `semantic_max_cand` tracking
+- Added `semantic_candidates_returned`, `energy_filter_applied`
+- Added `energy_band_tolerance_pct`, `energy_band_core_class` (adaptive bands)
+- Added `semantic_similarity`, `semantic_rejection_reason` (match/rejection tracking)
+
+**Recipe Config Hashing** (`recipes.py` lines 114-178)
+- Added `config_hashes` dict to RecipeLoader (SHA256 per YAML file)
+- Computed on load: `hashlib.sha256(yml_file.read_bytes()).hexdigest()`
+- Enables drift detection between runs (compare hashes to detect YAML changes)
+
+**Semantic Index Checksums** (`semantic_index.py` lines 145-191, 214-224)
+- Added `index_checksum` (SHA256 of HNSW index file)
+- Added `metadata_checksum` (SHA256 of pickle metadata)
+- Added `build_timestamp` (ISO 8601 UTC)
+- Checksum validation on index load with clear error messages
+
+#### 4. Feature Flags (Phase E1)
+
+**New Flags** (`feature_flags.py` lines 95-110)
+- `semantic_topk` (int, default=10) - Top-K candidates from HNSW
+- `semantic_min_sim` (float, default=0.62) - Minimum cosine similarity threshold
+- `semantic_max_cand` (int, default=10) - Max candidates after filtering
+- `enable_alignment_caches` (bool, default=True) - LRU cache toggle
+
+**Updated Methods** (`feature_flags.py`)
+- Lines 113-117: Added 4 new flags to `print_status()`
+- Lines 136-137: Added `enable_semantic_search` and `enable_alignment_caches` to `enable_all()`
+
+#### 5. Documentation & Tracking
+
+**ITERATION_NOTES.md** (`docs/alignment/ITERATION_NOTES.md` ~200 lines, created)
+- Centralized experiment tracking with phase status, code statistics, acceptance gates
+- Tracks Phase 1 (Foundation), Phase 2 (Performance & Guards), Phase 3 (Recipe Expansion), Phase 4 (Analytics), Phase 5 (Validation)
+- Known issues, technical debt, next steps
+- Run record template for validation experiments
+
+### Files Changed
+**Created** (2 files, ~340 lines):
+- configs/energy_guards.yml (~140 lines) - Energy/macro guard configuration
+- docs/alignment/ITERATION_NOTES.md (~200 lines) - Centralized experiment tracking
+
+**Modified** (4 files, ~200 lines added):
+- nutritionverse-tests/src/config/feature_flags.py (+17 lines) - 4 new E1 flags
+- nutritionverse-tests/src/nutrition/alignment/align_convert.py (+180 lines) - LRU cache, adaptive guards, Stage 1S updates
+- nutritionverse-tests/src/nutrition/alignment/semantic_index.py (+35 lines) - SHA256 checksums
+- nutritionverse-tests/src/nutrition/alignment/recipes.py (+15 lines) - Config hash tracking
+
+### Code Statistics (Phase E1 Phases 1-2)
+- **Total Added**: ~450 lines production code
+- **Performance Impact**: LRU caching expected ~40% cache hit rate
+- **Adaptive Guards**: Prevents mismatches (chocolate→carob with ±20%, apple variety confusion with ±40%)
+
+### Validation Status
+- **Phase 1-2 Complete**: Foundation + Performance & Guards
+- **Phase 3 Pending**: Recipe expansion (yogurt parfait, burrito, grain bowl)
+- **Phase 4 Pending**: Analyzer extensions, smoke tests
+- **Phase 5 Pending**: Baseline/ablation runs, acceptance gate verification
+
 ### Notes
 - Recipe decomposition enabled by default (opt-out via env var)
 - Semantic search disabled by default (opt-in via env var + pre-built index)

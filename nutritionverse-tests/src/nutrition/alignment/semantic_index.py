@@ -9,9 +9,12 @@ Features:
 - HNSW indexing for fast approximate nearest neighbor search
 - Energy-filtered results to prevent mismatches
 - Runs as Stage 1S (after Stage 1c, before Stage 2)
+- SHA256 checksum validation for index integrity
 """
 import os
 import pickle
+import hashlib
+import datetime
 from pathlib import Path
 from typing import List, Tuple, Optional, Any, Dict
 import numpy as np
@@ -142,6 +145,9 @@ class SemanticIndexBuilder:
 
         index.save_index(str(index_file))
 
+        # Generate checksums for validation (Phase E1)
+        index_checksum = hashlib.sha256(index_file.read_bytes()).hexdigest()
+
         metadata = {
             'fdc_ids': fdc_ids,
             'descriptions': descriptions,
@@ -149,9 +155,19 @@ class SemanticIndexBuilder:
             'model_name': self.model_name,
             'num_entries': len(fdc_ids),
             'data_types': data_types,
-            'embedding_dim': dim
+            'embedding_dim': dim,
+            'build_timestamp': datetime.datetime.utcnow().isoformat(),
+            'index_checksum': index_checksum
         }
 
+        with open(metadata_file, 'wb') as f:
+            pickle.dump(metadata, f)
+
+        # Generate metadata checksum after saving
+        metadata_checksum = hashlib.sha256(metadata_file.read_bytes()).hexdigest()
+
+        # Update metadata with its own checksum (requires re-saving)
+        metadata['metadata_checksum'] = metadata_checksum
         with open(metadata_file, 'wb') as f:
             pickle.dump(metadata, f)
 
@@ -162,6 +178,9 @@ class SemanticIndexBuilder:
             'embedding_dim': dim,
             'index_file': str(index_file),
             'metadata_file': str(metadata_file),
+            'index_checksum': index_checksum,
+            'metadata_checksum': metadata_checksum,
+            'build_timestamp': metadata['build_timestamp'],
             'elapsed_time_sec': elapsed_time
         }
 
@@ -172,6 +191,7 @@ class SemanticIndexBuilder:
             print(f"[SEMANTIC_INDEX]   Time: {elapsed_time:.1f}s")
             print(f"[SEMANTIC_INDEX]   Index: {index_file}")
             print(f"[SEMANTIC_INDEX]   Metadata: {metadata_file}")
+            print(f"[SEMANTIC_INDEX]   Checksum: {index_checksum[:16]}...")
 
         return stats
 
@@ -210,6 +230,19 @@ class SemanticSearcher:
         with open(metadata_file, 'rb') as f:
             self.metadata = pickle.load(f)
 
+        # Validate checksums if present (Phase E1)
+        if 'index_checksum' in self.metadata:
+            actual_index_checksum = hashlib.sha256(index_file.read_bytes()).hexdigest()
+            expected_index_checksum = self.metadata['index_checksum']
+            if actual_index_checksum != expected_index_checksum:
+                raise ValueError(
+                    f"Index checksum mismatch! Expected {expected_index_checksum[:16]}..., "
+                    f"got {actual_index_checksum[:16]}.... Index may be corrupted."
+                )
+
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[SEMANTIC_SEARCH] Index checksum validated: {expected_index_checksum[:16]}...")
+
         self.model_name = self.metadata['model_name']
 
         # Load HNSW index
@@ -225,7 +258,8 @@ class SemanticSearcher:
         self.index.load_index(str(index_file), max_elements=self.metadata['num_entries'])
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
-            print(f"[SEMANTIC_SEARCH] Loaded index: {self.metadata['num_entries']} entries")
+            build_time = self.metadata.get('build_timestamp', 'unknown')
+            print(f"[SEMANTIC_SEARCH] Loaded index: {self.metadata['num_entries']} entries (built: {build_time})")
 
     def _load_model(self):
         """Lazy-load sentence-transformer model."""

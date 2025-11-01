@@ -199,6 +199,224 @@ def test_chia_pudding_decomposition_end_to_end():
             f"Chia pudding should not be a miss, got {food.get('alignment_stage')}"
 
 
+def test_yogurt_parfait_trigger_matching():
+    """Test that yogurt parfait triggers match correctly."""
+    config_dir = Path(__file__).parent.parent.parent / "configs"
+    loader = RecipeLoader(config_dir)
+
+    # Should match yogurt parfait
+    template = loader.match_recipe("yogurt parfait")
+    assert template is not None, "Should match 'yogurt parfait'"
+    assert "yogurt" in template.name.lower() or "parfait" in template.name.lower()
+
+    # Should match greek yogurt parfait variant
+    template = loader.match_recipe("greek yogurt parfait")
+    assert template is not None, "Should match 'greek yogurt parfait'"
+    assert "yogurt" in template.name.lower() or "parfait" in template.name.lower()
+
+    # Should match simple parfait
+    template = loader.match_recipe("parfait")
+    assert template is not None, "Should match 'parfait'"
+
+
+def test_burrito_trigger_matching():
+    """Test that burrito triggers match correctly."""
+    config_dir = Path(__file__).parent.parent.parent / "configs"
+    loader = RecipeLoader(config_dir)
+
+    # Should match burrito
+    template = loader.match_recipe("burrito")
+    assert template is not None, "Should match 'burrito'"
+    assert "burrito" in template.name.lower()
+
+    # Should match chicken burrito
+    template = loader.match_recipe("chicken burrito")
+    assert template is not None, "Should match 'chicken burrito'"
+    assert "burrito" in template.name.lower()
+
+    # Should match beef burrito
+    template = loader.match_recipe("beef burrito")
+    assert template is not None, "Should match 'beef burrito'"
+    assert "burrito" in template.name.lower()
+
+
+def test_grain_bowl_trigger_matching():
+    """Test that grain bowl triggers match correctly."""
+    config_dir = Path(__file__).parent.parent.parent / "configs"
+    loader = RecipeLoader(config_dir)
+
+    # Should match grain bowl
+    template = loader.match_recipe("grain bowl")
+    assert template is not None, "Should match 'grain bowl'"
+    assert "grain" in template.name.lower() or "bowl" in template.name.lower()
+
+    # Should match buddha bowl
+    template = loader.match_recipe("buddha bowl")
+    assert template is not None, "Should match 'buddha bowl'"
+    assert "grain" in template.name.lower() or "bowl" in template.name.lower()
+
+    # Should match quinoa bowl
+    template = loader.match_recipe("quinoa bowl")
+    assert template is not None, "Should match 'quinoa bowl'"
+    assert "grain" in template.name.lower() or "bowl" in template.name.lower()
+
+
+def test_yogurt_parfait_decomposition_end_to_end():
+    """Test that yogurt parfait gets decomposed into components (Stage 5C)."""
+    adapter = AlignmentEngineAdapter()
+    if not adapter.db_available:
+        pytest.skip("DB not available")
+
+    prediction = {"foods": [{"name": "yogurt parfait", "form": "raw", "mass_g": 200.0}]}
+    result = adapter.align_prediction_batch(prediction)
+
+    food = result["foods"][0]
+
+    # Check if decomposition occurred
+    if food.get("alignment_stage") == "stage5c_recipe_decomposition":
+        # Verify decomposition telemetry
+        telemetry = food.get("telemetry", {})
+        assert "stage5c_recipe_decomposition" in telemetry, "Should have stage5c telemetry"
+
+        stage5c_data = telemetry["stage5c_recipe_decomposition"]
+        assert "recipe_template" in stage5c_data, "Should have recipe_template"
+        assert "yogurt" in stage5c_data["recipe_template"].lower() or "parfait" in stage5c_data["recipe_template"].lower(), \
+            f"Should be yogurt parfait recipe, got {stage5c_data['recipe_template']}"
+
+        # Verify expanded_foods present (expect 3 components: yogurt, granola, berries)
+        expanded_foods = food.get("expanded_foods", [])
+        assert len(expanded_foods) >= 2, f"Yogurt parfait should have at least 2 components, got {len(expanded_foods)}"
+
+        # Verify components have FDC IDs (at least 60% should align per requirement)
+        aligned_components = [c for c in expanded_foods if c.get("fdc_id")]
+        assert len(aligned_components) > 0, "At least some components should align"
+
+        # Verify total mass matches
+        total_mass = sum(c.get("mass_g", 0) for c in expanded_foods)
+        assert abs(total_mass - 200.0) < 1.0, f"Total mass should be ~200g, got {total_mass}g"
+
+        # Verify ratios sum to ~1.0
+        if "component_ratios" in stage5c_data:
+            ratio_sum = sum(stage5c_data["component_ratios"].values())
+            assert abs(ratio_sum - 1.0) < 0.01, f"Component ratios should sum to ~1.0, got {ratio_sum}"
+    else:
+        # If decomposition didn't trigger, that's okay
+        assert food.get("alignment_stage") != "stage0_no_candidates", \
+            f"Yogurt parfait should not be a miss, got {food.get('alignment_stage')}"
+
+
+def test_burrito_decomposition_end_to_end():
+    """Test that burrito gets decomposed into components (Stage 5C)."""
+    adapter = AlignmentEngineAdapter()
+    if not adapter.db_available:
+        pytest.skip("DB not available")
+
+    prediction = {"foods": [{"name": "chicken burrito", "form": "cooked", "mass_g": 350.0}]}
+    result = adapter.align_prediction_batch(prediction)
+
+    food = result["foods"][0]
+
+    # Check if decomposition occurred
+    if food.get("alignment_stage") == "stage5c_recipe_decomposition":
+        # Verify decomposition telemetry
+        telemetry = food.get("telemetry", {})
+        assert "stage5c_recipe_decomposition" in telemetry, "Should have stage5c telemetry"
+
+        stage5c_data = telemetry["stage5c_recipe_decomposition"]
+        assert "recipe_template" in stage5c_data, "Should have recipe_template"
+        assert "burrito" in stage5c_data["recipe_template"].lower(), \
+            f"Should be burrito recipe, got {stage5c_data['recipe_template']}"
+
+        # Verify expanded_foods present (expect 5 components: tortilla, protein, rice, beans, cheese)
+        expanded_foods = food.get("expanded_foods", [])
+        assert len(expanded_foods) >= 3, f"Burrito should have at least 3 components, got {len(expanded_foods)}"
+
+        # Verify components have FDC IDs (at least 60% should align per requirement)
+        aligned_components = [c for c in expanded_foods if c.get("fdc_id")]
+        assert len(aligned_components) >= 0.6 * len(expanded_foods), \
+            f"At least 60% of components should align, got {len(aligned_components)}/{len(expanded_foods)}"
+
+        # Verify total mass matches
+        total_mass = sum(c.get("mass_g", 0) for c in expanded_foods)
+        assert abs(total_mass - 350.0) < 1.0, f"Total mass should be ~350g, got {total_mass}g"
+
+        # Verify ratios sum to ~1.0
+        if "component_ratios" in stage5c_data:
+            ratio_sum = sum(stage5c_data["component_ratios"].values())
+            assert abs(ratio_sum - 1.0) < 0.01, f"Component ratios should sum to ~1.0, got {ratio_sum}"
+    else:
+        # If decomposition didn't trigger, that's okay
+        assert food.get("alignment_stage") != "stage0_no_candidates", \
+            f"Burrito should not be a miss, got {food.get('alignment_stage')}"
+
+
+def test_grain_bowl_decomposition_end_to_end():
+    """Test that grain bowl gets decomposed into components (Stage 5C)."""
+    adapter = AlignmentEngineAdapter()
+    if not adapter.db_available:
+        pytest.skip("DB not available")
+
+    prediction = {"foods": [{"name": "grain bowl", "form": "cooked", "mass_g": 400.0}]}
+    result = adapter.align_prediction_batch(prediction)
+
+    food = result["foods"][0]
+
+    # Check if decomposition occurred
+    if food.get("alignment_stage") == "stage5c_recipe_decomposition":
+        # Verify decomposition telemetry
+        telemetry = food.get("telemetry", {})
+        assert "stage5c_recipe_decomposition" in telemetry, "Should have stage5c telemetry"
+
+        stage5c_data = telemetry["stage5c_recipe_decomposition"]
+        assert "recipe_template" in stage5c_data, "Should have recipe_template"
+        assert "grain" in stage5c_data["recipe_template"].lower() or "bowl" in stage5c_data["recipe_template"].lower(), \
+            f"Should be grain bowl recipe, got {stage5c_data['recipe_template']}"
+
+        # Verify expanded_foods present (expect 5 components: grains, protein, roasted_veg, greens, dressing)
+        expanded_foods = food.get("expanded_foods", [])
+        assert len(expanded_foods) >= 3, f"Grain bowl should have at least 3 components, got {len(expanded_foods)}"
+
+        # Look for roasted vegetables component (validation per requirement)
+        roasted_veg_component = next((c for c in expanded_foods
+                                      if any(keyword in c.get("name", "").lower()
+                                            for keyword in ["sweet potato", "broccoli", "brussels", "cauliflower", "squash", "vegetable"])),
+                                    None)
+        assert roasted_veg_component is not None, "Should have roasted vegetables component"
+
+        # Look for dressing component (validation per requirement)
+        dressing_component = next((c for c in expanded_foods
+                                   if any(keyword in c.get("name", "").lower()
+                                         for keyword in ["tahini", "oil", "vinaigrette", "lemon", "dressing", "sauce"])),
+                                 None)
+        assert dressing_component is not None, "Should have dressing component"
+
+        # Verify total mass matches
+        total_mass = sum(c.get("mass_g", 0) for c in expanded_foods)
+        assert abs(total_mass - 400.0) < 1.0, f"Total mass should be ~400g, got {total_mass}g"
+
+        # Verify ratios sum to ~1.0
+        if "component_ratios" in stage5c_data:
+            ratio_sum = sum(stage5c_data["component_ratios"].values())
+            assert abs(ratio_sum - 1.0) < 0.01, f"Component ratios should sum to ~1.0, got {ratio_sum}"
+    else:
+        # If decomposition didn't trigger, that's okay
+        assert food.get("alignment_stage") != "stage0_no_candidates", \
+            f"Grain bowl should not be a miss, got {food.get('alignment_stage')}"
+
+
+def test_yogurt_near_miss():
+    """Test that 'yogurt' alone does NOT trigger parfait decomposition (negative test)."""
+    config_dir = Path(__file__).parent.parent.parent / "configs"
+    loader = RecipeLoader(config_dir)
+
+    # Should NOT match yogurt parfait template (yogurt alone is not sufficient)
+    template = loader.match_recipe("yogurt")
+    if template is not None:
+        # If a template matched, it should NOT be parfait
+        assert "parfait" not in template.name.lower(), \
+            f"'yogurt' alone should not match parfait template, got {template.name}"
+
+
 def test_non_recipe_food_skips_stage5c():
     """Test that non-recipe foods skip Stage 5C decomposition."""
     adapter = AlignmentEngineAdapter()

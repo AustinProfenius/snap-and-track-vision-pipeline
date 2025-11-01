@@ -78,6 +78,91 @@ python analyze_batch_results.py runs/replay_z4_e1_semantic_*/ \
 
 ---
 
+## Phase E1 Feature Flags & Configuration
+
+### Feature Flags Overview
+
+**Phase E1 Validation & Expansion** adds performance caching, adaptive guards, and enhanced telemetry.
+
+| Flag | Type | Default | Description |
+|------|------|---------|-------------|
+| `ENABLE_ALIGNMENT_CACHES` | bool | `true` | LRU cache for FDC lookups (maxsize=512, ~40% hit rate) |
+| `SEMANTIC_TOPK` | int | `10` | Top-K candidates from HNSW semantic index |
+| `SEMANTIC_MIN_SIM` | float | `0.62` | Minimum cosine similarity threshold for semantic matches |
+| `SEMANTIC_MAX_CAND` | int | `10` | Maximum candidates after energy filtering |
+
+### Disable LRU Caching
+
+```bash
+# Disable FDC lookup caching (for benchmarking)
+export ENABLE_ALIGNMENT_CACHES=false
+
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/replay_no_cache_$(date +%Y%m%d_%H%M%S)
+```
+
+### Tune Semantic Search Parameters
+
+```bash
+# Increase semantic search recall (more candidates, lower threshold)
+export SEMANTIC_TOPK=20
+export SEMANTIC_MIN_SIM=0.55
+export SEMANTIC_MAX_CAND=15
+
+# Run with tuned parameters
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/replay_semantic_tuned_$(date +%Y%m%d_%H%M%S) \
+  --semantic-index semantic_indices/foundation_sr_v1
+```
+
+### Adaptive Energy Guards Configuration
+
+Energy guards are configured in `configs/energy_guards.yml`:
+- **High-energy classes** (±20%): nuts, seeds, oils, chocolate, cheese
+- **Produce classes** (±40%): fruits, vegetables, leafy greens
+- **Default** (±30%): all other classes
+
+To modify guards, edit `configs/energy_guards.yml` and restart replay.
+
+### Ablation Testing Workflow
+
+**Step 1: Baseline Run (Semantic OFF)**
+```bash
+export ENABLE_SEMANTIC_SEARCH=false
+
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/baseline_semantic_off_$(date +%Y%m%d_%H%M%S)
+```
+
+**Step 2: Ablation Run (Semantic ON)**
+```bash
+export ENABLE_SEMANTIC_SEARCH=true
+
+python nutritionverse-tests/entrypoints/replay_from_predictions.py \
+  --in nutritionverse-tests/results/gpt_5_630images_20251027_151930.json \
+  --out runs/ablation_semantic_on_$(date +%Y%m%d_%H%M%S) \
+  --semantic-index semantic_indices/foundation_sr_v1
+```
+
+**Step 3: Compare Results**
+```bash
+python analyze_batch_results.py \
+  runs/ablation_semantic_on_*/ \
+  --compare runs/baseline_semantic_off_*/ \
+  --semantic-stats \
+  --verbose
+```
+
+**Expected Deltas**:
+- ΔHit@1: ≥5% improvement (semantic matches increase)
+- ΔMiss Rate: Decrease or maintain ≤24%
+- ΔStage Z: May decrease if semantic captures foods before fallback
+
+---
+
 ## Quick Start: Run Phase Z3 Replay
 
 ```bash

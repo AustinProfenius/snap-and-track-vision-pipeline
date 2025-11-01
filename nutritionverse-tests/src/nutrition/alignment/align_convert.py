@@ -33,6 +33,8 @@ Each stage returns AlignmentResult with full telemetry for debugging.
 import json
 import datetime
 import os  # P0: For ALIGN_VERBOSE checks
+import yaml  # Phase E1: For energy_guards.yml loading
+from functools import lru_cache  # Phase E1: For FDC lookup caching
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from ..types import FdcEntry, AlignmentResult, ConvertedEntry
@@ -724,7 +726,216 @@ class FDCAlignmentWithConversion:
             "stageZ_reject_processing": 0,
             "stageZ_reject_score_floor": 0,
             "stageZ_top_rejected": [],
+            # Phase E1: Guard Telemetry Summary
+            "guard_summary": {
+                "energy_guards_checked": 0,
+                "energy_guards_rejected": 0,
+                "macro_guards_checked": 0,
+                "macro_guards_rejected": 0,
+                "protein_failures": 0,
+                "carbs_failures": 0,
+                "fat_failures": 0,
+                "total_accepted": 0,
+            },
         }
+
+        # Phase E1: Initialize LRU cache for FDC lookups if enabled
+        if FLAGS.enable_alignment_caches:
+            self._fdc_lookup_cache = self._create_cached_fdc_lookup()
+        else:
+            self._fdc_lookup_cache = None
+
+    # Phase E1: Cached FDC lookup wrapper (maxsize=512 for ~40% hit rate)
+    def _create_cached_fdc_lookup(self):
+        """
+        Create LRU-cached FDC lookup function.
+
+        Returns cached wrapper if enable_alignment_caches is True, otherwise None.
+        Cache size: 512 entries (balance between memory and hit rate).
+        """
+        @lru_cache(maxsize=512)
+        def _cached_get_entry_by_id(fdc_id: int):
+            """Cached wrapper for FDC database lookups."""
+            if self._fdc_db and hasattr(self._fdc_db, 'get_entry_by_id'):
+                entry = self._fdc_db.get_entry_by_id(fdc_id)
+                return entry
+            return None
+
+        if os.getenv('ALIGN_VERBOSE', '0') == '1':
+            print(f"[CACHE] LRU cache enabled for FDC lookups (maxsize=512)")
+
+        return _cached_get_entry_by_id
+
+    def _get_fdc_entry(self, fdc_id: int):
+        """
+        Get FDC entry by ID, using cache if enabled.
+
+        Args:
+            fdc_id: FDC ID to look up
+
+        Returns:
+            FDC entry dict or None
+        """
+        if FLAGS.enable_alignment_caches and self._fdc_lookup_cache:
+            return self._fdc_lookup_cache(fdc_id)
+        else:
+            # Direct lookup (no cache)
+            if self._fdc_db and hasattr(self._fdc_db, 'get_entry_by_id'):
+                return self._fdc_db.get_entry_by_id(fdc_id)
+            return None
+
+    # Phase E1: Adaptive Energy Guards
+    def _load_energy_guards_config(self, config_path: Optional[Path] = None) -> Dict[str, Any]:
+        """
+        Load energy_guards.yml configuration.
+
+        Args:
+            config_path: Path to energy_guards.yml (default: configs/energy_guards.yml)
+
+        Returns:
+            Energy guards config dict
+        """
+        if config_path is None:
+            config_path = Path(__file__).parent.parent.parent.parent / "configs" / "energy_guards.yml"
+
+        try:
+            with open(config_path, 'r') as f:
+                return yaml.safe_load(f)
+        except FileNotFoundError:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[ENERGY_GUARDS] Config not found at {config_path}, using defaults")
+            return self._get_default_energy_guards()
+        except Exception as e:
+            if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                print(f"[ENERGY_GUARDS] Error loading config: {e}, using defaults")
+            return self._get_default_energy_guards()
+
+    def _get_default_energy_guards(self) -> Dict[str, Any]:
+        """Fallback energy guards config if YAML loading fails."""
+        return {
+            'energy_bands': {
+                'high_energy': {'tolerance_pct': 20, 'classes': ['almond', 'walnut', 'chocolate', 'cheese']},
+                'produce': {'tolerance_pct': 40, 'classes': ['apple', 'banana', 'lettuce', 'tomato', 'bell_pepper']},
+                'default': {'tolerance_pct': 30}
+            },
+            'macro_guards': {
+                'protein': {'enabled': True, 'tolerance_multiplier': 2.0, 'min_absolute_diff': 5.0},
+                'carbs': {'enabled': True, 'tolerance_multiplier': 2.5, 'min_absolute_diff': 10.0},
+                'fat': {'enabled': True, 'tolerance_multiplier': 3.0, 'min_absolute_diff': 3.0}
+            }
+        }
+
+    def _get_energy_band_tolerance(self, core_class: str, energy_guards_config: Optional[Dict] = None) -> float:
+        """
+        Get class-aware energy band tolerance percentage.
+
+        Args:
+            core_class: Normalized food class (e.g., "apple", "almond")
+            energy_guards_config: Energy guards config dict (loads from YAML if None)
+
+        Returns:
+            Tolerance percentage (e.g., 0.20 for ±20%, 0.40 for ±40%)
+        """
+        if energy_guards_config is None:
+            energy_guards_config = self._load_energy_guards_config()
+
+        energy_bands = energy_guards_config.get('energy_bands', {})
+
+        # Check high-energy classes (±20%)
+        high_energy = energy_bands.get('high_energy', {})
+        if core_class in high_energy.get('classes', []):
+            return high_energy.get('tolerance_pct', 20) / 100.0
+
+        # Check produce classes (±40%)
+        produce = energy_bands.get('produce', {})
+        if core_class in produce.get('classes', []):
+            return produce.get('tolerance_pct', 40) / 100.0
+
+        # Default (±30%)
+        default_band = energy_bands.get('default', {})
+        return default_band.get('tolerance_pct', 30) / 100.0
+
+    def _validate_macro_guards(
+        self,
+        predicted_macros: Dict[str, float],
+        candidate_macros: Dict[str, float],
+        energy_guards_config: Optional[Dict] = None,
+        track_telemetry: bool = True
+    ) -> Tuple[bool, List[str]]:
+        """
+        Validate candidate macros against predicted values using tolerance thresholds.
+
+        Args:
+            predicted_macros: Dict with keys 'protein_g', 'carbs_g', 'fat_g' (per 100g)
+            candidate_macros: Dict with keys 'protein_g', 'carbs_g', 'fat_g' (per 100g)
+            energy_guards_config: Energy guards config dict (loads from YAML if None)
+            track_telemetry: Whether to update guard telemetry counters (default: True)
+
+        Returns:
+            (is_valid, rejection_reasons) tuple
+        """
+        if energy_guards_config is None:
+            energy_guards_config = self._load_energy_guards_config()
+
+        macro_guards = energy_guards_config.get('macro_guards', {})
+        rejection_reasons = []
+
+        # Phase E1: Track macro guard check
+        if track_telemetry:
+            self.telemetry["guard_summary"]["macro_guards_checked"] += 1
+
+        # Protein validation
+        protein_config = macro_guards.get('protein', {})
+        if protein_config.get('enabled', True):
+            pred_protein = predicted_macros.get('protein_g', 0.0)
+            cand_protein = candidate_macros.get('protein_g', 0.0)
+            tolerance = protein_config.get('tolerance_multiplier', 2.0)
+            min_diff = protein_config.get('min_absolute_diff', 5.0)
+
+            if pred_protein > 0 and abs(pred_protein - cand_protein) > min_diff:
+                if cand_protein > pred_protein * tolerance or cand_protein < pred_protein / tolerance:
+                    rejection_reasons.append(f"protein_implausible (pred={pred_protein:.1f}g, cand={cand_protein:.1f}g)")
+                    if track_telemetry:
+                        self.telemetry["guard_summary"]["protein_failures"] += 1
+
+        # Carbs validation
+        carbs_config = macro_guards.get('carbs', {})
+        if carbs_config.get('enabled', True):
+            pred_carbs = predicted_macros.get('carbs_g', 0.0)
+            cand_carbs = candidate_macros.get('carbs_g', 0.0)
+            tolerance = carbs_config.get('tolerance_multiplier', 2.5)
+            min_diff = carbs_config.get('min_absolute_diff', 10.0)
+
+            if pred_carbs > 0 and abs(pred_carbs - cand_carbs) > min_diff:
+                if cand_carbs > pred_carbs * tolerance or cand_carbs < pred_carbs / tolerance:
+                    rejection_reasons.append(f"carbs_implausible (pred={pred_carbs:.1f}g, cand={cand_carbs:.1f}g)")
+                    if track_telemetry:
+                        self.telemetry["guard_summary"]["carbs_failures"] += 1
+
+        # Fat validation
+        fat_config = macro_guards.get('fat', {})
+        if fat_config.get('enabled', True):
+            pred_fat = predicted_macros.get('fat_g', 0.0)
+            cand_fat = candidate_macros.get('fat_g', 0.0)
+            tolerance = fat_config.get('tolerance_multiplier', 3.0)
+            min_diff = fat_config.get('min_absolute_diff', 3.0)
+
+            if pred_fat > 0 and abs(pred_fat - cand_fat) > min_diff:
+                if cand_fat > pred_fat * tolerance or cand_fat < pred_fat / tolerance:
+                    rejection_reasons.append(f"fat_implausible (pred={pred_fat:.1f}g, cand={cand_fat:.1f}g)")
+                    if track_telemetry:
+                        self.telemetry["guard_summary"]["fat_failures"] += 1
+
+        is_valid = len(rejection_reasons) == 0
+
+        # Phase E1: Track rejection and acceptance
+        if track_telemetry:
+            if not is_valid:
+                self.telemetry["guard_summary"]["macro_guards_rejected"] += 1
+            else:
+                self.telemetry["guard_summary"]["total_accepted"] += 1
+
+        return (is_valid, rejection_reasons)
 
     # Candidate classification helpers (Phase A1)
     def is_foundation_raw(self, entry: FdcEntry) -> bool:
@@ -949,11 +1160,12 @@ class FDCAlignmentWithConversion:
             if self._external_feature_flags and self._external_feature_flags.get('enable_semantic_search', False):
                 attempted_stages.append("stage1s")
                 stage1s_start = time.perf_counter()
-                semantic_match = self._try_stage1s_semantic_search(
-                    predicted_name, predicted_form, predicted_kcal_100g
+                semantic_result = self._try_stage1s_semantic_search(
+                    predicted_name, predicted_form, predicted_kcal_100g, core_class
                 )
                 stage_timings_ms["stage1s"] = (time.perf_counter() - stage1s_start) * 1000
-                if semantic_match:
+                if semantic_result:
+                    semantic_match, stage1s_telemetry = semantic_result
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         match_name = semantic_match.name if hasattr(semantic_match, 'name') else str(semantic_match)
                         print(f"[ALIGN] ✓ Matched via stage1s_semantic_search: {match_name}")
@@ -968,7 +1180,8 @@ class FDCAlignmentWithConversion:
                         form_intent=form_intent,
                         attempted_stages=attempted_stages,
                         stage_timings_ms=stage_timings_ms,
-                        stage_rejection_reasons=stage_rejection_reasons
+                        stage_rejection_reasons=stage_rejection_reasons,
+                        telemetry=stage1s_telemetry
                     )
                 else:
                     stage_rejection_reasons.append("stage1s: no_semantic_match")
@@ -2173,21 +2386,24 @@ class FDCAlignmentWithConversion:
         self,
         predicted_name: str,
         predicted_form: str,
-        predicted_kcal_100g: float
-    ) -> Optional[Any]:
+        predicted_kcal_100g: float,
+        core_class: str
+    ) -> Optional[Tuple[Any, Dict]]:
         """
         Stage 1S (Phase E1): Semantic similarity search using embeddings.
 
         Prototype feature for semantic retrieval from Foundation/SR entries.
         Uses sentence-transformers + HNSW for fast approximate nearest neighbor search.
+        Phase E1: Uses adaptive energy bands based on food class.
 
         Args:
             predicted_name: Original predicted food name
             predicted_form: Predicted form/method
             predicted_kcal_100g: Predicted energy density
+            core_class: Normalized food class (e.g., "apple", "almond")
 
         Returns:
-            FDC entry if semantic match found, else None
+            Tuple of (FDC entry, telemetry dict) if semantic match found, else None
         """
         import os
 
@@ -2196,56 +2412,110 @@ class FDCAlignmentWithConversion:
                 print(f"[STAGE1S] Semantic searcher not initialized")
             return None
 
-        # Energy filter: ±30% band around predicted energy
-        energy_min = predicted_kcal_100g * 0.7 if predicted_kcal_100g else 0
-        energy_max = predicted_kcal_100g * 1.3 if predicted_kcal_100g else 999
+        # Get tuning parameters from feature flags
+        top_k = 10
+        min_similarity = 0.62
+        max_candidates = 10
+        if self._external_feature_flags:
+            top_k = self._external_feature_flags.get('semantic_topk', 10)
+            min_similarity = self._external_feature_flags.get('semantic_min_sim', 0.62)
+            max_candidates = self._external_feature_flags.get('semantic_max_cand', 10)
+
+        # Phase E1: Adaptive energy filter based on food class
+        # Get class-aware tolerance (±20% for nuts/oils, ±40% for produce, ±30% default)
+        tolerance = self._get_energy_band_tolerance(core_class)
+        energy_min = predicted_kcal_100g * (1.0 - tolerance) if predicted_kcal_100g else 0
+        energy_max = predicted_kcal_100g * (1.0 + tolerance) if predicted_kcal_100g else 999
+
+        # Phase E1: Track energy guard application
+        if predicted_kcal_100g:
+            self.telemetry["guard_summary"]["energy_guards_checked"] += 1
 
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
-            print(f"[STAGE1S] Query: '{predicted_name}' (energy filter: {energy_min:.0f}-{energy_max:.0f} kcal/100g)")
+            print(f"[STAGE1S] Query: '{predicted_name}' (energy filter: {energy_min:.0f}-{energy_max:.0f} kcal/100g, top_k={top_k}, min_sim={min_similarity})")
 
         try:
-            # Search semantic index (top 10 results, energy filtered)
+            # Search semantic index
             results = self._semantic_searcher.search(
                 query=predicted_name,
-                top_k=10,
+                top_k=top_k,
                 energy_filter=(energy_min, energy_max) if predicted_kcal_100g else None
             )
+
+            # Build telemetry (Phase E1: Include adaptive band info)
+            telemetry = {
+                "semantic_top_k": top_k,
+                "semantic_min_sim": min_similarity,
+                "semantic_max_cand": max_candidates,
+                "semantic_candidates_returned": len(results) if results else 0,
+                "energy_filter_applied": bool(predicted_kcal_100g),
+                "energy_filter_min": energy_min if predicted_kcal_100g else None,
+                "energy_filter_max": energy_max if predicted_kcal_100g else None,
+                "energy_band_tolerance_pct": tolerance * 100 if predicted_kcal_100g else None,  # Phase E1
+                "energy_band_core_class": core_class if predicted_kcal_100g else None,  # Phase E1
+                "query_normalized": predicted_name.lower().strip()
+            }
 
             if not results:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
                     print(f"[STAGE1S] No semantic matches found")
+                # Phase E1: Track energy guard rejection (no candidates passed energy filter)
+                if predicted_kcal_100g:
+                    self.telemetry["guard_summary"]["energy_guards_rejected"] += 1
                 return None
 
+            # Filter by minimum similarity threshold
+            filtered_results = [(fdc_id, sim, desc, energy) for fdc_id, sim, desc, energy in results if sim >= min_similarity]
+            if not filtered_results:
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE1S] All candidates below similarity threshold {min_similarity}")
+                telemetry["semantic_rejection_reason"] = "below_similarity_threshold"
+                return None
+
+            # Limit to max_candidates
+            filtered_results = filtered_results[:max_candidates]
+            telemetry["semantic_candidates_filtered"] = len(filtered_results)
+
             # Take top result (highest similarity)
-            fdc_id, similarity, description, energy = results[0]
+            fdc_id, similarity, description, energy = filtered_results[0]
+            telemetry["semantic_similarity"] = similarity
+            telemetry["semantic_match_fdc_id"] = fdc_id
+            telemetry["semantic_match_description"] = description
 
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[STAGE1S] Top match: {description} (FDC {fdc_id}, sim={similarity:.3f}, energy={energy} kcal/100g)")
 
-            # Fetch full FDC entry
-            if self._fdc_db and hasattr(self._fdc_db, 'get_entry_by_id'):
-                entry = self._fdc_db.get_entry_by_id(fdc_id)
-                if entry:
-                    # Add semantic metadata to entry
-                    if hasattr(entry, '__dict__'):
-                        entry.semantic_similarity = similarity
-                    elif isinstance(entry, dict):
-                        entry['semantic_similarity'] = similarity
+            # Fetch full FDC entry (Phase E1: Use cached lookup if enabled)
+            entry = self._get_fdc_entry(fdc_id)
+            if entry:
+                # Add semantic metadata to entry
+                if hasattr(entry, '__dict__'):
+                    entry.semantic_similarity = similarity
+                elif isinstance(entry, dict):
+                    entry['semantic_similarity'] = similarity
 
-                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
-                        print(f"[STAGE1S] ✓ Retrieved FDC entry {fdc_id}")
+                # Phase E1: Track acceptance (passed energy guard if it was applied)
+                if predicted_kcal_100g:
+                    # Entry passed energy guard, count as accepted
+                    # Don't increment total_accepted here to avoid double-counting with macro guards
+                    pass
 
-                    return entry
-                else:
-                    if os.getenv('ALIGN_VERBOSE', '0') == '1':
-                        print(f"[STAGE1S] ✗ FDC entry {fdc_id} not found in database")
+                if os.getenv('ALIGN_VERBOSE', '0') == '1':
+                    print(f"[STAGE1S] ✓ Retrieved FDC entry {fdc_id}")
+
+                return (entry, telemetry)
             else:
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
-                    print(f"[STAGE1S] FDC database not available")
+                    print(f"[STAGE1S] ✗ FDC entry {fdc_id} not found in database")
+                telemetry["semantic_rejection_reason"] = "fdc_entry_not_found"
 
         except Exception as e:
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[STAGE1S] Error during semantic search: {e}")
+            telemetry = {
+                "semantic_error": str(e),
+                "query_normalized": predicted_name.lower().strip()
+            }
 
         return None
 
@@ -2996,6 +3266,13 @@ class FDCAlignmentWithConversion:
         """
         import os
 
+        # Phase E1: Initialize per-component telemetry
+        component_telemetry = {
+            "attempted_stages": [],
+            "candidate_pool_size": 0,
+            "rejection_reason": None
+        }
+
         # Check cache first
         cache_key = f"{canonical_name}_{canonical_form}"
         if cache_key in self._fdc_cache:
@@ -3005,10 +3282,19 @@ class FDCAlignmentWithConversion:
                     print(f"[STAGE5B]     Cache hit: {canonical_name}")
                 else:
                     print(f"[STAGE5B]     Cache hit (no match): {canonical_name}")
+            # Add telemetry to cached result
+            if cached and isinstance(cached, dict):
+                cached_with_telemetry = cached.copy()
+                cached_with_telemetry["telemetry"] = {"cache_hit": True}
+                return cached_with_telemetry
             return cached
+
+        # Phase E1: Track Foundation/SR stage attempt
+        component_telemetry["attempted_stages"].append("foundation_sr_component")
 
         # Query Foundation/SR for component
         entries = self._query_foundation_sr_for_component(canonical_name)
+        component_telemetry["candidate_pool_size"] = len(entries) if entries else 0
 
         if entries:
             entry = entries[0]  # Take best match
@@ -3023,7 +3309,8 @@ class FDCAlignmentWithConversion:
                     "kcal_100g": entry.get('energy_kcal'),
                     "protein_100g": entry.get('protein_g'),
                     "carbs_100g": entry.get('carb_g'),
-                    "fat_100g": entry.get('fat_g')
+                    "fat_100g": entry.get('fat_g'),
+                    "telemetry": component_telemetry  # Phase E1
                 }
             else:
                 result = {
@@ -3035,7 +3322,8 @@ class FDCAlignmentWithConversion:
                     "kcal_100g": entry.kcal_100g if hasattr(entry, 'kcal_100g') else None,
                     "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
                     "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
-                    "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None
+                    "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None,
+                    "telemetry": component_telemetry  # Phase E1
                 }
             self._fdc_cache[cache_key] = result
             return result
@@ -3044,8 +3332,14 @@ class FDCAlignmentWithConversion:
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[STAGE5B]     No Foundation/SR, trying branded fallback...")
 
+        # Phase E1: Track branded fallback stage attempt
+        component_telemetry["attempted_stages"].append("branded_fallback_component")
+
         branded_entry = self._query_branded_fallback(canonical_name)
         if branded_entry:
+            # Phase E1: Update candidate pool size with branded results
+            component_telemetry["candidate_pool_size"] += 1
+
             # Handle dict format from search_foods
             if isinstance(branded_entry, dict):
                 result = {
@@ -3057,7 +3351,8 @@ class FDCAlignmentWithConversion:
                     "kcal_100g": branded_entry.get('energy_kcal'),
                     "protein_100g": branded_entry.get('protein_g'),
                     "carbs_100g": branded_entry.get('carb_g'),
-                    "fat_100g": branded_entry.get('fat_g')
+                    "fat_100g": branded_entry.get('fat_g'),
+                    "telemetry": component_telemetry  # Phase E1
                 }
             else:
                 result = {
@@ -3069,7 +3364,8 @@ class FDCAlignmentWithConversion:
                     "kcal_100g": branded_entry.kcal_100g if hasattr(branded_entry, 'kcal_100g') else None,
                     "protein_100g": branded_entry.protein_100g if hasattr(branded_entry, 'protein_100g') else None,
                     "carbs_100g": branded_entry.carbs_100g if hasattr(branded_entry, 'carbs_100g') else None,
-                    "fat_100g": branded_entry.fat_100g if hasattr(branded_entry, 'fat_100g') else None
+                    "fat_100g": branded_entry.fat_100g if hasattr(branded_entry, 'fat_100g') else None,
+                    "telemetry": component_telemetry  # Phase E1
                 }
             self._fdc_cache[cache_key] = result
             return result
@@ -3079,8 +3375,13 @@ class FDCAlignmentWithConversion:
             if os.getenv('ALIGN_VERBOSE', '0') == '1':
                 print(f"[STAGE5B]     Trying romaine proxy fallback for mixed greens...")
 
+            # Phase E1: Track mixed greens proxy attempt
+            component_telemetry["attempted_stages"].append("mixed_greens_proxy")
+
             # Try romaine as proxy
             romaine_entries = self._query_foundation_sr_for_component("lettuce romaine raw")
+            component_telemetry["candidate_pool_size"] += len(romaine_entries) if romaine_entries else 0
+
             if romaine_entries:
                 entry = romaine_entries[0]
                 if isinstance(entry, dict):
@@ -3094,7 +3395,8 @@ class FDCAlignmentWithConversion:
                         "protein_100g": entry.get('protein_g'),
                         "carbs_100g": entry.get('carb_g'),
                         "fat_100g": entry.get('fat_g'),
-                        "component_fallback_used": True
+                        "component_fallback_used": True,
+                        "telemetry": component_telemetry  # Phase E1
                     }
                 else:
                     result = {
@@ -3107,7 +3409,8 @@ class FDCAlignmentWithConversion:
                         "protein_100g": entry.protein_100g if hasattr(entry, 'protein_100g') else None,
                         "carbs_100g": entry.carbs_100g if hasattr(entry, 'carbs_100g') else None,
                         "fat_100g": entry.fat_100g if hasattr(entry, 'fat_100g') else None,
-                        "component_fallback_used": True
+                        "component_fallback_used": True,
+                        "telemetry": component_telemetry  # Phase E1
                     }
                 self._fdc_cache[cache_key] = result
                 if os.getenv('ALIGN_VERBOSE', '0') == '1':
@@ -3117,6 +3420,9 @@ class FDCAlignmentWithConversion:
         # No match found - return None and cache it
         if os.getenv('ALIGN_VERBOSE', '0') == '1':
             print(f"[STAGE5B]     ✗ No match for component: {canonical_name}")
+
+        # Phase E1: Set rejection reason
+        component_telemetry["rejection_reason"] = "no_candidates_found"
 
         self._fdc_cache[cache_key] = None
         return None
@@ -3382,7 +3688,8 @@ class FDCAlignmentWithConversion:
 
         for fdc_id in component.fdc_ids:
             try:
-                entry = self._fdc_db.get_entry_by_id(fdc_id)
+                # Phase E1: Use cached FDC lookup
+                entry = self._get_fdc_entry(fdc_id)
                 if entry:
                     if os.getenv('ALIGN_VERBOSE', '0') == '1':
                         print(f"[STAGE5C]     ✓ Pinned FDC ID {fdc_id}")

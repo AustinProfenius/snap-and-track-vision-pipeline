@@ -1,0 +1,46 @@
+# Phase E1: Yogurt Parfait Recipe Template
+#
+# Single yogurt parfait variant with ratio-based component decomposition.
+# Ratios based on typical parfait recipe (yogurt + granola + fruit).
+#
+# Triggers match: "yogurt parfait", "greek yogurt parfait", "parfait"
+# Components use Stage Z keys (prefer) for alignment.
+
+yogurt_parfait:
+  triggers:
+    - "yogurt parfait"
+    - "greek yogurt parfait"
+    - "parfait"
+    - "yoghurt parfait"
+    - "yogurt bowl"
+  notes: "Yogurt parfait: yogurt base + granola + berries"
+  components:
+    - key: "yogurt"
+      ratio: 0.60
+      prefer:
+        - "yogurt_greek"
+        - "yogurt_plain"
+        - "yogurt_nonfat"
+        - "yogurt_vanilla"
+      kcal_per_100g: [50, 150]
+      notes: "Yogurt base (Greek, plain, nonfat, or vanilla)"
+
+    - key: "granola"
+      ratio: 0.25
+      prefer:
+        - "granola"
+        - "cereal_granola"
+        - "oat_granola"
+      kcal_per_100g: [400, 500]
+      notes: "Granola or crunchy cereal topping"
+
+    - key: "berries"
+      ratio: 0.15
+      prefer:
+        - "strawberry"
+        - "blueberry"
+        - "raspberry"
+        - "mixed_berries"
+        - "berry_mixed"
+      kcal_per_100g: [30, 80]
+      notes: "Fresh or frozen berries (strawberries, blueberries, raspberries, mixed)"
